@@ -1,0 +1,11 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#title {
+    color:rgb(45, 45, 136);
+}
