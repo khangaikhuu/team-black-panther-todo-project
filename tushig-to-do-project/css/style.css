@@ -9,6 +9,12 @@ h1 {
 
 #btninput {
     border-radius: 0%;
+    transition: 0.7s;
+}
+
+#btninput:hover {
+    background-color: rgb(3, 35, 83);
+    transition: 0.7s;
 }
 
 button {
