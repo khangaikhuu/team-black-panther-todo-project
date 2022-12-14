@@ -1,0 +1,40 @@
+body{
+    max-width: 500px;
+    width: 100%;
+    margin: auto;
+}
+h1{
+    font-family: sans-serif;
+    color: rgb(7, 59, 138);
+    text-align: center;
+}
+p{
+    text-align: center;
+}
+#inputDiv{
+  display: flex;
+  border-bottom: 2px orange solid;
+  height: 40px;
+    
+}
+input{
+    width: 70%;
+    border: none;
+}
+#button{
+    width: 30%;
+    background-color: orange;
+    color: white;
+    border: none;
+}
+#title{
+    margin-bottom: 0;
+}
+
+.inputStyle{
+    border: 1px black solid;
+   
+   background-color: orange;
+   margin: 0;
+   
+}
