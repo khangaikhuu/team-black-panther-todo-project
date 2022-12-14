@@ -38,16 +38,18 @@ addTaskBtn.addEventListener('click', () => {
 // })
 
 
-let deleteTaskBtn = document.getElementById('removeBtn');
-console.log(deleteTaskBtn);
+// let deleteTaskBtn = document.getElementById('removeBtn');
+// console.log(deleteTaskBtn);
 
-deleteTaskBtn.addEventListener('click', deleteTask)
+// deleteTaskBtn.addEventListener('click', deleteTask)
 
 function deleteTask() {
-    let id = deleteTaskBtn.id;
-    console.log('id = ' + id);
-    console.log('delete button clicked');
-    const element = document.getElementById(`task-${id}`);
+    // let id = deleteTaskBtn.id;
+    // document.getElementById('')
+    // console.log('id = ' + id);
+    // console.log('delete button clicked');
+    // const element = document.getElementById(`task-${id}`);
+    document.getElementById('task-01').remove();
 }
 
 
@@ -58,7 +60,7 @@ function passValue (value, count) {
             <input type="text" class="form-control" name="task" value=${value} id="input" disabled>
             <button class="btn btn-warning btn-outline-secondary" type="button" id="editBtn">+ Засах</button>
             <button class="btn btn-warning btn-outline-secondary" type="button" id="saveBtn" disabled> Хадгалах</button>
-            <button class="btn btn-warning btn-outline-secondary" type="button" id="removeBtn-${count}" onclick=deleteTask()> Устгах</button>
+            <button class="btn btn-warning btn-outline-secondary" type="button" id="removeBtn-${count}" onclick="deleteTask()"> Устгах</button>
             </div>`
     return n;
 }
