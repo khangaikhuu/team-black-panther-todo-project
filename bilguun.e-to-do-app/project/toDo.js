@@ -15,11 +15,12 @@ submitBtn.addEventListener("click", () => {
     let value = toDoInput.value
     console.log(value)
     let p = document.createElement("p")
+    let div = document.createElement("div")
     p.textContent = value
     inputText.appendChild(p);
-    p.innerHTML = `${value} <div><button class="btn btn-warning">Edit</button><button class="btn btn-success">Check</button>
-    <button class="btn btn-danger">Delete</button></div>`
-
+    inputText.appendChild(div);
+    p.innerHTML = `${value}`
+    div.innerHTML = `<button class="btn btn-warning">Edit </button> <button class="btn btn-success">Check</button> <button class="btn btn-danger">Delete</button>`
 
     // task container
     // let taskContainer = document.createElement('div');
