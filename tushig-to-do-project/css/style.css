@@ -2,3 +2,31 @@ h1 {
     color: rgb(13, 36, 97);
 }
 
+#addinput {
+    padding: 15px;
+    border-radius: 0%;
+}
+
+#btninput {
+    border-radius: 0%;
+}
+
+button {
+    border: none;
+}
+
+input {
+    width: 150px; 
+    border: none;
+}
+
+
+.stroke {
+    height: 3px;
+    background-color: rgb(17, 27, 104);
+}
+
+
+.strokeinp {
+    height: 3px;
+}
