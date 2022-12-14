@@ -1,0 +1,35 @@
+html {
+    background-color: black;
+}
+
+.container {
+    background-color: white;
+    margin: auto 0;
+    margin: 5vw;
+    height: 70vh;
+    text-align: center;
+}
+
+
+input {
+    width: 50vw;
+    height: 40px;
+
+}
+
+button {
+    height: 45px;
+}
+
+
+
+
+
+
+#createdTodo{
+    margin: 0 auto;
+    background-color: #f1f1f1;
+    width: 60vw;
+    height: 60px;
+    border: 1px solid orange;
+}
