@@ -1,0 +1,12 @@
+h1 {
+    text-align: center;
+    background-color: purple;
+    color: white;
+}
+
+.container {
+    max-width: 768px;
+    margin: auto;
+    background-color: aqua;
+    text-align: center;
+}
