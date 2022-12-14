@@ -1,0 +1,41 @@
+body {
+    background-color: black;
+}
+
+
+.container {
+    text-align: center;
+    max-width: 600px;
+    background-color: white;
+    margin: 0 auto;
+}
+
+
+h1 {
+    text-align: center;
+}
+
+#taskInput {
+    height: 50px;
+    width: 300px;
+    background-color: rgb(245, 228, 212);
+    border: none;
+    border-bottom: 2px solid orange;
+
+
+}
+
+#addButton {
+background-color: orange;
+color: white;
+height: 50px;
+width: 80px;'
+border: none;
+
+}
+
+#list {
+    width: 400px;
+    border-bottom: 2px solid black;
+    margin: 20px auto;
+}
