@@ -2,3 +2,37 @@ h1 {
     color: rgb(13, 36, 97);
 }
 
+#addinput {
+    padding: 15px;
+    border-radius: 0%;
+}
+
+#btninput {
+    border-radius: 0%;
+    transition: 0.7s;
+}
+
+#btninput:hover {
+    background-color: rgb(3, 35, 83);
+    transition: 0.7s;
+}
+
+button {
+    border: none;
+}
+
+input {
+    width: 150px; 
+    border: none;
+}
+
+
+.stroke {
+    height: 3px;
+    background-color: rgb(17, 27, 104);
+}
+
+
+.strokeinp {
+    height: 3px;
+}
