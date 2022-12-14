@@ -1,8 +1,5 @@
-/* h1 {
-    background-color: darkblue;
-    text-align: center;
-} */
-section {
-    text-align: center;
-    ;
+* {
+    background-color: beige;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
