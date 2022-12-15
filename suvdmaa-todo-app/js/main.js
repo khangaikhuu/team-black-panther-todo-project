@@ -30,7 +30,7 @@ button.addEventListener('click', ()=>{
     let editbutton = document.getElementById('btn1');
     editbutton.addEventListener ('click', () =>{
         console.log('edit clicked');
-        todolist.contentEditable = false;
+        input.contentEditable = true;
     })
 
     let removebtn = document.getElementById('btn3');
