@@ -22,34 +22,38 @@ let newTask = document.getElementById('newTask');
 
 addTaskBtn.addEventListener('click', () => {
     // console.log('new task = ' + newTask.value);
-    let p = document.createElement('p');
-    p.id = "task-" + toDoList.length + 1;
-    p.innerHTML = passValue(newTask.value);
-    document.getElementById('list').appendChild(p);
+
+    if(newTask.value == "") {
+        alert("value is empty");
+    }
+    else {
+        let p = document.createElement('p');
+        p.id = "task-" + toDoList.length + 1;
+        p.innerHTML = passValue(newTask.value, toDoList.length + 1);
+        document.getElementById('list').appendChild(p);
+        toDoList.push(newTask.value);
+        document.getElementById('counter').innerHTML = `${toDoList.length} жагсаалт`;
+        console.log(toDoList);
+    }
     
-    toDoList.push(newTask.value);
-    document.getElementById('counter').innerHTML = `${toDoList.length} жагсаалт`;
-    console.log(toDoList);
 
 })
 
-// editTaskBtn.addEventListener('click', () => {
-//     // console.log('edit button clicked');
-// })
+function editFunc(event) {
+    // event.parentNode.
+    console.log(event.id);
+    // console.log(event.parentNode.editBtn);
+    // event.parentNode.childNodes[0].disabled = false;
+    // console.log(event.parentNode.childNodes[0].disabled);
+    document.querySelector('#event.id').disabled = false;
+}
 
-
-// let deleteTaskBtn = document.getElementById('removeBtn');
-// console.log(deleteTaskBtn);
-
-// deleteTaskBtn.addEventListener('click', deleteTask)
-
-function deleteTask() {
-    // let id = deleteTaskBtn.id;
-    // document.getElementById('')
-    // console.log('id = ' + id);
-    // console.log('delete button clicked');
-    // const element = document.getElementById(`task-${id}`);
-    document.getElementById('task-01').remove();
+function deleteFunc(event) {
+    // event.id; 
+    // console.log(event.id);
+    event.parentNode.remove(event);
+    toDoList.splice(0,1);
+    document.getElementById('counter').innerHTML = `${toDoList.length} жагсаалт`;
 }
 
 
@@ -58,9 +62,9 @@ function passValue (value, count) {
 
     let n = `<div class="input-group mb-3">
             <input type="text" class="form-control" name="task" value=${value} id="input" disabled>
-            <button class="btn btn-warning btn-outline-secondary" type="button" id="editBtn">+ Засах</button>
-            <button class="btn btn-warning btn-outline-secondary" type="button" id="saveBtn" disabled> Хадгалах</button>
-            <button class="btn btn-warning btn-outline-secondary" type="button" id="removeBtn-${count}" onclick="deleteTask()"> Устгах</button>
+            <button class="btn btn-warning btn-outline-secondary" type="button" id="editBtn-${count}" onclick="editFunc(this)"> <i class="bi bi-pencil-fill"></i></button>
+            <button class="btn btn-warning btn-outline-secondary" type="button" id="saveBtn" onclick="saveFunc(this)" disabled> <i class="bi bi-check2"></i> </button>
+            <button class="btn btn-warning btn-outline-secondary" type="button" id="removeBtn" onclick="deleteFunc(this)"> <i class="bi bi-trash3-fill"></i></button>
             </div>`
     return n;
 }
