@@ -7,23 +7,44 @@ newDate = "Он сар өдөр: " + year + "-" + month + "-" + day;
 document.getElementById("timer").innerHTML = newDate;
 
 let todoCreate = document.getElementById("create");
-
+let todoList = document.getElementById("list"); 
 let button = document.getElementById("button-addon2");
 console.log(button);
 
-button.addEventListener("click", () => {
-  console.log("add clicked");
-  console.log(todoCreate.value);
+function editFunc(){
+  console.log('edit button clicked');
+}
+
+function saveFunc(){
+  console.log('save button clicked');
+}
+function deleteFunc(event){
+  console.log(event)
+  console.log('delete button clicked')
+}
+
+let addToDo = () => {
+  let randomIndex = Math.floor(Math.random()*100);
+  let todoElement = document.createElement('div');
+  todoElement.id = ('test')
+  todoElement.innerHTML = `TODO <input> <button id="edit_${randomIndex}" onclick="editFunc()">EDIT</button> <button onclick="saveFunc()">SAVE</button> <button id="${randomIndex}" onclick="deleteFunc(this)">DELETE</button>`
+  todoList.appendChild(todoElement);
+  let eBtn = document.getElementById('edit');
   
-  let input = document.createElement("p");
-  input.innerHTML = `<input value=${todoCreate.value} disabled> <button>Test</button> `;
+  console.log(eBtn);
+}
+button.addEventListener('click', addToDo)
 
-  todoList.appendChild(input);
-  todoList.appendChild("<p>Test</p>");
-});
+// button.addEventListener("click", () => {
+//   console.log("add clicked");
+//   console.log(todoCreate.value);
+  
+//   let input = document.createElement("p");
+//   input.innerHTML = `<input value=${todoCreate.value} disabled> <button>Test</button> `;
 
-let todoList = document.getElementById("list");
-console.log(todoList);
+//   todoList.appendChild(input);
+// });
+
 
 let p = document.createElement("p");
 console.log(p);
