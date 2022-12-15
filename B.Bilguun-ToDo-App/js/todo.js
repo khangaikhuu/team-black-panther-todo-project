@@ -23,10 +23,10 @@ button.addEventListener("click", () => {
     let list = document.createElement('div');
 
 
-    list.innerHTML = `<input class="secInput" value="${todoCreate.value}" disabled> 
-    <button class="edButton" onclick="clicked()">edit</button>
-     <button class="doneButton">done</button> 
-     <button class="delButton">del</button>`;
+    list.innerHTML = `<input id="secInput" value="${todoCreate.value}" disabled> 
+    <button onclick="editClicked(this)">edit</button>
+     <button onclick="doneClicked(this)">done</button> 
+     <button onclick="delClicked(this)">del</button>`;
     // edit.push(todoList.value);
     todoList.appendChild(list);
 
@@ -39,16 +39,22 @@ let editbutton = document.getElementById('edButton');
 // editbutton.addEventListener("click", () => {
 //     console.log("clicked");
 // });
-
-function clicked() {
+// let secInput = [];
+function editClicked(event) {
     console.log('button clicked')
-    let secInput = [];
+    console.log(event.parentNode);
+    event.parentNode.childNodes[0].disabled = false;
+    // document.getElementById("secInput").disabled = false;
+}
 
-    for (let i = 0; i < secInput.length; i++) {
-        let secInput = document.getElementsByClassName("secInput")[i];
-        secInput.disabled = false;
-    }
+function doneClicked(eve) {
+    console.log('button done clicked')
+    console.log(eve.parentNode);
+    eve.parentNode.childNodes[0].disabled = true;
+}
 
-
-    // secInput.disabled = false;
+function delClicked(event) {
+    console.log('button done clicked')
+    console.log(event.parentNode);
+    event.parentNode.remove(event);
 }
