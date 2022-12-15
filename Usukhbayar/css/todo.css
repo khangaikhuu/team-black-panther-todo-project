@@ -1,20 +1,20 @@
 h1 {
-  color: #003153;
+  color: #1c315e;
   text-align: center;
 }
-p{
+p {
   text-align: center;
 }
-#button-addon2{
-  background-color: orange;
+#button-addon2 {
+  background-color: #f49d1a;
 }
-.p-con{
+.p-con {
   display: flex;
   justify-content: center;
 }
-#timer{
+#timer {
   margin-right: 20px;
 }
-#create{
-  background-color: #faf0e6;
+#create {
+  background-color: #fbf6f6;
 }

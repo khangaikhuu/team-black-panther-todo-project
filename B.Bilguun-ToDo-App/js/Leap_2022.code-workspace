@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "../../../Leap_2022"
+		},
+		{
+			"path": "../.."
+		},
+		{
+			"path": "../../../leap_2002"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "team-black-panther-todo-project"
+	}
+}
