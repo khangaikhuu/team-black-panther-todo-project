@@ -1,3 +1,4 @@
+console.log("Todo list project");
 // Date
 
 let now = new Date();

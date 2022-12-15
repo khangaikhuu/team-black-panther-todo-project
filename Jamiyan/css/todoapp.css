@@ -5,36 +5,50 @@ body{
 }
 h1{
     font-family: sans-serif;
-    color: rgb(7, 59, 138);
+    color: #1c315e;
     text-align: center;
 }
 p{
     text-align: center;
+    color: #1c315e;
+    font-family: sans-serif;
 }
 #inputDiv{
   display: flex;
-  border-bottom: 2px orange solid;
+  border-bottom: 2px #f49d1a solid;
   height: 40px;
     
 }
 input{
-    width: 70%;
+    width: 80%;
     border: none;
+    background-color: #fbf6f6;
+    padding: 10px;
 }
 #button{
-    width: 30%;
-    background-color: orange;
+    width: 20%;
+    background-color: #f49d1a;
     color: white;
     border: none;
 }
 #title{
     margin-bottom: 0;
+    
 }
 
 .inputStyle{
-    border: 1px black solid;
+    border: 1px #f49d1a solid;
+    margin: 5px;
+    display: flex;
+    height: 50px;
    
-   background-color: orange;
-   margin: 0;
-   
+}
+.inputStyle input{
+    background-color: #eeeeee;
+    padding: 10px;
+}
+.buttonStyle{
+    width: 10%;
+    background-color: #eeeeee;
+    padding: 10px;
 }
