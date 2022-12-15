@@ -30,22 +30,19 @@ button.addEventListener('click', () => {
 })
 
 function myValue (arr) {
-    let n = `<div class="input-group mb-3">
+    let i = `<div class="input-group mb-3">
             <input type="text" class="form-control" name="task" value=${arr} id="input" disabled>
-            <button class="btn btn-warning btn-outline-secondary" type="button" id="editBtn">+ Edit</button>
-            <button class="btn btn-warning btn-outline-secondary" type="button" id="saveBtn" disabled> Confirm</button>
-            <button class="btn btn-warning btn-outline-secondary" type="button" id="removeBtn" onclick="deleteTask()"> Delete</button>
+
+            <button class="btn btn-warning" type="button" id="editBtn">+ Edit</button>
+
+            <button class="btn btn-warning" type="button" id="saveBtn" disabled>Confirm</button>
+
+            <button class="btn btn-warning" type="button" id="removeBtn">Delete</button>
             </div>`
-    return n;
+    return i;
 }
 
-const myRemove = document.getElementById('removeBtn');
+let myRemove = document.getElementById('removeBtn');
 myRemove.addEventListener('click', () => {
-    myRemove.remove();
+    input.remove();
 })
-
-// for (const myRemove of myRemoves) {
-//     myRemove.addEventListener('click', (event) => {
-//       event.target.remove();
-//     });
-//   }
