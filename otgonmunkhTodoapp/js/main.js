@@ -24,7 +24,9 @@ button.addEventListener('click', () => {
     console.log("control clicked");
     console.log(found.value);
     let input = document.createElement("div");
-    input.innerHTML = `<input value=${found.value}  disabled  <button  ><button/>`
+    input.innerHTML = `<input value=${found.value}  disabled  
+    <button class="btn btn-border-radius-none"><button/>
+    <button class="btn btn-border-radius-none"></button>`
 
     todolist.appendChild(input);
    
@@ -34,3 +36,4 @@ button.addEventListener('click', () => {
 
 
 
+console.log("change");
