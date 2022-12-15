@@ -18,28 +18,38 @@ let button = document.getElementById('add');
 
 function editFunc(){
     console.log('edit button clicked');
+    document.getElementById("saveBtn").disabled = false;
+    document.getElementById("inputArea").disabled = false;
 }
 
 function saveFunc(){
     console.log('save button clicked');
+    document.getElementById("inputArea").disabled = true;
 }
 function deleteFunc(event){
-    console.log(event);
-    console.log('delete button clicked');
+    // console.log(event);
+    // console.log(event.parentNode);
+    // console.log('delete button clicked');
+    event.parentNode.remove(event);
 }
 
 
 button.addEventListener('click', () => {
     let randomIndex = Math.floor(Math.random()*100);
-    let input = document.createElement('div');
-    input.innerHTML = myValue(todoCreate.value);;
+    let todo = document.createElement('div');
+    todo.id = "test";
+    todo.innerHTML = myValue(todoCreate.value);;
+    todoList.appendChild(todo);
 
-    todoList.appendChild(input);
+
+
+    // document.getElementById("inputArea").disabled = true;
+    // document.getElementById("saveBtn").disabled = true;
 })
 
 function myValue (value) {
     let i = `<div class="input-group mb-3">
-            <input type="text" class="form-control" name="task" value=${value} id="input" disabled>
+            <input type="text" class="form-control" name="task" value=${value} id="inputArea">
 
             <button class="btn btn-warning" type="button" id="editBtn" onclick="editFunc(this)">+ Edit</button>
 
