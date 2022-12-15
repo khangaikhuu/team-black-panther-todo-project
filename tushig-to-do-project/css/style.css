@@ -1,5 +1,5 @@
 h1 {
-    color: rgb(13, 36, 97);
+    color: #1c315e;
 }
 
 #addinput {
@@ -13,7 +13,7 @@ h1 {
 }
 
 #btninput:hover {
-    background-color: rgb(3, 35, 83);
+    background-color: #1c315e;
     transition: 0.7s;
 }
 
@@ -29,7 +29,7 @@ input {
 
 .stroke {
     height: 3px;
-    background-color: rgb(17, 27, 104);
+    background-color: #1c315e;
 }
 
 
