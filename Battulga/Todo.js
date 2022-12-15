@@ -14,9 +14,12 @@ button.addEventListener('click', () => {
     console.log(todoCreate.value)
     let input = document.createElement('p')
     input.setAttribute('id','createdTodo')
-    input.innerHTML= `${todoCreate.value} <input.value=${todoCreate.value}> <button>Edit</button> <button>Done</button> <button>Delete</button>`
+    input.innerHTML= `${todoCreate.value} <button>Edit</button> <button>Done</button> <button>Delete</button>`
     todoList.appendChild(input);
 })
+
+
+
 
 
 

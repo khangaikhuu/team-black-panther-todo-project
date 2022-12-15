@@ -36,6 +36,8 @@ button {
     border: 1px solid orange;
     margin-bottom: 5px;
     border-radius: 5px;
+    text-align: left;
+    /* display: flex; */
 }
 
 h1 {
