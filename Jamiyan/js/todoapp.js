@@ -43,7 +43,4 @@ button.addEventListener("click", () => {
 })
 
 
-let arr = [1, 20, 3];
-console.log(arr.reverse())
-
 
