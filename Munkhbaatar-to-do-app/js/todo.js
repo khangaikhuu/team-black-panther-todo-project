@@ -43,9 +43,9 @@ function editFunc(event) {
     // event.parentNode.
     console.log(event.id);
     // console.log(event.parentNode.editBtn);
-    // event.parentNode.childNodes[0].disabled = false;
-    // console.log(event.parentNode.childNodes[0].disabled);
-    document.querySelector('#event.id').disabled = false;
+    event.parentNode.childNodes[1].disabled = false;
+    // console.log(event.parentNode.childNodes[1].disabled);
+    // document.querySelector('#event.id').disabled = false;
 }
 
 function deleteFunc(event) {
