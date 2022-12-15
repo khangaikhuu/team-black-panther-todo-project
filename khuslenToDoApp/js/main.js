@@ -32,6 +32,7 @@ button.addEventListener("click", () => {
     // btn1.innerHTML = 
 
     todo.appendChild(input);
+    console.log(input);
 })
 
 // let edit = document.getElementById("edit");
