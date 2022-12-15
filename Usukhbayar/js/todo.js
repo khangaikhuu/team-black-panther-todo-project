@@ -20,7 +20,9 @@ function saveFunc(){
 }
 function deleteFunc(event){
   console.log(event)
-  console.log('delete button clicked')
+  console.log(event.parentNode)
+  event.parentNode.removeChild(event);
+  console.log('delete button clicked');
 }
 
 let addToDo = () => {
@@ -34,20 +36,3 @@ let addToDo = () => {
   console.log(eBtn);
 }
 button.addEventListener('click', addToDo)
-
-// button.addEventListener("click", () => {
-//   console.log("add clicked");
-//   console.log(todoCreate.value);
-  
-//   let input = document.createElement("p");
-//   input.innerHTML = `<input value=${todoCreate.value} disabled> <button>Test</button> `;
-
-//   todoList.appendChild(input);
-// });
-
-
-let p = document.createElement("p");
-console.log(p);
-p.textContent = "First";
-
-todoList.appendChild(p);
