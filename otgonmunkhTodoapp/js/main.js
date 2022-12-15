@@ -38,15 +38,17 @@ button.addEventListener('click', () => {
     console.log(found.value);
     let input = document.createElement("div");
     let randomIndex = Math.floor(Math.random() * 100);
-    input.id="con_${randomIndex}"
-    document.getElementById("con_${randomIndex}")="background-color: grey"
+    // input.id="step"
+    // document.getElementsById("step").style="background-color: grey"
     input.innerHTML = `<input value=${found.value}  disabled >
     
     <button onclick="editFunc()" id="edit_${randomIndex}" class="btn btn-border-none bi bi-pencil-fill"></button>
     <button onclick="saveFunc()" class="btn btn-border-none bi bi-check-lg"></button>
-    <button onclick="deleteFunc(this)" id="edit_${randomIndex}" class="btn btn-border-none bi bi-trash"></button>`
+    <button onclick="deleteFunc(this)" id="edit_${randomIndex}" class="btn btn-border-none bi bi-trash bg-warning border-radius-none"></button>`
 
     todolist.appendChild(input);
+    todolist.id="exterordonary"
+    // document.getElementById("exterordonary").style="background-color: red"
 
 })
 
