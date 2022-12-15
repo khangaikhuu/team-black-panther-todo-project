@@ -12,13 +12,14 @@ addButton.addEventListener("click", () => {
     console.log(addInput.value)
     input.innerHTML = `<input id="listInput" style="border: none; background-color: white" value="${addInput.value}" disabled>
      <button id="editButton" style="border-radius: 10px; border-color: yellow; background-color: white"><i class="fa-solid fa-pen-to-square"></i></button>
-     <button id="checkButton" style="border-radius: 10px; border-color: yellow;  background-color: white"><i style="color: green" class="fa-solid fa-check"></i></button> 
-     <button id="trashButton" style="border-radius: 10px; border-color: yellow;  background-color: white"><i style="color: red" class="fa-regular fa-trash-can"></i></button>`;
+     <button id="checkButton" style="border-radius: 10px; border-color: yellow;  background-color: white" onclick="checkFunc(this)"><i style="color: green" class="fa-solid fa-check"></i></button> 
+     <button id="trashButton" style="border-radius: 10px; border-color: yellow;  background-color: white" onclick="deleteFunc()"><i style="color: red" class="fa-regular fa-trash-can"></i></button>`;
     toDo.appendChild(input);
     input.style = "border: 1px solid orange; border-radius: 20px; padding: 15px";
 
     let editButton = document.getElementById("editButton");
     let listInput = document.getElementById("listInput");
+
     editButton.addEventListener("click", () => {
         listInput.disabled = false;
         editButton.innerHTML = `<i class="fa-solid fa-file-contract"></i>`
@@ -26,6 +27,6 @@ addButton.addEventListener("click", () => {
 
     let checkButton = document.getElementById("checkButton");
     checkButton.addEventListener("click", () => {
-        
-    })
+        document.removeChild(listInput);
+    });
 });
