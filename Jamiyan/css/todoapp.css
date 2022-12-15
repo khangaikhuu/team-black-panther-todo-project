@@ -19,13 +19,13 @@ p{
   height: 40px;
     
 }
-input{
+#todo-create{
     width: 80%;
     border: none;
     background-color: #fbf6f6;
     padding: 10px;
 }
-#button{
+#add{
     width: 20%;
     background-color: #f49d1a;
     color: white;
@@ -36,7 +36,7 @@ input{
     
 }
 
-.inputStyle{
+/* .inputStyle{
     border: 1px #f49d1a solid;
     margin: 5px;
     display: flex;
@@ -51,4 +51,4 @@ input{
     width: 10%;
     background-color: #eeeeee;
     padding: 10px;
-}
+} */
