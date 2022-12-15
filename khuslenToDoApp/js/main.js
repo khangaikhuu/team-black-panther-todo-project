@@ -23,26 +23,24 @@ todoCreate.style = "padding: 10px 20px; border: 2px solid silver; border-radius:
 
 // let input = document.createElement('p');
 
+function deleteFunc(event){
+    console.log(event)
+    console.log(event.parentNode)
+    event.parentNode.remove(event);
+    console.log('delete button clicked');
+}
+
 button.addEventListener("click", () => {
     let input = document.createElement('p');
-    input.innerHTML = `<input class = "py-2 px-4 rounded" value="${todoCreate.value}" disabled><button id="edit" class=" py-2 px-4 rounded bg-primary"><i class='fas fa-pencil bg-primary'></i></button><button class=" py-2 px-4 rounded bg-info"><i class='fas fa-check bg-info'></i></button><button class=" py-2 px-4 rounded bg-danger"><i class='fas fa-trash bg-danger'></i></button>`;
+    input.innerHTML = `<input class = "py-2 px-4 rounded" value="${todoCreate.value}" disabled><button id="edit" class=" py-2 px-4 rounded bg-primary"><i class='fas fa-pencil bg-primary'></i></button><button class=" py-2 px-4 rounded bg-info"><i class='fas fa-check bg-info'></i></button><button class=" py-2 px-4 rounded bg-danger" onclick="deleteFunc(this)"><i class='fas fa-trash bg-danger'></i></button>`;
 
     // let btn1 = document.createElement("button")
 
-    // btn1.innerHTML = 
 
+    // btn1.innerHTML = 
     todo.appendChild(input);
     console.log(input);
 })
-
-// let edit = document.getElementById("edit");
-
-
-// edit.addEventListener("click", () => {
-    
-//     document.querySelector('#button').disabled = false;
-// })
-
 
 
 
