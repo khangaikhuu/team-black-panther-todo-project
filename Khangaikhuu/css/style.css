@@ -1,0 +1,13 @@
+h1 {
+    text-align: center;
+    background-color: antiquewhite;
+}
+
+.centered {
+    margin: auto;
+    max-width: 400px;
+}
+
+h5 {
+    text-align: center;
+}
