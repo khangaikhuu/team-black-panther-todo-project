@@ -1,5 +1,5 @@
 html {
-    background-color: black;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
 
 .container {
@@ -14,17 +14,19 @@ html {
 input {
     width: 50vw;
     height: 40px;
+    border: 0;
+    border-bottom: #f49d1a solid 2px;
+    background-color: #FAE5D3;
 
 }
 
 button {
     height: 45px;
+    background-color: #f49d1a;
+    color: #f1f1f1;
+    border: 0;
+
 }
-
-
-
-
-
 
 #createdTodo{
     margin: 0 auto;
@@ -32,4 +34,10 @@ button {
     width: 60vw;
     height: 60px;
     border: 1px solid orange;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+h1 {
+    color: #1c315e;
 }
