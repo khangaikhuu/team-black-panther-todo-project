@@ -1,4 +1,38 @@
 h1 {
-    color: rgb(13, 36, 97);
+    color: #1c315e;
 }
 
+#addinput {
+    padding: 15px;
+    border-radius: 0%;
+}
+
+#btninput {
+    border-radius: 0%;
+    transition: 0.7s;
+}
+
+#btninput:hover {
+    background-color: #1c315e;
+    transition: 0.7s;
+}
+
+button {
+    border: none;
+}
+
+input {
+    width: 150px; 
+    border: none;
+}
+
+
+.stroke {
+    height: 3px;
+    background-color: #1c315e;
+}
+
+
+.strokeinp {
+    height: 3px;
+}

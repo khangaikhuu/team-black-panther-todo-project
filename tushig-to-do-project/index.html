@@ -10,19 +10,22 @@
     <title>To do project</title>
 </head>
 <body>
-    <div class="container bg-dark p-5">
+    <div class="container mt-3 bg-dark p-5">
         <div class="row bg-light">
-            <h1 class="col-12 p-2 text-center">Todo List App</h1>
-            <div class="text-center mb-3">Он сар өдөр: <span id="date">Он сар өдөр :</span></div>
-            <div class="row">
-                <input id="addinput" class="bg-light form-control w-50 d-inline" type="text" name="taskinp"  >
-                <button id="btninput" class="col-2 btn btn-warning text-light"> +нэмэх</button>
-            </div>
-            
-            <h1 class="col-12 p-2 text-center">Жагсаалт</h1>
-            <hr>
+            <h1 class="col-12 p-4 text-center">Todo List App</h1>
+            <div class="text-center mb-3">Он сар өдөр: <span id="date"></span></div>
 
-            <div id="todo-list" class="bg-secondary "> </div>
+        <div class="row d-flex justify-content-center">
+            <input class="bg-light form-control w-50 d-inline" id="addinput" type="text" name="taskinp" placeholder="Таскын нэрээ оруулна уу.">
+            <button class="col-2 btn btn-warning text-light" id="btninput"> +нэмэх</button>
+            <div class="strokeinp col-8 bg-warning"></div>
+        </div>
+            <h1 class="col-12 p-3 text-center">Жагсаалт</h1>
+            <div class="stroke mb-2"></div>
+
+            <div class="row d-flex justify-content-center">
+                <div class="col-8" id="todo-list"> </div>
+            </div>
 
         </div>
     </div>
