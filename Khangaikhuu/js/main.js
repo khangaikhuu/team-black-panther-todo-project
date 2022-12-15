@@ -15,7 +15,7 @@ function saveFunc(){
 function deleteFunc(event){
     console.log(event)
     console.log(event.parentNode)
-    event.parentNode.removeChild(event);
+    event.parentNode.remove(event);
     console.log('delete button clicked');
 }
 
