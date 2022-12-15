@@ -12,21 +12,32 @@ let button = document.getElementById("button-addon2")
 
 let search = document.getElementById("searchInput")
 
+function editFunc(event){
+    console.log("edit clicked");
+    event.parentNode.childNodes[0].disabled=false;
+}
+
+let searchI = document.getElementById("searchI")
+function deleteFunc(event){
+    console.log("delete clicked");
+    event.parentNode.remove(event)
+}
+
 button.addEventListener("click",() => {
     console.log("add clicked");
     console.log(search.value);
     // console.log(button)  
     let input = document.createElement('p');
-    input.innerHTML = `${search.value} <input value=${search.value}><button id="edit">Edit</button><button>Correct</button><button id="dlt" >Delete</button>`;
+    input.innerHTML = `<input id="searchI" disabled value=${search.value}> <button id="edit" onclick="editFunc(this)" >Edit</button> <button>Correct</button> <button id="dlt" onclick="deleteFunc(this)">Delete</button>`;
 
     list.appendChild(input);
-    let ed = document.getElementById("edit")
     
-    console.log(ed)
-    let dlt = document.getElementById("dlt")
-    dlt.addEventListener("click", () => {
-        const dele = document.getElementById(dlt);
-        element.remove(input);
-    })
+    // let dlt = document.getElementById("dlt")
+    // dlt.addEventListener("click", () => {
+    //     input.remove();
+    // })
+
+
+
 });
 
