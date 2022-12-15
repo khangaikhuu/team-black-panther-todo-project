@@ -17,7 +17,7 @@ let todoList = document.getElementById("todo-list");
 btnInput.addEventListener("click" , () => {
     let input = document.createElement("p");
     input.innerHTML = `<input value=${addInput.value} disabled> 
-    <button><i class="fa-solid fa-pen"></i></button> 
+    <button><i class="fa-solid fa-pen" id="edit-ico" ></i></button> 
     <button><i class="fa-solid fa-check"></i></button> 
     <button><i class="fa-solid fa-trash text-danger"></i></i></button>`;
     todoList.appendChild(input);
