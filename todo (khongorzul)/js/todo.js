@@ -14,7 +14,6 @@ function deleteFunc(event){
 let taskAmount = [];
 addButton.addEventListener("click", () => {
     let list = document.createElement("p");
-    let randomIndex = Math.floor(Math.random()*100);
     list.innerHTML = `<input id="listInput" style="border: none; background-color: white" value="${addInput.value}" disabled>
 
      <button id="editButton" style="border-radius: 10px; border-color: yellow; background-color: white"><i class="fa-solid fa-pen-to-square"></i></button>
@@ -38,4 +37,6 @@ addButton.addEventListener("click", () => {
     saveButton.addEventListener("click", () => {
         listInput.disabled = true;
     });
+    addInput.value = "";
+    console.log(taskCounting);
 });
