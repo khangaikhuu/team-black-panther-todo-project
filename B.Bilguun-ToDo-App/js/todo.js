@@ -22,10 +22,9 @@ button.addEventListener("click", () => {
 
     let list = document.createElement('div');
 
-
     list.innerHTML = `<input id="secInput" value="${todoCreate.value}" disabled> 
-    <button onclick="editClicked(this)">edit</button>
-     <button onclick="doneClicked(this)">done</button> 
+    <button onclick="editFunc(this)">edit</button>
+     <button >done</button> 
      <button onclick="delClicked(this)">del</button>`;
     // edit.push(todoList.value);
     todoList.appendChild(list);
@@ -40,17 +39,28 @@ let editbutton = document.getElementById('edButton');
 //     console.log("clicked");
 // });
 // let secInput = [];
-function editClicked(event) {
-    console.log('button clicked')
-    console.log(event.parentNode);
-    event.parentNode.childNodes[0].disabled = false;
-    // document.getElementById("secInput").disabled = false;
-}
 
-function doneClicked(eve) {
-    console.log('button done clicked')
-    console.log(eve.parentNode);
-    eve.parentNode.childNodes[0].disabled = true;
+
+// function editClicked(event) {
+//     console.log('button clicked')
+//     console.log(event.parentNode);
+//     event.parentNode.childNodes[0].disabled = false;
+//     // document.getElementById("secInput").disabled = false;
+// }
+
+// function doneClicked(eve) {
+//     console.log('button done clicked')
+//     console.log(eve.parentNode);
+//     eve.parentNode.childNodes[0].disabled = true;
+// }
+
+function editFunc(event) {
+    console.log('button clicked');
+    if (event.parentNode.childNodes[0].disabled === true) {
+        event.parentNode.childNodes[0].disabled = false;
+    } else {
+        event.parentNode.childNodes[0].disabled = true;
+    }
 }
 
 function delClicked(event) {
