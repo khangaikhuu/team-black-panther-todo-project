@@ -19,13 +19,13 @@ window.addEventListener('load', () => {
 
         const task = input.value;
 
-//Checking input area
+        //Checking input area
         if (!task) {
             alert("Жагсаалтаа оруулна уу.");
             return;
         }
 
-//List add action 
+        //List add action 
         const task_el = document.createElement("div");
         task_el.classList.add("task");
 
@@ -45,17 +45,17 @@ window.addEventListener('load', () => {
         const task_actions_el = document.createElement("div");
         task_actions_el.classList.add("actions");
 
-//Edit
+        //Edit
         const task_edit_el = document.createElement("button");
         task_edit_el.classList.add("edit");
         task_edit_el.innerHTML = "Edit";
 
-//Done 
+        //Done 
         const task_done_el = document.createElement("button");
         task_done_el.classList.add("done");
         task_done_el.innerHTML = `<i class="bi bi-check-circle-fill"></i>`;
 
-//Delete
+        //Delete
         const task_delete_el = document.createElement("button");
         task_delete_el.classList.add("delete");
         task_delete_el.innerHTML = `<i class="bi bi-trash-fill myDelete"></i>`;
@@ -70,7 +70,7 @@ window.addEventListener('load', () => {
 
         input.value = "";
 
-//Edit and Confirm Action
+        //Edit and Confirm Action
         task_edit_el.addEventListener("click", () => {
             if (task_edit_el.innerText.toLowerCase() == "edit") {
                 task_input_el.removeAttribute("readonly");
@@ -82,7 +82,7 @@ window.addEventListener('load', () => {
             }
         });
 
-//Done action
+        //Done action
         task_done_el.addEventListener("click", () => {
             task_input_el.style.textDecoration = "line-through";
             if (task_edit_el.addEventListener('click', () => {
@@ -90,8 +90,8 @@ window.addEventListener('load', () => {
             }));
         })
 
-//Delete action
-        task_delete_el.addEventListeener("click", () => {
+        //Delete action
+        task_delete_el.addEventListener('click', (e) => {
             list_el.removeChild(task_el);
         });
     });
