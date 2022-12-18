@@ -18,11 +18,8 @@ button.style = "padding: 10px 20px; border: 2px solid silver; border-radius: 5px
 button.style.backgroundColor = "gold"
 todoCreate.style = "padding: 10px 20px; border: 2px solid silver; border-radius: 5px; width: 200px"
 
-// let too = 0;
-// let edit1 = document.getElementById("edit")
 
-// let input = document.createElement('p');
-
+// delete button starts from here 
 function deleteFunc(event){
     console.log(event)
     console.log(event.parentNode)
@@ -30,18 +27,36 @@ function deleteFunc(event){
     console.log('delete button clicked');
 }
 
+// check button starts from here 
+
+function checkFunc(eve){
+    // eve.disabled("button") = true;
+    eve.parentNode.disabled(eve, uur) = true;
+    console.log(eve.parentNode)
+    console.log("button check clicked")
+}
+
+// edit buttons starts from here 
+function editFunc(uur){
+    console.log(uur.parentNode)
+    uur.parentNode.childNodes[0].disabled = false;
+    console.log("button edit clicked")
+}
+
+function editFunc2(uur){
+    console.log(uur.parentNode)
+    uur.parentNode.childNodes[0].disabled = true;
+    console.log("button edit clicked")
+}
+
+// all button func starts from here 
 button.addEventListener("click", () => {
     let input = document.createElement('p');
-    input.innerHTML = `<input class = "py-2 px-4 rounded" value="${todoCreate.value}" disabled><button id="edit" class=" py-2 px-4 rounded bg-primary"><i class='fas fa-pencil bg-primary'></i></button><button class=" py-2 px-4 rounded bg-info"><i class='fas fa-check bg-info'></i></button><button class=" py-2 px-4 rounded bg-danger" onclick="deleteFunc(this)"><i class='fas fa-trash bg-danger'></i></button>`;
+    input.innerHTML = `<input class = "py-2 px-4 rounded" value="${todoCreate.value}" disabled>  <button id="edit" class=" py-2 px-4 rounded bg-primary" onclick="editFunc(this)">  <i class='fas fa-pencil bg-primary'>   </i></button>    <button id="edit2" class=" py-2 px-4 rounded bg-warning" onclick="editFunc2(this)">   <i class='fas fa-save bg-warning'>    </i>    </button>   <button class=" py-2 px-4 rounded bg-info" onclick="checkFunc(this)">   <i class='fas fa-check bg-info'>    </i>    </button>   <button class=" py-2 px-4 rounded bg-danger" onclick="deleteFunc(this)">    <i class='fas fa-trash bg-danger'>  </i>    </button>`;
 
-    // let btn1 = document.createElement("button")
-
-
-    // btn1.innerHTML = 
     todo.appendChild(input);
     console.log(input);
 })
-
 
 
 
