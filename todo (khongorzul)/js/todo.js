@@ -6,6 +6,7 @@ let addButton = document.getElementById("addButton");
 let addInput = document.getElementById("addInput");
 let toDo = document.getElementById("toDo");
 let taskCounting = document.getElementById("taskCounter");
+let completed = document.getElementById("completed");
 
 
 
@@ -19,6 +20,12 @@ function editFunc(event){
         event.innerHTML = `<i class="fa-solid fa-pen-to-square"></i>`
     }
 };
+
+function checkFunc(event){
+    let done = event.parentNode;
+    completed.appendChild(done);
+    event.parentNode.remove(button);
+}
 
 function deleteFunc(event){
     event.parentNode.remove(event);
@@ -37,7 +44,7 @@ addButton.addEventListener("click", () => {
      <i class="fa-solid fa-pen-to-square"></i>
      </button>
 
-     <button id="saveButton" style="border-radius: 10px; border-color: yellow;  background-color: white">
+     <button id="saveButton" style="border-radius: 10px; border-color: yellow;  background-color: white" onclick="checkFunc(this)">
      <i style="color: green" class="fa-solid fa-check"></i>
      </button> 
 
@@ -46,8 +53,6 @@ addButton.addEventListener("click", () => {
      </button>`;
 
     toDo.appendChild(list);
-
-    list.style = "border: 1px solid orange; border-radius: 20px; padding: 15px";
     
     taskAmount.push(list);
     taskCounting.innerHTML = `${taskAmount.length}-таск үлдлээ.`;
