@@ -14,9 +14,9 @@ function addFunc() {
     let todoElement = document.createElement("div")
     todoElement.innerHTML =
         `<input value="${toDoInput.value}" disabled id="inputID" class="rounded w-50 mx-3">
-    <button onclick="editFunc()" id="test12" class="btn btn-warning">EDIT</button>
-    <button onclick="checkFunc()" id="test123" class=" btn btn-success">CHECK</button>
-    <button onclick="deleteFunc(inputID)" class="btn btn-danger">DELETE</button>`
+    <button onclick="editFunc()" id="test12" class="btn mb-2 btn-warning">EDIT</button>
+    <button onclick="checkFunc()" id="test123" class="btn mb-2 btn-success">CHECK</button>
+    <button onclick="deleteFunc(inputID)" class="btn mb-2 btn-danger">DELETE</button>`
     inputText.appendChild(todoElement)
 }
 function editFunc() {
