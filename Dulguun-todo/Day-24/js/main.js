@@ -7,4 +7,4 @@ function greeting(name) {
         callback(name);
     }
 
-    greeting(greeting);
+    greetings(greeting);
