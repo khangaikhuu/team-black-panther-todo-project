@@ -8,6 +8,9 @@ let days = now.getDate();
 let myTimer = document.getElementById('myTimer');
 myTimer.innerHTML = `Year Month Days: ${years}-${months}-${days}`;
 
+let counter = [];
+counter.push()
+
 //List adder
 window.addEventListener('load', () => {
     const form = document.querySelector("#new-task-form");
