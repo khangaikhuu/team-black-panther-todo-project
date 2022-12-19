@@ -32,7 +32,7 @@ button.addEventListener("click",() => {
     console.log(search.value);
     // console.log(button)  
     let input = document.createElement('p');
-    input.innerHTML = `<input type="text" class="form-control container" placeholder="Recipient's username" aria-label="Recipient's username with two button addons" id="searchI" disabled value=${search.value}><button class="btn btn-outline-secondary" type="button" id="edit" onclick="editFunc(this)" >Edit</button><button class="btn btn-outline-secondary" type="button" onclick="corFunc(this)">Correct</button><button class="btn btn-outline-secondary" type="button" id="dlt" onclick="deleteFunc(this)">Delete</button>`;
+    input.innerHTML = `<input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username with two button addons" id="searchI" disabled value=${search.value}><button class="btn btn-outline-secondary" type="button" id="edit" onclick="editFunc(this)" >Edit</button><button class="btn btn-outline-secondary" type="button" onclick="corFunc(this)">Correct</button><button class="btn btn-outline-secondary" type="button" id="dlt" onclick="deleteFunc(this)">Delete</button>`;
 
     list.appendChild(input);
     
@@ -44,4 +44,6 @@ button.addEventListener("click",() => {
 
 
 });
+
+console.log("test")
 
