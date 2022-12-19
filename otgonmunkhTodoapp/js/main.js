@@ -6,7 +6,7 @@ let now = new Date();
 let mytimer = document.getElementById("startTimer");
 let fullYear = now.getFullYear();
 let month = now.getMonth()+1 ;
-let day = now.getDay()+11;
+let day = now.getDay()+18;
 
 
 mytimer.innerHTML = `Он сар өдөр: ${fullYear}-${month}-${day}`
