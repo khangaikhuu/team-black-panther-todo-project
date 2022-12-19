@@ -34,12 +34,18 @@ button {
     width: 60vw;
     height: 60px;
     border: 1px solid orange;
-    margin-bottom: 5px;
+    margin-bottom: 5px; 
     border-radius: 5px;
-    text-align: left;
-    /* display: flex; */
 }
 
 h1 {
     color: #1c315e;
 }
+.todos {
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+
+}
+.todo-text {}
+
