@@ -27,6 +27,7 @@ let addTodo = () => {
     todoList.appendChild(todoElement);
     
 }
+console.log('test')
 
 
 
