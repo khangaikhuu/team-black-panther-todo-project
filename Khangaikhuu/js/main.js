@@ -14,6 +14,11 @@ function saveFunc(){
 }
 function deleteFunc(event){
     console.log(event)
+<<<<<<< HEAD
+=======
+    console.log(event.parentNode)
+    event.parentNode.remove(event);
+>>>>>>> dcdc81c9014edadbda30b2cadefe66420d20ee1c
     console.log('delete button clicked');
 }
 
