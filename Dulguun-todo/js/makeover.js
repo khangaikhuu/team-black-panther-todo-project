@@ -9,7 +9,6 @@ let myTimer = document.getElementById('myTimer');
 myTimer.innerHTML = `Year Month Days: ${years}-${months}-${days}`;
 
 let counter = [];
-counter.push()
 
 //List adder
 window.addEventListener('load', () => {
@@ -22,11 +21,13 @@ window.addEventListener('load', () => {
 
         const task = input.value;
 
+        
+
         //Checking input area
-        if (!task) {
-            alert("Жагсаалтаа оруулна уу.");
-            return;
-        }
+        // if (!task) {
+        //     alert("Жагсаалтаа оруулна уу.");
+        //     return;
+        // }
 
         //List add action 
         const task_el = document.createElement("div");
@@ -38,11 +39,14 @@ window.addEventListener('load', () => {
         task_el.appendChild(task_content_el);
 
         const task_input_el = document.createElement("input");
+
+        
         task_input_el.classList.add("text");
         task_input_el.type = "text";
         task_input_el.value = task;
         task_input_el.setAttribute("readonly", "readonly");
-
+    
+ 
         task_content_el.appendChild(task_input_el);
 
         const task_actions_el = document.createElement("div");
@@ -69,9 +73,18 @@ window.addEventListener('load', () => {
 
         task_el.appendChild(task_actions_el);
 
-        list_el.appendChild(task_el);
-
+        
         input.value = "";
+        
+        if(task_input_el.value == "") {
+            alert("Жагсаалтаа оруулна уу.");
+        } else {
+            list_el.appendChild(task_el);
+            //Counter
+            counter.push(input.value);
+            document.getElementById('counter').innerHTML = `${counter.length} таск үлдлээ`
+        }
+        
 
         //Edit and Confirm Action
         task_edit_el.addEventListener("click", () => {
@@ -96,8 +109,15 @@ window.addEventListener('load', () => {
         })
 
         //Delete action
-        task_delete_el.addEventListener('click', (e) => {
+        task_delete_el.addEventListener('click', () => {
             list_el.removeChild(task_el);
+            counter.pop();
+            if (counter.length === 0) {
+                document.getElementById('counter').style = 'display: none;'
+            } else {
+                document.getElementById('counter').style = 'display: block;'
+            }
+            document.getElementById('counter').innerHTML = `${counter.length} таск үлдлээ`
         });
     });
 });
