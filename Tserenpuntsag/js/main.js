@@ -11,8 +11,9 @@ function editFunc(){
 function correctFunc(){
     console.log("correct clicked")
 }
-function deleteFunc(){
-    console.log("delete clicked")
+function deleteFunc(event){
+    event.parentNode.remove(event);
+    console.log("deleted");
 }
 
 button.addEventListener("click", () => {
@@ -20,7 +21,7 @@ button.addEventListener("click", () => {
 
     let input = document.createElement("p");
 
-    input.innerHTML = `<input value=${todoCreate.value} disabled> <button onclick="editFunc()"> <img src="./img/edit.svg" alt="edit" style="width: 10px; heigth: 10px"></button> <button onclick="correctFunc()"> <img src="./img/correct.svg" alt="correct" style="width: 10px; heigth: 10px"> </button> <button onclick="deleteFunc()"> <img src="./img/delete.svg" alt="delete" style="width: 10px; heigth: 10px"> </button>`;
+    input.innerHTML = `<input value=${todoCreate.value} disabled> <button onclick="editFunc()"> <img src="./img/edit.svg" alt="edit" style="width: 10px; heigth: 10px"></button> <button onclick="correctFunc()"> <img src="./img/correct.svg" alt="correct" style="width: 10px; heigth: 10px"> </button> <button onclick="deleteFunc(this)"> <img src="./img/delete.svg" alt="delete" style="width: 10px; heigth: 10px"> </button>`;
 
     todoList.appendChild(input);
 })
