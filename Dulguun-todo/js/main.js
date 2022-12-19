@@ -1,9 +1,8 @@
-console.log("Todo list project");
 // Date
 
 let now = new Date();
 let years = now.getFullYear();
-let months = now.getMonth()+1;
+let months = now.getMonth() + 1;
 let days = now.getDate();
 
 let myTimer = document.getElementById('myTimer');
@@ -13,38 +12,52 @@ myTimer.innerHTML = `Year Month Days: ${years}-${months}-${days}`;
 
 // Add list
 
-let todoCreate = document.getElementById('todo-create');
-let todoList = document.getElementById('todo-list');
-let button = document.getElementById('add');
+let todoInput = document.getElementById('todoInput');
+let todoList = document.getElementById('todoList');
+let addBtn = document.getElementById('addBtn');
 
-let list = [];
-
-
-button.addEventListener('click', () => {
-
-    let input = document.createElement('p');
-    input.innerHTML = myValue(todoCreate.value);;
-
-    todoList.appendChild(input);
+addBtn.addEventListener('click', () => {
+    if(todoInput.value == "") {
+        alert ('List is empty')
+    }
 })
 
-function myValue (arr) {
-    let n = `<div class="input-group mb-3">
-            <input type="text" class="form-control" name="task" value=${arr} id="input" disabled>
-            <button class="btn btn-warning btn-outline-secondary" type="button" id="editBtn">+ Edit</button>
-            <button class="btn btn-warning btn-outline-secondary" type="button" id="saveBtn" disabled> Confirm</button>
-            <button class="btn btn-warning btn-outline-secondary" type="button" id="removeBtn" onclick="deleteTask()"> Delete</button>
-            </div>`
-    return n;
+
+function editFunc() {
+    console.log('edit button clicked');
+    document.getElementById("saveBtn").disabled = false;
+    document.getElementById("inputArea").disabled = false;
 }
 
-const myRemove = document.getElementById('removeBtn');
-myRemove.addEventListener('click', () => {
-    myRemove.remove();
+function saveFunc() {
+    console.log('save button clicked');
+    document.getElementById("inputArea").disabled = true;
+}
+function deleteFunc(event) {
+    // console.log(event);
+    // console.log(event.parentNode);
+    // console.log('delete button clicked');
+    event.parentNode.remove(event);
+}
+
+
+addBtn.addEventListener('click', () => {
+    let randomIndex = Math.floor(Math.random() * 100);
+    let todo = document.createElement('div');
+    todo.id = "test";
+    todo.innerHTML = addList(todoInput.value);;
+    todoList.appendChild(todo);
 })
 
-// for (const myRemove of myRemoves) {
-//     myRemove.addEventListener('click', (event) => {
-//       event.target.remove();
-//     });
-//   }
+function addList(value) {
+    let i = `<div class="input-group my-3">
+            <input type="text" class="form-control" name="task" value=${value} id="inputArea">
+
+            <button class="btn btn-warning" type="button" id="editBtn" onclick="editFunc(this)"><i class="bi bi-pencil-fill myEdit"></i></button>
+
+            <button class="btn btn-warning" type="button" id="saveBtn" onclick="saveFunc(this)" disabled><i class="bi bi-check myConfirm"></i></button>
+
+            <button class="btn btn-warning" type="button" id="deleteBtn" onclick="deleteFunc(this)"><i class="bi bi-trash-fill myDelete"></i></button>
+            </div>`
+    return i;
+}

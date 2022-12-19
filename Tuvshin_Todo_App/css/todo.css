@@ -54,3 +54,11 @@ button{
     display: flex;
     justify-content: space-around;
 }
+
+.fa-solid {
+    /* display: inline-block; */
+    position: absolute;
+    /* margin-left: 0px; */
+    margin-right: 500px;
+    
+}
