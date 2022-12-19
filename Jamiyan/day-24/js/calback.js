@@ -10,7 +10,7 @@ button.addEventListener("click", clickMe);
 function log() {
     console.log("Hello World");
 }
-window.setTimeout(log, 1000);
+setTimeout(log, 3000);
 
 
 
@@ -18,7 +18,7 @@ function printDate() {
     let now = new Date()
     document.getElementById("date").innerHTML = now;
 }
-window.setInterval(printDate, 1000);
+setInterval(printDate, 1000);
 
 
 let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
