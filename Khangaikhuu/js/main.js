@@ -14,8 +14,11 @@ function saveFunc(){
 }
 function deleteFunc(event){
     console.log(event)
+<<<<<<< HEAD
+=======
     console.log(event.parentNode)
     event.parentNode.remove(event);
+>>>>>>> dcdc81c9014edadbda30b2cadefe66420d20ee1c
     console.log('delete button clicked');
 }
 
@@ -25,6 +28,10 @@ let addTodo = () => {
     todoElement.id = 'test'
     todoElement.innerHTML = `TODO <input> <button id="edit_${randomIndex}" onclick="editFunc()">EDIT</button> <button onclick="saveFunc()">SAVE</button> <button id="${randomIndex}" onclick="deleteFunc(this)">DELETE</button>`
     todoList.appendChild(todoElement);
+    
+    let eBtn = document.getElementById('edit');
+  
+    console.log(eBtn);
     
 }
 
