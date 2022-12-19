@@ -8,6 +8,7 @@ body {
     max-width: 600px;
     background-color: white;
     margin: 0 auto;
+    border-radius: 20px;
 }
 
 
@@ -15,21 +16,26 @@ h1 {
     text-align: center;
 }
 
-#taskInput {
+.input_section {
+    display: flex;
     height: 50px;
-    width: 300px;
+    justify-content: center;
+
+}
+
+#taskInput {
+    
     background-color: rgb(245, 228, 212);
     border: none;
     border-bottom: 2px solid orange;
-
+    width: 300px;
 
 }
 
 #addButton {
 background-color: orange;
 color: white;
-height: 50px;
-width: 80px;'
+
 border: none;
 
 }
