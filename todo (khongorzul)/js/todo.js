@@ -6,6 +6,7 @@ let addButton = document.getElementById("addButton");
 let addInput = document.getElementById("addInput");
 let toDo = document.getElementById("toDo");
 let taskCounting = document.getElementById("taskCounter");
+let doneCounting = document.getElementById("doneTasks");
 let completed = document.getElementById("completed");
 
 
@@ -14,27 +15,40 @@ function editFunc(event){
     let editInput = event.parentNode.firstElementChild;
     if(editInput.disabled == true){
         editInput.disabled = false;
-        event.innerHTML = `<i class="fa-solid fa-inbox"></i>`
+        event.innerHTML = `<i class="fa-solid fa-inbox"></i>`;
     } else{
         editInput.disabled = true;
-        event.innerHTML = `<i class="fa-solid fa-pen-to-square"></i>`
+        event.innerHTML = `<i class="fa-solid fa-pen-to-square"></i>`;
     }
 };
 
 function checkFunc(event){
     let done = event.parentNode;
     completed.appendChild(done);
-    event.parentNode.remove(button);
-}
+    taskAmount.length = taskAmount.length - 1;
+    if(taskAmount.length == 0){
+        taskCounting.innerHTML = "";
+    }
+    taskCounting.innerHTML = `${taskAmount.length}-task үлдлээ.`;
+
+    doneTasks.push(1);
+    doneCounting.innerHTML = `${doneTasks.length}-task хийсэн.`;
+};
 
 function deleteFunc(event){
     event.parentNode.remove(event);
+    taskAmount.length = taskAmount.length - 1;
+    if(taskAmount.length == 0){
+        taskCounting.innerHTML = "";
+    }
+    taskCounting.innerHTML = `${taskAmount.length}-task үлдлээ.`;
 };
 
+let doneTasks = [];
 let taskAmount = [];
 addButton.addEventListener("click", () => {
     if(addInput.value == ""){
-        alert("Таск хоосон байна!");
+        alert("Task хоосон байна!");
     }
     else{
     let list = document.createElement("p");
@@ -55,7 +69,7 @@ addButton.addEventListener("click", () => {
     toDo.appendChild(list);
     
     taskAmount.push(list);
-    taskCounting.innerHTML = `${taskAmount.length}-таск үлдлээ.`;
+    taskCounting.innerHTML = `${taskAmount.length}-task үлдлээ.`;
 
     addInput.value = "";
     }
