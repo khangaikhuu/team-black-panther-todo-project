@@ -76,9 +76,11 @@ window.addEventListener('load', () => {
                 task_input_el.removeAttribute("readonly");
                 task_input_el.focus();
                 task_edit_el.innerHTML = "Save";
+                task_done_el.disabled = true;
             } else {
                 task_input_el.setAttribute("readonly", "readonly");
                 task_edit_el.innerText = "Edit";
+                task_done_el.disabled = false;
             }
         });
 
