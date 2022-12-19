@@ -57,9 +57,6 @@ const ustgah = (e) => {
 
 
 
-
-
-
 // function taskCount(e){
 //     let count1 = document.getElementById('count')
 //     // count1.innerHTML = `${todo} task үлдлээ`
