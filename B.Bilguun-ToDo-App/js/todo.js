@@ -5,7 +5,6 @@ myTimer.innerHTML = `${now.getFullYear()} - ${
   now.getMonth() + 1
 } - ${now.getUTCDate()}`;
 
-
 // Count task
 
 
