@@ -19,7 +19,7 @@ function deleteFunc(event){
     console.log(event.parentNode.parentNode);
     let pElement = event.parentNode;
     let todoList = pElement.parentNode;
-    todoList.remove(pElement);
+    pElement.remove(event);
     console.log("delete button clicked");
 }
 
