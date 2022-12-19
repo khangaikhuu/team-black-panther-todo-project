@@ -3,10 +3,14 @@ h1 {
     background-color: purple;
     color: white;
 }
-
+h2 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
 .container {
     max-width: 768px;
     margin: auto;
-    background-color: aqua;
     text-align: center;
+    font-size: 25px;
+    background-color:#706fd3;
+    color: white;
 }
