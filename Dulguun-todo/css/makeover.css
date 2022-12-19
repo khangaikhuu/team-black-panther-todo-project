@@ -35,6 +35,11 @@ header h1{
 	margin-bottom: 1rem;
 }
 
+#counter {
+	color: var(--light);
+	text-shadow: 0px 0px 10px var(--light);
+}
+
 #myTimer {
 	margin: 1rem 0;
 	color: var(--light);
