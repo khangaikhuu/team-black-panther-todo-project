@@ -23,12 +23,14 @@ console.log(todolist);
 function editFunc(event) {
     console.log("edit button clicked");
     console.log(event);
-    console.log(event.parentNode.firstChild);
-    if(event.parentNode.firstChild.disabled == true){
-        event.parentNode.firstChild.disabled == false;
+    let editButton = event.parentNode.firstChild;
+    if(editButton.disabled == true){
+       editButton.disabled == false;
+     
 
     } else{
-        event.parentNode.firstChild.disabled == true;
+        editButton.disabled == true;
+
     }
     
 }
@@ -50,8 +52,7 @@ button.addEventListener('click', () => {
     console.log(found.value);
     let input = document.createElement("div");
     let randomIndex = Math.floor(Math.random() * 100);
-
-    input.innerHTML = `<input value=${found.value} disabled >
+    input.innerHTML = `<input style="m-b-4"  value=${found.value} disabled >
     
     <button onclick="editFunc(this)"  class="btn btn-border-none bi bi-pencil-fill"></button>
     <button onclick="saveFunc(this)"  class="btn btn-border-none bi bi-check-lg"></button>
