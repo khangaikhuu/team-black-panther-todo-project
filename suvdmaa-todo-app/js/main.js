@@ -36,7 +36,7 @@ const edit = (e) =>{
     console.log("edit", )
     let child = e.parentNode.firstElementChild;
     child.removeAttribute("disabled")
-    e.classList.toggle()
+    // e.classList.toggle()
 }
 
 
