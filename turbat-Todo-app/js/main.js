@@ -57,7 +57,7 @@ button.addEventListener('click', () => {
     console.log('button-addon2 clicked')
     console.log(todoCreate.value);
     let input = document.createElement('p');
-    input.innerHTML = `${todoCreate.value} <input value=${todoCreate.value} disabled> <button id="btn1">Дууссан</button>`;
+    input.innerHTML = `${todoCreate.value} <input value=${todoCreate.value} disabled> <button id="btn1">edit</button><button id="btn1">done</button><button id="btn1">delete</button>`;
 
     todoList.appendChild(input);
     todoList.appendChild('<button>Дууссан</button>')
