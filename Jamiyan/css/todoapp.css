@@ -2,6 +2,7 @@ body{
     max-width: 500px;
     width: 100%;
     margin: auto;
+    box-sizing: border-box;
 }
 h1{
     font-family: sans-serif;
@@ -19,13 +20,13 @@ p{
   height: 40px;
     
 }
-input{
+#todo-create{
     width: 80%;
     border: none;
     background-color: #fbf6f6;
     padding: 10px;
 }
-#button{
+#add{
     width: 20%;
     background-color: #f49d1a;
     color: white;
@@ -36,19 +37,46 @@ input{
     
 }
 
-.inputStyle{
+.divStyle{
     border: 1px #f49d1a solid;
     margin: 5px;
     display: flex;
     height: 50px;
    
 }
-.inputStyle input{
+.inputStyle{
     background-color: #eeeeee;
     padding: 10px;
+    width: 70%;
+    border: none;
+    font-weight: 800;
+
 }
-.buttonStyle{
+.buttonStyle1, .buttonStyle2, .buttonStyle3{
     width: 10%;
     background-color: #eeeeee;
-    padding: 10px;
+    border: none;
+    
+}
+.buttonStyle1{
+   
+    background-image:url('../img/pen.svg');
+    background-size:100%;
+    background-repeat: no-repeat;
+    border: 10px solid #eeeeee;
+
+}
+
+.buttonStyle2{
+
+    background-image:url('../img/correct.svg');
+    background-size:cover;
+    border: 10px solid #eeeeee;
+
+}
+
+.buttonStyle3{
+    background-image:url('../img/bin.svg');
+    background-size:cover;
+    border: 10px solid #eeeeee;
 }
