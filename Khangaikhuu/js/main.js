@@ -35,6 +35,7 @@ let addTodo = () => {
     console.log(eBtn);
     
 }
+console.log('test')
 
 
 
