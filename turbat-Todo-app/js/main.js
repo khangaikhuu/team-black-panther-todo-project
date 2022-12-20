@@ -73,6 +73,14 @@ button.addEventListener('click', () => {
         uldegdelChecker.appendChild(`<p>Uldegdelllllll</p>`)
 
     })
+    function deleteFunc(event) {
+        console.log(event)
+        console.log(event.parentNode)
+        event.parentNode.remove(event);
+        console.log('delete button clicked');
+        event.parentNode.remove(event);
+        console.log("delete button clicked");
+    }
 
 });
 
