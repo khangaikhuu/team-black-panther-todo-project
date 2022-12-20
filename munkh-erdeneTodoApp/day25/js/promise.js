@@ -40,16 +40,16 @@ function getImage(image) {
     return imagePromise;
 }
 
-const img={
-    imageName:'Myimage',
-    type:'png',
-    size:'1800x2090'
+const img = {
+    imageName: 'Myimage',
+    type: 'png',
+    size: '1800x2090'
 }
-const imageResult= getImage(img);
-imageResult.then(result=>{
+const imageResult = getImage(img);
+imageResult.then(result => {
     console.log(result)
 })
-.catch(error=>console.log(error))
+    .catch(error => console.log(error))
 
 
 
@@ -60,36 +60,36 @@ imageResult.then(result=>{
 function reSizeImage(rightImage) {
     let rightImagePromise = new Promise((resolve, reject) => {
         if (rightImage.size != "1800x2090") {
-        reject("зөв хэмжээтэй файл биш байна.");
+            reject("зөв хэмжээтэй файл биш байна.");
         } else {
-        let resizedImage = rightImage;
-        resolve(resizedImage);
+            let resizedImage = rightImage;
+            resolve(resizedImage);
         }
     });
     return rightImagePromise;
- }
- function saveImage(resizedImage) {
+}
+function saveImage(resizedImage) {
     let saveImagePromise = new Promise((resolve, reject) => {
         if (resizedImage == undefined) {
-        reject("Алдаа гарлаа.");
+            reject("Алдаа гарлаа.");
         } else {
-        let saveImage = resizedImage;
-        resolve(saveImage);
+            let saveImage = resizedImage;
+            resolve(saveImage);
         }
     });
     return saveImagePromise;
 
- }
- getImage(img)
- .then((image) => reSizeImage(image))
- .then((reSizedImage) => saveImage(reSizedImage))
- .then((res) => console.log(res))
- .catch((err) => console.log(err));
+}
+getImage(img)
+    .then((image) => reSizeImage(image))
+    .then((reSizedImage) => saveImage(reSizedImage))
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err));
 
 
- 
- 
- 
+
+
+
 
 
 
