@@ -22,7 +22,7 @@ function printDate() {
     para.innerHTML = (now);
 }
 
-window.setInterval(printDate, 1000);
+window.setTimeout(printDate, 5000);
 
 let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
@@ -54,3 +54,5 @@ console.log(odds);
 
 const divide = filter(numbers, divFunc);
 console.log(divide);
+
+
