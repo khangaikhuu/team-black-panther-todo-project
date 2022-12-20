@@ -21,10 +21,10 @@ button.addEventListener('click', () => {
     console.log(todoCreate.value);
 
     let input = document.createElement('p');
-    input.innerHTML = `<input value=${todoCreate.value} disabled> 
-            <button onclick="edit(this)" style="width: 50px; height: 30px;margin-left:-6px; background-color: #f49d1a; color: blue" > Edit </button> 
-            <button onclick="correct" style="width: 50px; height: 30px;margin-left:-6px; margin-top: -100px; background-color: #f49d1a; color:green"> SAVE </button> 
-            <button onclick="delete" style="width: 50px; height: 30px;margin-left:-6px; background-color: #f49d1a; color:red"> DEL </button>`;
+    input.innerHTML = `<input value="${todoCreate.value}" disabled> 
+            <button id="btn1" onclick="editFunc(this)"> Edit </button> 
+            <button onclick="correctFunc()"> SAVE </button> 
+            <button onclick="deleteFunc(this)"> DEL </button>`;
 
     todoList.appendChild(input);
 
@@ -54,4 +54,13 @@ const edit = (e) => {
 // }
 
 
-
+function btn1(event) {
+    let editInput = event.parentNode.firstElementChild;
+    if (editInput.disapled == true) {
+        editInput.disapled = false;
+        event.innerHTML = `hi`
+    } else {
+        editInput.disapled = true;
+        event.innerHTML = `hi2`
+    }
+}
