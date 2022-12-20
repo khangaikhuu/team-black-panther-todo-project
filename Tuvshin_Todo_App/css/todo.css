@@ -21,12 +21,14 @@ body {
 input{
     border: none;
     background-color: antiquewhite;
-    width: 335px;
+    width: 200px;
     height: 30px;
     padding: 10px;
 }
 button{
     border: none;
+    color: red;
+    
 }
 #todo-create {
     width: 300px;

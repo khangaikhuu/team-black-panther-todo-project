@@ -33,8 +33,8 @@ button.addEventListener('click', () => {
     console.log(todoCreate.value);
 
     let input = document.createElement('p');
-    input.innerHTML = `<input value=${todoCreate.value} disabled> 
-            <button  onclick="editFunc()"> Edit </button> 
+    input.innerHTML = `<input value="${todoCreate.value}" disabled> 
+            <button id="btn1" onclick="editFunc(this)"> Edit </button> 
             <button onclick="correctFunc()"> SAVE </button> 
             <button onclick="deleteFunc(this)"> DEL </button>`;
 
@@ -42,4 +42,13 @@ button.addEventListener('click', () => {
 
 });
 
-
+function btn1(event) {
+    let editInput = event.parentNode.firstElementChild;
+    if (editInput.disapled == true) {
+        editInput.disapled = false;
+        event.innerHTML = `hi`
+    } else {
+        editInput.disapled = true;
+        event.innerHTML = `hi2`
+    }
+}
