@@ -1,4 +1,11 @@
+* {
+    background-color: #333;
+}
 h1 {
-    background-color: azure;
+    background-color: #666;
     text-align: center;
+}
+
+p {
+    color: white;
 }
