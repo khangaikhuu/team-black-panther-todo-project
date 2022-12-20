@@ -20,3 +20,5 @@ function addTwo(n){
 
 
 addition(arrays, addTwo); //[3,4, 5, 6, 7, 8, 9, 10]
+
+//bagshiin git ees har
