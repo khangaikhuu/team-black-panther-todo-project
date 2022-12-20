@@ -5,10 +5,13 @@ let p2 = document.getElementById("p2")
 let p3 = document.getElementById("p3")
 let p4 = document.getElementById("p4")
 
+
 let r1 = Math.floor(Math.random() * 1000)
 let r2 = Math.floor(Math.random() * 1000)
 let r3 = Math.floor(Math.random() * 1000)
 let r4 = Math.floor(Math.random() * 1000)
+
+console.log(r1 + ` ` + r2 + ` ` + r3 + ` ` + r4)
 
 function printMeToDom(str, dom) {
     dom.innerHTML = str;
@@ -27,99 +30,93 @@ function printMeToDom(str, dom) {
 //     }, r2)
 // }, r1)
 
-console.log(p1)
 
-
-function first(){
-const p1Promise = new Promise((resolve, reject) => {
-    setTimeout(() => {
+// function first(){
+// const p1Promise = new Promise((resolve, reject) => {
+//     setTimeout(() => {
    
-    if (p1 != undefined) {
-        printMeToDom("Зураг авах", p1);
-        resolve(p1);
-    } else {
-        reject("Алдаа гарлаа.");
-    }
-    }, r1);
-});
-console.log(p1Promise)
+//     if (p1 != undefined) {
+//         printMeToDom("Зураг авах", p1);
+//         resolve(p1);
+//     } else {
+//         reject("Алдаа гарлаа.");
+//     }
+//     }, r1);
+// });
+// console.log(p1Promise)
 
-return p1Promise
-}
-function second(){
-const p2Promise = new Promise((resolve, reject) => {
-    setTimeout(() => {
+// return p1Promise
+// }
+// function second(){
+// const p2Promise = new Promise((resolve, reject) => {
+//     setTimeout(() => {
    
-    if (p2 !== undefined) {
-        printMeToDom("Амжилттай бол зургийг өөрчлөх", p2)
-        resolve(p2);
-    } else {
-        reject("Алдаа гарлаа.");
-    }
-    }, r2);
-})
+//     if (p2 !== undefined) {
+//         printMeToDom("Амжилттай бол зургийг өөрчлөх", p2)
+//         resolve(p2);
+//     } else {
+//         reject("Алдаа гарлаа.");
+//     }
+//     }, r2);
+// })
 
-return p2Promise
-}
-
-function third(){
-const p3Promise = new Promise((resolve, reject) => {
-    setTimeout(() => {
-   
-    if (p3 !== undefined) {
-        printMeToDom("Амжилттай бол амжилттай хадгалах", p3);
-        resolve(p3);
-    } else {
-        reject("Алдаа гарлаа.");
-    }
-    }, r3);
-});
-return p3Promise
-
-}
-function fourth(){
-const p4Promise = new Promise((resolve, reject) => {
-    setTimeout(() => {
-   
-    if (p4 !== undefined) {
-        printMeToDom(`Амжилттай бол "Амжилттай хадгалагдлаа гэж хэвлэх"`, p4);
-        resolve(p4);
-    } else {
-        reject("Алдаа гарлаа.");
-    }
-    }, r4);
-});
-    return p4Promise
-}
-
-first(p1)
-.then((p1) => second(p2))
-.then((p2) => third(p3))
-.then((p3) => fourth(p4))
-
-.then((res) => console.log(res))
-.catch((err) => console.log(err));
-
-
-// function addElementsToDom(command, element, timer) {
-//     const promise = new Promise((resolve, reject) => {
-//         setTimeout(() => {
-//             if (element !== undefined) {
-//                 printMeToDom(command, element)
-//                 resolve(command)
-//             } else {
-//                 reject('Алдаа гарлаа')
-//             }
-//         }, timer)
-//     })
-
-//     return promise;
+// return p2Promise
 // }
 
-// addElementsToDom('Зураг авах', p1, timer1)
-//     .then((second) => addElementsToDom('Амжилттай бол зургийг өөрчлөх', p2, timer2))
-//     .then((third) => addElementsToDom('Амжилттай бол амжилттай хадгалах', p3, timer3))
-//     .then((fourth) => addElementsToDom('Амжилттай бол "Амжилттай хадгалагдлаа" гэж хэвлэх', undefined, timer4))
-//     .catch(error => addElementsToDom(error, p5, timer1))
+// function third(){
+// const p3Promise = new Promise((resolve, reject) => {
+//     setTimeout(() => {
+   
+//     if (p3 !== undefined) {
+//         printMeToDom("Амжилттай бол амжилттай хадгалах", p3);
+//         resolve(p3);
+//     } else {
+//         reject("Алдаа гарлаа.");
+//     }
+//     }, r3);
+// });
+// return p3Promise
 
-  
+// }
+// function fourth(){
+// const p4Promise = new Promise((resolve, reject) => {
+//     setTimeout(() => {
+   
+//     if (p4 !== undefined) {
+//         printMeToDom(`Амжилттай бол "Амжилттай хадгалагдлаа гэж хэвлэх"`, p4);
+//         resolve(p4);
+//     } else {
+//         reject("Алдаа гарлаа.");
+//     }
+//     }, r4);
+// });
+//     return p4Promise
+// }
+
+// first()
+// .then(() => second())
+// .then(() => third())
+// .then(() => fourth())
+
+
+function addElementsToDom(command, element, timer) {
+    const promise = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (element !== undefined) {
+                printMeToDom(command, element)
+                resolve(command)
+            } else {
+                reject('Алдаа гарлаа')
+            }
+        }, timer)
+    })
+
+    return promise;
+}
+
+addElementsToDom('Зураг авах', p1, r1)
+    .then((result) => addElementsToDom('Амжилттай бол зургийг өөрчлөх', p2,r2))
+    .then((third) => addElementsToDom('Амжилттай бол амжилттай хадгалах', p3, r3))
+    .then((fourth) => addElementsToDom('Амжилттай бол "Амжилттай хадгалагдлаа" гэж хэвлэх', p4,r4))
+
+
