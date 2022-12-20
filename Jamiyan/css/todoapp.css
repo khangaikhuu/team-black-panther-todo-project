@@ -10,9 +10,12 @@ h1{
     text-align: center;
 }
 p{
-    text-align: center;
     color: #1c315e;
     font-family: sans-serif;
+}
+#paragraph{
+    display: flex;
+    justify-content: space-evenly;
 }
 #inputDiv{
   display: flex;
@@ -52,31 +55,6 @@ p{
     font-weight: 800;
 
 }
-.buttonStyle1, .buttonStyle2, .buttonStyle3{
+.buttonStyle{
     width: 10%;
-    background-color: #eeeeee;
-    border: none;
-    
-}
-.buttonStyle1{
-   
-    background-image:url('../img/pen.svg');
-    background-size:100%;
-    background-repeat: no-repeat;
-    border: 10px solid #eeeeee;
-
-}
-
-.buttonStyle2{
-
-    background-image:url('../img/correct.svg');
-    background-size:cover;
-    border: 10px solid #eeeeee;
-
-}
-
-.buttonStyle3{
-    background-image:url('../img/bin.svg');
-    background-size:cover;
-    border: 10px solid #eeeeee;
 }
