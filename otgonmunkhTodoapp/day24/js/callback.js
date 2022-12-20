@@ -62,3 +62,12 @@ console.log(evenFunc);
 console.log(oddFunc);
 console.log(divideByThreeFunc);
 
+function introdys (age){
+     alert(`I guess you are , ${age} yeard old`);
+}
+
+function nemelt (callback){
+     const age = prompt("How old are you");
+     callback(age);
+}
+nemelt(introdys);
