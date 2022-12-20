@@ -19,15 +19,16 @@ function firstPromise() {
         setTimeout(() => {
             printMeToDom("Зураг авах", p1);
         }, Rdm1);
+        
     });
     return FP
 }
-
 function secondPromise() {
     let SP = new Promise((resolve, reject) => {
         setTimeout(() => {
             printMeToDom("Амжилттай бол зургийг өөрчлөх", p2);
         }, Rdm2)
+        
     });
     return SP
 }
@@ -36,6 +37,7 @@ function thirdPromise() {
         setTimeout(() => {
             printMeToDom("Амжилттай бол амжилттай хадгалах", p3);
         }, Rdm3)
+        
     });
     return TP
 }
@@ -45,9 +47,9 @@ function fourthPromise() {
         setTimeout(() => {
             printMeToDom("Амжилттай хадгалагдлаа", p4)
         }, Rdm4)
+        
     });
     return FoP
-
 }
 
 
