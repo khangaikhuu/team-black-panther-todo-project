@@ -7,19 +7,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./css/todoapp.css">
+    <link href="./node_modules/@syncfusion/ej2/material.css" rel="stylesheet" />
 </head>
 
 <body>
     <h1>Todo List App</h1>
+    <div id="paragraph">
     <p id="date"></p>
+    <p id="task"></p>
+    </div>
     <div id="inputDiv">
         <input type="" id="todo-create" placeholder="Жагсаалтаа оруулна уу" >
-        <button id="button">+ нэмэх</button>
+        <button id="add">+ нэмэх</button>
     </div>
     <h1 id="title">Жагсаалт</h1>
     <hr>
     <div id="todoList"></div>
+    <h1 id="title">Хадгалсан</h1>
+    <hr>
+    <div id="saveDiv"></div>
     <script src="./js/todoapp.js"></script>
+    
 </body>
 
 </html>

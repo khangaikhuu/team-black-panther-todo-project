@@ -2,6 +2,7 @@
     background-color: rgb(253, 254, 254);
     text-align: center;
     margin: 0 auto;
+    font-size: 24px;
 
 }
 
@@ -9,11 +10,17 @@
     padding: 7px;
     border: none;
     background-color: whitesmoke;
-    box-shadow: 0 2px rgb(255, 169, 9);
+
     
+}
+#cover {
+    box-shadow: 0 2px rgb(255, 169, 9);
 }
 #control {
     border-radius: 0;
     padding: 7px;
     
+}
+hr {
+    box-shadow: 0 2px 3px rgb(38, 41, 79);
 }
