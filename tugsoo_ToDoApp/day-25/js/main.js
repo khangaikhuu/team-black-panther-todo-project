@@ -19,7 +19,8 @@ function printMeToDom(value, element) {
 
 //   callback hell
 
-function change1(get) {
+
+function change1(p1) {
     let getPromise = new Promise((resolve, reject) => {
         setTimeout(() => {
             printMeToDom('Зураг авах', p1)
@@ -27,9 +28,11 @@ function change1(get) {
     })
     return getPromise
 }
+change1(p1)
+    .then((p1) => change1(p1))
 
 
-function change2(change) {
+function change2(p2) {
     let changePromise = new Promise((resolve, reject) => {
         setTimeout(() => {
             printMeToDom('Амжилттай бол зургийг өөрчлөх', p2)
@@ -37,6 +40,9 @@ function change2(change) {
     })
     return changePromise
 }
+
+change2(p2)
+    .then((p2) => change2(p2))
 
 function change3(save) {
     let savePromise = new Promise((resolve, reject) => {
@@ -47,6 +53,8 @@ function change3(save) {
     return savePromise
 
 }
+change3(p3)
+    .then((p3) => change3(p3))
 
 function change4(success) {
     let successPromise = new Promise((resolve, reject) => {
@@ -57,13 +65,16 @@ function change4(success) {
     return successPromise
 }
 
+change4(p4)
+    .then((p4) => change3(p4))
 
 
-change1()
-    .then((get) => change1(get))
-    .then((change) => change2(change))
-    .then((save) => change3(save))
-    .then((success) => console.log(success))
+
+// change(result)
+//     .then((get) => change1(get))
+//     .then((change) => change2(change))
+//     .then((save) => change3(save))
+//     .then((success) => change4(success))
 
 
 
