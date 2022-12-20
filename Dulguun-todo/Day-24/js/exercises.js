@@ -8,7 +8,7 @@ function addition(arr, callback) {
     }
 }
 
-function addTwo(n) {
+function addTwo() {
     return n + 2;
 }
 
