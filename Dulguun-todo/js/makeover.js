@@ -91,7 +91,7 @@ window.addEventListener('load', () => {
         })
 
         //Delete action
-        task_delete_el.addEventListener('click', (e) => {
+        task_delete_el.addEventListener('click', () => {
             list_el.removeChild(task_el);
         });
     });
