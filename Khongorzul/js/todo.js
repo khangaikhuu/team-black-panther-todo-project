@@ -1,6 +1,6 @@
 let date = document.getElementById("date");
 let now = new Date();
-date.innerHTML = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`
+date.innerHTML = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`;
 
 let addButton = document.getElementById("addButton");
 let addInput = document.getElementById("addInput");
