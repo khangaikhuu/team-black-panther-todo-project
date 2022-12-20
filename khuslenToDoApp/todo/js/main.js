@@ -38,25 +38,29 @@ function checkFunc(eve){
 
 // edit buttons starts from here 
 function editFunc(uur){
-    console.log(uur.parentNode)
+    console.log(uur.parentNode) 
+    if (uur.parentNode.childNodes[0].disabled === true) { uur.parentNode.childNodes[0].disabled = false
+    } else{
     uur.parentNode.childNodes[0].disabled = false;
     console.log("button edit clicked")
+    }
 }
 
 function editFunc2(uur){
     console.log(uur.parentNode)
-    uur.parentNode.childNodes[0].disabled = true;
+    
     console.log("button edit clicked")
 }
 
 // all button func starts from here 
 button.addEventListener("click", () => {
     let input = document.createElement('p');
-    input.innerHTML = `<input class = "py-2 px-4 rounded" value="${todoCreate.value}" disabled>  <button id="edit" class=" py-2 px-4 rounded bg-primary" onclick="editFunc(this)">  <i class='fas fa-pencil bg-primary'>   </i></button>    <button id="edit2" class=" py-2 px-4 rounded bg-warning" onclick="editFunc2(this)">   <i class='fas fa-save bg-warning'>    </i>    </button>   <button class=" py-2 px-4 rounded bg-info" onclick="checkFunc(this)">   <i class='fas fa-check bg-info'>    </i>    </button>   <button class=" py-2 px-4 rounded bg-danger" onclick="deleteFunc(this)">    <i class='fas fa-trash bg-danger'>  </i>    </button>`;
+    input.innerHTML = `<input class = "py-2 px-4 rounded" value="${todoCreate.value}" disabled>  <button id="edit" class=" py-2 px-4 rounded bg-primary" onclick="editFunc(this)">  <i class='fas fa-pencil bg-primary'>   </i></button>      <button class=" py-2 px-4 rounded bg-info" onclick="checkFunc(this)">   <i class='fas fa-check bg-info'>    </i>    </button>   <button class=" py-2 px-4 rounded bg-danger" onclick="deleteFunc(this)">    <i class='fas fa-trash bg-danger'>  </i>    </button>`;
 
     todo.appendChild(input);
     console.log(input);
 })
+
 
 
 
