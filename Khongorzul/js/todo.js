@@ -1,6 +1,6 @@
 let date = document.getElementById("date");
 let now = new Date();
-date.innerHTML = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`
+date.innerHTML = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`;
 
 let addButton = document.getElementById("addButton");
 let addInput = document.getElementById("addInput");
@@ -72,5 +72,13 @@ addButton.addEventListener("click", () => {
     taskCounting.innerHTML = `${taskAmount.length}-task үлдлээ.`;
 
     addInput.value = "";
+    }
+});
+
+document.addEventListener("keypress", (event) => {
+    let keyCode = event.keyCode ? event.keyCode : event.which;
+
+    if(keyCode === 13){
+        addButton.click();
     }
 });

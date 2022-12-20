@@ -1,7 +1,11 @@
 *{
     text-align: center;
+
     
 }
 p{
-    text-align: left;
+    text-align: center;
+}
+.container{
+    background-color: rgb(249, 237, 237);
 }
