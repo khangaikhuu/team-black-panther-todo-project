@@ -2,6 +2,7 @@ body{
     max-width: 500px;
     width: 100%;
     margin: auto;
+    box-sizing: border-box;
 }
 h1{
     font-family: sans-serif;
@@ -9,9 +10,12 @@ h1{
     text-align: center;
 }
 p{
-    text-align: center;
     color: #1c315e;
     font-family: sans-serif;
+}
+#paragraph{
+    display: flex;
+    justify-content: space-evenly;
 }
 #inputDiv{
   display: flex;
@@ -19,13 +23,13 @@ p{
   height: 40px;
     
 }
-input{
+#todo-create{
     width: 80%;
     border: none;
     background-color: #fbf6f6;
     padding: 10px;
 }
-#button{
+#add{
     width: 20%;
     background-color: #f49d1a;
     color: white;
@@ -36,19 +40,21 @@ input{
     
 }
 
-.inputStyle{
+.divStyle{
     border: 1px #f49d1a solid;
     margin: 5px;
     display: flex;
     height: 50px;
    
 }
-.inputStyle input{
+.inputStyle{
     background-color: #eeeeee;
     padding: 10px;
+    width: 70%;
+    border: none;
+    font-weight: 800;
+
 }
 .buttonStyle{
     width: 10%;
-    background-color: #eeeeee;
-    padding: 10px;
 }
