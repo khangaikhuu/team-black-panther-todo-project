@@ -92,8 +92,10 @@ function saveImage(resizedImage) {
 }
 
 
+
 getImage(img)
     .then((image) => reSizeImage(image))
     .then((reSizedImage) => saveImage(reSizedImage))
     .then((res) => console.log(res))
     .catch((err) => console.log(err));
+
