@@ -110,13 +110,34 @@ function loopSave(fourth) {
 }
 // loopSave(fourth);
 
-effect(first, a)
-.then((result1) => change(second, b))
-.then((result2) => firstSave(third, c))
-.then((result3) => loopSave(fourth, d))
-.catch((err) => console.log(err));
+// effect(first, a)
+// .then((result1) => change(second, b))
+// .then((result2) => firstSave(third, c))
+// .then((result3) => loopSave(fourth, d))
+// .catch((err) => console.log(err));
 
 
 
+//teacher's example
 
+function addElementsToDom(command, element, timer){
+    const promise = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if(element !== undefined){
+                printMeToDom(command, element)
+                resolve(command)
+            } else{
+                reject("Алдаа гарлаа")
+            }
+        }, timer)
+    })
+
+    return promise;
+}
+
+addElementsToDom("Зураг авах", first, a)
+.then((result1) => addElementsToDom("Амжилттай бол зургийг өөрчлөх", second, b))
+.then((result2) => addElementsToDom("Амжилттай бол хадгалах", third, c) )
+.then((result3) => addElementsToDom("Амжилттай бол амжилттай гэж хэвлэх", fourth, d))
+.catch(error => addElementsToDom(error, p5, a))
 
