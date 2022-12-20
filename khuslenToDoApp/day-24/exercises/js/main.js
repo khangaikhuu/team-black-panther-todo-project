@@ -10,6 +10,12 @@ function addition (arrays, callback){
 
 function addTwo (n){
     return n + 2;
+
+
+
+
+function addTwo (arr){
+    return arr + 2;
 }
 console.log(addTwo)
 

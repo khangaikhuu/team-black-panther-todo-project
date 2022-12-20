@@ -18,7 +18,7 @@ button.addEventListener('click', ()=>{
     console.log('add clicked')
     console.log(todoCreate.value)
     let input = document.createElement('p');
-    input.innerHTML = ` <input id="inputid"  class="border border-warning border-3 p-3" style="width: 300px; height: 50px; background-color: #f9f9f9;" value="${todoCreate.value}" disabled> 
+    input.innerHTML = `<input id="inputid"  class="border border-warning border-3 p-3" style="width: 300px; height: 50px; background-color: #f9f9f9;" value="${todoCreate.value}" disabled> 
 
     <button onclick="edit(this)" style="width: 50px; height: 50px;margin-left:-6px; background-color: #f9f9f9;" class="border border-warning"><i class="fa-solid fa-pen"></i></button> 
 
@@ -28,32 +28,22 @@ button.addEventListener('click', ()=>{
 
     todolist.appendChild(input);
 
-    // let editbutton = document.getElementById('btn1');
-    // editbutton.addEventListener ('click', () =>{
-    //     console.log('edit clicked');
-    //     input.contentEditable = true;
-    // })
-
-    // let removebtn = document.getElementById('btn3');
-    // removebtn.addEventListener('click', ()=>{
-    //     todolist.removeChild(input);
-    // })
-
 })
+
+
 
 const edit = (e) =>{
     console.log("edit", )
-    // let child = document.getElementById('inputid');
     let child = e.parentNode.firstElementChild;
     child.removeAttribute("disabled")
-    console.log('edit button', child)
+    // e.classList.toggle()
 }
 
+
+
 const save = (e) => {
-    // let p = document.getElementById('inputid');
     let p = e.parentNode.firstElementChild;
     p.disabled = true;
-
     console.log('save button', p)
 }
 
@@ -67,7 +57,12 @@ const ustgah = (e) => {
 
 
 
+// function taskCount(e){
+//     let count1 = document.getElementById('count')
+//     // count1.innerHTML = `${todo} task үлдлээ`
+// }
 
+// taskCount();
 
 
 
