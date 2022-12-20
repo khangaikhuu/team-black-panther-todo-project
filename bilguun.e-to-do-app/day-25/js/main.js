@@ -52,6 +52,7 @@ function callSecond(timer, element) {
 
     return startPromise
 }
+
 function callThird(timer, element) {
     const startPromise = new Promise((resolve, reject) => {
         setTimeout(() => {
@@ -65,6 +66,7 @@ function callThird(timer, element) {
 
     return startPromise
 }
+
 function callFourth(timer, element) {
     const startPromise = new Promise((resolve, reject) => {
         setTimeout(() => {
