@@ -9,18 +9,6 @@ let todoCreate = document.getElementById("todo-create");
 let todoList = document.getElementById("todo-list");
 let button = document.getElementById("add");
 
-//FUNCTION BUTTON
-
-function editFunc(){
-    console.log('edit button clicked');
-}
-function correctFunc(){
-    console.log('save button clicked');
-}
-function deleteFunc(){
-    // console.log()
-    console.log('delete button clicked').remove();
-}
 
 
 
@@ -40,7 +28,31 @@ button.addEventListener('click', () => {
 
     todoList.appendChild(input);
 
-});
+})
+
+//FUNCTION BUTTON
+
+const edit = (e) => {
+    let p = e.parentNode.firstElementChild;
+    child.removeAttribute("disabled")
+    console.log('edit button', child)
+}
+
+
+
+// function editFunc() {
+//     console.log('edit button clicked');
+// }
+    
+
+// function correctFunc() {
+//     console.log('save button clicked');
+// }
+// function deleteFunc() {
+//     // console.log()
+//     console.log('delete button clicked').remove();
+// }
+
 
 function btn1(event) {
     let editInput = event.parentNode.firstElementChild;

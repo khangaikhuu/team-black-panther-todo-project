@@ -8,10 +8,11 @@ body {
     margin-left: 35%;
     text-align: center;
     border: 1px solid black;
-    width: 400px;
+    width: 430px;
     height: 500px;
     padding: 20px;
     border: 5px solid black;
+    color: #f49d1a;
 }
 #presentTime {
     left: 0px;
@@ -64,3 +65,4 @@ button{
     margin-right: 500px;
     
 }
+
