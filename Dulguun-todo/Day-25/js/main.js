@@ -4,14 +4,15 @@ let p1 = document.getElementById("one");
 let p2 = document.getElementById("two");
 let p3 = document.getElementById("three");
 let p4 = document.getElementById("four");
+let p5 = document.getElementById('error');
 
-let timer1 = Math.floor(Math.random() * 3000);
-let timer2 = Math.floor(Math.random() * 3000);
-let timer3 = Math.floor(Math.random() * 3000);
-let timer4 = Math.floor(Math.random() * 3000);
+let timer1 = Math.floor(Math.random() * 2000);
+let timer2 = Math.floor(Math.random() * 2000);
+let timer3 = Math.floor(Math.random() * 2000);
+let timer4 = Math.floor(Math.random() * 2000);
 
-function printMeToTom(str,call) {
-    call.innerHTML = str;
+function printMeToTom(str,ele) {
+    ele.innerHTML = str;
 }
 
 // setTimeout(() => {
@@ -64,9 +65,9 @@ function printMeToTom(str,call) {
 
 function zuragAvah(){
     const zuragPromise = new Promise((resolve, reject) => {
-        resolve(
-            setTimeout(printMeToTom('zurag avah', p1), 2000)
-        );
+        setTimeout(() => {
+            resolve(printMeToTom('Zurag avah', p1))
+        }, timer1);
     })
     return zuragPromise;
 };
@@ -74,9 +75,9 @@ function zuragAvah(){
 
 function changeZurag() {
     const changePromise = new Promise((resolve) => {
-        resolve(
-            setTimeout(printMeToTom('Амжилттай бол зургийг өөрчлөх', p2), 2000)
-        );
+        setTimeout(() => {
+            resolve(printMeToTom('Амжилттай бол зургийг өөрчлөх', p1))
+        }, timer2);
     })
     return changePromise;
 }
@@ -84,22 +85,44 @@ function changeZurag() {
 
 function saveZurag() {
     const savePromise = new Promise((resolve) => {
-        resolve(
-            setTimeout(printMeToTom('Амжилттай бол амжилттай хадгала', p3), timer3)
-        );
+        setTimeout(() => {
+            resolve(printMeToTom('Амжилттай бол амжилттай хадгалаa', p1))
+        }, timer3);
     })
     return savePromise;
 }
 
 function finalZurag() {
     const finalPromise = new Promise((resolve) => {
-        resolve(
-            setTimeout(printMeToTom('Амжилттай бол "Амжилттай хадгалагдлаа', p4), timer4)
-        );
+        setTimeout(() => {
+            resolve(printMeToTom('Амжилттай бол "Амжилттай хадгалагдлаа', p1))
+        }, timer4);
     })
     return finalPromise;
 }
 
 
-zuragAvah()
-    .then(zuragPromise => changeZurag())
+// zuragAvah()
+//     .then(zuragPromise => changeZurag())
+//     .then(changePromise => saveZurag())
+//     .then(savePromise => finalZurag())
+
+function addElementsToDom (command, element, timer) {
+    const promise = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if(element !== undefined) {
+                printMeToTom(command, element)
+                resolve(command)
+            } else {
+                reject('aldaa garlaa')
+            }
+        }, timer)
+    })
+    return promise;
+}
+
+addElementsToDom('Зураг авах', p1, timer1)
+    .then((second) => addElementsToDom('Амжилттай бол зургийг өөрчлөх', p2, timer2))
+    .then((third) => addElementsToDom('Амжилттай бол амжилттай хадгалах', p3, timer3))
+    .then((fourth) => addElementsToDom('Амжилттай бол "Амжилттай хадгалагдлаа" гэж хэвлэх', undefined, timer4))
+    .catch(error => addElementsToDom(error, p5, timer1))
