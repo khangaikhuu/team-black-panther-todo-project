@@ -62,8 +62,8 @@ function reSizeImage(rightImage) {
         if (rightImage.size != "1800x2090") {
         reject("зөв хэмжээтэй файл биш байна.");
         } else {
-        let resizedImage = rightImage;
-        resolve(resizedImage);
+        let reSizeImage = rightImage;
+        resolve(reSizeImage);
         }
     });
     return rightImagePromise;
@@ -80,13 +80,31 @@ function reSizeImage(rightImage) {
     return saveImagePromise;
 
  }
- getImage(img)
- .then((image) => reSizeImage(image))
- .then((reSizedImage) => saveImage(reSizedImage))
- .then((res) => console.log(res))
- .catch((err) => console.log(err));
+
+ //changed this --->
+//  getImage(img)
+//  .then((image) => reSizeImage(image))
+//  .then((reSizedImage) => saveImage(reSizedImage))
+//  .then((res) => console.log(res))
+//  .catch((err) => console.log(err));
 
 //end
+async function processImages(){
+const getImageResult = await getImage(img);
+const reSizedImageResult=await reSizeImage(getImageResult);
+const saveImageResult=await saveImage(reSizedImageResult);
+console.log(saveImageResult);
+}
+processImages();
+
+
+
+
+
+
+
+
+
  
  
  
