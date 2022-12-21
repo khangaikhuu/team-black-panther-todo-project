@@ -1,0 +1,17 @@
+.container{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+img{
+    margin-top: 100px;
+    width: 200px;
+    height: 600px;
+    object-fit: cover;
+    border-radius: 15px;
+    transition: 0.1s ease-in;
+    float:left;
+}
+#first{
+    width: 500px;
+}
