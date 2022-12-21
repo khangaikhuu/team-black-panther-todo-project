@@ -30,27 +30,26 @@ function deleteFunc(event){
 // check button starts from here 
 
 function checkFunc(eve){
+    let done = eve.parentNode;
+    // completed.appendChild(done)
+    done.style.textDecoration = "line-through";
     // eve.disabled("button") = true;
-    eve.parentNode.disabled(eve, uur) = true;
-    console.log(eve.parentNode)
-    console.log("button check clicked")
+    // eve.parentNode.disabled(eve, uur) = true;
+    // console.log(eve.parentNode)
+    // console.log("button check clicked")
 }
 
 // edit buttons starts from here 
 function editFunc(uur){
     console.log(uur.parentNode) 
-    if (uur.parentNode.childNodes[0].disabled === true) { uur.parentNode.childNodes[0].disabled = false
+    let editBtn = uur.parentNode.firstElementChild;
+    if (editBtn.disabled == true) { editBtn.disabled = false
     } else{
-    uur.parentNode.childNodes[0].disabled = false;
+    editBtn.disabled = true;
     console.log("button edit clicked")
     }
 }
 
-function editFunc2(uur){
-    console.log(uur.parentNode)
-    
-    console.log("button edit clicked")
-}
 
 // all button func starts from here 
 button.addEventListener("click", () => {
