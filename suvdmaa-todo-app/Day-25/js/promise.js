@@ -1,23 +1,23 @@
 console.log('promise')
 
-const promise = new Promise((resolve, reject) => {
-    resolve('success')
-    reject('failure')
-})
+// const promise = new Promise((resolve, reject) => {
+//     resolve('success')
+//     reject('failure')
+// })
 
-console.log(promise)
+// console.log(promise)
 
-const doPromise = new Promise((resolve, reject) => {
-    setTimeout(() => {
-        // const skills = ["HTML", "CSS", "JS", "React"];
-        const skills = []
-        if (skills.length > 0) {
-            resolve(skills);
-        } else {
-            reject("Something wrong has happened");
-        }
-    }, 2000);
-});
+// const doPromise = new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//         // const skills = ["HTML", "CSS", "JS", "React"];
+//         const skills = []
+//         if (skills.length > 0) {
+//             resolve(skills);
+//         } else {
+//             reject("Something wrong has happened");
+//         }
+//     }, 2000);
+// });
 
 // doPromise
 //    .then(result => {
@@ -48,7 +48,7 @@ const doPromise = new Promise((resolve, reject) => {
 // .catch(error => console.log(error))
 
 
-/// ---------------------------------------------------------------
+//---------------------------------------------------------------
 const img = {
     imageName: 'My image',
     type: 'png',
@@ -89,11 +89,23 @@ function saveImage(resizedImage) {
     return saveImagePromise;
 }
 
-getImage(img)
-    .then((image) => reSizeImage(image))
-    .then((reSizedImage) => saveImage(reSizedImage))
-    .then((res) => console.log(res))
-    .catch((err) => console.log(err));
+// getImage(img)
+//     .then((image) => reSizeImage(image))
+//     .then((reSizedImage) => saveImage(reSizedImage))
+//     .then((res) => console.log(res))
+//     .catch((err) => console.log(err));
 
  /////////////////--------------------------------------------------------------------------------
 
+// Async
+
+async function printImage (){
+    const printOne = await getImage(img);
+    const printTwo = await reSizeImage(printOne);
+    const saveImageResult = await saveImage(printTwo);
+
+    
+    console.log(saveImageResult)
+}
+
+printImage()
