@@ -1,0 +1,21 @@
+*{
+    text-align: center;
+    
+    color: blanchedalmond;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 5px;
+}
+body{
+    background-color:white;
+}
+.container{
+    background-color: white;
+}
+img{
+    width: 100%;
+    height: 500px;
+    border-radius: 20px;
+    object-fit: fill;
+   
+
+}
