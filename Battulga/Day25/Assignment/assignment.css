@@ -1,0 +1,10 @@
+img {
+    border-radius: 10px;
+    margin-right: 10px;
+    width: 150px;
+    height: 500px;
+}
+
+.pic-container {
+    display: flex;
+}

@@ -9,11 +9,6 @@ let todoCreate = document.getElementById("todo-create");
 let todoList = document.getElementById("todo-list");
 let button = document.getElementById("add");
 
-
-
-
-
-
 // BUTTON FUNCTION
 
 button.addEventListener('click', () => {
