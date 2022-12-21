@@ -10,7 +10,7 @@ h1{
     margin: 50px auto;
 }
 .output{
-    background-color: lightcyan;
+    background-color: lightgoldenrodyellow;
     width: 425px;
     height: 150px;
     box-shadow: 0 0 5px lightblue;
@@ -29,13 +29,6 @@ button:hover{
 }
 .red:hover{
     background-color: lightcoral;
-}
-.equal{
-    background-color: rgba(0, 128, 0, 0.8);
-    color: white;
-}
-.equal:hover{
-    background-color: green;
 }
 .op{
     background-color: lightgoldenrodyellow;
