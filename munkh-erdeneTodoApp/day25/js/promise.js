@@ -86,7 +86,7 @@ function reSizeImage(rightImage) {
  .then((res) => console.log(res))
  .catch((err) => console.log(err));
 
-
+//end
  
  
  
