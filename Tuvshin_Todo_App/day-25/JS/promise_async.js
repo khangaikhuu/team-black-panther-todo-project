@@ -1,35 +1,5 @@
-console.log('Promise');
 
-
-new Promise(() => {})
-
-	const promise = new Promise((resolve, reject) => {
-  		resolve('success')
- 	 	reject('failure')
-})
-
-// Promise
-const doPromise = new Promise((resolve, reject) => {
-    setTimeout(() => {
-    const skills = ['html', 'css'];
-    if (skills.length > 0) {
-        resolve(skills);
-    } else {
-        reject("Something wrong has happened");
-    }
-    }, 2000);
-});
- 
-console.log(doPromise);
-
-doPromise
-.then(result => {
-console.log(result)
-})
-.catch(error => console.log(error))
-
-
-function getImage(image) {
+async function getImage(image) {
     let imagePromise = new Promise((resolve, reject) => {
     if (image.type != "png") {
     reject("PNG файл биш байна");
@@ -52,10 +22,9 @@ imageResult .then (result => {
 })
 .catch(error => console.log(error))
 
-
-function reSizeImage(rightImage) {
+async function reSizeImage(rightImage) {
     let rightImagePromise = new Promise((resolve, reject) => {
-        if (rightImage.size != "1800x2020") {
+        if (rightImage.size != "1800x2090") {
         reject("зөв хэмжээтэй файл биш байна.");
         } else {
         let resizedImage = rightImage;
@@ -65,8 +34,7 @@ function reSizeImage(rightImage) {
     return rightImagePromise;
  }
 
-
- function saveImage(resizedImage) {
+ async function saveImage(resizedImage) {
     let saveImagePromise = new Promise((resolve, reject) => {
         if (resizedImage == undefined) {
         reject("Алдаа гарлаа.");
@@ -84,8 +52,7 @@ function reSizeImage(rightImage) {
  .then((res) => console.log(res))
  .catch((err) => console.log(err));
 
-
- function saveImage(resizedImage) {
+ async function saveImage(resizedImage) {
     let saveImagePromise = new Promise((resolve, reject) => {
         if (resizedImage == undefined) {
         reject("Алдаа гарлаа.");
@@ -96,3 +63,11 @@ function reSizeImage(rightImage) {
     });
     return saveImagePromise;
  }
+
+async function processImages() {
+    const getImageResult = await getImage(img);
+    const reSizedImageResult = await reSizeImage(getImageResult);
+    const saveImageResult = await saveImage(reSizedImageResult);
+    console.log(saveImageResult);
+}
+processImages();
