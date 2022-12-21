@@ -28,18 +28,22 @@ function printMeToDom(value, element) {
 
 /// callback hell
 
-// setTimeout(() => {
-//     printMeToDom('Зураг авах', p1);
-//     setTimeout(() => {
-//         printMeToDom('Амжилттай бол зургийг өөрчлөх', p2);
-//         setTimeout(() => {
-//             printMeToDom('Амжилттай бол амжилттай хадгалах', p3)
-//             setTimeout(() => {
-//                 printMeToDom('Амжилттай бол "Амжилттай хадгалагдлаа" гэж хэвлэх', p4)
-//             }, timer4)
-//         }, timer3)
-//     }, timer2)
-// }, timer1)
+setTimeout(() => {
+    printMeToDom('Зураг авах', p1);
+    setTimeout(() => {
+        printMeToDom('Амжилттай бол зургийг өөрчлөх', p2);
+        setTimeout(() => {
+            printMeToDom('Амжилттай бол амжилттай хадгалах', p3)
+            setTimeout(() => {
+                printMeToDom('Амжилттай бол "Амжилттай хадгалагдлаа" гэж хэвлэх', p4)
+            }, timer4)
+        }, timer3)
+    }, timer2)
+}, timer1)
+
+setTimeout(() => {
+    printMeToDom('Амжилттай бол "Амжилттай хадгалагдлаа" гэж хэвлэх', p4)
+}, timer4)
 
 
 
