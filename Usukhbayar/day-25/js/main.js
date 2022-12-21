@@ -172,7 +172,6 @@ async function printDom() {
 printDom()
 
 
-
 const printDomExp = async function (){
   const printOne = await addElementsToDom('Зураг авах', p1, timer1)
 }
