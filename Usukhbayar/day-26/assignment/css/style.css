@@ -9,9 +9,9 @@ img{
     height: 600px;
     object-fit: cover;
     border-radius: 15px;
-    transition: 0.05s ease-in;
+    transition: 0.1s ease-in;
     float:left;
 }
-#fifth{
+#first{
     width: 500px;
 }
