@@ -98,15 +98,15 @@ function saveImage(resizedImage) {
 // .catch((err) => console.log(err));
 
  
-async function printDom() {
+async function processImages() {
     let image = await getImage(img);
     let reSizedImage = await reSizeImage(image);
-    let res = await saveImage(reSizedImage);
+    let saveImageResult = await saveImage(reSizedImage);
 
-    console.log(image);
-    console.log(reSizedImage);
-    console.log(res);
+    // console.log(image);
+    // console.log(reSizedImage);
+    // console.log(saveImageResult);
 
 }
 
-printDom();
+processImages();
