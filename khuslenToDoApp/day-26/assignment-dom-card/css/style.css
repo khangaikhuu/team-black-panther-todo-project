@@ -1,0 +1,13 @@
+* {
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.image1 {
+    background-repeat: none;
+    background-position: center;
+    background-size: cover;
+    width: 200px;
+    height: 100px;
+    transition: 0.5s;
+}
