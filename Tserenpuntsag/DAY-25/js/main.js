@@ -105,8 +105,17 @@ function fourthLap() {
     return doPromise4;
 }
 
-firstLap()
-    .then(doPromise1 => secondLap())
-    .then(doPromise2 => thirthLap())
-    .then(doPromise3 => fourthLap())
-    .catch(error => console.log(error));
+// firstLap()
+//     .then(doPromise1 => secondLap())
+//     .then(doPromise2 => thirthLap())
+//     .then(doPromise3 => fourthLap())
+//     .catch(error => console.log(error));
+
+async function printResult (){
+    const first = await firstLap(p1)
+    const second = await secondLap(p2)
+    const thirth = await thirthLap(p3)
+    const fourth = await fourthLap(p4)
+}
+
+printResult();
