@@ -28,6 +28,8 @@ input{
 }
 button{
     border: none;
+    color: red;
+    
 }
 #todo-create {
     width: 300px;

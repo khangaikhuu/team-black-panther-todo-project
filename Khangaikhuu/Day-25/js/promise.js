@@ -81,3 +81,14 @@ getImage(img)
     .then((reSizedImage) => saveImage(reSizedImage))
     .then((res) => console.log(res))
     .catch((err) => console.log(err));
+
+
+async function processImages(){
+    const getImageResult = await getImage(img);
+    const resizeImageResult = await reSizeImage(getImageResult);
+    const saveImageResult = await saveImage(resizeImageResult);
+    console.log(saveImageResult);
+}
+
+
+processImages();
