@@ -91,10 +91,22 @@ function saveImage(resizedImage) {
 }
   
  
-getImage(img)
-.then((image) => reSizeImage(image))
-.then((reSizedImage) => saveImage(reSizedImage))
-.then((res) => console.log(res))
-.catch((err) => console.log(err));
+// getImage(img)
+// .then((image) => reSizeImage(image))
+// .then((reSizedImage) => saveImage(reSizedImage))
+// .then((res) => console.log(res))
+// .catch((err) => console.log(err));
 
  
+async function printDom() {
+    let image = await getImage(img);
+    let reSizedImage = await reSizeImage(image);
+    let res = await saveImage(reSizedImage);
+
+    console.log(image);
+    console.log(reSizedImage);
+    console.log(res);
+
+}
+
+printDom();
