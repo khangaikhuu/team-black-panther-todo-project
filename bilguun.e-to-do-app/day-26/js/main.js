@@ -1,6 +1,6 @@
 let a = 10
 
-let promiseFilled = false
+let promiseFilled = true
 let changingVariable;
 
 const myPromise = new Promise((resolved, rejected) => {
@@ -23,12 +23,10 @@ console.log("b")
 console.log("c")
 
 
-setTimeout(() => {
-    for (let i = 0; i < 1_000_000; i++) {
-        for (let i = 0; i < 1_000_000; i++) {
-
-        }
-    }
-}, 5000);
 
 console.log("final")
+async function printMyPromise() {
+    const result = await myPromise
+    console.log(result)
+}
+printMyPromise()
