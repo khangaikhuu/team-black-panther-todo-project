@@ -48,7 +48,7 @@
 // }).catch(error => console.log(error));
 
 // GET Image
-async function getImage(image) {
+ function getImage(image) {
     let imagePromise = new Promise((resolve, reject) => {
         if (image.type != "png") {
             reject("PNG файл биш байна");
@@ -59,7 +59,7 @@ async function getImage(image) {
     return imagePromise;
 }
 
-async function reSizeImage(rightImage) {
+function reSizeImage(rightImage) {
     let rightImagePromise = new Promise((resolve, reject) => {
         if (rightImage.size != "1800x2090") {
             reject("зөв хэмжээтэй файл биш байна.");
@@ -70,7 +70,7 @@ async function reSizeImage(rightImage) {
     });
     return rightImagePromise;
 }
-async function saveImage(resizedImage) {
+function saveImage(resizedImage) {
     let saveImagePromise = new Promise((resolve, reject) => {
         if (resizedImage == undefined) {
             reject("Алдаа гарлаа.");
@@ -88,8 +88,17 @@ const img = {
     size: '1800x2090'
 }
 
-getImage(img)
-    .then((image) => reSizeImage(image))
-    .then((reSizedImage) => saveImage(reSizedImage))
-    .then((res) => console.log(res))
-    .catch((err) => console.log(err));
+// getImage(img)
+//     .then((image) => reSizeImage(image))
+//     .then((reSizedImage) => saveImage(reSizedImage))
+//     .then((res) => console.log(res))
+//     .catch((err) => console.log(err));
+
+//Async version
+const processImage = async function (){
+    const getImageResult = await getImage (img);
+    const resizeImageResult = await reSizeImage (getImageResult);
+    const saveImageResult = await saveImage (resizeImageResult);
+    console.log(saveImageResult)
+}
+processImage();
