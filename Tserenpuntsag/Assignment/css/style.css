@@ -1,0 +1,21 @@
+h1{
+    background-color: black;
+    color: bisque;
+    text-align: center;
+}
+
+#bigDiv{
+    display: flex;
+    width: 100%;
+}
+
+.images{
+    height: 500px;
+    width: 150px;
+    margin-left: 20px;
+    border-radius: 50px;
+}
+#image-1{
+    height: 500px;
+    width: 400px;
+}

@@ -55,7 +55,7 @@ imageResult .then (result => {
 
 function reSizeImage(rightImage) {
     let rightImagePromise = new Promise((resolve, reject) => {
-        if (rightImage.size != "1800x2090") {
+        if (rightImage.size != "1800x2020") {
         reject("зөв хэмжээтэй файл биш байна.");
         } else {
         let resizedImage = rightImage;
@@ -83,3 +83,16 @@ function reSizeImage(rightImage) {
  .then((reSizedImage) => saveImage(reSizedImage))
  .then((res) => console.log(res))
  .catch((err) => console.log(err));
+
+
+ function saveImage(resizedImage) {
+    let saveImagePromise = new Promise((resolve, reject) => {
+        if (resizedImage == undefined) {
+        reject("Алдаа гарлаа.");
+        } else {
+        let saveImage = resizedImage;
+        resolve(saveImage);
+        }
+    });
+    return saveImagePromise;
+ }
