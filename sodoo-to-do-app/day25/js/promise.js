@@ -93,9 +93,18 @@ function saveImage(resizedImage) {
 
 
 
-getImage(img)
-    .then((image) => reSizeImage(image))
-    .then((reSizedImage) => saveImage(reSizedImage))
-    .then((res) => console.log(res))
-    .catch((err) => console.log(err));
+// getImage(img)
+//     .then((image) => reSizeImage(image))
+//     .then((reSizedImage) => saveImage(reSizedImage))
+//     .then((res) => console.log(res))
+//     .catch((err) => console.log(err));
 
+
+async function processImage() {
+    const getImageResult = await getImage(img);
+    const reSizeImageResult = await reSizeImage(getImageResult);
+    const saveImageResult = await saveImage(reSizeImageResult);
+    console.log(saveImageResult);
+}
+
+processImage();
