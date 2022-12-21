@@ -5,8 +5,22 @@ body {
 img {
     width: 300px;
     height: 1000px;
-    object-fit: cover;  
+    object-fit: cover;
     border-radius: 28px;
-
 }
+
 /* transition all 500ms ease in */
+
+.image {
+    height: 80vh;
+    flex: 1;
+    border-radius: 30px;
+    position: relative;
+    transition: all 500ms ease-in;
+    cursor: pointer;
+    margin: 0 10px 0 0px
+}
+
+.active {
+    flex: 5;
+}
