@@ -13,10 +13,6 @@ const timer3 = Math.floor(Math.random() * 1000);
 const timer4 = Math.floor(Math.random() * 1000);
 
 
-
-
-
-
 function printMeToDom(value, element) {
     element.innerHTML = value;
 }
@@ -50,7 +46,16 @@ setTimeout(() => {
 }, timer4)
 
 
-function addElementsToDom(command, element, timer) {
+
+
+// addElementsToDom('Зураг авах', p1, timer1)
+//     .then((second) => addElementsToDom('Амжилттай бол зургийг өөрчлөх', p2, timer2))
+//     .then((third) => addElementsToDom('Амжилттай бол амжилттай хадгалах', p3, timer3))
+//     .then((fourth) => addElementsToDom('Амжилттай бол "Амжилттай хадгалагдлаа" гэж хэвлэх', undefined, timer4))
+//     .catch(error => addElementsToDom(error, p5, timer1))
+
+
+async function addElementsToDom(command, element, timer) {
     const promise = new Promise((resolve, reject) => {
         setTimeout(() => {
             if (element !== undefined) {
@@ -65,20 +70,27 @@ function addElementsToDom(command, element, timer) {
     return promise;
 }
 
-addElementsToDom('Зураг авах', p1, timer1)
-    .then((second) => addElementsToDom('Амжилттай бол зургийг өөрчлөх', p2, timer2))
-    .then((third) => addElementsToDom('Амжилттай бол амжилттай хадгалах', p3, timer3))
-    .then((fourth) => addElementsToDom('Амжилттай бол "Амжилттай хадгалагдлаа" гэж хэвлэх', undefined, timer4))
-    .catch(error => addElementsToDom(error, p5, timer1))
+async function printDom() {
+   const printOne = await addElementsToDom('Зураг авах', p1, timer1)
+   const printTwo = await addElementsToDom('Амжилттай бол зургийг өөрчлөх', p2, timer2)
+   const printThree = await addElementsToDom('Амжилттай бол амжилттай хадгалах', p3, timer3)
+   const printFour = await addElementsToDom('Амжилттай бол "Амжилттай хадгалагдлаа" гэж хэвлэх', p4, timer4)
+
+   console.log(printOne);
+   console.log(printTwo)
+   console.log(printThree)
+   console.log(printFour)
+}
+
+printDom()
 
 
 
+const printDomExp = async function (){
+    const printOne = await addElementsToDom('Зураг авах', p1, timer1)
+}
 
 
-
-
-
-
-
-
-
+const printDomExpArrow = async () => {
+    const printOne = await addElementsToDom('Зураг авах', p1, timer1)
+}
