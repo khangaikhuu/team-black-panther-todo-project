@@ -1,34 +1,47 @@
-body {
-    font-family: monospace;
-
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-.image-container {
+.container {
     display: flex;
+    background-color: aliceblue;
+    gap: 10px;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
-    padding: 0 60px;
-    gap: 20px;
+    
+    
+   
 }
 
-.image {
-    height: 80vh;
+.Image {
     flex: 1;
-    border-radius: 30px;
+    border-radius: 15px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     position: relative;
-    transition: all 500ms ease-in;
-    cursor: pointer;
+  
+}
+.img1 {
+  background-image: url(https://images.pexels.com/photos/39561/solar-flare-sun-eruption-energy-39561.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1) ;
 
+  height: 700px;
+  width: 400px;
+  flex: 4;
+}
+.img2 {
+    background-image: url(https://images.pexels.com/photos/1853354/pexels-photo-1853354.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+}
+.img3 {
+    background-image: url(https://images.pexels.com/photos/833184/pexels-photo-833184.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+}
+.img4 {
+    background-image: url(https://images.pexels.com/photos/256112/pexels-photo-256112.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
 }
 
-.image1 {
-    background-image: url("https://images.unsplash.com/photo-1543722530-d2c3201371e7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1474&q=80") center/cover no-repeat;
+.img5 {
+    background-image: url(https://images.pexels.com/photos/1229042/pexels-photo-1229042.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+}
+h3 {
+   position: absolute;
+   bottom: 0;
+   left: 10px;
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   color: white;
    
 }
