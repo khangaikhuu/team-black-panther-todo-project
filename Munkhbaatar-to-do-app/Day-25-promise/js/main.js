@@ -59,7 +59,7 @@ function step3(p3) {
                 reject("P3 doesnt exist")
             } else {
                 printMeToDom('Амжилттай бол амжилттай хадгалах', p3);
-                resolve("Success in P2 printing")
+                resolve("Success in P3 printing")
             }
         }, timer3)
     });
@@ -73,7 +73,7 @@ function step4(p4) {
                 reject("P4 doesnt exist")
             } else {
                 printMeToDom(' Амжилттай бол "Амжилттай хадгалагдлаа" гэж хэвлэх', p4)
-                resolve("Success in P2 printing")
+                resolve("Success in P4 printing")
             }
         }, timer4)
     });
@@ -94,12 +94,27 @@ function printMeToDom(str, domID) {
 //    .catch(error => console.log(error))
 
 
-step1(p1)
-    .then((result) => {
-        console.log(result)
-        return step2(p2)
-    })
-    .then((result2) => step3(p3))
-    .then((result3) => step4(p4))
-    .catch((err) => console.log(err));
+// step1(p1)
+//     .then((result) => {
+//         console.log(result)
+//         return step2(p2)
+//     })
+//     .then((result2) => step3(p3))
+//     .then((result3) => step4(p4))
+//     .catch((err) => console.log(err));
 
+
+async function printDom() {
+    let result1 = await step1(p1);
+    let result2 = await step2(p2);
+    let result3 = await step3(p3);
+    let result4 = await step4(p4);
+
+    console.log(result1);
+    console.log(result2);
+    console.log(result3);
+    console.log(result4);
+
+}
+
+printDom();
