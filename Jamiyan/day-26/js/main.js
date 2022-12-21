@@ -23,13 +23,4 @@ myPromise.then(result => {  //.then hamgiin suuld hevlegddeg
 console.log("a");
 console.log("b");
 console.log("c");
-
-setTimeout(() => {
-    for (i = 0; i < 1_000_000; i++) {
-        for (j = 0; j < 1_000_000; j++) {
-
-        }
-    }
-}, 5000)
-
 console.log("final");

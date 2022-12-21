@@ -11,16 +11,23 @@ console.log(fryEgg());
 
 
 async function printMyEgg() {
-    const result = await fryEgg();
+    const result = await 1;
     console.log(result);
 }
 
-console.log(printMyEgg());
+printMyEgg();
 
-async function fryEgg2() {
-    let promise = new Promise((resolve, reject) => {
-        setTimeout(() => resolve("done!"), 1000)
-    });
-    let result = await promise;
-    console.log(result);
-}
+console.log("hha")
+
+// async function fryEgg2() {
+//     let promise = new Promise((resolve, reject) => {
+//         setTimeout(() => resolve("done!"))
+//     });
+//     let result = await promise;
+//     console.log(result);
+// }
+
+// console.log("a");
+// console.log("b");
+// fryEgg2();
+// console.log("final");
