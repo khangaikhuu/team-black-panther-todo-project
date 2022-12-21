@@ -9,9 +9,12 @@ img{
     height: 600px;
     object-fit: cover;
     border-radius: 15px;
-    transition: 0.1s ease-in;
+	transition: all 500ms ease-in;
     float:left;
 }
-#first{
-    width: 500px;
+
+
+
+.active {
+	width: 500px;
 }
