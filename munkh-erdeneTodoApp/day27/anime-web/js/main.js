@@ -47,4 +47,10 @@ fetch(fullMetal)
 
         //end
 
+
+
+        //zurganii haijuud bga text
+
+        const ogluuber = document.querySelector('#manga-container');
+        ogluuber.querySelector('#text').textContent = data.data.synopsis;
     })

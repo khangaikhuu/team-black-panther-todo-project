@@ -11,3 +11,7 @@
 body{
     background-color: black
 }
+ 
+#genre-container a{
+    color: black;
+}
