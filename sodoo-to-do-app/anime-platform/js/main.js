@@ -19,11 +19,16 @@ fetch(fullMetalAlchemistURL)
         const type = document.querySelector('#manga-container p')
         console.log(type);
         const genresList = document.querySelector('#manga-container ul li');
-        genresList.innerHTML = 'test'
+        // genresList.innerHTML = 'test'
         console.log(genresList);
 
-
-
+        let genres = "";
+        data.data.genres.map((element) => {
+            // console.log(element.name);
+            genres += element.name + " ";
+        })
+        document.querySelector('#genres').innerHTML = genres;
+        console.log(genres);
 
 
 
