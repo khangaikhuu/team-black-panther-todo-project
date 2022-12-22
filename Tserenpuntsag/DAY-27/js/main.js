@@ -27,15 +27,15 @@ jason
         firstFunc(json.employees[0].position, liThree)
         console.log(json.employees[0].firstName)
 
-        json.employees.map((element) => {
-            console.log(element)
+        json.employees.map((element, index) => {
+            console.log(index)
             const row = document.createElement("tr");
             const num = document.createElement("td")
             const firstName = document.createElement("td")
             const lastName = document.createElement("td")
             const position = document.createElement("td")
 
-            num.innerHTML = 1;
+            num.innerHTML = index + 1;
             firstName.innerHTML = element.firstName
             lastName.innerHTML = element.lastName
             position.innerHTML = element.position
