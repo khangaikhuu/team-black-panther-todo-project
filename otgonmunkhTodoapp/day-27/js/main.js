@@ -52,8 +52,8 @@ json.employees.map((element, index) => {
   
     empNr.textContent = index + 1;
     empFirstName.textContent = element.firstName
-    empLastName.textContent = element.employees[i].lastName
-    empPosition.textContent = element.employees[i].position
+    empLastName.textContent = element.lastName
+    empPosition.textContent = element.position
     
 
     // html location
@@ -97,3 +97,55 @@ json.employees.map((element, index) => {
 
 
 })
+
+
+// const get = async () => {
+//     const res = await fetch("http://127.0.0.1:5500/js/callback/data.html");
+//     const data = await res.json();
+//     console.log(data);
+//     };
+//     get();
+
+//json get serverees ugugdul awah huselt
+fetch('https://dummyjson.com/products')
+.then(res => res.json())
+.then((data)=>console.log(data));
+
+//json post serverruu ugugdul bichih huselt
+fetch('https://dummyjson.com/products/add', {
+method: 'POST',
+headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify({
+title: 'BMW Pencil',
+/* other product data */
+})
+})
+.then(res => res.json())
+.then((data)=>console.log(data));
+
+
+//json put ugugdul shinecleh huselt
+fetch('https://dummyjson.com/products/1', {
+method: 'PUT', /* or PATCH */
+headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify({
+title: 'iPhone Galaxy +1'
+})
+})
+.then(res => res.json())
+.then((data)=>console.log(data));
+
+//json delete serverees ugugdul ustgah huselt
+
+fetch('https://dummyjson.com/products/1', {
+method: 'PUT', /* or PATCH */
+headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify({
+title: 'iPhone Galaxy +1'
+})
+})
+.then(res => res.json())
+.then((data)=>console.log(data));
+
+const examply = document.replaceChild("td", "p");
+console.log(examply);
