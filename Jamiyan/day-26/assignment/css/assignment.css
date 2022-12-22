@@ -1,0 +1,17 @@
+body{
+    background-color: black;
+}
+
+img{
+    width: 150px;
+    border-radius: 20px;
+    margin: 10px;
+    height: 800px;
+   
+    background-size:cover;
+}
+
+div{
+    display: flex;
+    margin-top: 100px;
+}

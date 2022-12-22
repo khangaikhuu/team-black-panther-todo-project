@@ -1,0 +1,17 @@
+h1 {
+    background-color: bisque;
+    text-align: center;
+}
+
+h3{
+    color: blue;
+}
+
+#manga-container {
+    border: 1px solid grey;
+    box-sizing: content-box;
+}
+
+.main {
+    display: flex;
+}

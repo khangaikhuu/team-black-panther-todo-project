@@ -39,8 +39,12 @@ function editFunc() {
 function checkFunc() {
     if (inputID.style.backgroundColor != "green") {
         inputID.style.backgroundColor = "green"
+        inputID.style.textDecorationLine = "line-through"
+        inputID.style.color = "rgb(0, 255, 0)"
     } else {
         inputID.style.backgroundColor = "white"
+        inputID.style.textDecorationLine = "none"
+        inputID.style.color = "rgb(0,0,0)"
     }
 }
 

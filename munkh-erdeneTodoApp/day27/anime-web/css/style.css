@@ -1,0 +1,17 @@
+*{
+   
+    color: blanchedalmond;
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.container{
+    background-color: blanchedalmond;
+}
+body{
+    background-color: black
+}
+ 
+#genre-container a{
+    color: black;
+}
