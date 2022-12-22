@@ -15,14 +15,16 @@
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
+    height: 100vh;
+    transition: all 500ms ease-in;
   
 }
 .img1 {
   background-image: url(https://images.pexels.com/photos/39561/solar-flare-sun-eruption-energy-39561.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1) ;
 
-  height: 700px;
-  width: 400px;
-  flex: 4;
+  /* height: 700px;
+  width: 400px; */
+ 
 }
 .img2 {
     background-image: url(https://images.pexels.com/photos/1853354/pexels-photo-1853354.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
@@ -37,11 +39,19 @@
 .img5 {
     background-image: url(https://images.pexels.com/photos/1229042/pexels-photo-1229042.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
 }
-h3 {
-   position: absolute;
-   bottom: 0;
-   left: 10px;
-   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-   color: white;
-   
+
+.img.active h3 {
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+    
+    
+}
+.img h3 {
+    opacity: 0;
+}
+.active {
+    flex: 5;
 }
