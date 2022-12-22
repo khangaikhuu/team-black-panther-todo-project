@@ -27,11 +27,15 @@ fetch(fullMetal)
         containerQue.querySelector('#type2').textContent = (data.data.episodes)+','+(data.data.duration);
 
 
+
+
+
+
         // genre uuudan
         const genreContainer=document.getElementById('genre-container')
 
         const genres=data.data.genres
-        // console.log(genres);
+       
         genres.map(element=>{
             console.log(element)
             const a=document.createElement('a');
