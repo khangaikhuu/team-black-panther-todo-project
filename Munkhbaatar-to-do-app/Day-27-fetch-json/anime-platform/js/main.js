@@ -22,14 +22,17 @@ fetch(fullMetalAlchemistUrl)
         let episodes = res.data.episodes;
         let duration = res.data.duration.substring(0, 6);
         let genresTemp = res.data.genres;
-        let genres = [];
-        genresTemp.map((element) => {
-            element.map()
-        })
-        console.log(genres);
+        let genres = "";
+        
         document.querySelector('#manga-container #type').innerHTML = type + ', ' + year +  " | " + status + 
         " | " + episodes + 'eps, ' + duration;
 
+        genresTemp.map((element) => {
+            genres = genres + element.name + " ";
+            
+        })
+        document.querySelector('#genres').innerText = genres
+        console.log(genres);
 
     })
 
