@@ -28,7 +28,7 @@ fetch(fullMetalAlchemistUrl)
         " | " + episodes + 'eps, ' + duration;
 
         genresTemp.map((element) => {
-            genres = genres + element.name + " ";
+            genres += element.name + " ";
             
         })
         document.querySelector('#genres').innerText = genres
