@@ -1,0 +1,9 @@
+h6 {
+    font-family: monospace;
+    font-size: 15px;
+    text-align: center;
+    color:rgb(76, 124, 124) ;
+}
+#manga-container {
+    width: 35vw;
+}
