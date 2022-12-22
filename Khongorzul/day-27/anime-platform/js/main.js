@@ -8,7 +8,7 @@ fetch(fullMetalAlchimistURL)
 
         document.getElementById("finish").textContent = data.data.status.substring(0, 8);
 
-        document.getElementById("eps").textContent = `${data.data.episodes}, ${data.data.duration.substring(0, 6)}`
+        document.getElementById("eps").textContent = `${data.data.episodes} eps, ${data.data.duration.substring(0, 6)}`
 
         for(let i = 0; i < data.data.genres.length; i++){
             document.querySelectorAll("#genres div")[i].textContent = data.data.genres[i].name;
