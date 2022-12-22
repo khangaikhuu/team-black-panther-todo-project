@@ -19,6 +19,7 @@
 
 .row {
     display: flex;
+    justify-content: space-around;
 
 }
 
@@ -41,5 +42,8 @@ p {
     height: 230px;
     overflow-y: scroll;
     text-overflow: ellipsis;
+}
 
+.fa {
+    color: gray;
 }

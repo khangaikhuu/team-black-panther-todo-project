@@ -15,7 +15,9 @@ fetch(fullMetalAlchemistURL)
         document.getElementById('manga-container').getElementsByTagName('h6')[0].textContent = data.data.titles[0].title
         const tv = document.getElementById('manga-container').getElementsByTagName('p')[0].textContent = data.data.type + ', ' + data.data.year + ' | ' + data.data.status.substring(0, 8) + ' | ' + data.data.episodes + ' eps, ' + data.data.duration.substring(0, 6);
 
-        const synopsis = document.getElementById('synopsis').textContent = data.data.synopsis
+        const synopsis = document.getElementById('synopsis').textContent = data.data.synopsis;
+        const score = document.getElementById('score').textContent = data.data.score;
+        const members = document.getElementById('members').textContent = data.data.members;
 
 
         const type = document.querySelector('#manga-container p')
