@@ -59,13 +59,12 @@ function doneFunc(event) {
     console.log('Done clicked');
     end.push(todoList.value);
     document.getElementById('endTask').innerHTML = `${end.length} task хйисэн !`
-    document.getElementById('leftTask').innerHTML = `${(todoChild.length - end.length)} task үлдлээ !`
 
-    if (end.length === todoChild.length) {
-        document.getElementById('endTask').style = 'display: none;'
-    } else {
-        document.getElementById('endTask').style = 'display: block;'
-    }
+    // if (end.length === todoChild.length) {
+    //     document.getElementById('endTask').style = 'display: none;'
+    // } else {
+    //     document.getElementById('endTask').style = 'display: block;'
+    // }
 
 }
 
