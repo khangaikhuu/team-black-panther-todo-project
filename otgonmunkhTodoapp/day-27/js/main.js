@@ -37,8 +37,38 @@ empResult
      
 
         //array map
-    //    json.employees.map((element) => {
-    //     console.log(element);
+
+
+json.employees.map((element, index) => {
+   
+
+    const tbodyDom = document.getElementById("empBody")
+    const empRow = document.createElement("tr");
+
+    const empNr = document.createElement("td");
+    const empFirstName = document.createElement("td")
+    const empLastName = document.createElement("td")
+    const empPosition = document.createElement("td")
+  
+    empNr.textContent = index + 1;
+    empFirstName.textContent = element.firstName
+    empLastName.textContent = element.employees[i].lastName
+    empPosition.textContent = element.employees[i].position
+    
+
+    // html location
+    empRow.appendChild(empNr)
+    empRow.appendChild(empFirstName)
+    empRow.appendChild(empLastName)
+    empRow.appendChild(empPosition)
+    
+
+
+    tbodyDom.appendChild(empRow);
+})
+   
+    //    for(let i = 0; i < json.employees.length; i++){
+    //     console.log('json length', json.employees[i]);
     //     const tbodyDom = document.getElementById("empBody")
     //     const empRow = document.createElement("tr");
 
@@ -46,14 +76,14 @@ empResult
     //     const empFirstName = document.createElement("td")
     //     const empLastName = document.createElement("td")
     //     const empPosition = document.createElement("td")
-
-
       
-    //     empNr.textContent = 1;
-    //     empFirstName.textContent = element.firstName
-    //     empLastName.textContent = element.lastName
-    //     empPosition.textContent = element.position
+    //     empNr.textContent = i + 1;
+    //     empFirstName.textContent = json.employees[i].firstName
+    //     empLastName.textContent = json.employees[i].lastName
+    //     empPosition.textContent = json.employees[i].position
+        
 
+    //     // html location
     //     empRow.appendChild(empNr)
     //     empRow.appendChild(empFirstName)
     //     empRow.appendChild(empLastName)
@@ -62,35 +92,8 @@ empResult
 
 
     //     tbodyDom.appendChild(empRow);
-
-    //    })
-       for(let i = 0; i < json.employees.length; i++){
-        console.log('json length', json.employees[i]);
-        const tbodyDom = document.getElementById("empBody")
-        const empRow = document.createElement("tr");
-
-        const empNr = document.createElement("td");
-        const empFirstName = document.createElement("td")
-        const empLastName = document.createElement("td")
-        const empPosition = document.createElement("td")
-      
-        empNr.textContent = i + 1;
-        empFirstName.textContent = json.employees[i].firstName
-        empLastName.textContent = json.employees[i].lastName
-        empPosition.textContent = json.employees[i].position
-        
-
-        // html location
-        empRow.appendChild(empNr)
-        empRow.appendChild(empFirstName)
-        empRow.appendChild(empLastName)
-        empRow.appendChild(empPosition)
-        
-
-
-        tbodyDom.appendChild(empRow);
           
-       }
+    //    }
 
 
 })
