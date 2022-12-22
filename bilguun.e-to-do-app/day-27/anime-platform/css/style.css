@@ -41,4 +41,5 @@ h6 {
 }
 #bodyDiv {
     display: flex;
+    font-size: 9px;
 }

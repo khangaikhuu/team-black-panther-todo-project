@@ -20,6 +20,7 @@ fetch(fullMetalAlchemistURL)
             .getElementsByTagName("p")[1].textContent = `  ${data.data.status} |`
         document.getElementById("prodsrc")
             .getElementsByTagName("p")[2].textContent = `  ${data.data.episodes} , ${data.data.duration}`
+
         // genre 
         document.getElementById("genre")
             .getElementsByTagName("button")[0].textContent = ` ${data.data.genres[0].name}`
@@ -29,4 +30,8 @@ fetch(fullMetalAlchemistURL)
             .getElementsByTagName("button")[2].textContent = `${data.data.genres[2].name}`
         document.getElementById("genre")
             .getElementsByTagName("button")[3].textContent = ` ${data.data.genres[3].name}`
+
+        //body
+        document.getElementById("bodyDivP")
+        .getElementsByTagName("p")[0].textContent = `${data.data.synopsis}`
     })
