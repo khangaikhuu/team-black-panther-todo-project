@@ -42,7 +42,7 @@ empResult
 
     const tbodyDom = document.getElementById(`emp-body`);
 
-    // array map
+    // array map function
     json.employees.map((element) => {
         console.log(element)
         
@@ -56,7 +56,7 @@ empResult
             empNr.textContent = 1;
             empFirstName.textContent = element.firstName;
             empLastName.textContent = element.lastName;
-            empPosition.textContent = element.position
+            empPosition.textContent = element.Position
             
             empRow.appendChild(empNr);
             empRow.appendChild(empFirstName);
@@ -68,5 +68,7 @@ empResult
 
 
 })    
+
+
 
 
