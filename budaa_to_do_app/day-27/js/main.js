@@ -36,8 +36,8 @@ employeesResults
 
         // array map 
 
-        json.employees.map((element) => {
-            console.log(element)
+        json.employees.map((element, index) => {
+            console.log(index)
             const empRow = document.createElement("tr");
             const tbodyDom = document.getElementById("empBody");
 
@@ -46,7 +46,7 @@ employeesResults
             const empLastName = document.createElement("td");
             const empPosition = document.createElement("td");
 
-            empNr.textContent = 1;
+            empNr.textContent = index;
             empFirstName.textContent = element.firstName;
             empLastName.textContent = element.lastName;
             empPosition.textContent = element.position;
