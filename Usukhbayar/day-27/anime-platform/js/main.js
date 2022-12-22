@@ -18,15 +18,18 @@ fetch(fullMetalAlchemistURL)
       ", " +
       data.data.year +
       " |  " +
-      data.data.status +
+      data.data.status.slice(0, 8) +
       " | " +
-      data.data.episodes +
+      data.data.episodes+ " eps " +
       ", " +
-      data.data.duration;
-    // let button = document.createElement('a');
-    // button.id = ('btn');
-    // button.innerHTML= 'Action'
-    document
-      .getElementById("manga-container")
-      .getElementsByTagName("p")[1].textContent = data.data.year;
+      data.data.duration.slice(0, 6);
+
+      document.getElementById("manga-container").getElementsByTagName("a")[0].textContent = 'Action';
+      document.getElementById("manga-container").getElementsByTagName("a")[1].textContent = 'Adventure';
+      document.getElementById("manga-container").getElementsByTagName("a")[2].textContent = 'Drama';
+      document.getElementById("manga-container").getElementsByTagName("a")[3].textContent = 'Fantasy';
+      const mainContainer = document.querySelector('#img-container');
+      const mPara = document.getElementById('m-para');
+      mPara.innerHTML = data.data.synopsis;
+      mPara.style = ""
   });
