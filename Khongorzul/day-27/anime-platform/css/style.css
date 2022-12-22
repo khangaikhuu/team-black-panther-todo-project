@@ -1,0 +1,37 @@
+h1{
+    text-align: center;
+    color: hotpink;
+    background-color: black;
+    padding: 15px;
+}
+
+#first-manga{
+    width: 500px;
+    margin: 0 auto;
+}
+h3{
+    text-align: center;
+}
+#top-bar{
+    display: flex;
+    justify-content: center;
+}
+.manga-body{
+    width: 500px;
+    height: 300px;
+    gap: 20px;
+    display: flex;
+}
+#right-side{
+    height: 300px;
+    overflow: scroll;
+}
+#text{
+    margin-top: 0;
+    font-size: 18px;
+    line-height: 25px;
+}
+.bottom{
+    display: flex;
+    gap: 30px;
+}
