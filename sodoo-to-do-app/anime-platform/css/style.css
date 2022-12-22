@@ -1,0 +1,14 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h6 {
+    font-size: 15px;
+    color: rgb(39, 79, 166);
+}
+
+p {
+    font-size: 13px;
+    color: gray;
+}

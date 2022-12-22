@@ -1,0 +1,26 @@
+.container {
+    max-width: 300px;
+    margin: 30px auto;
+    /* border: 3px solid orange; */
+}
+
+.display {
+    text-align: right;
+    height: 30px;
+    line-height: 70px;
+    padding: 15px 8px;
+    font-size: 25px;
+    border: 2 px solid orange;
+
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.buttons>div {
+
+    border: 1px solid orange;
+
+}

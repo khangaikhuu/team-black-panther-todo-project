@@ -1,0 +1,9 @@
+h1 {
+    text-align: center;
+    background-color: darkgrey;
+}
+
+#manga-container {
+    display: flex;
+
+}
