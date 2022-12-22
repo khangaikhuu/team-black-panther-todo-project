@@ -1,10 +1,19 @@
-h1{
-    background-color: rgb(59, 59, 236);
-    color: white;
-    text-align: center;
+*{
+    box-sizing: border-box;
 }
 
+body{
+    background-color: #e3e7fb;
+}
 
+h1{
+    color: #c3bbf1;
+    font: italic bold 100px Georgia, Serif;
+    font-size: 50px;
+    text-align: center;
+    height: 100px;
+    text-shadow: -4px 3px 0 #3a50d9, -14px 7px 0 #0a0e27;
+}
 
 .flex{
     display: flex;
@@ -12,4 +21,14 @@ h1{
 
 #manga-container{
     width: 50%;
+    margin: 10px auto;
+    border: 1px solid white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    text-align: center;
+    border-radius: 10px;
+    background-color: white;
+}
+
+#main-text{
+    overflow: hidden;
 }
