@@ -81,7 +81,7 @@ function callFourth(timer, element) {
     return startPromise
 }
 
-
+// hello
 callFirst(timer1, p1).then(result => console.log(p1))
 callSecond(timer2, p2).then(result => console.log(p2))
 callThird(timer3, p3).then(result => console.log(p3))
