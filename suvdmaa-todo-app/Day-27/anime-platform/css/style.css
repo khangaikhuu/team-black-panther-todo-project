@@ -1,0 +1,15 @@
+h1{
+    background-color: rgb(59, 59, 236);
+    color: white;
+    text-align: center;
+}
+
+
+
+.flex{
+    display: flex;
+}
+
+#manga-container{
+    width: 50%;
+}
