@@ -29,7 +29,7 @@ employeesResult
     const tbodyDom = document.getElementById("tbody");
 
     //array map function
-    json.employees.map((element) => {
+    json.employees.map((element, index) => {
       console.log(element);
       const empRow = document.createElement("tr");
 
@@ -38,7 +38,7 @@ employeesResult
       const empLastName = document.createElement("td");
       const empPosition = document.createElement("td");
 
-      empNr.textContent = 1;
+      empNr.textContent = index + 1;
       empFirstName.textContent = element.firstName;
       empLastName.textContent = element.lastName;
       empPosition.textContent = element.position;
@@ -51,3 +51,8 @@ employeesResult
       tbodyDom.appendChild(empRow);
     });
   });
+
+  const arr = [5, 6, 7, 8]
+  arr.map((e,index)=> {
+    console.log(index, '-', e)
+  })
