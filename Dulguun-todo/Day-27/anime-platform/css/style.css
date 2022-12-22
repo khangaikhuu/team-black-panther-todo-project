@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+    font-family: Avenir,lucida grande,tahoma,verdana,arial,sans-serif;
+}
+
+.background-gray {
+    background-color: #ccc;
+}
+
+p {
+    font-size: 11px;
+}
+
+
+
+.title1 {
+    color: #1c439b;
+    text-align: center;
+    padding: 30px;
+
+}
+
+#manga-container {
+    max-width: 400px;
+    height: 500px;
+    margin: 30px;
+}
+
+#manga-img {
+    width: 100%;
+}
+
+.text-container {
+    height: 290px;
+    overflow: auto;
+}

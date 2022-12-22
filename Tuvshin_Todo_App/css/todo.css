@@ -28,7 +28,9 @@ input{
 }
 button{
     border: none;
-    color: red;
+    color: black;
+
+    height: 30px;
     
 }
 #todo-create {

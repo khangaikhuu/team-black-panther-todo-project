@@ -1,0 +1,61 @@
+h1{
+    text-align: center;
+    color: palevioletred;
+    background-color: black;
+    padding: 15px;
+}
+#images{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+#img1{
+    height: 800px;
+    width: 200px;
+    background-image: url(https://images.unsplash.com/photo-1543722530-d2c3201371e7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8YW5kcm9tZWRhfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=700&q=60);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    transition: 1s;
+}
+#img2{
+    height: 800px;
+    width: 200px;
+    background-image: url(https://images.unsplash.com/photo-1610296669228-602fa827fc1f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8bmVidWxhfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=700&q=60);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    transition: 1s;
+}
+#img3{
+    height: 800px;
+    width: 200px;
+    background-image: url(https://images.unsplash.com/photo-1538370965046-79c0d6907d47?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fG1pbGt5JTIwd2F5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=700&q=60);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    transition: 1s;
+}
+#img4{
+    height: 800px;
+    width: 200px;
+    background-image: url(https://images.unsplash.com/photo-1614732414444-096e5f1122d5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c2F0dXJufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=700&q=60);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    transition: 1s;
+}
+#img5{
+    height: 800px;
+    width: 200px;
+    background-image: url(https://images.unsplash.com/photo-1614732484003-ef9881555dc3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXJhbnVzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=700&q=60);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    transition: 1s;
+}
