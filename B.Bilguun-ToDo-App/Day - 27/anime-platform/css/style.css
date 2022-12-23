@@ -26,5 +26,10 @@ h1 {
 }
 
 #synopsis {
-    overflow: scroll;
+    text-overflow: ellipsis;
+}
+
+#addToList a {
+    text-decoration: none;
+    color: #ffffff;
 }
