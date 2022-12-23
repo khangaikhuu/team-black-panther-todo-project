@@ -1,6 +1,6 @@
 
 
-    const fullMetalAlchemistURL = 'https://api.jikan.moe/v4/anime/5114'
+const fullMetalAlchemistURL = 'https://api.jikan.moe/v4/anime/5114'
 
 fetch(fullMetalAlchemistURL)
     .then(result => result.json())
@@ -15,30 +15,58 @@ fetch(fullMetalAlchemistURL)
 
         const mangaText = document.getElementById('manga-container').  //text orulsan 
             getElementsByClassName('manga-text')[0].textContent = data.data.synopsis ;
-            // console.log(data.data.studios.type);
-        
+
+        // const mangaText = document.querySelector('.manga-text p');
+        // const secondText = document.querySelector('#second-p');
+        // mangaText.textContent = data.data.synopsis.slice(0, 375);
+        // const more = data.data.synopsis;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         const mangaStat = document.getElementsByClassName('manga-stat')[0].textContent = data.data.type + "," + " " +
-            data.data.year + "  |  " + "  " + data.data.status + "  | " + "  " + data.data.episodes + " eps" + ", " + 
-            data.data.duration.substring(0,6);
+            data.data.year + "  |  " + "  " + data.data.status + "  | " + "  " + data.data.episodes + " eps" + ", " +
+            data.data.duration.substring(0, 6);
 
 
-        const genreContainer=document.getElementById('genre-container')
+        const genreContainer = document.getElementById('genre-container')
 
-        const genres=data.data.genres
+        const genres = data.data.genres
 
-        genres.map(element=>{
+        genres.map(element => {
             console.log(element)
-            const a=document.createElement('a');
-            a.href=element.url;
-            a.textContent=element.name;
+            const a = document.createElement('a');
+            a.href = element.url;
+            a.textContent = element.name;
             genreContainer.appendChild(a);
         })
 
 
         const mangaTypeStudio = document.getElementById('manga-container').
-            getElementsByClassName('manga-type-studio')[0].textContent = " Studio : "  + data.data.studios[0].name;
-    
+            getElementsByClassName('manga-type-studio')[0].textContent = " Studio : " + data.data.studios[0].name;
+
         const mangaTypeStudio2 = document.getElementById('manga-container').
             getElementsByClassName('manga-type-studio2')[0].textContent = " Source : " + data.data['source'];
 
@@ -55,7 +83,18 @@ fetch(fullMetalAlchemistURL)
 
 
 
-})
+
+
+        btn-more.addEventListener('click', () => {
+            if (secondText.style.display == 'none') {
+              secondText.style.display = 'block';
+              
+            } else {
+              secondText.style.display = 'none';
+            }
+          })
+
+    })
 
 
 
