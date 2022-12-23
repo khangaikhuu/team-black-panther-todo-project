@@ -1,15 +1,91 @@
-h1{
-    text-align: center;
-    background-color: tomato;
+
+#manga-container{
+    width: 334px;
+    border: 1px solid lightgrey;
+    font-family: Avenir,lucida grande,tahoma,verdana,arial,sans-serif;
 }
-#img-text{
-    background-color: aqua;
+h6{
+    color: #1c439b;
+    font-size: 18px;
+    text-align: center;
+    margin: 23px;
+    
+}
+#inf-p1{
+    padding: 1px 6px;
+    display: flex;
+    justify-content: center;
+    background-color: #f8f8f8;
+    color: #808080;
+    font-size: 12px;
+}
+
+#genre{
+    background-color: #f0f0f0;
+   display: flex;
+    height: 25px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1px 6px;
+}
+#genre button{
+    color:#787878 ;
+    background-color: #fff;
+    border:#e1e7f5 1px solid ;
+    border-radius: 5px;
+    height: 12.5px;
+    font-size: 9px;
+}
+#manga-image{
+    width: 238.25px;
+    
+}
+#div-text{
+    overflow: auto;
     
 }
 #manga-image{
-    background-color: wheat;
     display: inline-block;
 }
 #img-div{
-    background-color: wheat;
+    display: flex;
+    height: 250px;
+    padding: 6px 4px 0 8px;
+    font-size: 11px;
+}
+#rank{
+    display: flex;
+    padding: 2px;
+    height: 24px;
+    background-color: #f8f8f8;
+}
+#rank div{
+    width: 83.5px;
+    background-color: #f8f8f8;
+    color: black;
+    font-size: 12px;
+    border: none;
+    border-top: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#add{
+    width: 104px;
+    height: 24px;
+    background-color: #4f74c8;
+    color: white;
+    margin: 0 31px;
+    border: none;
+
+}
+i{
+    margin: 5px;
+}
+#down{
+    display: block;
+    width: 100%;
+    border: none;
+    background-color: white;
+    height: 15px;
 }
