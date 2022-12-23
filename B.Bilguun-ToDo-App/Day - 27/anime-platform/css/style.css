@@ -1,0 +1,35 @@
+h1 {
+    text-align: center;
+    background-color: antiquewhite;
+}
+
+#actions {
+    background-color: #f0f0f0;
+}
+
+#actions a {
+    text-decoration: none;
+    background-color: #fff;
+    color: #787878;
+    margin: 5px;
+    padding: 2px 5px;
+    border-radius: 5px;
+    border: #e1e7f5 1px solid;
+}
+
+#titles {
+    background-color: #f8f8f8;
+}
+
+#titles h6 {
+    color: gray;
+}
+
+#synopsis {
+    text-overflow: ellipsis;
+}
+
+#addToList a {
+    text-decoration: none;
+    color: #ffffff;
+}
