@@ -24,4 +24,9 @@ fetch(fullMetalAlchemistURL)
 
         const mRowP5 = document.getElementById("mangaRowP5");
         mRowP5.textContent = data.data.duration.slice(0, 6)
+        console.log(mRowP5)
+
+        const Row4Para1 = document.getElementById("Row4-Sider-para");
+        Row4Para1.textContent = data.data.synopsis
+        
     })
