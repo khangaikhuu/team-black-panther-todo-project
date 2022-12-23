@@ -74,3 +74,10 @@ h1 {
     color: gray;
 
 }
+
+.btn-more {
+    position: absolute;
+    margin-top: -45px;
+    margin-left: 65px;
+
+}

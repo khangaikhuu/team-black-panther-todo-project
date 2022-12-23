@@ -7,32 +7,60 @@ fetch(fullMetalAlchemistUrl)
     .then(data => {
         console.log(data.data.images.jpg.image_url)
         const mangaDomImage = document.getElementById('manga-image');
-        mangaDomImage.src = data.data.images.jpg.image_url;
+        mangaDomImage.src = data.data.images.webp.image_url;
         const container = document.getElementById("manga-container");
         const cont = document.getElementById("titles");
         container.getElementsByTagName("h5")[0].textContent = data.data.titles[0].title;
 
-        cont.getElementsByTagName("h6")[0].textContent = `${data.data.type} , ${data.data.year} | ${data.data.status.slice(0,8)} | ${data.data.episodes} eps, ${data.data.duration.slice(0,6)} `
+        cont.getElementsByTagName("h6")[0].textContent = `${data.data.type} , ${data.data.year} | ${data.data.status.slice(0,8)} | ${data.data.episodes} eps, ${data.data.duration.slice(0,6)}`
 
         const actions = document.getElementById("actions");
 
-        for (let i = 0; i < data.data.genres.length; i++) {
-            let a = document.createElement("a");
-            a.innerHTML = data.data.genres[i].name;
-            a.href = data.data.genres[i].url
-            actions.append(a)
-        }
+        // for (let i = 0; i < data.data.genres.length; i++) {
+        //     let a = document.createElement("a");
+        //     a.innerHTML = data.data.genres[i].name;
+        //     a.href = data.data.genres[i].url
+        //     actions.append(a)
+        // }
 
-        let a = document.createElement("a");
-        const synop = document.getElementById("synopsis")
-        synop.innerHTML = data.data.synopsis
+        data.data.genres.map(element => {
+            let a = document.createElement("a");
+            a.innerHTML = element.name;
+            a.href = element.url
+            actions.append(a)
+        })
+     
+        const text = document.querySelector('#text p');
+        const secondText = document.querySelector('#second-p');
+        text.textContent = data.data.synopsis.slice(0, 375);
+        const more = data.data.synopsis;
+        console.log('more', more);
+        const textLength = more.length;
+        console.log('lenght', textLength)
+        const parts = more.slice(375, textLength);
+        secondText.textContent = parts;
+        secondText.style.display = 'none';
+    
+        const moreButton = document.querySelector('#moreBtn');
+    
+        console.log(moreButton);
+        moreButton.innerHTML = `<i class="fa-solid fa-angle-down"></i>`;
+        moreButton.addEventListener('click', () => {
+          if (secondText.style.display == 'none') {
+            secondText.style.display = 'block';
+            moreButton.innerHTML = `<i class="fa-solid fa-angle-up"></i>`;
+          } else {
+            secondText.style.display = 'none';
+            moreButton.innerHTML = `<i class="fa-solid fa-angle-down"></i>`;
+          }
+        })
 
         const studios = document.getElementById("studios")
         studios.innerText = data.data.studios[0].name;
         studios.href = data.data.studios[0].url;
 
         const source = document.getElementById("source")
-        source.innerText = `Source : ${data.data.source}`;
+        source.innerHTML = `<strong>Source :</strong> ${data.data.source}`;
         const theme = document.getElementById("theme")
         theme.innerText = data.data.themes[0].name;
         theme.href = data.data.themes[0].url;
@@ -53,6 +81,7 @@ fetch(fullMetalAlchemistUrl)
 
 
         const addToList = document.getElementById("addToList")
-        addToList.innerText = 'Add to List'
+        addToList.innerHTML = `<a href="https://myanimelist.net/login.php?error=login_required&from=%2Fanime%2Fgenre%2F2%2FAdventure">Add to list</a>`;
         addToList.className = 'btn btn-primary'
+
     })
