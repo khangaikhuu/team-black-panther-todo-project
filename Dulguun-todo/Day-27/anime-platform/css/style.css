@@ -7,30 +7,87 @@
     background-color: #ccc;
 }
 
-p {
+.small-text {
     font-size: 11px;
 }
 
+#youtube-logo {
+    font-size: 1.4rem;
+}
+
+#streaming-logo {
+    font-size: 1.4rem;
+}
 
 
 .title1 {
     color: #1c439b;
     text-align: center;
-    padding: 30px;
+    padding: 20px 0 10px 0;
 
 }
 
 #manga-container {
-    max-width: 400px;
-    height: 500px;
     margin: 30px;
+    border: #f0f0f0 1px solid;
+}
+
+#content-section {
+    height: 250px;
+    margin: 0 -12px;
 }
 
 #manga-img {
     width: 100%;
+    height: 250px;
+    object-fit: cover;
 }
 
 .text-container {
-    height: 290px;
+    height: 250px;
     overflow: auto;
+}
+
+#information {
+    background-color: #f8f8f8;
+
+}
+
+#genre {
+    background-color: #f0f0f0;
+    padding-bottom: 4px;
+}
+
+#genre a {
+    text-decoration: none;
+    background-color: #fff;
+    color: #787878;
+    margin: 5px;
+    padding: 0px 5px;
+    border-radius: 10px;
+    border: #e1e7f5 1px solid;
+    font-size: 9px;
+}
+
+#review-section {
+    color: #545454;
+    font-size: 11px;
+    height: 22px;
+    line-height: 22px;
+    font-weight: 700;
+    margin: 0 -12px;
+    background-color: #f8f8f8;;
+    padding: 20px 0px;
+}
+
+#add-button {
+    background-color: #4f74c8;
+    color: #fff;
+    border-radius: 3px;
+    display: block;
+    font-size: 11px;
+    line-height: 21px;
+    /* width: 68px; */
+    text-decoration: none;
+    padding: 2px;
 }
