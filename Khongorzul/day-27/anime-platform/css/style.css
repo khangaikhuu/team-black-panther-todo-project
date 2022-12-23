@@ -216,3 +216,10 @@ a{
 #third-right-bottom div:nth-child(2n){
     background-color: lightcyan;
 }
+
+
+
+#top-25 div{
+    background-color: white;
+    padding: 20px;
+}

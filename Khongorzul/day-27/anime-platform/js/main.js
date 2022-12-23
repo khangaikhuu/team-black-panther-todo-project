@@ -97,3 +97,20 @@ fetch(mononokeHimeUrl)
 
         document.getElementById("third-source").textContent = data.data.source;
     })
+
+
+
+const top20 = document.getElementById("top-25");
+const topAnimeUrl = "https://api.jikan.moe/v4/top/anime";
+fetch(topAnimeUrl) 
+    .then(result => result.json())
+    .then(data => {
+        console.log(data.data)
+        data.data.map((element, index) => {
+            const myAnime = element[index].createElement("div");
+            myAnime.textContent = "My anime";
+            console.log(myAnime);
+
+            top20.appendChilds = (myAnime);
+        })
+    })
