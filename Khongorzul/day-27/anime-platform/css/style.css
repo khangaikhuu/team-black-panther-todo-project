@@ -8,6 +8,11 @@ h1{
     background-color: black;
     padding: 15px;
 }
+.my-manga{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
 
 #first-manga{
     width: 500px;
@@ -15,13 +20,13 @@ h1{
     background-color: white;
     box-shadow: 0 0 25px lightblue;
 }
-h3{
+#first-title{
     text-align: center;
     padding: 15px;
     border: 2px solid blue;
     color: blue;
 }
-#top-bar{
+#first-top-bar{
     display: flex;
     justify-content: center;
     gap: 10px;
@@ -32,40 +37,57 @@ h3{
     border-right: 1px solid gray;   
     padding: 0 6px; 
 }
-#genres{
+#first-genres{
     display: flex;
     justify-content: center;
     gap: 15px;
     background-color: ghostwhite;
     padding: 10px;
 }
-#genres div{
+#first-genres a{
     border-radius: 10px;
     border: 1px solid gray;
     padding: 5px;
     font-size: 12px;
 }
-.manga-body{
+.first-manga-body{
     width: 500px;
     height: 300px;
     gap: 20px;
     display: flex;
 }
-#manga-image{
+#first-manga-image{
     margin: 5px;
     box-shadow: 0 0 10px yellow;
 }
-#right-side{
+#first-right-side{
     height: 300px;
     overflow: auto;
 }
-#text{
+#first-text{
+    height: 200px;
     margin-top: 0;
     font-size: 16px;
     line-height: 22px;
+    overflow: hidden;
+    margin-bottom: 0;
+}
+#text-btn{
+    border: none;
+    background-color: white;
+    font-size: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+#text-btn:hover{
+    color: blue;
 }
 a{
     text-decoration: none;
+}
+#first-right-bottom div:nth-child(2n){
+    background-color: lightcyan;
 }
 .bottom{
     display: flex;
@@ -79,4 +101,118 @@ a{
     border: none;
     border-radius: 10px;
     padding: 5px 20px;
+    cursor: pointer;
+}
+#btn:hover{
+    background-color: lightgreen;
+}
+
+
+#second-manga{
+    width: 500px;
+    margin: 0 auto;
+    background-color: white;
+    box-shadow: 0 0 25px lightblue;
+}
+#second-title{
+    text-align: center;
+    padding: 15px;
+    border: 2px solid blue;
+    color: blue;
+}
+#second-top-bar{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+#second-genres{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    background-color: ghostwhite;
+    padding: 10px;
+}
+#second-genres a{
+    border-radius: 10px;
+    border: 1px solid gray;
+    padding: 5px;
+    font-size: 12px;
+}
+.second-manga-body{
+    width: 500px;
+    height: 300px;
+    gap: 20px;
+    display: flex;
+}
+#second-manga-image{
+    margin: 5px;
+    box-shadow: 0 0 10px hotpink;
+}
+#second-right-side{
+    height: 300px;
+    overflow: auto;
+}
+#second-text{
+    margin-top: 0;
+    font-size: 16px;
+    line-height: 22px;
+}
+#second-right-bottom div:nth-child(2n){
+    background-color: lightcyan;
+}
+
+
+#third-manga{
+    width: 500px;
+    margin: 0 auto;
+    background-color: white;
+    box-shadow: 0 0 25px lightblue;
+}
+#third-title{
+    text-align: center;
+    padding: 15px;
+    border: 2px solid blue;
+    color: blue;
+}
+#third-top-bar{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+#third-genres{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    background-color: ghostwhite;
+    padding: 10px;
+}
+#third-genres a{
+    border-radius: 10px;
+    border: 1px solid gray;
+    padding: 5px;
+    font-size: 12px;
+}
+.third-manga-body{
+    width: 500px;
+    height: 300px;
+    gap: 20px;
+    display: flex;
+}
+#third-manga-image{
+    margin: 5px;
+    box-shadow: 0 0 10px black;
+}
+#third-right-side{
+    height: 300px;
+    overflow: auto;
+}
+#third-text{
+    margin-top: 0;
+    font-size: 16px;
+    line-height: 22px;
+}
+#third-right-bottom div:nth-child(2n){
+    background-color: lightcyan;
 }
