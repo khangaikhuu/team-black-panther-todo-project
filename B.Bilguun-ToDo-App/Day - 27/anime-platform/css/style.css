@@ -1,5 +1,57 @@
 h1 {
-
     text-align: center;
     background-color: antiquewhite;
+}
+*{
+    box-sizing: border-box;
+    margin: 0;
+    font-size: 13px;
+}
+body {
+	padding: 20px;
+	font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+		"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+	
+}
+#actions {
+    background-color: #f0f0f0;
+}
+
+#actions a {
+    text-decoration: none;
+    background-color: #fff;
+    color: #787878;
+    margin: 5px;
+    padding: 2px 5px;
+    border-radius: 5px;
+    border: #e1e7f5 1px solid;
+}
+
+#titles {
+    background-color: #f8f8f8;
+}
+.anime-content {
+	overflow: auto;
+	height: 400px;
+}
+#titles h6 {
+    color: gray;
+}
+
+#synopsis {
+    text-overflow: ellipsis;
+}
+
+#moreBtn {
+    border: none;
+    background-color: #fff;
+    margin-left: 50%;
+}
+
+#addToList a {
+    text-decoration: none;
+    color: #ffffff;
+}
+.gray {
+    background-color: #f0f0f0;
 }

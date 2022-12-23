@@ -1,0 +1,15 @@
+h1{
+    text-align: center;
+    background-color: tomato;
+}
+#img-text{
+    background-color: aqua;
+    
+}
+#manga-image{
+    background-color: wheat;
+    display: inline-block;
+}
+#img-div{
+    background-color: wheat;
+}

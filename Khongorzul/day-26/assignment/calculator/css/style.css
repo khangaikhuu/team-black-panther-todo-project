@@ -5,15 +5,16 @@ h1{
     color: white;
 }
 
-.calculator-body{
+.calculator{
     width: 400px;
     margin: 50px auto;
 }
-.output{
+.calculator-display{
     background-color: lightgoldenrodyellow;
     width: 425px;
     height: 150px;
     box-shadow: 0 0 5px lightblue;
+    margin-left: -12px;
 }
 button{
     height: 80px;
@@ -30,6 +31,6 @@ button:hover{
 .red:hover{
     background-color: lightcoral;
 }
-.op{
+.key-operator{
     background-color: lightgoldenrodyellow;
 }

@@ -1,0 +1,83 @@
+h1 {
+    text-align: center;
+    background-color: darkgrey;
+}
+
+#manga-container {
+    display: flex;
+    margin-top: -29px;
+
+}
+.manga-title {
+    color: #1c439b;
+    width: 334px;
+    height: 38px;
+    border: 1px solid black;
+    text-align: center;
+    padding-top: 20px;
+}
+.stat {
+    /* display: flex; */
+
+}
+.manga-stat {
+    /* position: absolute; */
+    color: gray;
+    width: 334px;
+    height: 16px;
+    border: 1px solid black;
+    text-align: center;
+    padding-top: 6px;
+    margin-top: -45px;
+}
+.text-container {
+
+}
+.manga-text {
+    overflow-y: auto;
+
+    color: black;
+    width: 157px;
+    height: 160px;
+    padding: 5px;
+    border: 1px solid black;
+    margin-top: -16px;
+    text-align: justify;
+}
+.studio {
+    border: 1px solid black;
+    height: 50px;
+    margin-top: -20px;
+}
+.studio > h6 {
+
+    font-size: 10px;
+    margin: 0px;
+
+}
+
+#genre-container {
+    color: black;
+    width: 324px;
+    height: 10  px;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #f0f0f0;
+    margin-top: -26px;
+    /* text-align: justify; */
+    display: flex;
+    justify-content: space-around;
+}
+#genre-container > a{
+    text-decoration: none;
+    /* color: #78787; */
+    color: gray;
+
+}
+
+.btn-more {
+    position: absolute;
+    margin-top: -45px;
+    margin-left: 65px;
+
+}
