@@ -39,9 +39,10 @@ function printMeToDom(value, element) {
 //     printMeToDom("successfull saved", fourth);
 // })
 
-function effect(first) {
+function effect( text , first, timer ) {
     let rightPromise = new Promise((resolve, reject) => {
         setTimeout(() => {
+            let text = "Take a pic ";
             if (first == undefined) {
                 reject("Something wrong")
             } else {
@@ -49,14 +50,10 @@ function effect(first) {
             }
         }, a)
     });
-    return rightPromise;
-    // rightPromise
-    //     .then(result => {
-    //         console.log(result);
-    //     }).catch(error => console.log(error))
+    return rightPromise
 }
-// effect(first);
-function change(second) {
+
+function change(text, second , timer) {
     let changePromise = new Promise((resolve, reject) => {
         setTimeout(() => {
             if (second == undefined) {
@@ -67,13 +64,10 @@ function change(second) {
         }, b)
     });
     return changePromise;
-    // changePromise
-    //     .then(result => {
-    //         console.log(result);
-    //     }).catch(error => console.log(error))
+ 
 }
-// change(second);
-function firstSave(third) {
+
+function firstSave(text, third , timer) {
     let savePromise = new Promise((resolve, reject) => {
         setTimeout(() => {
             if (third == undefined) {
@@ -84,14 +78,11 @@ function firstSave(third) {
         }, c)
     });
     return savePromise;
-    // savePromise
-    //     .then(result => {
-    //         console.log(result);
-    //     }).catch(error => console.log(error))
-}
-// firstSave(third);
 
-function loopSave(fourth) {
+}
+
+
+function loopSave(text, fourth, timer) {
     let lastPromise = new Promise((resolve, reject) => {
         setTimeout(() => {
             if (fourth == undefined) {
@@ -103,12 +94,21 @@ function loopSave(fourth) {
         }, d)
     });
     return lastPromise;
-    // lastPromise
-    //     .then((result) => {
-    //         console.log(result);
-    //     }).catch(error => console.log(error));
 }
-// loopSave(fourth);
+
+
+async function printDomNew(){
+    const printOne = await effect("Зураг авах", first, a)
+    const printTwo = await change("Амжилттай бол зургийг өөрчлөх", second, b)
+    const printThree = await firstSave("Амжилттай бол хадгалах", third, c)
+    const printFourth = await loopSave("Амжилттай бол амжилттай гэж хэвлэх", fourth, d)
+    console.log(printOne);
+    console.log(printTwo);
+    console.log(printThree);
+    console.log(printFourth);
+
+}
+printDomNew()
 
 // effect(first, a)
 // .then((result1) => change(second, b))
@@ -120,24 +120,55 @@ function loopSave(fourth) {
 
 //teacher's example
 
-function addElementsToDom(command, element, timer){
-    const promise = new Promise((resolve, reject) => {
-        setTimeout(() => {
-            if(element !== undefined){
-                printMeToDom(command, element)
-                resolve(command)
-            } else{
-                reject("Алдаа гарлаа")
-            }
-        }, timer)
-    })
+// function addElementsToDom(command, element, timer){
+//     const promise = new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             if(element !== undefined){
+//                 printMeToDom(command, element)
+//                 resolve(command)
+//             } else{
+//                 reject("Алдаа гарлаа")
+//             }
+//         }, timer)
+//     })
 
-    return promise;
-}
+//     return promise;
+// }
 
-addElementsToDom("Зураг авах", first, a)
-.then((result1) => addElementsToDom("Амжилттай бол зургийг өөрчлөх", second, b))
-.then((result2) => addElementsToDom("Амжилттай бол хадгалах", third, c) )
-.then((result3) => addElementsToDom("Амжилттай бол амжилттай гэж хэвлэх", fourth, d))
-.catch(error => addElementsToDom(error, p5, a))
+// addElementsToDom("Зураг авах", first, a)
+// .then((result1) => addElementsToDom("Амжилттай бол зургийг өөрчлөх", second, b))
+// .then((result2) => addElementsToDom("Амжилттай бол хадгалах", third, c) )
+// .then((result3) => addElementsToDom("Амжилттай бол амжилттай гэж хэвлэх", fourth, d))
+// .catch(error => addElementsToDom(error, p5, a))
 
+
+
+
+
+
+// async function addElementsToDom(command, element, timer){
+//     const promise = new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             if(element !== undefined){
+//                 printMeToDom(command, element)
+//                 resolve(command)
+//             } else{
+//                 reject("Алдаа гарлаа")
+//             }
+//         }, timer)
+//     })
+
+//     return promise;
+// }
+//  async function printDom(){
+//     const printOne =  await addElementsToDom("Take a picture", first, a)
+//     const printTwo = await addElementsToDom("Edit a picture", second, b)
+//     const printThree = await addElementsToDom("Save a picture", third, c)
+//     const printFourth = await addElementsToDom("successfull saved a picture", fourth, d)
+//     console.log(printOne);
+//     console.log(printTwo);
+//     console.log(printThree);
+//     console.log(printFourth);
+// }
+
+// printDom()

@@ -1,0 +1,17 @@
+*{
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.containerPhoto {
+    display: flex;
+    gap: 5px;
+}
+body div img {
+    border-radius: 10px;
+    width: 100px;
+    height: 300px
+}
+
+
+
