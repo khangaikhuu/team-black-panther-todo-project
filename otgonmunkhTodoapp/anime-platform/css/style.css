@@ -1,9 +1,59 @@
-h6 {
-    font-family: monospace;
+#title {
+    
     font-size: 15px;
     text-align: center;
-    color:rgb(76, 124, 124) ;
+    color:#1e57dc ;
+    text-decoration: none;
+    
 }
+body {
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande";
+    font-size: 13px;
+
+}
+
 #manga-container {
     width: 35vw;
+}
+#manga-status {
+    display: flex;
+    justify-content: space-between;
+}
+
+h5 {
+    display: inline;
+    font-size: 10px;
+    
+}
+
+#manga-nav {
+    margin: 5px 0;
+    box-sizing: border-box;
+    display: flex;
+    gap: 10px;
+    padding: 0;
+    justify-content: center; 
+    flex-wrap: nowrap;
+   
+}
+#manga-nav:first-child {
+    justify-self: flex-start;
+}
+.buttons {
+    display: flex;
+    gap: 20px;
+    justify-content:center;
+    
+}
+.buttons button{
+    border: none;
+    border-radius: 40px;
+    margin: 10px 1px;
+    
+
+}
+#bodyCon {
+    display: flex;
+    gap: 5px;
+    
 }
