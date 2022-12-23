@@ -38,7 +38,7 @@ employees
             const empLastName = document.createElement('td');
             const empPosition = document.createElement('td');
     
-            empNr.textContent = ;
+            empNr.textContent = 1;
             empFirstName.textContent = element.firstName;
             empLastName.textContent = element.lastName;
             empPosition.textContent = element.position;

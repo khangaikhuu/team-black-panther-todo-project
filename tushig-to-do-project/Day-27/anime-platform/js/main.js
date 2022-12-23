@@ -15,6 +15,7 @@ fetch(fullMetalAlchemistURL)
         [0].title
 
     // type list bars
+   
         const listBar = document.getElementById('list-1'); // TV
         listBar.textContent = `${data.data.type}, `
         const listBar1 = document.getElementById('list-2'); // 2009
@@ -39,6 +40,10 @@ fetch(fullMetalAlchemistURL)
             categoryList.appendChild(a);
         })
 
+    // scroll text 
+    
+
+        
     // footer stats list
         const footerStats= document.querySelector('#manga-container');
         footerStats.querySelector('#footer-stats').textContent = data.data.score;
