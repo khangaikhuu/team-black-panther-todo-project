@@ -18,15 +18,37 @@ fetch(fullMetalAlchemistURL)
       ", " +
       data.data.year +
       " |  " +
-      data.data.status +
+      data.data.status.slice(0, 8) +
       " | " +
       data.data.episodes +
+      " eps" +
       ", " +
-      data.data.duration;
-    // let button = document.createElement('a');
-    // button.id = ('btn');
-    // button.innerHTML= 'Action'
+      data.data.duration.slice(0, 6);
+    document.getElementById("btns").getElementsByTagName("a")[0].textContent =
+      "Action";
+    document.getElementById("btns").getElementsByTagName("a")[1].textContent =
+      "Adventure";
+    document.getElementById("btns").getElementsByTagName("a")[2].textContent =
+      "Drama";
+    document.getElementById("btns").getElementsByTagName("a")[3].textContent =
+      "Fantasy";
     document
-      .getElementById("manga-container")
-      .getElementsByTagName("p")[1].textContent = data.data.year;
+      .getElementById("txt-container")
+      .getElementsByTagName("span")[0].textContent = data.data.synopsis;
+    document
+      .getElementById("info")
+      .getElementsByTagName("span")[0].textContent =
+      "Studio: " + data.data.studios[0].name;
+
+    document
+      .getElementById("info")
+      .getElementsByTagName("span")[1].textContent =
+      "Source: " + data.data.source;
+
+    document
+      .getElementById("info")
+      .getElementsByTagName("span")[2].textContent = "Theme: " + data.data.themes[0].name;
+    document
+      .getElementById("info")
+      .getElementsByTagName("span")[3].textContent = "Demographic: " + data.data.demographics[0].name;
   });
