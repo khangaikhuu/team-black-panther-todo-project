@@ -66,12 +66,16 @@ fetch(fullMetalAlchemistURL)
     
   
     
+    const second = document.querySelectorAll("#add");
 
     const syno = document.createElement("p");
     syno.id = "myPara"
     
 
-    syno.innerHTML = mangaStructur.synopsis;
+    syno.innerHTML = mangaStructur.synopsis.slice(0, 369);
+    const length = mangaStructur.synopsis.length;
+    console.log(length);
+ 
     
 
     const synoCon = document.getElementById("bodyCon");
