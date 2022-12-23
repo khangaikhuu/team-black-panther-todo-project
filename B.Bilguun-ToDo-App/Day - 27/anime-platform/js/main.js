@@ -12,7 +12,7 @@ fetch(fullMetalAlchemistUrl)
         const cont = document.getElementById("titles");
         container.getElementsByTagName("h5")[0].textContent = data.data.titles[0].title;
 
-        cont.getElementsByTagName("h6")[0].textContent = `${data.data.type} , ${data.data.year} | ${data.data.status.slice(0,8)} | ${data.data.episodes} eps, ${data.data.duration.slice(0,6)} `
+        cont.getElementsByTagName("h6")[0].textContent = `${data.data.type} , ${data.data.year} | ${data.data.status.slice(0,8)} | ${data.data.episodes} eps, ${data.data.duration.slice(0,6)}`
 
         const actions = document.getElementById("actions");
 
