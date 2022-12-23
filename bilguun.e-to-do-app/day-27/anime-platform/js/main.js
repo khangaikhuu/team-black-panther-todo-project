@@ -35,6 +35,7 @@ fetch(fullMetalAlchemistURL)
         document.getElementById("bodyDivP")
         .getElementsByTagName("p")[0].textContent = synopsisMain
         console.log(data.data.synopsis)
+        
 
         //body tag
         document.getElementById("bodyDivProducer")
