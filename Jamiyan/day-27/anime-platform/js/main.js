@@ -23,10 +23,10 @@ fetch(fullMetalAlchemistURL)
             document.getElementById("img-text").textContent = data.data.synopsis.slice(0, 200)
             let color = 1;
             document.getElementById("down").addEventListener("click", () => {
-                if(color = 1){
+                if(color == 1){
                 document.getElementById("img-text").textContent = data.data.synopsis;
                 color = 2;
-                } else if(color = 2){
+                } else {
                     document.getElementById("img-text").textContent = data.data.synopsis.slice(0, 200);
                     color = 1;
                 }
