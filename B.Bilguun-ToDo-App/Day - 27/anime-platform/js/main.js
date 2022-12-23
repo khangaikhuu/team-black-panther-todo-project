@@ -16,12 +16,22 @@ fetch(fullMetalAlchemistUrl)
 
         const actions = document.getElementById("actions");
 
-        for (let i = 0; i < data.data.genres.length; i++) {
+        // for (let i = 0; i < data.data.genres.length; i++) {
+        //     let a = document.createElement("a");
+        //     a.innerHTML = data.data.genres[i].name;
+        //     a.href = data.data.genres[i].url
+        //     actions.append(a)
+        // }
+
+        data.data.genres.map(element => {
             let a = document.createElement("a");
-            a.innerHTML = data.data.genres[i].name;
-            a.href = data.data.genres[i].url
+            a.innerHTML = element.name;
+            a.href = element.url
             actions.append(a)
-        }
+        })
+       
+
+
 
         let a = document.createElement("a");
         const synop = document.getElementById("synopsis")
@@ -53,6 +63,7 @@ fetch(fullMetalAlchemistUrl)
 
 
         const addToList = document.getElementById("addToList")
-        addToList.innerText = 'Add to List'
+        addToList.innerHTML = `<a href="https://myanimelist.net/login.php?error=login_required&from=%2Fanime%2Fgenre%2F2%2FAdventure">Add to list</a>`;
         addToList.className = 'btn btn-primary'
+
     })
