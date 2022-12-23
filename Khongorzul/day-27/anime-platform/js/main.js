@@ -6,7 +6,7 @@ fetch(fullMetalAlchimistURL)
         title.textContent = data.data.titles[0].title;
 
         document.querySelector("#top-bar #type").textContent = data.data.type;
-        //document.getElementById("#year").textContent = data.data.aired.prop.from.year;
+        //document.getElementById("year").textContent = ;
 
         const mangaDomImage = document.getElementById("manga-image");
         mangaDomImage.src = data.data.images.jpg.image_url;
