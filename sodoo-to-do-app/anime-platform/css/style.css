@@ -6,8 +6,8 @@
 .container {
     margin: 0 auto;
     width: 300px;
-    height: 380px;
-    border: 1px solid gray;
+    height: 366px;
+    border: 1px solid rgb(213, 213, 213);
 }
 
 .card-header h6 {
@@ -25,7 +25,6 @@
 
 img {
     width: 10rem;
-
 }
 
 p {
@@ -41,9 +40,61 @@ p {
     font-size: 12px;
     height: 230px;
     overflow-y: scroll;
-    text-overflow: ellipsis;
+    text-overflow: auto;
+    text-align: justify;
+    padding: 5px;
 }
 
 .fa {
     color: gray;
+}
+
+.genres {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(222, 222, 222);
+}
+
+.genres a {
+    color: rgb(144, 144, 144);
+    font-size: 8px;
+    padding: 1px 6px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    margin: 5px 2px;
+    border: 1px solid rgb(198, 198, 198);
+    text-decoration: none;
+}
+
+.row div {
+    color: rgb(53, 53, 53);
+    font-weight: 500;
+    font-size: 11px;
+}
+
+.footer {
+    background-color: rgb(245, 245, 245);
+    align-items: center;
+    padding: 3px;
+}
+
+button {
+    font-size: 11px;
+    background-color: #4f74c8;
+    color: white;
+    padding: 4px 20px;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+#switcher {
+    background-color: white;
+    color: gray;
+    margin-left: 35px;
+}
+
+#studio,
+#theme {
+    background-color: gainsboro;
 }
