@@ -88,4 +88,11 @@
 //    .catch((err) => console.log(err));
 
 
- 
+//  async function processImages (){
+//     const getImageResult = await getImage(img)
+//     const reSizeImageResult  = await resizeImage (getImageResult)
+//     const saveImageResult = await saveImage(reSizeImageResult)
+//     console.log(saveImageResult)
+
+// }
+// processImages()

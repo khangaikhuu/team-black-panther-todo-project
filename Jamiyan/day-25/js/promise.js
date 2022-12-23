@@ -45,32 +45,39 @@ const newObjImage = {
     size: '1800x2090'
 }
 
-function reSizeImage(rightImage) {
+function reSizeImage(image) {
     let rightImagePromise = new Promise((resolve, reject) => {
-        if (rightImage.size != "1800x2090") {
+        if (image.size != "1800x2090") {
             reject("зөв хэмжээтэй файл биш байна.");
         } else {
-            let resizedImage = rightImage;
-            resolve(resizedImage);
+            resolve(image);
         }
     });
     return rightImagePromise;
 }
-function saveImage(resizedImage) {
+function saveImage(image) {
     let saveImagePromise = new Promise((resolve, reject) => {
-        if (resizedImage == undefined) {
+        if (image == undefined) {
             reject("Алдаа гарлаа.");
         } else {
-            let saveImage = resizedImage;
-            resolve(saveImage);
+            resolve(image);
         }
     });
     return saveImagePromise;
 }
 
-getImage(newObjImage)
-    .then((image) => reSizeImage(image))
-    .then((reSizedImage) => saveImage(reSizedImage))
-    .then((res) => console.log(res))
-    .catch((err) => console.log(err));
+// getImage(newObjImage)
+//     .then((image) => reSizeImage(image))
+//     .then((image) => saveImage(image))
+//     .then((res) => console.log(res))
+//     .catch((err) => console.log(err));
 
+async function printDom() {
+    const getImageResult = await getImage(newObjImage);
+    const reSizeImageresult = await reSizeImage(getImageResult);
+    const saveImageResult = await saveImage( reSizeImageresult);
+
+    console.log(saveImageResult)
+
+}
+printDom();
