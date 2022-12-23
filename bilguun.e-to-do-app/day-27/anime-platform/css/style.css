@@ -47,7 +47,7 @@ h6 {
     display: flex;
     justify-content: center;
     font-size: 11px;
-    background-color: rgb(231, 231, 231);
+    background-color: rgba(248, 248, 248, 255);
     height: 24px;
 }
 
@@ -61,7 +61,7 @@ h6 {
     justify-content: center;
     font-size: 9px;
     padding: 5px 0 5px 0;
-    background-color: rgb(212, 212, 212);
+    background-color: rgba(240, 240, 240, 255);
 }
 
 #bodyDiv {
@@ -100,17 +100,37 @@ h6 {
 #footer {
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
     height: 22px;
     width: 332px;
     margin: 0;
-    background-color: rgb(202, 202, 202);
+    background-color: rgba(248, 248, 248, 255);
 
 }
 
 .footerP {
     margin: 0;
+    font-size: 11px;
+    font-weight: 700;
 }
 
 .score:before {
     content: "\2606  "
+}
+
+.member::before {
+    content: "\262D  "
+}
+
+.footerPBtn {
+    background-color: #4f74c8;
+    color: #fff;
+    width: 96px;
+    border-radius: 3px;
+    display: block;
+    font-size: 11px;
+    height: 19px;
+    margin: 0;
+    opacity: 1;
+    padding: 2px 4px;
 }
