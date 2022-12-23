@@ -1,5 +1,4 @@
-let images = document.querySelectorAll(".picture-area-container");
-console.log(images);
+let images = document.querySelectorAll(".image");
 
 function removeActiveClass() {
   for (let i = 0; i < images.length; i++) {
@@ -13,4 +12,3 @@ for (let i = 0; i < images.length; i++) {
     images[i].classList.add('active');
   })
 }
-
