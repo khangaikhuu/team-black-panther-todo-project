@@ -9,9 +9,44 @@
     background-color: blanchedalmond;
 }
 body{
-    background-color: black
+    background-image: url(http://getwallpapers.com/wallpaper/full/8/7/8/902608-best-fullmetal-alchemist-wallpaper-1920x1080.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
+#right{
+    height: 300px;
+    overflow-y: auto;
+}
+
  
 #genre-container a{
     color: black;
 }
+#manga-container{
+    width: 700px;
+    height: 100%;
+    border: 2px solid blanchedalmond;
+    backdrop-filter: blur(10px);
+    
+}
+#footer-container{
+    border: 2px solid blanchedalmond;
+}
+
+#alert div{
+    display: flex;
+}
+.icon  {
+    object-fit: scale-down;
+    transition-duration: 500ms;
+
+    transition-timing-function: linear;
+}
+
+.icon:hover{
+    transform: rotate(360deg);
+
+}
+
+
