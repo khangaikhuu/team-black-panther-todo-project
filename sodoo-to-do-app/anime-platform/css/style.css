@@ -30,7 +30,7 @@ img {
 p {
     padding: 5px 1px;
     margin: 0;
-    background-color: rgb(245, 245, 245);
+    /* background-color: rgb(245, 245, 245); */
     text-align: center;
     font-size: 13px;
     color: gray;
@@ -43,6 +43,7 @@ p {
     text-overflow: auto;
     text-align: justify;
     padding: 5px;
+
 }
 
 .fa {
@@ -96,5 +97,18 @@ button {
 
 #studio,
 #theme {
-    background-color: gainsboro;
+    margin: 5px 0;
+    padding: 2px 0;
+    background-color: rgb(235, 235, 235);
+}
+
+a {
+    color: #4f74c8;
+    text-decoration: none;
+}
+
+.status-anime i {
+    font-size: 20px;
+    color: #4f74c8;
+    margin: 5px;
 }

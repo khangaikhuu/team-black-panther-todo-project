@@ -43,15 +43,15 @@ fetch(fullMetalAlchemistURL)
 
         let synopsis = document.getElementById('synopsis').innerHTML = data.data.synopsis.substring(0, 300);
 
-        const studio = document.getElementById('studio').innerHTML = '<b>Studio: </b>' + data.data.studios[0].name;
+        const studio = document.getElementById('studio').innerHTML = '<b>Studio: </b>' + `<a href="${data.data.studios[0].url}"> ${data.data.studios[0].name}</a>`;
         const source = document.getElementById('source').innerHTML = '<b>Source: </b>' + data.data.source;
-        const theme = document.getElementById('theme').innerHTML = '<b>Theme: </b>' + data.data.themes;
-        const demo = document.getElementById('demo').innerHTML = '<b>Demographic: </b>' + data.data.demographics[0].name;
+        const theme = document.getElementById('theme').innerHTML = '<b>Theme: </b>' + `<a href="${data.data.themes[0].url}"> ${data.data.themes[0].name}</a>`;
+        const demo = document.getElementById('demo').innerHTML = '<b>Demographic: </b>' + `<a href="${data.data.demographics[0].url}"> ${data.data.demographics[0].name}</a>`;
 
 
 
-        const score = document.getElementById('score').innerHTML = '<i class="bi bi-star"></i>' + data.data.score;
-        const members = document.getElementById('members').innerHTML = '<i class="bi bi-person-fill"></i>' + (data.data.members / 1000000).toFixed(1) + ' M';
+        const score = document.getElementById('score').innerHTML = '<i class="bi bi-star"></i> ' + data.data.score;
+        const members = document.getElementById('members').innerHTML = '<i class="bi bi-person-fill"></i> ' + (data.data.members / 1.0e+6).toFixed(1) + ' M';
 
 
         const type = document.querySelector('#manga-container p')
