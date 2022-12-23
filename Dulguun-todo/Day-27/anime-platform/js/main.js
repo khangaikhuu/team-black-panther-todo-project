@@ -27,8 +27,9 @@ fetch(fullMetalAlchemistURL)
         }
 
         //img
-        const mangaDomImage = document.getElementById('manga-img');
-        mangaDomImage.src = data.data.images.jpg.image_url;
+        // const mangaDomImage = document.getElementById('manga-img');
+        // mangaDomImage.src = data.data.images.jpg.image_url;
+        mangaContainer.getElementsByTagName('img')[0].src = data.data.images.jpg.image_url;
 
         //text
         mangaContainer.getElementsByTagName('p')[0].textContent = data.data.synopsis;
