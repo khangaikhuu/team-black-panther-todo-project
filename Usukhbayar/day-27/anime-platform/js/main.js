@@ -35,20 +35,25 @@ fetch(fullMetalAlchemistURL)
     document
       .getElementById("txt-container")
       .getElementsByTagName("span")[0].textContent = data.data.synopsis;
-    document
-      .getElementById("info")
-      .getElementsByTagName("span")[0].textContent =
-      "Studio: " + data.data.studios[0].name;
+    const text = document.querySelector("#txt-container span");
+    const secondText = document.querySelector("#second-txt");
+    text.textContent = data.data.synopsis.slice(0, 375);
+    const more = data.data.synopsis;
+    console.log("more", more);
+    const textLength = more.length;
+    console.log("lenght", textLength);
+    const parts = more.slice(375, textLength);
+    secondText.textContent = parts;
+    secondText.style.display = "none";
+    const moreButton = document.querySelector("#btn");
 
-    document
-      .getElementById("info")
-      .getElementsByTagName("span")[1].textContent =
-      "Source: " + data.data.source;
+    console.log(moreButton);
 
-    document
-      .getElementById("info")
-      .getElementsByTagName("span")[2].textContent = "Theme: " + data.data.themes[0].name;
-    document
-      .getElementById("info")
-      .getElementsByTagName("span")[3].textContent = "Demographic: " + data.data.demographics[0].name;
+    moreButton.addEventListener("click", () => {
+      if (secondText.style.display == "none") {
+        secondText.style.display = "block";
+      } else {
+        secondText.style.display = "none";
+      }
+    });
   });
