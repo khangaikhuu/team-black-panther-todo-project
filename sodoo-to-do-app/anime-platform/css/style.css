@@ -6,7 +6,7 @@
 .container {
     margin: 0 auto;
     width: 300px;
-    height: 366px;
+    /* height: 370px; */
     border: 1px solid rgb(213, 213, 213);
 }
 
@@ -24,7 +24,7 @@
 }
 
 img {
-    width: 10rem;
+    width: 9rem;
 }
 
 p {
@@ -39,8 +39,7 @@ p {
 .text-con {
     font-size: 12px;
     height: 230px;
-    overflow-y: scroll;
-    text-overflow: auto;
+    overflow: auto;
     text-align: justify;
     padding: 5px;
 
