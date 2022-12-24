@@ -75,6 +75,7 @@ fetch(fullMetalAlchemistURL)
     syno.innerHTML = mangaStructur.synopsis.slice(0, 369);
     const length = mangaStructur.synopsis.length;
     console.log(length);
+    console.log("edit");
  
     
 
