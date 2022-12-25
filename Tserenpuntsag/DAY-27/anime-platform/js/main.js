@@ -12,12 +12,44 @@ fetch(fmaURL)
 
         let headerOne = document.getElementById("headerOne");
 
-        headerOne.innerHTML = `${data.data.type}, ${data.data.aired.prop.from.year}  |  ${data.data.status.substring(0,8)}  |  ${data.data.episodes} eps, ${data.data.duration.substring(0, 6)}`
+        headerOne.innerHTML = `${data.data.type}, ${data.data.aired.prop.from.year}  |  ${data.data.status.substring(0, 8)}  |  ${data.data.episodes} eps, ${data.data.duration.substring(0, 6)}`
 
-        let butOne = document.getElementById("but1");
-        let butTwo = document.getElementById("but2");
-        let butThree = document.getElementById("but3");
-        let butFour = document.getElementById("but4");
 
-        butOne.innerHTML = data.data.type;
+        data.data.genres.map((element, i) => {
+
+            const secondDIV = document.getElementById("headerTwo");
+
+            const button = document.createElement("button");
+
+            button.innerHTML = element.name;
+
+            secondDIV.appendChild(button)
+        })
+
+        const defP = document.getElementById("defP");
+        defP.innerHTML = data.data.synopsis.slice(0, 401);
+
+        const secondP = document.getElementById("secondP")
+        secondP.innerHTML = data.data.synopsis.slice(401, 2000)
+
+        const arrowButton = document.getElementById("arrowButton");
+        arrowButton.addEventListener("click", () =>{
+            if (secondP.style.display == "none"){
+                secondP.style.display = "block"
+            } else {
+                secondP.style.display = "none"
+            }
+        })
+
+        //information section
+        const bottomDIV = document.getElementById("bottomDIV")
+
+        let score = document.getElementById("score")
+        let member = document.getElementById("member")
+        let button = document.getElementById("button")
+
+        score.innerHTML = ` ${data.data.score}`;
+        member.innerHTML = `${data.data.popularity}.0M`;
+        list.innerHTML = "Add to List";
+
     })

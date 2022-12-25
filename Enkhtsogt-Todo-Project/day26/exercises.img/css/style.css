@@ -1,0 +1,28 @@
+.row{
+    display: flex;
+    justify-content: space-between;
+    max-width: 1440px;
+    margin: auto;
+}
+
+.col {
+    background: url(../img/greg-rakozy-oMpAz-DN-9I-unsplash.jpg);
+    width: 200px;
+    height: 800px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 20px;
+    margin: auto;
+}
+.col:nth-child(2){
+    background: url(../img/jeremy-thomas-4dpAqfTbvKA-unsplash.jpg);
+}
+.col:nth-child(3){
+    background: url(../img/johny-goerend-Oz2ZQ2j8We8-unsplash.jpg);
+}
+.col:nth-child(4){
+    background: url(../img/nick-owuor-astro-nic-visuals-wDifg5xc9Z4-unsplash.jpg);
+}
+.col:nth-child(5){
+    background: url(../img/tengyart-PmnCG7_2Sc4-unsplash.jpg);
+}

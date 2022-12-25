@@ -9,6 +9,14 @@ img{
     height: 600px;
     object-fit: cover;
     border-radius: 15px;
+<<<<<<< HEAD
+    transition: 0.1s ease-in;
+    float:left;
+}
+#first{
+    width: 500px;
+}
+=======
 	transition: all 500ms ease-in;
     float:left;
 }
@@ -18,3 +26,4 @@ img{
 .active {
 	width: 500px;
 }
+>>>>>>> b401d49f648bb6da9612a813fc57dabbd41c876c
