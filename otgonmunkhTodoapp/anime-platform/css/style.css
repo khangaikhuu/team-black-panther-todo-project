@@ -49,6 +49,7 @@ h5 {
 }
 #myBtn {
     border: none;
+    background-color: white;
 }
 .buttons {
     display: flex;
