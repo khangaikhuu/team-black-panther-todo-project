@@ -1,8 +1,18 @@
 
+body{
+   
+    
+}
 #manga-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+#manga{
     width: 334px;
     border: 1px solid lightgrey;
     font-family: Avenir,lucida grande,tahoma,verdana,arial,sans-serif;
+    margin: 10px;
+    
 }
 h6{
     color: #1c439b;
@@ -77,6 +87,7 @@ h6{
     color: white;
     margin: 0 31px;
     border: none;
+    border-radius: 5px;
 
 }
 i{

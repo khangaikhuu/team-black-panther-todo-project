@@ -16,8 +16,8 @@ employeesResult.then(result => {
     console.log(result);
 })
 
-employeesResult.then((result) => result.json())
-    .then((json) => {
+employeesResult.then(result => result.json())
+    .then(json => {
         const employees = document.getElementById("emps");
 
         console.log(employees);
