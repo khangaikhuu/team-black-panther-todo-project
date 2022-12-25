@@ -3,6 +3,13 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+#conAll {
+    display: grid;
+    grid-template-columns: repeat(3, 310px);
+    gap: 30px;
+    justify-content: center;
+}
+
 .container {
     margin: 0 auto;
     width: 300px;
