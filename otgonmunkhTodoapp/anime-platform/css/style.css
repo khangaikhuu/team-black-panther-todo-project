@@ -1,15 +1,20 @@
 #title {
     
     font-size: 15px;
+    margin: 0 auto;
     text-align: center;
     color:#1e57dc ;
     text-decoration: none;
+    display: block;
     
 }
 body {
     font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande";
     font-size: 13px;
 
+}
+.fa-solid {
+    flex: 1;
 }
 
 #manga-container {
@@ -27,7 +32,7 @@ h5 {
 }
 
 #manga-nav {
-    margin: 5px 0;
+    margin-top: 5px;
     box-sizing: border-box;
     display: flex;
     gap: 10px;
@@ -36,20 +41,32 @@ h5 {
     flex-wrap: nowrap;
    
 }
-#manga-nav:first-child {
-    justify-self: flex-start;
+.content {
+
+        overflow: auto;
+        height: 400px;
+  
+}
+#myBtn {
+    border: none;
 }
 .buttons {
     display: flex;
-    gap: 20px;
+    gap: 10px;
     justify-content:center;
+    background-color: rgb(206, 206, 206);
     
+    
+}
+.buttons *:hover {
+    background-color: #94b3fb;
 }
 .buttons button{
     border: none;
     border-radius: 40px;
     margin: 10px 1px;
     font-size: 10px;
+    background-color: white;
     
 
 }
