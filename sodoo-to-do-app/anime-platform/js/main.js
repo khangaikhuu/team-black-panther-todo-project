@@ -23,7 +23,6 @@ fetch(fullMetalAlchemistURL)
         function switchFunc() {
 
             document.getElementById('synopsis').innerHTML = data.data.synopsis.substring(0, 300)
-            // let off = document.getElementById('synopsis').innerHTML = data.data.synopsis;
             console.log('--------------------test');
 
 
