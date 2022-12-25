@@ -49,16 +49,26 @@ fetch(fullMetalAlchemistURL)
         const part = more.slice(369, textLength);
 
         const second = document.querySelector(".added");
+
         second.innerHTML = part;
         second.style.display = "none";
 
+        const doubleClick = document.querySelector("#button");
         const btn = document.querySelector("#myBtn");
         btn.addEventListener("click", () =>{
             if(second.style.display == "none"){
                 second.style.display = "block"
-            } else {
+            }
+            else if(second.style.display == "block"){
+                second.style.display = "hide"
+            }
+            else {
                 second.style.display = "none"
             }
+        })
+
+        doubleClick.addEventListener("click", () => {
+
         })
 
 
