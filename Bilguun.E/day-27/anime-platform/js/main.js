@@ -80,18 +80,18 @@ fetch(fullMetalAlchemistURL)
 
     })
 
-const bleachThousandYearWar = "https://api.jikan.moe/v4/anime/41467"
-fetch(bleachThousandYearWar)
-    .then(result => result.json())
-    .then(data => { })
+// const bleachThousandYearWar = "https://api.jikan.moe/v4/anime/41467"
+// fetch(bleachThousandYearWar)
+//     .then(result => result.json())
+//     .then(data => { })
 
 
 fetch("https://api.jikan.moe/v4/top/anime")
     .then((res) => res.json())
     .then(data => {
         console.log(data);
-        const container = document.getElementById("secondDiv");
 
+        const container = document.getElementById("mainDiv");
         data.data.map(element => {
             container.innerHTML += getAnimes(element)
         })
@@ -101,56 +101,53 @@ fetch("https://api.jikan.moe/v4/top/anime")
 
 const card = document.querySelector('#card');
 function getAnimes(data) {
+    let membersNum = data.members
+    let members2Num = String(membersNum).substring(0, 1)
+    let membersNum2nd = data.members
+    let members2Num2nd = String(membersNum).substring(1, 2)
     return `
-      <div class="divContainer" id="card">
-      <a href="#" id="title">${data.title}</a>
-      <div class="anime-status">
-        <i class="fa-solid fa-circle-play" style="font-size: 16px"></i>
+      <div class="divContainer" id="mainDiv">
+      <div class="header">
+      <h6><a href="#" id="title">${data.title}</a></h6>
+      </div>
+      <div class="prodsrc">
+      <i class="playIcon"></i>
         <div>
-          <span id="type">${data.type}</span>
-          <span id="year">${data.year}</span>
-          <span id="status">${data.status}</span>
-          <span id="eps">${data.episodes}</span>
+          <span id="type">${data.type}, </span>
+          <span id="year">${data.year} |</span>
+          <span id="status">${data.status} |</span>
+          <span id="eps">${data.episodes} episodes,</span>
+          <span >${data.duration}</span>
         </div>
-        <i class="fa-solid fa-signal" style="font-size: 16px"></i>
+        <i class="watchIcon"></i>
       </div>
-      <div class="anime-genre">
-        <p>Action</p>
-        <p>Adventure</p>
-        <p>Drama</p>
-        <p>Fantasy</p>
+      <div class="genre">
+      <button>${data.genres[0].name}</button>
       </div>
-      <div class="anime-body">
+      <div class="bodyDiv">
         <img
           src=${data.images.jpg.image_url}
           alt="full-alchemist"
+          id="manga-image"
         />
-        <div class="anime-content">
-          <div id="text">
-            <p>${data.synopsis.slice(0, 300)}</p>
-            <p id="second-p"></p>
-            <button id="moreBtn">
-              <i class="fa-solid fa-angle-down"></i>
+        <div class="bodyDivRight">
+          <div id="text" class="bodyDivP">
+            <p class="bodyParagraph">${data.synopsis.slice(0, 300)}</p>
+            <p id="secondBodyP"></p>
+            <button id="moreBtn" class="moreBtn">
+              <i class="moreIcon"></i>
             </button>
           </div>
-          <div id="info">
-            <p><strong>Studio:</strong> <a href="#">Bones</a></p>
-            <p><strong>Source:</strong> Manga</p>
-            <p><strong>Theme:</strong> <a href="#">Military</a></p>
-            <p><strong>Demographic:</strong> <a href="#">Shounen</a></p>
+          <div id="info" class=bodyDivProducer>
+            <p><strong>Studio:</strong> <a href="#">${data.studios[0].name}</a></p>
+            <p><strong>Source:</strong> ${data.source}</p>
           </div>
         </div>
       </div>
-      <div class="anime-footer">
-        <div id="review">
-          <i class="fa-regular fa-star"></i>
-          <span id="number">9.11</span>
-        </div>
-        <div id="views">
-          <i class="fa-solid fa-eye"></i>
-          <span id="view-number">3.0M</span>
-        </div>
-        <button id="add-list">Add To List</button>
+      <div class="footer">
+        <p class="footerP score">${data.score}</p>
+        <p class="footerP member">${members2Num}.${members2Num2nd}M</p>
+        <button class="footerPBtn">Add To List</button>
       </div>
     </div>`
 }
