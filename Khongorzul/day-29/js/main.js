@@ -1,9 +1,18 @@
 async function showMoreFunc(event){
-    const elementSynop = document.getElementById(`anime-mini-text_${index}`);
-    const resultJSON = await fetch((topAnime) => {
-        const anime = topAnime.data;
-        
+    const elementSynop = document.getElementById(`anime-mini-text_${event.id}`);
+
+    const resultJSON = await fetch("https://api.jikan.moe/v4/top/anime");
+    const result = await resultJSON.json();
+
+    const animeData = result.data;
+
+    const filteredData = animeData.filter((el, index) => {
+        if(index == event.id){
+            return el;
+        }
     })
+
+    elementSynop.innerHTML = filteredData[0].synopsis;
 }
 
 function getAnimes(data, index){
@@ -12,9 +21,10 @@ function getAnimes(data, index){
         return result;
     })
 
+
     return `
     <div class="anime" id="card">
-        <h2><a id="anime-title" href="${data.url}">${data.title}</a></h2>
+        <h3><a id="anime-title" href="${data.url}">${data.title}</a></h3>
         <div class="anime-status">
             <i class="fa-brands fa-youtube"></i>
             <div>
@@ -31,13 +41,10 @@ function getAnimes(data, index){
         <div id="anime-body">
             <img id="anime-image" src="${data.images.jpg.image_url}"/>
             <div id="right-side">
-                <div id="anime-mini-text_${index}">
+                <div style="line-height: 25px" id="anime-mini-text_${index}">
                     ${data.synopsis.slice(0, 300)}
                 </div>
-                <div id="anime-full-text_${index}" style="display: none">
-                    ${data.synopsis}
-                </div>
-                <button id="showMore_${index}" onclick="showMoreFunc(this)"><i class="fa-solid fa-sort-down"></i></button>
+                <button class="more-button" id="showMore_${index}" onclick="showMoreFunc(this)"><i class="fa-solid fa-sort-down"></i></button>
                 <div id="right-bottom">
                     <p>Studios: <a href="${data.studios[0].url}" id="studio">${data.studios[0].name}</a></p>
                     <p>Source: <a>${data.source}</a></p>

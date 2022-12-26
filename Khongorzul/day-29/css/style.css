@@ -15,12 +15,10 @@ h1{
 }
 .anime{
     width: 500px;
-    height: 550px;
     box-shadow: 0 0 10px lightblue;
     padding: 10px;
-
 }
-h2{
+h3{
     text-align: center;
     margin: 0;
     margin-top: 10px;
@@ -29,6 +27,12 @@ h2{
     text-decoration: none;
     font-size: 20px;
     color: crimson;
+}
+.anime-status{
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin: 20px 0;
 }
 .anime-status div{
     text-align: center;
@@ -55,18 +59,19 @@ h2{
     background-color: rgba(220, 20, 60, 0.2);
     padding: 10px;
 }
-#anime-mini-text{
-    line-height: 24px;
+#anime-image{
+    height: 300px;
 }
 #anime-full-text{
     height: 300px;
     overflow: auto;
 }
-#showMore{
+.more-button{
     background-color: rgba(220, 20, 60, 0);
     border: none;
     margin-left: 100px;
     font-size: 20px;
+    cursor: pointer;
 }
 #bottom{
     display: flex;
@@ -80,4 +85,5 @@ h2{
     border-radius: 10px;
     padding: 3px 20px;
     border: none;
+    cursor: pointer;
 }
