@@ -6,6 +6,11 @@ function getAnimes(animes) {
     <div class="card">
          <a href="#" id="title" style="display:block">${animes.title}</a>
          <img src=${animes.images.jpg.image_url}>
+         <div class="intro">
+             <i class="fa-sharp fa-solid fa-circle-play"></i>
+             <span id="type">${animes.type}, ${animes.year} |</span>
+
+         </div>
     </div>
     `
 }
