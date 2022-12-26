@@ -123,24 +123,24 @@ h6 {
     padding: 1px 4px;
 }
 
-#bodyDiv {
+.bodyDiv {
     display: flex;
     font-size: 11px;
 }
 
-#bodyDivRight {
+.bodyDivRight {
     height: 230px;
     overflow: auto;
 
 }
 
-#bodyDivP {
+.bodyDivP {
     overflow: auto;
     height: 190px;
     padding: 3px 4px 0 8px;
 }
 
-#readMoreBtn {
+.readMoreBtn {
     display: block;
     margin: 0 auto;
     background: none;
@@ -158,18 +158,18 @@ h6 {
     content: "\2193";
 }
 
-#bodyDivProducer {
+.bodyDivProducer {
     margin-top: 5px;
     padding-left: 8px;
 }
 
-#bodyDivProducer p {
+.bodyDivProducer p {
     padding-bottom: 5px;
     line-height: 1.5em;
 }
 
-#bodyDivProducer p:nth-child(1),
-#bodyDivProducer p:nth-child(3) {
+.bodyDivProducer p:nth-child(1),
+.bodyDivProducer p:nth-child(3) {
     background-color: rgba(240, 240, 240, 255);
 }
 
@@ -177,7 +177,7 @@ h6 {
     margin: 0;
 }
 
-#footer {
+.footer {
     display: flex;
     justify-content: space-evenly;
     align-items: center;

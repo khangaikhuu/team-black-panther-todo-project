@@ -90,11 +90,10 @@ fetch("https://api.jikan.moe/v4/top/anime")
     .then((res) => res.json())
     .then(data => {
         console.log(data);
-        const container = document.getElementById("manga-container");
+        const container = document.getElementById("secondDiv");
 
         data.data.map(element => {
             container.innerHTML += getAnimes(element)
-
         })
 
 
@@ -103,7 +102,7 @@ fetch("https://api.jikan.moe/v4/top/anime")
 const card = document.querySelector('#card');
 function getAnimes(data) {
     return `
-      <div class="anime-card" id="card">
+      <div class="divContainer" id="card">
       <a href="#" id="title">${data.title}</a>
       <div class="anime-status">
         <i class="fa-solid fa-circle-play" style="font-size: 16px"></i>
