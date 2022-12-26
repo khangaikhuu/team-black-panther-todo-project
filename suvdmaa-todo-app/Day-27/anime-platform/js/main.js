@@ -24,10 +24,10 @@ fetch(fullMetalAlchemistURL)
 
         const moreButton = document.querySelector('#moreBtn')
 
-        moreButton.addEventListener('click', () =>{
-            if(secondText.style.display == "none"){
+        moreButton.addEventListener('click', () => {
+            if (secondText.style.display == "none") {
                 secondText.style.display = "block"
-            } else{
+            } else {
                 secondText.style.display = "none"
             }
         })
@@ -42,39 +42,41 @@ fetch(fullMetalAlchemistURL)
         document.querySelector('#text-genre3').textContent = data.data.genres[2].name;
         document.querySelector('#text-genre4').textContent = data.data.genres[3].name;
 
-
-
-        document.querySelector('#endtext1').textContent = "\u2606 " + data.data.score;
-
         document.querySelector('#endtext3').textContent = "Add to List"
     })
+
+
+
+
+
+
 
 const fairytail = "https://api.jikan.moe/v4/anime/22043";
 
 fetch(fairytail)
     .then(result => result.json())
     .then(data => {
-       const randomAnime = data.data;
+        const randomAnime = data.data;
 
-       document.querySelector('#second-title').innerHTML = randomAnime.titles[0].title
-       document.querySelector('#second-title-text').innerHTML = randomAnime.titles[3].title
+        document.querySelector('#second-title').innerHTML = randomAnime.titles[0].title
+        document.querySelector('#second-title-text').innerHTML = randomAnime.titles[3].title
 
-       const status = document.querySelectorAll('.anime-status');
-       
-       document.querySelector('#image-id').src = randomAnime.images.jpg.image_url;
+        const status = document.querySelectorAll('.anime-status');
 
-       status[0].innerHTML = `<i class="fa-solid fa-circle-play" style="font-size: 16px"></i>
+        document.querySelector('#image-id').src = randomAnime.images.jpg.image_url;
+
+        status[0].innerHTML = `<i class="fa-solid fa-circle-play" style="font-size: 16px"></i>
        <div>
         <span id="type">${randomAnime.type}</span>
         <span id="year">${randomAnime.year}</span>
         <span id="status">${randomAnime.status.slice(0, 8)}</span>
         <span id="eps">${randomAnime.episodes} eps, ${randomAnime.duration.slice(0, 7)} </span>
       </div>
-      <i class="fa-solid fa-signal" style="font-size: 16px"></i>`
+      <i class="fa-solid fa-signal" style="font-size: 16px"></i>`;
 
 
 
-      document.getElementById('text').innerHTML = data.data.synopsis.slice(0, 375);
+        document.getElementById('text').innerHTML = data.data.synopsis.slice(0, 375);
 
         const more = data.data.synopsis;
         const textLength = more.length;
@@ -84,10 +86,10 @@ fetch(fairytail)
 
         const moreButton = document.querySelector('#moreBtn')
 
-        moreButton.addEventListener('click', () =>{
-            if(secondText.style.display == "none"){
+        moreButton.addEventListener('click', () => {
+            if (secondText.style.display == "none") {
                 secondText.style.display = "block"
-            } else{
+            } else {
                 secondText.style.display = "none"
             }
         })

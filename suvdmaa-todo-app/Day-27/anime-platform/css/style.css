@@ -20,116 +20,77 @@ h1 {
 }
 
 .manga-container {
-    width: 500px;
+    width: 460px;
     border: 1px solid white;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-    text-align: center;
+    /* text-align: center; */
     border-radius: 10px;
     background-color: white;
 }
 
-.main-text {
-    overflow: hidden;
-    background-color: #94a4ef;
-    height: 400px;
-}
-
-.main-text1 {
-    height: 300px;
+.scroll {
     overflow: auto;
-    flex-direction: column;
-}
-
-.text{
-    flex-direction: column;
+    height: 400px;
 }
 
 .title-text {
     font-size: 30px;
     text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, .1), 0 0 5px rgba(0, 0, 0, .1), 0 1px 3px rgba(0, 0, 0, .3), 0 3px 5px rgba(0, 0, 0, .2), 0 5px 10px rgba(0, 0, 0, .25), 0 10px 10px rgba(0, 0, 0, .2), 0 20px 20px rgba(0, 0, 0, .15);
-    color: #3535ff
+    color: #3535ff;
+    display: flex;
+    justify-content: center;
 }
 
 .text-type1 {
     background-color: #6868ff;
     color: white;
-    text-shadow: 1px 1px 2px blue, 0 0 1em red, 0 0 0.2em blue;
+    justify-content: space-between;
+    padding: 0 10px;
 }
-
-.text1 {
-    padding: 0px 10px 0px 25%;
-}
-
-.text2 {
-    padding: 0px 10px;
-}
-
-.text3 {
-    padding: 0px 10px;
-}
-
-.textp{
-    padding: -0px 0;
-}
-
 
 .text-type2 {
     padding: 10px;
     color: white;
     text-shadow: 0 2px black;
-}
-
-.text-genre1 {
-    background-color: #c1caf6;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-    padding: 5px;
-    margin-right: 10px;
-    border-radius: 5px
-}
-
-.text-genre2 {
-    background-color: #c1caf6;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-    padding: 5px;
-    margin-right: 10px;
-    border-radius: 5px
-}
-
-.text-genre3 {
-    background-color: #c1caf6;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-    padding: 5px;
-    margin-right: 10px;
-    border-radius: 5px
-}
-
-.text-genre4 {
-    background-color: #c1caf6;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-    padding: 5px;
-    margin-right: 10px;
-    border-radius: 5px
-}
-
-.end-text{
+    display: flex;
     justify-content: center;
 }
 
-.end-text1{
-    padding: 0 20px;
+.text-genre{
+    background-color: #c1caf6;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    padding: 5px;
+    margin-right: 10px;
+    border-radius: 5px;
 }
 
-.end-text2{
-    padding: 2px 20px;
+.text-container p:nth-child(odd) {
+	background-color: #f0f0f0;
 }
 
-.end-text3{
-    margin: 2px 20px;
-    background:#3a50d9;
-    color: white;
-    border-radius: 10px;
+.end-text{
+    justify-content: space-evenly;
+    background-color: #f8f8f8;
 }
 
+.end-text3 {
+	background-color: #4f74c8;
+	border: none;
+	padding: 7px 25px;
+	color: #fff;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: all 0.3s ease-in;
+    margin: 10px;
+}
+
+.end-text3:hover {
+	opacity: 0.5;
+}
+
+#moreBtn{
+   margin: 0 40%;
+}
 /*--------------------------------------------_*/
 
 .anime-card{
@@ -230,4 +191,15 @@ h1 {
 
 #add-list:hover {
 	opacity: 0.5;
+}
+
+
+
+
+
+#anime-container {
+	display: grid;
+	grid-template-columns: repeat(3, 500px);
+	gap: 20px;
+	justify-content: center;
 }
