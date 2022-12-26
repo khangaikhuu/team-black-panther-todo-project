@@ -13,15 +13,10 @@ fetch(fullMetalAlchemistURL)
 
 
         // prodsrc
-        const status = data.data.status.substring(0,8)
-        const min = data.data.duration.substring(0,3)
-        console.log(min)
+        const status = data.data.status.substring(0, 8)
+        const min = data.data.duration.substring(0, 3)
         document.getElementById("prodsrc")
             .getElementsByTagName("p")[0].textContent = `${data.data.type}, ${data.data.year} |  ${status} |  ${data.data.episodes} eps, ${min}min `
-        // document.getElementById("prodsrc")
-        // .getElementsByTagName("p")[1].textContent = `  ${data.data.status} |`
-        // document.getElementById("prodsrc")
-        // .getElementsByTagName("p")[2].textContent = `  ${data.data.episodes} , ${data.data.duration}`
 
         // genre 
         document.getElementById("genre")
@@ -38,9 +33,10 @@ fetch(fullMetalAlchemistURL)
         document.getElementById("bodyDivP")
             .getElementsByTagName("p")[0].textContent = synopsisMain
 
+        const firstBodyP = document.querySelector("#firstBodyP")
         const secondBodyP = document.querySelector("#secondBodyP")
+        const moreIcon = document.querySelector(".moreIcon")
         const more = data.data.synopsis
-        console.log(more)
         const textLength = more.length
         const parts = more.substring(290, textLength);
         const readMoreBtn = document.querySelector("#readMoreBtn")
@@ -50,8 +46,10 @@ fetch(fullMetalAlchemistURL)
         readMoreBtn.addEventListener("click", () => {
             if (secondBodyP.style.display == "none") {
                 secondBodyP.style.display = "block"
+                // firstBodyP.style.display = "none"
             } else {
                 secondBodyP.style.display = "none"
+                // firstBodyP.style.display = "block"
             }
         })
 
@@ -81,3 +79,79 @@ fetch(fullMetalAlchemistURL)
 
 
     })
+
+const bleachThousandYearWar = "https://api.jikan.moe/v4/anime/41467"
+fetch(bleachThousandYearWar)
+    .then(result => result.json())
+    .then(data => { })
+
+
+fetch("https://api.jikan.moe/v4/top/anime")
+    .then((res) => res.json())
+    .then(data => {
+        console.log(data);
+        const container = document.getElementById("manga-container");
+
+        data.data.map(element => {
+            container.innerHTML += getAnimes(element)
+
+        })
+
+
+    })
+
+const card = document.querySelector('#card');
+function getAnimes(data) {
+    return `
+      <div class="anime-card" id="card">
+      <a href="#" id="title">${data.title}</a>
+      <div class="anime-status">
+        <i class="fa-solid fa-circle-play" style="font-size: 16px"></i>
+        <div>
+          <span id="type">${data.type}</span>
+          <span id="year">${data.year}</span>
+          <span id="status">${data.status}</span>
+          <span id="eps">${data.episodes}</span>
+        </div>
+        <i class="fa-solid fa-signal" style="font-size: 16px"></i>
+      </div>
+      <div class="anime-genre">
+        <p>Action</p>
+        <p>Adventure</p>
+        <p>Drama</p>
+        <p>Fantasy</p>
+      </div>
+      <div class="anime-body">
+        <img
+          src=${data.images.jpg.image_url}
+          alt="full-alchemist"
+        />
+        <div class="anime-content">
+          <div id="text">
+            <p>${data.synopsis.slice(0, 300)}</p>
+            <p id="second-p"></p>
+            <button id="moreBtn">
+              <i class="fa-solid fa-angle-down"></i>
+            </button>
+          </div>
+          <div id="info">
+            <p><strong>Studio:</strong> <a href="#">Bones</a></p>
+            <p><strong>Source:</strong> Manga</p>
+            <p><strong>Theme:</strong> <a href="#">Military</a></p>
+            <p><strong>Demographic:</strong> <a href="#">Shounen</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="anime-footer">
+        <div id="review">
+          <i class="fa-regular fa-star"></i>
+          <span id="number">9.11</span>
+        </div>
+        <div id="views">
+          <i class="fa-solid fa-eye"></i>
+          <span id="view-number">3.0M</span>
+        </div>
+        <button id="add-list">Add To List</button>
+      </div>
+    </div>`
+}

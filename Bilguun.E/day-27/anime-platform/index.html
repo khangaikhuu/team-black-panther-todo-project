@@ -10,48 +10,71 @@
 </head>
 
 <body>
-    <h1>Anime</h1>
+    <div class="container">
+        <h1>Top 25 Animes</h1>
 
-    <div id="mainDiv">
-        <div class="header">
-            <h6></h6>
-        </div>  
-        <div id="prodsrc">
-            <p class="prodP"></p>
-            <p class="prodP"></p>
-            <p class="prodP"></p>
-        </div>
-        <div id="genre">
-            <button></button>
-            <button></button>
-            <button></button>
-            <button></button>
-        </div>
-        <div id="bodyDiv">
-            <div>
-                <img id="manga-image">
-            </div>
-            <div id="bodyDivRight">
-                <div id="bodyDivP">
-                    <p class="bodyParagraph"></p>
-                    <button id="readMoreBtn"><i class="moreIcon"></i></button>
-                    <p id="secondBodyP"></p>
+
+        <div class="row">
+
+            <div id="mainDiv" class="divContainer">
+                <div class="header">
+                    <h6></h6>
                 </div>
-                <div id="bodyDivProducer">
-                    <p></p>
-                    <p></p>
-                    <p></p>
-                    <p></p>
+                <div id="prodsrc" class="prodsrc">
+                    <i class="playIcon"></i>
+                    <p class="prodP"></p>
+                    <p class="prodP"></p>
+                    <p class="prodP"></p>
+                    <i class="watchIcon"></i>
+                </div>
+                <div id="genre">
+                    <button></button>
+                    <button></button>
+                    <button></button>
+                    <button></button>
+                </div>
+                <div id="bodyDiv">
+                    <div>
+                        <img id="manga-image">
+                    </div>
+                    <div id="bodyDivRight">
+                        <div id="bodyDivP">
+                            <p id="firstBodyP" class="bodyParagraph"></p>
+                            <p id="secondBodyP" class="bodyParagraph"></p>
+                            <div class="moreBtn">
+                                <button id="readMoreBtn"><i class="moreIcon"></i></button>
+                            </div>
+                        </div>
+                        <div id="bodyDivProducer">
+                            <p></p>
+                            <p></p>
+                            <p></p>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+                <div id="footer">
+                    <p class="footerP score"></p>
+                    <p class="footerP member"></p>
+                    <button class="footerPBtn">Add to list</button>
                 </div>
             </div>
-        </div>
-        <div id="footer">
-            <p class="footerP score"></p>
-            <p class="footerP member"></p>
-            <button class="footerPBtn">Add to list</button>
+            <div id="secondDiv" class="divContainer">
+                <div class="header">
+                    <h6></h6>
+                </div>
+                <div id="prodsrc2" class="prodsrc">
+                    <i class="playIcon"></i>
+                    <p class="prodP"></p>
+                    <p class="prodP"></p>
+                    <p class="prodP"></p>
+                    <i class="watchIcon"></i>
+                </div>
+            </div>
+            <div id="thirdDiv" class="divContainer">
+            </div>
         </div>
     </div>
-
     <script src="./js/main.js"></script>
 </body>
 

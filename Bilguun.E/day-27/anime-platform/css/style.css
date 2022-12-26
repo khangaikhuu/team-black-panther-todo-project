@@ -1,22 +1,45 @@
 * {
     box-sizing: border-box;
+    margin: 0;
 }
 
 body {
-    background-color: rgb(141, 230, 220);
+    background-color: rgb(255, 255, 255);
     font-family: Avenir, lucida grande, tahoma, verdana, arial, sans-serif;
 }
 
 h1 {
+    margin-top: 80px;
     text-align: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-#mainDiv {
+.row {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.container {
+    max-width: 1060px;
+    width: 100%;
+    margin: auto;
+}
+
+/* #mainDiv {
+    margin-top: 30px;
     width: 334px;
     height: 372px;
     background-color: white;
     border: 1px solid rgb(202, 202, 202);
+} */
+.divContainer {
+    margin-top: 30px;
+    width: 334px;
+    height: 372px;
+    background-color: white;
+    border: 1px solid rgb(202, 202, 202);
+    display: inline-block;
 }
 
 #manga-image {
@@ -43,17 +66,39 @@ h6 {
     margin: 10px 0 10px 0;
 }
 
-#prodsrc {
+.prodsrc {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
     font-size: 11px;
     background-color: rgba(248, 248, 248, 255);
     height: 24px;
 }
 
+.playIcon {
+    font-style: normal;
+    padding-left: 10px;
+}
+
+.playIcon::after {
+    content: "\25BA";
+    color: #1c439b;
+}
+
+.watchIcon {
+    font-style: normal;
+    font-size: 17px;
+    padding-right: 10px;
+}
+
+.watchIcon::after {
+    content: "\262F";
+    color: #1c439b;
+}
+
 .prodP {
     margin: 0;
-    padding: 3px 0 3px 0;
+    padding: 3px 0 3px 0px;
 }
 
 #genre {
@@ -62,6 +107,20 @@ h6 {
     font-size: 9px;
     padding: 5px 0 5px 0;
     background-color: rgba(240, 240, 240, 255);
+}
+
+#genre button {
+    background-color: #fff;
+    border: #e1e7f5 1px solid;
+    border-radius: 5px;
+    color: #787878;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Avenir, lucida grande, tahoma, verdana, arial, sans-serif;
+    font-size: 9px;
+    line-height: 1.0em;
+    margin-right: 4px;
+    padding: 1px 4px;
 }
 
 #bodyDiv {
@@ -77,12 +136,22 @@ h6 {
 
 #bodyDivP {
     overflow: auto;
-    height: 180px;
-    padding: 6px 4px 0 8px;
+    height: 190px;
+    padding: 3px 4px 0 8px;
 }
 
 #readMoreBtn {
-    margin: auto;
+    display: block;
+    margin: 0 auto;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.moreBtn {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5px;
 }
 
 .moreIcon::after {
@@ -90,7 +159,18 @@ h6 {
 }
 
 #bodyDivProducer {
+    margin-top: 5px;
     padding-left: 8px;
+}
+
+#bodyDivProducer p {
+    padding-bottom: 5px;
+    line-height: 1.5em;
+}
+
+#bodyDivProducer p:nth-child(1),
+#bodyDivProducer p:nth-child(3) {
+    background-color: rgba(240, 240, 240, 255);
 }
 
 .bodyParagraph {
@@ -133,4 +213,5 @@ h6 {
     margin: 0;
     opacity: 1;
     padding: 2px 4px;
+    cursor: pointer;
 }
