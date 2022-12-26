@@ -55,7 +55,7 @@ h6 {
 
 #footer-list {
     background-color: rgb(255, 255, 255);
-    padding:16px;
+    padding:17px;
     display: flex;
     font-size: 16px;
     color: rgb(0, 0, 0);
@@ -143,7 +143,7 @@ h6 {
 
 #second-footer-list {
     background-color: rgb(255, 255, 255);
-    padding:16px;
+    padding:18px;
     display: flex;
     font-size: 16px;
     color: rgb(0, 0, 0);
@@ -194,4 +194,8 @@ h6 {
 #second-genres a {
     text-decoration: none;
     color: rgb(255, 192, 20);
+}
+
+.animes-container {
+    display: flex;
 }
