@@ -1,0 +1,25 @@
+h1 {
+    text-align: center;
+    background-color: maroon;
+    color: white;
+}
+.container {
+    margin: 40px;
+    align-items: center;
+}
+#img-container {
+    display: flex;
+    justify-content: center;
+
+    gap: 5px;
+    
+
+}
+
+img {
+    width: 200px;
+    height: 600px;
+    object-fit: cover;
+    border-radius: 30px;
+}
+
