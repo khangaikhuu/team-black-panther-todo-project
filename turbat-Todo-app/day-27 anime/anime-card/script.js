@@ -1,37 +1,5 @@
 const card = document.querySelector('#card');
-
-async function showMore(event){
-  // console.log(event.id);
-  const elementSynop = document.getElementById(`synopsis_${event.id}`);
-  console.log(elementSynop);
-  
-  const resultJSON = await fetch('https://api.jikan.moe/v4/top/anime');
-  const result = await resultJSON.json();
-  const animeData = result.data;
-  console.log(animeData);
-
-  const filteredData = animeData.filter((el, index) => {
-    if (index == event.id){
-      return el;
-    }
-  })
-
-  // const filteredData = animeData.map(el => index == event.id);
-
-  console.log(filteredData[0].synopsis);
-
-  elementSynop.innerHTML = filteredData[0].synopsis;
-
-}
-
-function getAnimes(data, index) {
-
-  const genres = data.genres.map(genre => {
-     const result = `<p>${genre.name}</p>`;
-     return result;
-  })
-
-
+function getAnimes(data) {
   return `
   <div class="anime-card" id="card">
   <a href="#" id="title">${data.title}</a>
@@ -46,7 +14,10 @@ function getAnimes(data, index) {
     <i class="fa-solid fa-signal" style="font-size: 16px"></i>
   </div>
   <div class="anime-genre">
-   ${genres}
+    <p>Action</p>
+    <p>Adventure</p>
+    <p>Drama</p>
+    <p>Fantasy</p>
   </div>
   <div class="anime-body">
     <img
@@ -55,9 +26,9 @@ function getAnimes(data, index) {
     />
     <div class="anime-content">
       <div id="text">
-        <p id="synopsis_${index}">${data.synopsis.slice(0, 300)}</p>
+        <p>${data.synopsis.slice(0, 300)}</p>
         <p id="second-p"></p>
-        <button id="${index}" onclick="showMore(this);">
+        <button id="moreBtn">
           <i class="fa-solid fa-angle-down"></i>
         </button>
       </div>
@@ -72,7 +43,7 @@ function getAnimes(data, index) {
   <div class="anime-footer">
     <div id="review">
       <i class="fa-regular fa-star"></i>
-      <span id="number">9.11</span>
+      <span id="number">${data.score}</span>
     </div>
     <div id="views">
       <i class="fa-solid fa-eye"></i>
@@ -92,7 +63,7 @@ fetch('https://api.jikan.moe/v4/top/anime')
     const container = document.querySelector('#anime-container');
 
     container.innerHTML = '';
-    anime.map((element, index) => {
-      container.innerHTML += getAnimes(element, index)
+    anime.map((element) => {
+      container.innerHTML += getAnimes(element)
     })
   })
