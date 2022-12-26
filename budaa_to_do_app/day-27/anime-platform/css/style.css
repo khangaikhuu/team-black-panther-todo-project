@@ -1,0 +1,16 @@
+h1{
+    background:orange;
+    text-align:center;
+}
+#main{
+  
+    display:flex;
+}
+#main p {
+    overflow:auto;
+    height:321px;
+    width:200px;
+}
+#manga-baby{
+    display:flex;
+}

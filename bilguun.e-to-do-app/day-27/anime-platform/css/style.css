@@ -4,7 +4,7 @@
 
 body {
     background-color: rgb(141, 230, 220);
-    font-family: Avenir,lucida grande,tahoma,verdana,arial,sans-serif;
+    font-family: Avenir, lucida grande, tahoma, verdana, arial, sans-serif;
 }
 
 h1 {
@@ -14,8 +14,23 @@ h1 {
 
 #mainDiv {
     width: 334px;
+    height: 372px;
     background-color: white;
-    border: 1px solid black
+    border: 1px solid rgb(202, 202, 202);
+}
+
+#manga-image {
+    object-fit: contain;
+    width: 167px;
+    height: 238.25px;
+    margin: 0;
+}
+
+.header {
+    display: flex;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
 }
 
 h6 {
@@ -25,21 +40,97 @@ h6 {
     font-size: 14px;
     font-weight: 700;
     font-family: Avenir, lucida grande, tahoma, verdana, arial, sans-serif;
+    margin: 10px 0 10px 0;
 }
 
 #prodsrc {
     display: flex;
     justify-content: center;
     font-size: 11px;
+    background-color: rgba(248, 248, 248, 255);
+    height: 24px;
+}
+
+.prodP {
+    margin: 0;
+    padding: 3px 0 3px 0;
 }
 
 #genre {
     display: flex;
     justify-content: center;
     font-size: 9px;
-    margin-bottom: 5px;
+    padding: 5px 0 5px 0;
+    background-color: rgba(240, 240, 240, 255);
 }
+
 #bodyDiv {
     display: flex;
-    font-size: 9px;
+    font-size: 11px;
+}
+
+#bodyDivRight {
+    height: 230px;
+    overflow: auto;
+
+}
+
+#bodyDivP {
+    overflow: auto;
+    height: 180px;
+    padding: 6px 4px 0 8px;
+}
+
+#readMoreBtn {
+    margin: auto;
+}
+
+.moreIcon::after {
+    content: "\2193";
+}
+
+#bodyDivProducer {
+    padding-left: 8px;
+}
+
+.bodyParagraph {
+    margin: 0;
+}
+
+#footer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 22px;
+    width: 332px;
+    margin: 0;
+    background-color: rgba(248, 248, 248, 255);
+
+}
+
+.footerP {
+    margin: 0;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.score:before {
+    content: "\2606  "
+}
+
+.member::before {
+    content: "\262D  "
+}
+
+.footerPBtn {
+    background-color: #4f74c8;
+    color: #fff;
+    width: 96px;
+    border-radius: 3px;
+    display: block;
+    font-size: 11px;
+    height: 19px;
+    margin: 0;
+    opacity: 1;
+    padding: 2px 4px;
 }

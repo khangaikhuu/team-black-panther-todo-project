@@ -7,7 +7,7 @@ fetch(fullMetalAlchemistUrl)
     .then(data => {
         console.log(data.data.images.jpg.image_url)
         const mangaDomImage = document.getElementById('manga-image');
-        mangaDomImage.src = data.data.images.jpg.image_url;
+        mangaDomImage.src = data.data.images.webp.image_url;
         const container = document.getElementById("manga-container");
         const cont = document.getElementById("titles");
         container.getElementsByTagName("h5")[0].textContent = data.data.titles[0].title;
@@ -29,20 +29,38 @@ fetch(fullMetalAlchemistUrl)
             a.href = element.url
             actions.append(a)
         })
-       
-
-
-
-        let a = document.createElement("a");
-        const synop = document.getElementById("synopsis")
-        synop.innerHTML = data.data.synopsis
+     
+        const text = document.querySelector('#text p');
+        const secondText = document.querySelector('#second-p');
+        text.textContent = data.data.synopsis.slice(0, 375);
+        const more = data.data.synopsis;
+        console.log('more', more);
+        const textLength = more.length;
+        console.log('lenght', textLength)
+        const parts = more.slice(375, textLength);
+        secondText.textContent = parts;
+        secondText.style.display = 'none';
+    
+        const moreButton = document.querySelector('#moreBtn');
+    
+        console.log(moreButton);
+        moreButton.innerHTML = `<i class="fa-solid fa-angle-down"></i>`;
+        moreButton.addEventListener('click', () => {
+          if (secondText.style.display == 'none') {
+            secondText.style.display = 'block';
+            moreButton.innerHTML = `<i class="fa-solid fa-angle-up"></i>`;
+          } else {
+            secondText.style.display = 'none';
+            moreButton.innerHTML = `<i class="fa-solid fa-angle-down"></i>`;
+          }
+        })
 
         const studios = document.getElementById("studios")
         studios.innerText = data.data.studios[0].name;
         studios.href = data.data.studios[0].url;
 
         const source = document.getElementById("source")
-        source.innerText = `Source : ${data.data.source}`;
+        source.innerHTML = `<strong>Source :</strong> ${data.data.source}`;
         const theme = document.getElementById("theme")
         theme.innerText = data.data.themes[0].name;
         theme.href = data.data.themes[0].url;

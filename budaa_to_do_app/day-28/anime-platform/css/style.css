@@ -1,0 +1,46 @@
+h1{
+    text-align:center;
+    background:orange;
+}
+.eto_gg{
+    overflow:auto;
+    height: 380px;
+}
+.gg_dota p {
+    margin:2px;
+    font-size:12px;
+    
+}
+#Header { 
+    text-align:center;
+}
+#Header p {
+    font-size:12px;
+}
+h2{
+    color:blue
+}
+img{
+    height:380px;
+}
+#action a {
+    text-decoration: none;
+    color:black;
+    background: rgba(24, 21, 21, 0);
+    border: solid grey;
+    background-color:white;
+    border-radius: 10px;
+    padding:1px;
+    margin:auto;
+    margin-bottom:5px;
+    margin-top:5px;
+
+}
+#action{
+    background:rgb(202, 202, 202);
+    display:flex;
+    justify-content: center;
+}
+.main {
+    margin-left:10px;
+}
