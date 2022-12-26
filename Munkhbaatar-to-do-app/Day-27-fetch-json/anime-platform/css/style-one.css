@@ -12,7 +12,7 @@ h4 {
     color: #1c439b;
 }
 
-#anime-container {
+#manga-container {
     border: 1px solid #ddd;
     text-align: center;
     display: flex;
@@ -122,12 +122,12 @@ a {
     justify-content: center;
 }
 
-#all-container {
+/* #all-container {
 	display: grid;
 	grid-template-columns: repeat(3, 380px);
 	gap: 80px;
 	justify-content: center;
-}
+} */
 
 /* 
 
