@@ -1,6 +1,6 @@
 
 
-    const fullMetalAlchemistURL = 'https://api.jikan.moe/v4/anime/5114'
+const fullMetalAlchemistURL = 'https://api.jikan.moe/v4/anime/5114'
 
 fetch(fullMetalAlchemistURL)
     .then(result => result.json())
@@ -13,32 +13,71 @@ fetch(fullMetalAlchemistURL)
 
         const mangaTitle = document.getElementsByClassName('manga-title')[0].textContent = data.data.titles[0].title;
 
-        const mangaText = document.getElementById('manga-container').  //text orulsan 
-            getElementsByClassName('manga-text')[0].textContent = data.data.synopsis ;
-            // console.log(data.data.studios.type);
-        
+        //text orulsan
+        const mangaText = document.getElementById('manga-container').
+            getElementsByClassName('manga-text')[0].textContent = data.data.synopsis;
 
-        const mangaStat = document.getElementsByClassName('manga-stat')[0].textContent = data.data.type + "," + " " +
-            data.data.year + "  |  " + "  " + data.data.status + "  | " + "  " + data.data.episodes + " eps" + ", " + 
-            data.data.duration.substring(0,6);
+        // bagshiin filenaas
 
+        const secondText = document.getElementById('second-p');
+        mangaText.textContent = data.data.synopsis.slice(0, 375);
+        const more = data.data.synopsis;
+        const mangaTextLength = more.length;
+        console.log('lenght', mangaTextLength)
+        // const parts = more.slice(375, textLenght);   
+        // secondText.textContent = parts;
+        secondText.style.display = 'none';
 
-        const genreContainer=document.getElementById('genre-container')
+        const moreButton = document.querySelector('.text-btn');
 
-        const genres=data.data.genres
+        moreButton.addEventListener('click', () => {
+            if (secondText.style.display == 'none') {
+                secondText.style.display = 'block';
 
-        genres.map(element=>{
-            console.log(element)
-            const a=document.createElement('a');
-            a.href=element.url;
-            a.textContent=element.name;
-            genreContainer.appendChild(a);
+            } else {
+                secondText.style.display = 'none';
+            }
         })
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        const mangaStat = document.getElementsByClassName('manga-stat')[0].innerHTML = data.data.type + "," + " " +
+            data.data.year + "  |  " + "  " + data.data.status + "  | " + "  " + data.data.episodes + " eps" + ", " +
+            data.data.duration.substring(0, 6);
+
+        const genreContainer = document.getElementById('genre-container')
+
+        const genres = data.data.genres
+
+        genres.map(element => {
+            console.log(element)
+            const a = document.createElement('a');
+            a.href = element.url;
+            a.textContent = element.name;
+            genreContainer.appendChild(a);
+        })
+
         const mangaTypeStudio = document.getElementById('manga-container').
-            getElementsByClassName('manga-type-studio')[0].textContent = " Studio : "  + data.data.studios[0].name;
-    
+            getElementsByClassName('manga-type-studio')[0].textContent = " Studio : " + data.data.studios[0].name;
+
         const mangaTypeStudio2 = document.getElementById('manga-container').
             getElementsByClassName('manga-type-studio2')[0].textContent = " Source : " + data.data['source'];
 
@@ -48,14 +87,10 @@ fetch(fullMetalAlchemistURL)
         const mangaTypeStudio4 = document.getElementById('manga-container').
             getElementsByClassName('manga-type-studio4')[0].textContent = "Demographic:   " + data.data.demographics[0].name;
 
-        console.log(mangaTypeStudio)
-        console.log(mangaTypeStudio2)
-        console.log(mangaTypeStudio4)
-        console.log(mangaTypeStudio3)
+
+        const mangaScore = document.getElementById('score').innerHTML = '<i class="fa-sharp fa-solid fa-star"></i>  ' + data.data.score;
+        const mangaMember = document.getElementById('member').innerHTML = '<i class="fa-solid fa-eye"></i>  ' + (((data.data.members) / 1_000_000).toFixed(1)) + " M";
 
 
 
-})
-
-
-
+    })

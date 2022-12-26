@@ -1,0 +1,147 @@
+h1{
+    text-align: center;
+    background-color: chartreuse;
+
+}
+* {
+	box-sizing: border-box;
+	margin: 0;
+}
+
+body {
+	padding: 20px;
+	font-family: fantasy;
+	font-size: 13px;
+}
+
+#anime-container {
+	display: grid;
+	grid-template-columns: repeat(3, 500px);
+	gap: 20px;
+	justify-content: center;
+}
+
+.anime-card {
+	width: 460px;
+	border: 3px solid #93f9a1;
+	box-shadow: -0.5em -0.5em 0.5em 0.5em rgb(4, 68, 22);;
+}
+
+#title {
+	display: block;
+	text-align: center;
+	padding-block: 30px;
+	font-size: 18px;
+	text-decoration: none;
+}
+
+.anime-genre,
+.anime-body,
+.anime-footer {
+	display: flex;
+}
+
+.anime-status {
+	display: flex;
+	justify-content: space-between;
+	background-color: #61cf5d;
+	padding: 6px 10px;
+}
+
+.anime-status span {
+	color: rgb(34, 68, 49);
+}
+
+#year {
+	border-right: 1px solid;
+	padding-right: 5px;
+}
+
+#status {
+	padding-inline: 5px;
+}
+
+#eps {
+	border-left: 1px solid;
+	padding-left: 5px;
+}
+
+.anime-genre {
+	background-color: #298551;
+	gap: 10px;
+	justify-content: center;
+	padding-block: 10px;
+}
+
+.anime-genre p {
+	font-size: 10px;
+	border: 1px solid rgb(41, 234, 134);
+	padding: 3px 5px;
+	background-color: rgb(83, 237, 80);
+	border-radius: 10px;
+	color: rgb(4, 156, 1);
+}
+
+.anime-body {
+	gap: 10px;
+}
+
+.anime-content {
+	overflow: auto;
+	height: 400px;
+}
+
+#text {
+	padding-top: 10px;
+	line-height: 1.4em;
+}
+
+/* #text button {
+	display: block;
+	margin: auto;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+	padding: 10px 0;
+} */
+
+#info p {
+	padding-block: 7px;
+	padding-inline: 2px;
+}
+
+#info p:nth-child(odd) {
+	background-color: #f0f0f0;
+}
+
+.anime-footer {
+	justify-content: space-around;
+	padding-block: 10px;
+	background-color: #f8f8f8;
+	align-items: center;
+}
+
+.anime-footer span {
+	color: #545454;
+}
+
+#add-list {
+	background-color: darkgreen;
+	border: none;
+	padding: 7px 25px;
+	color: #fff;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: all 0.3s ease-in;
+}
+
+#add-list:hover {
+	opacity: 0.5;
+}
+a {
+	color: lawngreen;
+	text-decoration: none;
+}
+img {
+	border-radius: 5px;
+}

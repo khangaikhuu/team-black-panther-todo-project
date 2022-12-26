@@ -1,3 +1,9 @@
+.big-container {
+    border: 1px solid gray;
+    width: 334px;
+    height: 500px;
+}
+
 h1 {
     text-align: center;
     background-color: darkgrey;
@@ -5,72 +11,124 @@ h1 {
 
 #manga-container {
     display: flex;
-    margin-top: -29px;
-
+    margin-top: -10px;
 }
+
 .manga-title {
     color: #1c439b;
     width: 334px;
     height: 38px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     text-align: center;
     padding-top: 20px;
+    font-size: 14px;
+    margin-bottom: 25px;
 }
-.stat {
-    /* display: flex; */
 
-}
-.manga-stat {
-    /* position: absolute; */
-    color: gray;
+.stat {
+    display: flex;
+    margin-top: -26px;
+    justify-content: space-around;
     width: 334px;
+    /* border: 1px solid red; */
+}
+
+.manga-stat {
+    padding: 1px 10px;
+    /* border: 1px solid blue; */
     height: 16px;
-    border: 1px solid black;
-    text-align: center;
-    padding-top: 6px;
-    margin-top: -45px;
+    margin-top: 5px;
+
 }
 .text-container {
-
-}
-.manga-text {
     overflow-y: auto;
 
+}
+
+.manga-text {
     color: black;
     width: 157px;
     height: 160px;
     padding: 5px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     margin-top: -16px;
     text-align: justify;
+    font-size: 11px;
 }
+
 .studio {
-    border: 1px solid black;
     height: 50px;
     margin-top: -20px;
 }
-.studio > h6 {
+
+.studio>h6 {
 
     font-size: 10px;
     margin: 0px;
+    padding: 2px;
 
 }
 
 #genre-container {
     color: black;
     width: 324px;
-    height: 10  px;
+    height: 10 px;
     padding: 5px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     background-color: #f0f0f0;
     margin-top: -26px;
     /* text-align: justify; */
     display: flex;
     justify-content: space-around;
 }
-#genre-container > a{
-    text-decoration: none;
-    /* color: #78787; */
-    color: gray;
 
+#genre-container>a {
+    color: #787878;
+    text-decoration: none;
+    font-size: 9px;
+    background-color: #ffff;
+    border-radius: 10px;
+    border: 1px solid gray;
+    padding: 1px 4px;
+
+}
+
+.text-btn {
+    position: absolute;
+    margin-top: -45px;
+    margin-left: 65px;
+
+}
+
+#add-to-list {
+    background-color: #4f74c8;
+    padding: 3px 20px;
+    color: white;
+}
+
+#score-member-button {
+    position: absolute;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: #545454;
+    background-color: #f0f0f0;
+    padding: 3px 0;
+    font-size: 12px;
+    margin-top: 220px;
+    /* border: 1px solid black; */
+    width: 334px;
+}
+
+.extend {
+    width: 100%;
+    margin: 0 auto;
+    /* background-color: gray; */
+    display: flex;
+    justify-content: center;
+}
+
+.manga-type-studio,
+.manga-type-studio3 {
+    background-color: #afb5b49d;
 }

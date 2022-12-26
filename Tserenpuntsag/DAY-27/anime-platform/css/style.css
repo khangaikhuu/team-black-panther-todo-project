@@ -1,9 +1,82 @@
+#FMA{
+   width: 334px;
+   text-align: center;
+   border: 1px solid gray;
+}
+
 h1{
     background-color: black;
     color: beige;
     text-align: center;
 }
 
-#headerOne{
+h4{
+    color:  #1c439b;
+    font-size: 14px;
+}
+
+#headerDIV{
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    background-color:  rgb(241, 240, 240);
+}
+
+#headerTwo{
+    margin-top: 5px;
+    background-color: rgb(232, 232, 232);
+}
+
+#bodyDIV{
+    display: flex;
+    height: 238.250px;
+    margin-top: 5px;
+    font-size: 11px;
+}
+
+
+#defP{
+    margin-bottom: 0px;
+}
+
+#secondP{
+    display: none;
+    margin-top: 0px;
+}
+
+#text{
+    overflow: auto;
+    height: 238.250px;
+}
+
+#bottomDIV{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 5px;
+    background-color: #f8f8f8;
+    height: 30px;
+    margin-top: 0px;
+}
+#score::before{
+    content: "\2606";
+}
+#member::before{
+    content: "\2630";
+}
+p{
+    margin: 0;
+}
+
+#list{
+    border-radius: 2px;
+    width: 96px;
+    height: 19px;
+    background-color: #4f74c8;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
 }

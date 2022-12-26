@@ -4,93 +4,95 @@ const fullMetalAlchemistURL = 'https://api.jikan.moe/v4/anime/5114';
 
 fetch(fullMetalAlchemistURL)
     .then(result => result.json())
-    .then(data =>{
+    .then(data => {
         console.log(data)
         console.log(data.data.images.jpg.image_url)
 
-
-        const container = document.querySelector("#manga-container")
-        container.getElementsByTagName('a')[0].textContent = data.data.titles[0].title;
-        container.getElementsByTagName('a')[0].style = "font-size: 30px; text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15); color: #3535ff"
-
-        
+        const titleText = document.querySelector('#title-text')
+        titleText.textContent = data.data.titles[0].title;
 
         const mangaDomImage = document.getElementById('manga-image');
         mangaDomImage.src = data.data.images.jpg.image_url;
-       
-       
 
-        const mainContainer = document.querySelector('#main-text')
-       
-        mainContainer.style = "background-color: #94a4ef;"
+        document.getElementById('main-text1').innerHTML = data.data.synopsis.slice(0, 375);
 
-        const mangaText = document.getElementById('main-text1');
-        mangaText.innerHTML = data.data.synopsis;
-        mangaText.style = ""
-        
-     
+        const more = data.data.synopsis;
+        const textLength = more.length;
+        const secondText = document.querySelector('#second-text-12')
+        secondText.innerHTML = more.slice(375, textLength)
+        secondText.style.display = 'none';
 
-        const textType1 = document.querySelector("#text-type1")
-       
-        textType1.getElementsByTagName('p')[0].textContent = data.data.type + "," + " " + data.data.year ;
+        const moreButton = document.querySelector('#moreBtn')
 
-        textType1.getElementsByTagName('p')[1].textContent =  data.data.status.slice(0, 8)
+        moreButton.addEventListener('click', () => {
+            if (secondText.style.display == "none") {
+                secondText.style.display = "block"
+            } else {
+                secondText.style.display = "none"
+            }
+        })
 
-        textType1.getElementsByTagName("p")[2].textContent =data.data.episodes + " eps " + data.data.duration.slice(0, 6)
-
-        textType1.style = "background-color: #6868ff; color: white; text-shadow: 1px 1px 2px blue, 0 0 1em red, 0 0 0.2em blue;"
-        textType1.getElementsByTagName('p')[0].style = "padding: 0px 10px 0px 33%;"
-
-        textType1.getElementsByTagName('p')[1].style = "padding: 0px 10px"
-
-        textType1.getElementsByTagName('p')[2].style = "padding: 0px 10px;"
+        document.querySelector('#text1').textContent = data.data.type + "," + " " + data.data.year;
+        document.querySelector('#text2').textContent = data.data.status.slice(0, 8)
+        document.querySelector('#text3').textContent = data.data.episodes + " eps " + data.data.duration.slice(0, 6)
 
 
-        const textType2 = document.querySelector('#text-type2');
-        textType2.getElementsByTagName('a')[0].textContent = data.data.genres[0].name;
+        document.querySelector('#text-genre1').textContent = data.data.genres[0].name;
+        document.querySelector('#text-genre2').textContent = data.data.genres[1].name;
+        document.querySelector('#text-genre3').textContent = data.data.genres[2].name;
+        document.querySelector('#text-genre4').textContent = data.data.genres[3].name;
 
-        textType2.getElementsByTagName('a')[1].textContent = data.data.genres[1].name;
-
-        textType2.getElementsByTagName('a')[2].textContent = data.data.genres[2].name;
-
-        textType2.getElementsByTagName('a')[3].textContent = data.data.genres[3].name;
-
-        textType2.style = "padding: 10px; color: white; text-shadow: 0 2px black;"
-
-        textType2.getElementsByTagName('a')[0].style = "background-color: #c1caf6; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; padding: 5px; margin-right: 10px; border-radius: 5px"
-
-        textType2.getElementsByTagName('a')[1].style = "background-color: #c1caf6; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; padding: 5px; margin-right: 10px; border-radius: 5px"
-
-        textType2.getElementsByTagName('a')[2].style = "background-color: #c1caf6; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; padding: 5px; margin-right: 10px; border-radius: 5px"
-
-        textType2.getElementsByTagName('a')[3].style = "background-color: #c1caf6; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; padding: 5px; margin-right: 10px; border-radius: 5px"
-
-        const endText = document.querySelector('#end-text')
-        endText.getElementsByTagName('p')[0].textContent ="\u2606 " + data.data.score
-
-        endText.getElementsByTagName('p')[1].innerHTML = "\f007"
-
-
-
-
-        
-
-
-
-        
+        document.querySelector('#endtext3').textContent = "Add to List"
+    })
 
 
 
 
 
-        
+
+
+const fairytail = "https://api.jikan.moe/v4/anime/22043";
+
+fetch(fairytail)
+    .then(result => result.json())
+    .then(data => {
+        const randomAnime = data.data;
+
+        document.querySelector('#second-title').innerHTML = randomAnime.titles[0].title
+        document.querySelector('#second-title-text').innerHTML = randomAnime.titles[3].title
+
+        const status = document.querySelectorAll('.anime-status');
+
+        document.querySelector('#image-id').src = randomAnime.images.jpg.image_url;
+
+        status[0].innerHTML = `<i class="fa-solid fa-circle-play" style="font-size: 16px"></i>
+       <div>
+        <span id="type">${randomAnime.type}</span>
+        <span id="year">${randomAnime.year}</span>
+        <span id="status">${randomAnime.status.slice(0, 8)}</span>
+        <span id="eps">${randomAnime.episodes} eps, ${randomAnime.duration.slice(0, 7)} </span>
+      </div>
+      <i class="fa-solid fa-signal" style="font-size: 16px"></i>`;
 
 
 
+        document.getElementById('text').innerHTML = data.data.synopsis.slice(0, 375);
 
+        const more = data.data.synopsis;
+        const textLength = more.length;
+        const secondText = document.querySelector('#second-p')
+        secondText.innerHTML = more.slice(375, textLength);
+        secondText.style.display = 'none';
 
-       
+        const moreButton = document.querySelector('#moreBtn')
 
-        
+        moreButton.addEventListener('click', () => {
+            if (secondText.style.display == "none") {
+                secondText.style.display = "block"
+            } else {
+                secondText.style.display = "none"
+            }
+        })
 
     })
+

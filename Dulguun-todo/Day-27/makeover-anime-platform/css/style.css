@@ -1,0 +1,152 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+}
+
+body {
+	padding: 20px;
+	font-family: Avenir,lucida grande,tahoma,verdana,arial,sans-serif;
+	font-size: 11px;
+}
+
+#anime-container {
+	display: grid;
+	grid-template-columns: repeat(3, 340px);
+	gap: 20px;
+	justify-content: center;
+}
+
+.anime-card {
+	width: 334px;
+	border: 3px solid #f8f8f8;
+}
+
+#title {
+	display: block;
+	text-align: center;
+	padding-block: 20px;
+	font-size: 14px;
+	text-decoration: none;
+	color: #1c439b;
+	font-weight: 700;
+}
+
+#image {
+	width: 50%;
+}
+
+.anime-genre,
+.anime-body,
+.anime-footer {
+	display: flex;
+}
+
+.anime-status {
+	display: flex;
+	justify-content: space-between;
+	background-color: #f8f8f8;
+	padding: 6px 10px;
+}
+
+.anime-status span {
+	color: gray;
+}
+
+#year {
+	border-right: 1px solid;
+	padding-right: 5px;
+}
+
+#status {
+	padding-inline: 5px;
+}
+
+#eps {
+	border-left: 1px solid;
+	padding-left: 5px;
+}
+
+#anime-genre {
+	background-color: #f0f0f0;
+	gap: 10px;
+	text-align: center;
+	padding-block: 10px;
+}
+
+#anime-genre a {
+	font-size: 9px;
+	border: 1px solid #fff;
+	padding: 0px 5px;
+	background-color: #fff;
+	border-radius: 10px;
+	color: #787878;
+	text-decoration: none;
+	margin: 0 5px;
+}
+
+.anime-body {
+	gap: 10px;
+}
+
+.anime-content {
+	overflow: auto;
+	height: 243px;
+}
+
+#text {
+	padding-top: 10px;
+	line-height: 1.4em;
+}
+
+#text button {
+	display: block;
+	margin: auto;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+	padding: 10px 0;
+}
+
+#info p {
+	padding-block: 7px;
+	padding-inline: 2px;
+}
+
+#info p:nth-child(odd) {
+	background-color: #f0f0f0;
+}
+
+#info p a {
+	text-decoration: none;
+	color: #1c439b;
+}
+
+.anime-footer {
+	justify-content: space-around;
+	padding-block: 5px;
+	background-color: #f8f8f8;
+	align-items: center;
+}
+
+.anime-footer span {
+	color: #545454;
+}
+
+#add-list {
+	background-color: #4f74c8;
+	border: none;
+	padding: 5px 20px;
+	color: #fff;
+	border-radius: 3px;
+	cursor: pointer;
+	transition: all 0.3s ease-in;
+	font-size: 11px;
+}
+
+#add-list:hover {
+	opacity: 0.5;
+}
+
+.fa-icon {
+	font-size: 1.2rem;
+}

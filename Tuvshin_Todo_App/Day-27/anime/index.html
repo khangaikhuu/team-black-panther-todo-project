@@ -7,45 +7,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anime</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+
+    <script src="https://kit.fontawesome.com/a0b432f3c2.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <h1> My anime</h1>
     <h6 class="manga-title"> </h6>
-    <h6 id="genre-container"></h6>
     <div class="stat">
-        <img src="play.png" style="width: 25px; height:15px;"  alt="">
-        <div> 
-            <h6 class="manga-stat"> </h6> 
-        </div> 
-        <img src="signal.png" style="width: 25px; height:15px"  alt="">
+        <div> <i class="fa-brands fa-youtube"></i> </div>
+        <div>
+            <h6 class="manga-stat"> </h6>
+        </div>
+        <div> <i class="fa-sharp fa-solid fa-tower-broadcast"></i> </div>
     </div>
+
+    <h6 id="genre-container"></h6>
 
     <div> </div>
 
     <div id="manga-container">
         <img id="manga-image" style="width: 167px; height: 238px; margin-top: -15px;" src="" alt="">
         <div class="text-container">
+
             <h6 class="manga-text"></h6>
+            <p id="second-p"></p>
+
+            <button class="text-btn"> <i class="fa-solid fa-arrow-down"></i> </button>
 
             <div class="studio">
-                <h6 class="manga-type-studio"></h6> 
-                <h6 class="manga-type-studio2"></h6> 
+                <h6 class="manga-type-studio"></h6>
+                <h6 class="manga-type-studio2"></h6>
                 <h6 class="manga-type-studio3"></h6>
                 <h6 class="manga-type-studio4"></h6>
             </div>
         </div>
-       
 
+        <div id="score-member-button">
+            <div id="score"> </div>
+            <div id="member"></div>
+            <a id="add-to-list">Add to List</a>
+        </div>
 
 
 
 
     </div>
-
-
-
-
 
     <script src="main.js"></script>
 </body>
