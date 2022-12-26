@@ -27,8 +27,7 @@ fetch(fullMetalAlchemistURL)
     </div>
     <i class="fa-solid fa-signal" id="detail" style="font-size: 16px"></i>`
 
-        mangaStructur.genres.map((element,) => {
-            console.log(element);
+        mangaStructur.genres.map(element => {
             const button1 = document.createElement("button");
 
             button1.innerHTML = element.name;
@@ -36,9 +35,21 @@ fetch(fullMetalAlchemistURL)
             const buttonCon = document.querySelector(".buttons");
 
             buttonCon.appendChild(button1)
+            // const result = `<p>${genre.name}</P>`;
+            // return result;
 
 
         })
+        function getAnimes(data, index){
+            const genres = data.genres.map(genre => {
+                
+            })
+        }
+        function showMore(event){
+            console.log(event.id);
+            const elementSynop = document.getElementById
+
+        }
         
         const para = document.getElementsByTagName("p")[0];
         para.innerHTML = mangaStructur.synopsis.slice(0, 369);
@@ -49,27 +60,41 @@ fetch(fullMetalAlchemistURL)
         const part = more.slice(369, textLength);
 
         const second = document.querySelector(".added");
+        const icon = document.querySelector("#myBtn i")
 
         second.innerHTML = part;
         second.style.display = "none";
 
         const doubleClick = document.querySelector("#button");
+        
         const btn = document.querySelector("#myBtn");
         btn.addEventListener("click", () =>{
             if(second.style.display == "none"){
                 second.style.display = "block"
-            }
-            else if(second.style.display == "block"){
-                second.style.display = "hide"
+                doubleClick.style.display = "block"
+                icon.style.display = "none"
             }
             else {
                 second.style.display = "none"
+                
+            }
+        })
+        doubleClick.addEventListener("click", () =>{
+            if(doubleClick.style.display = "block"){
+                second.style.display = "none"
+                icon.style.display = "block"
+                doubleClick.style.display = "none"
             }
         })
 
-        doubleClick.addEventListener("click", () => {
+        const view = document.querySelector("#review span");
+        view.innerHTML = mangaStructur.score;
+        const members = document.querySelector("#pop span");
+        const pop = mangaStructur.members;
 
-        })
+        members.textContent = Math.ceil(pop)
+
+    
 
 
 
