@@ -192,3 +192,14 @@ h1 {
 #add-list:hover {
 	opacity: 0.5;
 }
+
+
+
+
+
+#anime-container {
+	display: grid;
+	grid-template-columns: repeat(3, 500px);
+	gap: 20px;
+	justify-content: center;
+}

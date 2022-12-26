@@ -7,11 +7,52 @@ h3{
     color: blue;
 }
 
-#manga-container {
-    border: 1px solid grey;
-    box-sizing: content-box;
+
+html {
+    width: 95vw;
+    margin: 0 auto;
 }
 
-.main {
+#manga-container {
+    margin-right: 10px;
+    border: 1px grey solid;
+
+
+}
+
+.anime-status {
+	display: flex;
+	justify-content: space-between;
+	background-color: #f8f8f8;
+	padding: 6px 10px;
+}
+
+#moreBtn {
+    
+}
+
+
+#info p {
+	padding-block: 7px;
+	padding-inline: 2px;
+}
+
+#info p:nth-child(odd) {
+	background-color: #f0f0f0;
+}
+
+.anime-footer {
     display: flex;
+	justify-content: space-around;
+	padding-block: 10px;
+	background-color: #f8f8f8;
+	align-items: center;
+}
+
+.anime-footer span {
+	color: #545454;
+}
+
+body {
+    font-size: 13px;
 }

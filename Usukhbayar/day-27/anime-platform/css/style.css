@@ -1,6 +1,6 @@
 #manga-container {
   border: #f0f0f0 1px solid;
-  width:400px;
+  width: 400px;
   height: auto;
 }
 #img-container {
@@ -10,7 +10,7 @@
   background-color: #f0f0f0;
   text-align: center;
 
-  font-size: 9px;
+  font-size: 11px;
   height: 24px;
   padding-top: 10px;
 }
@@ -19,9 +19,17 @@
   text-align: center;
   margin-bottom: auto;
 }
+.type-cont{
+  display: flex;
+  justify-content: space-between;
+  background-color: #f8f8f8;
+  padding: 6px 10px;
+}
 
 .cont {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 500px);
+  gap: 20px;
   justify-content: center;
 }
 #txt-container {
@@ -30,12 +38,12 @@
   padding: 5px;
 }
 #txt-container button {
-	display: block;
-	margin: auto;
-	border: none;
-	background-color: transparent;
-	cursor: pointer;
-	padding: 10px 0;
+  display: block;
+  margin: auto;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 10px 0;
 }
 .container {
   display: flex;
@@ -54,6 +62,7 @@ button {
   margin: 0 auto;
   background: none;
   border: none;
+  color: #fff;
 }
 
 a {
@@ -68,8 +77,15 @@ h4 {
   color: #1c439b;
   text-align: center;
 }
-span{
-    font-size: 13px;
-
+span {
+  font-size: 15px;
 }
-
+#footer {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #f8f8f8;
+  padding: 5px;
+}
+.btn {
+  background-color: #4f74c8;
+}
