@@ -1,12 +1,12 @@
-*{
+* {
     box-sizing: border-box;
 }
 
-body{
+body {
     background-color: #e3e7fb;
 }
 
-h1{
+h1 {
     color: #c3bbf1;
     font: italic bold 100px Georgia, Serif;
     font-size: 50px;
@@ -15,20 +15,180 @@ h1{
     text-shadow: -4px 3px 0 #3a50d9, -14px 7px 0 #0a0e27;
 }
 
-.flex{
+.flex {
     display: flex;
 }
 
-#manga-container{
-    width: 50%;
-    margin: 10px auto;
+.manga-container {
+    width: 460px;
     border: 1px solid white;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-    text-align: center;
+    /* text-align: center; */
     border-radius: 10px;
     background-color: white;
 }
 
-#main-text{
-    overflow: hidden;
+.scroll {
+    overflow: auto;
+    height: 400px;
+}
+
+.title-text {
+    font-size: 30px;
+    text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, .1), 0 0 5px rgba(0, 0, 0, .1), 0 1px 3px rgba(0, 0, 0, .3), 0 3px 5px rgba(0, 0, 0, .2), 0 5px 10px rgba(0, 0, 0, .25), 0 10px 10px rgba(0, 0, 0, .2), 0 20px 20px rgba(0, 0, 0, .15);
+    color: #3535ff;
+    display: flex;
+    justify-content: center;
+}
+
+.text-type1 {
+    background-color: #6868ff;
+    color: white;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+.text-type2 {
+    padding: 10px;
+    color: white;
+    text-shadow: 0 2px black;
+    display: flex;
+    justify-content: center;
+}
+
+.text-genre{
+    background-color: #c1caf6;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    padding: 5px;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+.text-container p:nth-child(odd) {
+	background-color: #f0f0f0;
+}
+
+.end-text{
+    justify-content: space-evenly;
+    background-color: #f8f8f8;
+}
+
+.end-text3 {
+	background-color: #4f74c8;
+	border: none;
+	padding: 7px 25px;
+	color: #fff;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: all 0.3s ease-in;
+    margin: 10px;
+}
+
+.end-text3:hover {
+	opacity: 0.5;
+}
+
+#moreBtn{
+   margin: 0 40%;
+}
+/*--------------------------------------------_*/
+
+.anime-card{
+    width: 460px;
+    background-color: white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    border-radius: 10px;
+}
+
+.title-Text{
+    font-size: 30px;
+    text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, .1), 0 0 5px rgba(0, 0, 0, .1), 0 1px 3px rgba(0, 0, 0, .3), 0 3px 5px rgba(0, 0, 0, .2), 0 5px 10px rgba(0, 0, 0, .25), 0 10px 10px rgba(0, 0, 0, .2), 0 20px 20px rgba(0, 0, 0, .15);
+    color: #3535ff;
+    padding: 0 25%;
+}
+
+.second-title-text{
+    padding: 0 35%;
+    color:#3a50d9;
+}
+
+.anime-genre,
+.anime-body,
+.anime-footer {
+	display: flex;
+}
+
+.anime-status {
+	display: flex;
+	justify-content: space-between;
+	background-color:#6868ff;
+	padding: 6px 10px;
+    color: white;
+}
+
+.anime-genre{
+    justify-content: center;
+}
+
+.anime-genre p {
+    margin-left: 10px;
+    background-color: #c1caf6;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+    text-shadow: 0 2px black;
+}
+
+.anime-content {
+	overflow: auto;
+	height: 400px;
+}
+
+#text {
+	padding-top: 10px;
+	line-height: 1.4em;
+}
+
+#text button {
+	display: block;
+	margin: auto;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+	padding: 10px 0;
+}
+
+#info p {
+	padding-block: 7px;
+	padding-inline: 2px;
+}
+
+#info p:nth-child(odd) {
+	background-color: #f0f0f0;
+}
+
+.anime-footer {
+	justify-content: space-around;
+	padding-block: 10px;
+	background-color: #f8f8f8;
+	align-items: center;
+}
+
+.anime-footer span {
+	color: #545454;
+}
+
+#add-list {
+	background-color: #4f74c8;
+	border: none;
+	padding: 7px 25px;
+	color: #fff;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: all 0.3s ease-in;
+}
+
+#add-list:hover {
+	opacity: 0.5;
 }
