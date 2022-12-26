@@ -20,12 +20,24 @@ fetch(fullMetalAlchemistURL)
         document.getElementById('adventure').textContent = data.data.genres[1].name
         document.getElementById('drama').textContent = data.data.genres[2].name
         document.getElementById('fantasy').textContent = data.data.genres[3].name
-        document.getElementById('breif').textContent = data.data.synopsis
-
-
-
-
+        document.getElementById('breif').textContent = data.data.synopsis.slice(0, 300)
 
         console.log(data.data.type)
     })
 
+
+
+
+
+
+
+
+
+    // const genres = data.genres.map(genre => {
+    //     console.log(genre)
+    //     const result = `<p>${genre.name}</p>`
+    //     return result 
+    // })
+
+    // return `
+    // <div class='anime'`

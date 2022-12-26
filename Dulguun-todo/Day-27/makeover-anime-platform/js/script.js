@@ -1,44 +1,36 @@
 const card = document.querySelector('#card');
 
-// function showMore(event) {
-//   const text = document.querySelector('#text p');
-//   const secondText = document.querySelector('#second-p');
-//   const more = animeData.synopsis;
-//   const textLength = more.length;
-//   const parts = more.slice(375, textLength);
-//   text.textContent = animeData.synopsis.slice(0, 375);
-//   secondText.textContent = parts;
-//   secondText.style.display = 'none';
+// Text more button
+async function showMore(event) {
+  const elementSynop = document.getElementById(`synopsis_${event.id}`);
+  const resultJSON = await fetch('https://api.jikan.moe/v4/top/anime');
+  const result = await resultJSON.json();
+  const animeData = result.data;
 
-//   const moreButton = document.querySelector('#moreBtn');
+  const filteredData = animeData.filter((el, index) => {
+    if (index == event.id) {
+      return el;
+    }
+  })
+  elementSynop.innerHTML = filteredData[0].synopsis;
+}
 
-//   moreButton.addEventListener('click', () => {
-//     if (secondText.style.display == 'none') {
-//       secondText.style.display = 'block';
 
-//     } else {
-//       secondText.style.display = 'none';
-//     }
-//   })
-// }
 function getAnimes(data, index) {
 
   const genres = data.genres.map((genre) => {
-    const result = `<p>${genre.name}</p>`
+    const result = `<a>${genre.name}</a>`
     return result;
   })
+
   const studio = data.studios.map((studio) => {
     const result = `${studio.name}`
     return result;
   })
 
-  // const source = data.source.map((source) => {
-  //   const result = `${source}`
-  //   return result;
-  // })
 
   const theme = data.themes.map((theme) => {
-    const result = `${theme.name}`
+    const result = ` ${theme.name}`
     return result;
   })
 
@@ -60,25 +52,22 @@ function getAnimes(data, index) {
     </div>
     <i class="fa-solid fa-signal" style="font-size: 16px"></i>
   </div>
-  <div class="anime-genre">
+  <div id="anime-genre">
     ${genres}
   </div>
   <div class="anime-body">
-    <img
-      src=${data.images.jpg.image_url}
-      alt="full-alchemist"
-    />
+    <img id="image" src=${data.images.jpg.image_url} alt="full-alchemist"/>
     <div class="anime-content">
       <div id="text">
-        <p>${data.synopsis.slice(0, 350)}</p>
+        <p id="synopsis_${index}">${data.synopsis.slice(0, 230)}</p>
         <p id="second-p"></p>
-        <button id="moreBtn_${index}" onclick="showMore(this);">
+        <button id="${index}" onclick="showMore(this);">
           <i class="fa-solid fa-angle-down"></i>
         </button>
       </div>
       <div id="info">
         <p><strong>Studio:</strong> <a href="#">${studio}</a></p>
-        <p><strong>Source:</strong>${studio}</p>
+        <p><strong>Source:</strong>${data.source}</p>
         <p><strong>Theme:</strong> <a href="#">${theme}</a></p>
         <p><strong>Demographic:</strong> <a href="#">${demographics}</a></p>
       </div>
@@ -87,11 +76,11 @@ function getAnimes(data, index) {
   <div class="anime-footer">
     <div id="review">
       <i class="fa-regular fa-star"></i>
-      <span id="number">9.11</span>
+      <span id="number">${data.score}</span>
     </div>
     <div id="views">
       <i class="fa-solid fa-eye"></i>
-      <span id="view-number">3.0M</span>
+      <span id="view-number">${data.members}</span>
     </div>
     <button id="add-list">Add To List</button>
   </div>

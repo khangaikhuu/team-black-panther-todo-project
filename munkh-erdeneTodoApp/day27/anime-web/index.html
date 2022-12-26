@@ -29,10 +29,10 @@
                 <p id="type2"></p>
             </div>
             <a href=""><img class="icon"
-                src="https://64.media.tumblr.com/05fda8644cecc62bd880764ef2d40fd5/c9ad1288287dc47a-25/s1280x1920/a33fe30bf3ed216377a53dbb45b3c76840dd7053.png"
-                alt="" width="40px" height="40px"></a>
+                    src="https://64.media.tumblr.com/05fda8644cecc62bd880764ef2d40fd5/c9ad1288287dc47a-25/s1280x1920/a33fe30bf3ed216377a53dbb45b3c76840dd7053.png"
+                    alt="" width="40px" height="40px"></a>
         </div>
-        
+
         <div id="genre-container" style="display: flex; justify-content: space-evenly; background-color: bisque;">
 
 
@@ -42,32 +42,31 @@
         <!-- gol heseg -->
 
 
-        <div style="display: flex; justify-content: space-between; padding: 20px;">
+        <div style="display: flex;">
             <img id="manga-image">
             <div id="rigth">
-                
-                <p id="text" style="text-align: start;"></p>
-                <div id="alert">
-                    
-                    
-                        <div><b>Studio:</b>
-                            <div id="alert-text"></div>
-                        </div>
-                        <div><b>Source:</b>
-                            <div id="alert-text1"></div>
-                        </div>
-                        <div><b>Theme:</b>
-                            <div id="alert-text2"></div>
-                        </div>
-                        <div><b>Demographic:</b>
-                            <div id="alert-text3"></div>
-                        </div>
-                   
+                <div id="panel">
 
+                    <p style="text-align: start;" id="texted">
+                    </p>
+                    <p id="text" style="text-align: start; display: none;">
+                    </p>
 
+                    <button id="flip" onclick="mFunction()">|<br>v</button>
+                    <a href=""><button id="fliped" style=" display: none;" onclick="mFunction()">^<br>|</button></a>
 
-
-
+                    <div><b>Studio:</b>
+                        <div id="alert-text"></div>
+                    </div>
+                    <div><b>Source:</b>
+                        <div id="alert-text1"></div>
+                    </div>
+                    <div><b>Theme:</b>
+                        <div id="alert-text2"></div>
+                    </div>
+                    <div><b>Demographic:</b>
+                        <div id="alert-text3"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -76,9 +75,14 @@
         <!-- footer heseg -->
 
         <div id="footer-container" style="display: flex; justify-content: space-evenly;">
-            <div id="score"></div>
-            <div id="view"></div>
-            <button style="background-color: rgb(10, 247, 255); color: black;"> Add to List</button>
+            <div style="display: flex;">
+                <img src="https://cdn-icons-png.flaticon.com/512/929/929566.png" alt="" width="20px" height="16px">
+                <div style="color: black;" id="score"></div>
+            </div>
+            <div style="display: flex;">
+                <img src="https://cdn-icons-png.flaticon.com/512/2874/2874802.png" alt="" width="20px" height="17px">
+            <div style="color: black;" id="view"></div></div>
+            <button style="background-color: rgba(255, 165, 10, 0.708); color: black;"> Add to List</button>
 
         </div>
     </div>
@@ -94,6 +98,8 @@
 
 
 
+
+    <!-- <script src="/munkh-erdeneTodoApp/day27/anime-web/js/main.js"></script> -->
     <script src="/munkh-erdeneTodoApp/day27/anime-web/js/main.js"></script>
 </body>
 
