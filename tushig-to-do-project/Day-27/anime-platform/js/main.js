@@ -37,11 +37,37 @@ fetch(fullMetalAlchemistURL)
             const a=document.createElement('p');
             a.href=element.url;
             a.textContent=element.name;
-            categoryList.appendChild(a);
+            categoryList.appendChild(a).style=" background-color: rgb(255, 200, 69); padding: 2px 10px; border-radius: 15px;";
         })
 
-    // scroll text 
-    
+    // scroll metal alchemist text 
+    const animeText = document.querySelector('#metalalchemist-text p')
+    const moreText = document.querySelector('#more-text')
+    animeText.textContent = data.data.synopsis.slice(0, 375)
+    const more = data.data.synopsis
+    console.log(more);
+    const textLength = more.length;
+    const parts = more.slice(375, textLength);
+    console.log(parts)
+    moreText.textContent = parts;
+    moreText.style.display = 'none'
+
+    const moreButton = document.querySelector('#more-button');
+    moreButton.addEventListener(`click`, () => {
+        if (moreText.style.display == 'none') {
+            moreText.style.display = 'block'
+        } else {
+            moreText.style.display = 'none'
+        }
+    })
+
+    // anime genres
+    document.querySelector('#genres1 a').textContent = data.data.studios[0].name
+    document.querySelector('#genres2 a').textContent = data.data.source
+    document.querySelector('#genres3 a').textContent = data.data.themes[0].name
+    document.querySelector('#genres4 a').textContent = data.data.demographics[0].name
+
+
 
         
     // footer stats list
@@ -49,6 +75,6 @@ fetch(fullMetalAlchemistURL)
         footerStats.querySelector('#footer-stats').textContent = data.data.score;
         const footerStats1= document.querySelector('#manga-container');
         footerStats1.querySelector('#footer-stats2').textContent =`${data.data.popularity}.0M`;
-    })
+})
 
     
