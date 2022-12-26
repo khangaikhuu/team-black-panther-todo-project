@@ -63,7 +63,13 @@ fetch('https://api.jikan.moe/v4/top/anime')
     const container = document.querySelector('#anime-container');
 
     container.innerHTML = '';
+    // for (let index = 0; index < array.length; index++) {
+    //   const element = array[index];
+    // array[i].name
+      
+    // }
     anime.map((element) => {
+      console.log('element', element)
       container.innerHTML += getAnimes(element)
     })
   })
