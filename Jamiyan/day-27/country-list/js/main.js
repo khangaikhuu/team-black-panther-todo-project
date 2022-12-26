@@ -8,10 +8,22 @@ fetch("https://restcountries.com/v3.1/all")
         // const imgCountry = document.getElementById("img-country").src = data[0].flags.png;
         // const nameCountry = document.getElementById("name-country").innerHTML = data[0].name.common
       
-      
         data.map(element => {
             container.innerHTML += countries(element);
         })
+
+        const input = document.getElementById("input");
+        document.getElementById("input-button").addEventListener("click", () => {
+        for(i = 0; i < data.length; i++){
+        if(input.value == data[i].name.common){
+            const inputImg = document.createElement("img")
+            inputImg.src = data[i].flags.png
+            document.getElementById("input-div").appendChild(inputImg);
+        }else{
+            console.log("Улсын нэр оруулна уу")
+        }
+    }
+    })
 
     })
 
