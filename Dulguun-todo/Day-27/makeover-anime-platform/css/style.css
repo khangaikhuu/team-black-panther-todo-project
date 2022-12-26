@@ -5,29 +5,34 @@
 
 body {
 	padding: 20px;
-	font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-		"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-	font-size: 13px;
+	font-family: Avenir,lucida grande,tahoma,verdana,arial,sans-serif;
+	font-size: 11px;
 }
 
 #anime-container {
 	display: grid;
-	grid-template-columns: repeat(3, 500px);
+	grid-template-columns: repeat(3, 340px);
 	gap: 20px;
 	justify-content: center;
 }
 
 .anime-card {
-	width: 460px;
+	width: 334px;
 	border: 3px solid #f8f8f8;
 }
 
 #title {
 	display: block;
 	text-align: center;
-	padding-block: 30px;
-	font-size: 18px;
+	padding-block: 20px;
+	font-size: 14px;
 	text-decoration: none;
+	color: #1c439b;
+	font-weight: 700;
+}
+
+#image {
+	width: 50%;
 }
 
 .anime-genre,
@@ -69,12 +74,12 @@ body {
 }
 
 #anime-genre a {
-	font-size: 10px;
-	border: 1px solid gray;
-	padding: 3px 5px;
+	font-size: 9px;
+	border: 1px solid #fff;
+	padding: 0px 5px;
 	background-color: #fff;
 	border-radius: 10px;
-	color: gray;
+	color: #787878;
 	text-decoration: none;
 	margin: 0 5px;
 }
@@ -85,7 +90,7 @@ body {
 
 .anime-content {
 	overflow: auto;
-	height: 400px;
+	height: 243px;
 }
 
 #text {
@@ -130,11 +135,12 @@ body {
 #add-list {
 	background-color: #4f74c8;
 	border: none;
-	padding: 7px 25px;
+	padding: 5px 20px;
 	color: #fff;
-	border-radius: 5px;
+	border-radius: 3px;
 	cursor: pointer;
 	transition: all 0.3s ease-in;
+	font-size: 11px;
 }
 
 #add-list:hover {
