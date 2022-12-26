@@ -61,22 +61,20 @@ body {
 	padding-left: 5px;
 }
 
-#anime-genre {
+.anime-genre {
 	background-color: #f0f0f0;
 	gap: 10px;
-	text-align: center;
+	justify-content: center;
 	padding-block: 10px;
 }
 
-#anime-genre a {
+.anime-genre p {
 	font-size: 10px;
 	border: 1px solid gray;
 	padding: 3px 5px;
 	background-color: #fff;
 	border-radius: 10px;
 	color: gray;
-	text-decoration: none;
-	margin: 0 5px;
 }
 
 .anime-body {
@@ -111,14 +109,9 @@ body {
 	background-color: #f0f0f0;
 }
 
-#info p a {
-	text-decoration: none;
-	color: #1c439b;
-}
-
 .anime-footer {
 	justify-content: space-around;
-	padding-block: 5px;
+	padding-block: 10px;
 	background-color: #f8f8f8;
 	align-items: center;
 }
@@ -139,8 +132,4 @@ body {
 
 #add-list:hover {
 	opacity: 0.5;
-}
-
-.fa-icon {
-	font-size: 1.2rem;
 }
