@@ -1,0 +1,14 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.card-container {
+    max-width: 768px;
+    margin: auto;
+    background-color: yellow;
+}
+.status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
