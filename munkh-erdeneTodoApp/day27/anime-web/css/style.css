@@ -7,6 +7,7 @@
 
 .container{
     background-color: blanchedalmond;
+    height: 700px;
 }
 body{
     background-image: url(http://getwallpapers.com/wallpaper/full/8/7/8/902608-best-fullmetal-alchemist-wallpaper-1920x1080.jpg);
@@ -14,8 +15,20 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
 }
-#right{
+/* #text{
     height: 300px;
+    
+    overflow-y: auto;
+    
+}
+#texted{
+    height: 300px;
+    overflow-y: auto;
+    
+    
+} */
+#panel{
+    height: 400px;
     overflow-y: auto;
 }
 
@@ -24,18 +37,22 @@ body{
     color: black;
 }
 #manga-container{
-    width: 700px;
-    height: 100%;
+    width: 400px;
+    
     border: 2px solid blanchedalmond;
     backdrop-filter: blur(10px);
     
 }
 #footer-container{
-    border: 2px solid blanchedalmond;
+    background-color: blanchedalmond;
+    
 }
 
-#alert div{
+
+#panel div{
     display: flex;
+    background-color:  rgba(0, 0, 0, 0.139);
+    
 }
 .icon  {
     object-fit: scale-down;
@@ -48,5 +65,58 @@ body{
     transform: rotate(360deg);
 
 }
+a{
+    text-decoration: none;
+    
+}
+a:hover{
+    color: brown;
+    
+    
+    
+}
+#flip{
+    margin: auto;
+}
+#fliped{
+    margin: auto;
+}
+
+button {
+    border-radius: 4px;
+    background-color: blanchedalmond;
+    border: none;
+    color: black;
+    text-align: center;
+    transition: all 0.5s;
+    cursor: pointer;
+    box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
+  }
+  
+  button{
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  button:after {
+    content: '»';
+    position: absolute;
+    opacity: 0;  
+  
+    transition: 0.5s;
+  }
+  
+  button:hover{
+    padding-right: 24px;
+    padding-left:8px;
+  }
+  
+  button:hover:after {
+    opacity: 1;
+    right: 10px;
+  }
+
 
 
