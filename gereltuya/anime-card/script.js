@@ -19,7 +19,6 @@ async function showMore(event){
   // const filteredData = animeData.map(el => index == event.id);
 
   console.log(filteredData[0].synopsis);
-
   elementSynop.innerHTML = filteredData[0].synopsis;
 
 }

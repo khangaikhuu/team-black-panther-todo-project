@@ -5,41 +5,144 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/x-icon" href="images/logo.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@200&family=Staatliches&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/613f8b3121.js" crossorigin="anonymous"></script>
-
     <title>Anime platform</title>
 </head>
 <body>
+
     <div id="manga-container">
+        <!-- categorys -->
         <h6></h6>
         <div id="type-list-bar">
-           <i class="fa-solid fa-clapperboard-play"></i>
+        <i class="fa-solid fa-circle-play" style="font-size: 16px; color: rgb(5, 73, 162)"></i>
            <div id="list-1"></div>
            <div id="list-2"></div>
            <div id="list-3"></div>
            <div id="list-4"></div>
            <div id="list-5"></div>
-           <i class="fa-solid fa-signal-stream"></i>
+           <i class="fa-sharp fa-solid fa-tower-cell" style="font-size: 16px; color: rgb(5, 73, 162);"></i>
         </div>
-        <div id="category-list"></div>
-        <img id="manga-image">
 
-        <div class="anime-content">
-            <div id="text">
-                <p></p>
+        <!-- category listuud heseg -->
+
+        <div id="category-list" style="  background-color: rgb(31, 103, 176); color: white"></div>
+        
+                <!-- zurag bolon text heseg -->
+        <div style="display: flex;">
+            <img id="manga-image">
+            <div class="anime-text">
+                <div id="metalalchemist-text">
+                    <p></p>
+                    <p id="more-text"></p>
+                    <button id="more-button" style="border: none; color:rgb(255, 151, 24); background-color: rgba(255, 228, 196, 0);">
+                        <i class="fa-solid fa-angle-down" style="width: 260px; text-shadow: 1px 1px 10px rgb(255, 113, 4); font-size: 20px;"></i>
+                    </button>
+                    <div id="genres">
+                        <p id="genres1" style="background-color: rgba(0, 0, 0, 0.3);">
+                            Studio: 
+                            <a href="https://myanimelist.net/anime/producer/4/Bones"></a>
+                        </p>
+
+                        <p id="genres2">
+                            Source: 
+                            <a href="#" style="color: white; text-shadow: none;"></a>
+                        </p>
+
+                        <p id="genres3" style="background-color: rgba(0, 0, 0, 0.3);">
+                            Theme: 
+                            <a href="https://myanimelist.net/anime/genre/38/Military"></a>
+                        </p>
+
+                        <p id="genres4">
+                            Demographic: 
+                            <a href="https://myanimelist.net/anime/genre/27/Shounen"></a>
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
-        
+
+        <!-- footer area -->
         <div id="footer-list">
-            <div id="footer-stats"></div>
-            <div id="footer-stats2"></div>
-            <button id="foot-btn">Add to List </button>
+            <div id="review">
+                <i class="fa-regular fa-star" style="color: orange;"></i>
+                <span id="number">9.11</span>
+            </div>
+            <div id="views">
+                <i class="fa-solid fa-eye" style="color: orange"></i>
+                <span id="view-number">3.0M</span>
+            </div>
         </div>
-        
     </div>
 
-    
-    
+
+    <!-- SECOND ANIME LIST CARD -->
+    <div id="second-manga-container">
+        <!-- categorys -->
+        <h6></h6>
+        <div id="second-type-list-bar">
+        <i class="fa-solid fa-circle-play" style="font-size: 16px; color: rgb(5, 73, 162);"></i>
+           <div id="second-list-1"></div>
+           <div id="second-list-2"></div>
+           <div id="second-list-3"></div>
+           <div id="second-list-4"></div>
+           <div id="second-list-5"></div>
+           <i class="fa-sharp fa-solid fa-tower-cell" style="font-size: 16px; color:rgb(5, 73, 162);"></i>
+        </div>
+
+        <!-- category listuud heseg -->
+
+        <div id="second-category-list" style="  background-color: rgb(18, 82, 146); color: white"></div>
+        
+                <!-- zurag bolon text heseg -->
+        <div style="display: flex;">
+            <img id="second-manga-image">
+            <div class="second-anime-text">
+                <div id="second-metalalchemist-text">
+                    <p></p>
+                    <p id="second-more-text"></p>
+                    <button id="second-more-button" style="border: none; color:rgb(255, 151, 24); background-color: rgba(255, 228, 196, 0);">
+                        <i class="fa-solid fa-angle-down" style="width: 260px; text-shadow: 1px 1px 10px rgb(255, 113, 4); font-size: 20px;"></i>
+                    </button>
+                    <div id="second-genres">
+                        <p id="second-genres1" style="background-color: rgba(0, 0, 0, 0.3);">
+                            Studio: 
+                            <a href="https://myanimelist.net/anime/producer/4/Bones"></a>
+                        </p>
+
+                        <p id="second-genres2">
+                            Source: 
+                            <a href="#" style="color: white; text-shadow: none;"></a>
+                        </p>
+
+                        <p id="second-genres3" style="background-color: rgba(0, 0, 0, 0.3);">
+                            Theme: 
+                            <a href="https://myanimelist.net/anime/genre/38/Military"></a>
+                        </p>
+
+                        <p id="second-genres4">
+                            Demographic: 
+                            <a href="https://myanimelist.net/anime/genre/27/Shounen"></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- footer area -->
+        <div id="second-footer-list">
+            <div id="second-review">
+                <i class="fa-regular fa-star" style="color: orange;"></i>
+                <span id="second-number">7.20</span>
+            </div>
+            <div id="second-views">
+                <i class="fa-solid fa-eye" style="color: orange"></i>
+                <span id="second-view-number">2.9M</span>
+            </div>
+        </div>
+    </div>
 
     <script src="js/main.js"></script>
 </body>
