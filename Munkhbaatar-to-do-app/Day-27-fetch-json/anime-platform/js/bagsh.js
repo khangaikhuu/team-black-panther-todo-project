@@ -101,7 +101,7 @@ fetch('https://api.jikan.moe/v4/top/anime')
         console.log('topAnim', topAnime);
         const anime = topAnime.data;
         console.log('anime', anime);
-        const container = document.querySelector('#all-container');
+        const container = document.querySelector('#anime-container');
       
         container.innerHTML = '';
         anime.map((element, index) => {
@@ -110,18 +110,13 @@ fetch('https://api.jikan.moe/v4/top/anime')
 })
 
 
-function showMore(event) {
-    console.log('clicked buttonID = ' + event.id);
-
-}
-
 
 const card = document.querySelector('#card');
 function getAnimes(data, index) {
 
 
     const genres = data.genres.map(genre => {
-        const result = `<a>${genre.name}</a>`;
+        const result = `<p>${genre.name}</p>`;
         return result;
     })
 
@@ -135,11 +130,10 @@ function getAnimes(data, index) {
         return result;
     })
 
-    
-    
 
 
     return `
+
 <div id="anime-container">
     <h4>${data.title}</h4>
     <div class="type-container">
@@ -147,18 +141,18 @@ function getAnimes(data, index) {
             <i class="bi bi-play-btn-fill"></i>
         </div>
         
-        <div id='type-all'>
-            <span id="type">${data.type}</span>,
-            <span id="year">${data.year}</span> | 
-            <span id="status">${data.status}</span> | 
-            <span id="eps">${data.episodes}</span> 
+        <div>
+             <span id="type">${data.type}</span>
+            <span id="year">${data.year}</span>
+            <span id="status">${data.status}</span>
+            <span id="eps">${data.episodes}</span>
         </div>
         <div class="play-icon">
             <i class="bi bi-broadcast fa-10x"></i>
         </div>
     </div>
     
-    <div id="genres">${genres.join('')}</div>
+    <div id="genres">${genres}</div>
     <div class="text-img">
         <img  src=${data.images.jpg.image_url} alt="" id="manga-image">
         
@@ -166,7 +160,7 @@ function getAnimes(data, index) {
             <p id ='synopsisHalf'></p>
             <p>${data.synopsis.slice(0, 300)}</p>
             <p id ='synopsisFull'></p>
-            <a href="#" class="extend" id="${index}" onclick="showMore(this)"><i class="bi bi-caret-down-fill"></i> </a>
+            <a href="#" class="extend" id="moreBtn_${index}"><i class="bi bi-caret-down-fill"></i> </a>
             <div id="studio"><strong>Studio:</strong> <a href='${data.studios[0].url}' > ${data.studios[0].name}</a></div>
             <div id="source"><strong>Source:</strong> ${data.source}</div>
             <div id="theme"><strong>Theme:</strong> ${themes}</div>
@@ -174,11 +168,70 @@ function getAnimes(data, index) {
         </div>
     </div>
     <div id="score-member-button"> 
-        <div id="score"><i class="bi bi-star"></i> ${data.score}</div> 
-        <div id="member"><i class="bi bi-person-fill"></i> ${(data.members/1.0e+6).toFixed(1)}M</div> 
+        <div id="score"></div> 
+        <div id="member"></div> 
         <a id="add-to-list">Add to List</a>
-    </div> 
+    </div> -->
     
+</div>
+
+
+
+
+
+
+  <div class="anime-card" id="card">
+  <a href="#" id="title">${data.title}</a>
+  <div class="anime-status">
+    
+    <i class="bi bi-play-btn-fill" style="font-size: 16px"></i>
+    
+
+
+    <div>
+      <span id="type">${data.type}</span>
+      <span id="year">${data.year}</span>
+      <span id="status">${data.status}</span>
+      <span id="eps">${data.episodes}</span>
+    </div>
+
+    <i class="bi bi-broadcast fa-10x" style="font-size: 16px"></i>
+  </div>
+  <div class="anime-genre">
+        ${genres}
+  </div>
+  <div class="anime-body">
+    <img
+      src=${data.images.jpg.image_url}
+      alt="full-alchemist"
+    />
+    <div class="anime-content">
+      <div id="text">
+        <p>${data.synopsis.slice(0, 300)}</p>
+        <p id="second-p"></p>
+        <a href='#' class='extend' id="moreBtn_${index}">
+          <i class="bi bi-caret-down-fill"></i>
+        </a>
+      </div>
+      <div id="info">
+        <p><strong>Studio:</strong> <a href='${data.studios[0].url}' > ${data.studios[0].name}</a></p>
+        <p><strong>Source:</strong> ${data.source}</p>
+        <p><strong>Theme:</strong> ${themes}</p>
+        <p><strong>Demographic:</strong> ${demographics}</p>
+      </div>
+    </div>
+  </div>
+  <div class="anime-footer">
+    <div id="review">
+      <i class="fa-regular fa-star"></i>
+      <span id="number"><i class="bi bi-star"></i> ${data.score}</span>
+    </div>
+    <div id="views">
+      <i class="fa-solid fa-eye"></i>
+      <span id="view-number"> <i class="bi bi-person-fill"></i> ${(data.members/1.0e+6).toFixed(1)}M</span>
+    </div>
+    <button id="add-list">Add To List</button>
+  </div>
 </div>`
 
 
