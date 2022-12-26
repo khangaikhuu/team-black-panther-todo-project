@@ -1,9 +1,80 @@
+#FMA{
+   width: 40%;
+   text-align: center;
+}
+
 h1{
     background-color: black;
     color: beige;
     text-align: center;
 }
 
+h4{
+    color:  rgb(71, 116, 192);
+}
 #headerOne{
+    background-color:  rgb(241, 240, 240);
+}
+
+#headerTwo{
     display: flex;
+    justify-content: space-around;
+    margin-top: 5px;
+    background-color: rgb(232, 232, 232);
+}
+
+#bodyDIV{
+    display: flex;
+    height: 400px;
+    margin-top: 5px;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+#defP{
+    margin-bottom: 0px;
+}
+
+#secondP{
+    display: none;
+    margin-top: 0px;
+}
+
+#arrowButton{
+    background-color: rgb(226, 226, 226);
+}
+
+#text{
+    overflow: auto;
+    height: 400px;
+}
+#bottomDIV{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 5px;
+    background-color: rgb(232, 232, 232);
+    height: 30px;
+}
+#score::before{
+    content: "\2606";
+}
+#member::before{
+    content: "\2630";
+}
+p{
+    margin: 0;
+}
+
+#list{
+    border-radius: 5px;
+    width: 150px;
+    height: 25px;
+    background-color: rgb(71, 116, 192);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
