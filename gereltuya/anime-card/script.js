@@ -1,5 +1,12 @@
 const card = document.querySelector('#card');
+
 function getAnimes(data) {
+
+  const genres = data.genres.map(genre => {
+     const result = `<p>${genre.name}</p>`;
+     return result;
+  })
+
   return `
   <div class="anime-card" id="card">
   <a href="#" id="title">${data.title}</a>
@@ -14,10 +21,7 @@ function getAnimes(data) {
     <i class="fa-solid fa-signal" style="font-size: 16px"></i>
   </div>
   <div class="anime-genre">
-    <p>Action</p>
-    <p>Adventure</p>
-    <p>Drama</p>
-    <p>Fantasy</p>
+   ${genres}
   </div>
   <div class="anime-body">
     <img
