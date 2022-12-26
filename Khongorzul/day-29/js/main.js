@@ -1,5 +1,6 @@
 async function showMoreFunc(event){
-    const elementSynop = document.getElementById(`anime-mini-text_${event.id}`);
+    const elementSynop = document.getElementById(`anime-text_${event.id}`);
+    const elementSynopFull = document.getElementById(`anime-full-text_${event.id}`)
 
     const resultJSON = await fetch("https://api.jikan.moe/v4/top/anime");
     const result = await resultJSON.json();
@@ -7,12 +8,21 @@ async function showMoreFunc(event){
     const animeData = result.data;
 
     const filteredData = animeData.filter((el, index) => {
-        if(index == event.id){
-            return el;
+        if (index == event.id){
+          return el;
         }
-    })
+      })
 
-    elementSynop.innerHTML = filteredData[0].synopsis;
+    if(event.innerHTML == `<i class="fa-solid fa-sort-down"></i>`){
+        event.innerHTML = `<i class="fa-solid fa-caret-up"></i>`;
+        elementSynop.style = "display: none";
+        elementSynopFull.style = "display: block";
+    }
+    else if(event.innerHTML == `<i class="fa-solid fa-caret-up"></i>`){
+        event.innerHTML = `<i class="fa-solid fa-sort-down"></i>`;
+        elementSynop.style = "display: block";
+        elementSynopFull.style = "display: none";
+    }
 }
 
 function getAnimes(data, index){
@@ -41,10 +51,13 @@ function getAnimes(data, index){
         <div id="anime-body">
             <img id="anime-image" src="${data.images.jpg.image_url}"/>
             <div id="right-side">
-                <div style="line-height: 25px" id="anime-mini-text_${index}">
+                <div id="anime-text_${index}">
                     ${data.synopsis.slice(0, 300)}
                 </div>
-                <button class="more-button" id="showMore_${index}" onclick="showMoreFunc(this)"><i class="fa-solid fa-sort-down"></i></button>
+                <div style="display: none" id="anime-full-text_${index}">
+                    ${data.synopsis}
+                </div>
+                <button class="more-button" id="${index}" onclick="showMoreFunc(this)"><i class="fa-solid fa-sort-down"></i></button>
                 <div id="right-bottom">
                     <p>Studios: <a href="${data.studios[0].url}" id="studio">${data.studios[0].name}</a></p>
                     <p>Source: <a>${data.source}</a></p>
@@ -53,7 +66,7 @@ function getAnimes(data, index){
         </div>
         <div id="bottom">
             <div><i class="fa-regular fa-star"></i> <span>${data.score}</span></div>
-            <div><i class="fa-solid fa-user"></i> <span>${data.members}</span></div>
+            <div><i class="fa-solid fa-user"></i> <span>${(data.members / 1.0e+6).toFixed(1)}M</span></div>
             <div><button id="add">Add to List</button></div>
         </div>
     </div>`

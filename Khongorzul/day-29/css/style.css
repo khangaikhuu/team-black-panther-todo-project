@@ -1,5 +1,6 @@
 body{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 0;
 }
 h1{
     background-color: crimson;
@@ -15,6 +16,7 @@ h1{
 }
 .anime{
     width: 500px;
+    background-color: rgba(255, 255, 255, 0.5);
     box-shadow: 0 0 10px lightblue;
     padding: 10px;
 }
@@ -62,9 +64,10 @@ h3{
 #anime-image{
     height: 300px;
 }
-#anime-full-text{
+#right-side{
     height: 300px;
     overflow: auto;
+    line-height: 25px;
 }
 .more-button{
     background-color: rgba(220, 20, 60, 0);
