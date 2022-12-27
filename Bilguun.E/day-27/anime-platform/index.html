@@ -14,13 +14,23 @@
         <h1>Top 25 Animes</h1>
 
         <div id="search-container" class="searchContainer">
-            <input placeholder="Search" id="searchPrompt">
-            <input type="button" value="Search" id="searchBtn" onclick="search(this)">
+            <div>
+                <input placeholder="Search" id="searchPrompt">
+                <input type="button" value="Search" id="searchBtn" onclick="search(this)" class="searchBtn">
+            </div>
+            <div>
+                <select id="filterSelect" onchange="filter()">
+                    <option value=""></option>
+                    <option value="Action">Action</option>
+                    <option value="Comedy">Comedy</option>
+                    <option value="Drama">Drama</option>
+                  </select>
+            </div>
         </div>
         <div class="row">
             <div id="mainDiv">
             </div>
-                <!-- <div class="header">
+            <!-- <div class="header">
                     <h6></h6>
                 </div>
                 <div id="prodsrc" class="prodsrc">
