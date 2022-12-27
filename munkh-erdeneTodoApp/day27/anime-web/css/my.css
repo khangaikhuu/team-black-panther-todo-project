@@ -1,0 +1,144 @@
+*{
+   
+    color: blanchedalmond;
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+body{
+    background-image: url(http://getwallpapers.com/wallpaper/full/8/7/8/902608-best-fullmetal-alchemist-wallpaper-1920x1080.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+#flip{
+    background-color: blanchedalmond;
+    color: black;
+}
+#fliped{
+    background-color: blanchedalmond;
+    color: black;
+    margin: auto;
+}
+#rigth{
+    height: 320px;
+    overflow-y: auto;
+    padding: 5px;
+}
+
+
+ 
+#genre-container a{
+    color: black;
+}
+#manga-container{
+    width: 500px;
+    
+    border: 2px solid blanchedalmond;
+    backdrop-filter: blur(10px);
+    
+}
+#footer-container{
+    
+    background-color: blanchedalmond;
+}
+
+#alert div{
+    display: flex;
+}
+.icon  {
+    object-fit: scale-down;
+    transition-duration: 500ms;
+
+    transition-timing-function: linear;
+}
+
+.icon:hover{
+    transform: rotate(360deg);
+
+}
+a{
+    text-decoration: none;
+}
+a:hover{
+    color: brown;
+}
+
+
+#second-flip{
+    background-color: blanchedalmond;
+    color: black;
+}
+#second-fliped{
+    background-color: blanchedalmond;
+    color: black;
+    margin: auto;
+}
+#second-rigth{
+    height: 320px;
+    overflow-y: auto;
+    padding: 5px;
+}
+
+
+ 
+#second-genre-container a{
+    color: black;
+}
+#manga-container-second{
+    width: 500px;
+    
+    border: 2px solid blanchedalmond;
+    backdrop-filter: blur(10px);
+    
+}
+#second-footer-container{
+    
+    background-color: blanchedalmond;
+}
+
+#second-alert div{
+    display: flex;
+}
+
+
+
+
+#gurav-flip{
+    background-color: blanchedalmond;
+    color: black;
+}
+#gurav-fliped{
+    background-color: blanchedalmond;
+    color: black;
+    margin: auto;
+}
+#gurav-rigth{
+    height: 320px;
+    overflow-y: auto;
+    padding: 5px;
+}
+
+
+ 
+#gurav-genre-container a{
+    color: black;
+}
+#gurav-manga-container{
+    width: 500px;
+    
+    border: 2px solid blanchedalmond;
+    backdrop-filter: blur(10px);
+    
+}
+#gurav-footer-container{
+    
+    background-color: blanchedalmond;
+}
+
+#gurav-alert div{
+    display: flex;
+}
