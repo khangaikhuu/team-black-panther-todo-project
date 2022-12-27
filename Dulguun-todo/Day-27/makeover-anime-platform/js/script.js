@@ -1,5 +1,6 @@
 const card = document.querySelector('#card');
 
+
 // Text more button
 async function showMore(event) {
   const elementSynop = document.getElementById(`synopsis_${event.id}`);
@@ -13,6 +14,23 @@ async function showMore(event) {
     }
   })
   elementSynop.innerHTML = filteredData[0].synopsis;
+}
+
+// Search
+async function search(event) {
+  const searchField = document.getElementById('search-input');
+  const searchWord = searchField.value;
+  const animes = await fetch('https://api.jikan.moe/v4/top/anime');
+  const animesJSON = await animes.json();
+  const animesData = animesJSON.data;
+
+  const searchResult = animesData.filter(anime => anime.title.toLowerCase().includes(searchWord));
+  
+  const container = document.querySelector('#anime-container');
+  container.innerHTML = '';
+  searchResult.map((element) => {
+    container.innerHTML += getAnimes(element);
+  });
 }
 
 

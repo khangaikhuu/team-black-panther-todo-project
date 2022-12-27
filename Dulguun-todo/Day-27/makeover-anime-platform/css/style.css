@@ -21,6 +21,39 @@ body {
 	border: 3px solid #f8f8f8;
 }
 
+#search-engine {
+	text-align: center;
+	margin-bottom: 20px;
+}
+#search-engine input {
+	appearance: none;
+	border: none;
+	outline: none;
+}
+
+#search-input {
+	flex: 1 1 0%;
+	background-color: #4f74c8;
+	padding: 0.5rem;
+	border-radius: 1rem;
+	margin-right: 1rem;
+	color: white;
+	font-size: 1.25rem;
+}
+
+#search-input::placeholder {
+	color: #f0f0f0;
+}
+
+#search-button {
+	color: #4f74c8;
+	font-size: 1.25rem;
+	font-weight: 700;
+	cursor: pointer;
+	transition: 0.4s;
+	background: none;
+}
+
 #title {
 	display: block;
 	text-align: center;
