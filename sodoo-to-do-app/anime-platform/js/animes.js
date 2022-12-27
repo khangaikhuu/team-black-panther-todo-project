@@ -94,7 +94,7 @@
 
 
 
-//-----------------------------------------Animes--------------------------
+//-----------------------------------------Animes--------------------------------------------
 
 const card = document.querySelectorAll('#card');
 
@@ -117,7 +117,7 @@ function getCard(data) {
                     <img src=${data.images.jpg.image_url} alt="" id="manga-image">
                 </div>
                 <div class="text-con">
-                    <div id="synopsis">${data.synopsis.slice(0, 250)}</div>
+                    <div id="synopsis">${data.synopsis.substring(0, 250)}</div>
                     <button id="switcher"><i class="bi bi-caret-down"></i></button>
                     <div>
                         <div id="studio"><b>Studio: </b><a href="${data.studios[0].url}"> ${data.studios[0].name}</a></div>
@@ -135,6 +135,33 @@ function getCard(data) {
         </div>
     `
 }
+
+
+// <div id="synopsis">${synoText}</div>
+
+// let switcherButton = document.getElementById('switcher');
+// switcherButton.addEventListener('click', switchFunc)
+// let shortText = true;
+// let synoText = data.synopsis.substring(0, 200)
+// function switchFunc() {
+
+//     synoText = data.synopsis.substring(0, 200)
+//     console.log('--------------------test');
+
+
+//     if (shortText) {
+//         synoText = data.synopsis;
+//         document.getElementById('switcher').innerHTML = '<i class="bi bi-caret-up"></i>';
+//         console.log('test');
+//         shortText = false
+//     }
+//     else {
+//         synoText = data.synopsis.substring(0, 300);
+//         document.getElementById('switcher').innerHTML = '<i class="bi bi-caret-down"></i>';
+//         shortText = true
+//         console.log('tes2');
+//     }
+// }
 
 
 fetch('https://api.jikan.moe/v4/top/anime')

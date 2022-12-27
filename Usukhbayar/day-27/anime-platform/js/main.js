@@ -56,4 +56,8 @@ fetch(fullMetalAlchemistURL)
         secondText.style.display = "none";
       }
     });
+    const score = document.querySelector('#score');
+    score.innerHTML = data.data.score;
+    const viewCount = document.querySelector('.view-count');
+    viewCount.textContent = Math.ceil(data.data.members);
   });
