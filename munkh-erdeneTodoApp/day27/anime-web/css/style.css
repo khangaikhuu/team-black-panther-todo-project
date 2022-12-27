@@ -1,122 +1,163 @@
-*{
-   
+
+
+
+
+* {
+	box-sizing: border-box;
+	margin: 0;
     color: blanchedalmond;
     text-align: center;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-.container{
-    background-color: blanchedalmond;
-    height: 700px;
-}
-body{
+body {
+	padding: 20px;
     background-image: url(http://getwallpapers.com/wallpaper/full/8/7/8/902608-best-fullmetal-alchemist-wallpaper-1920x1080.jpg);
     background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    
+	
 }
-/* #text{
-    height: 300px;
-    
-    overflow-y: auto;
-    
-}
-#texted{
-    height: 300px;
-    overflow-y: auto;
-    
-    
-} */
-#panel{
-    height: 400px;
-    overflow-y: auto;
+#search-container input{
+	color: black;
+	
 }
 
- 
-#genre-container a{
-    color: black;
+#anime-container {
+	display: grid;
+	grid-template-columns: repeat(3, 500px);
+	gap: 20px;
+	justify-content: center;
+	
 }
-#manga-container{
-    width: 400px;
-    
-    border: 2px solid blanchedalmond;
+
+.anime-card {
+	width: 460px;
+	border: 3px solid blanchedalmond;
+	border: 2px solid blanchedalmond;
     backdrop-filter: blur(10px);
-    
 }
-#footer-container{
-    background-color: blanchedalmond;
-    
+
+#title {
+	display: block;
+	text-align: center;
+	padding-block: 30px;
+	font-size: 18px;
+	text-decoration: none;
+}
+
+.anime-genre,
+.anime-body,
+.anime-footer {
+	display: flex;
+}
+
+.anime-status {
+	
+	background-color: blanchedalmond;
+	
+}
+
+.anime-status span {
+	color: gray;
+}
+
+#year {
+	border-right: 1px solid;
+	padding-right: 5px;
+}
+
+#status {
+	padding-inline: 5px;
+}
+
+#eps {
+	border-left: 1px solid;
+	padding-left: 5px;
+}
+
+.anime-genre {
+	background-color: burlywood;
+	gap: 10px;
+	justify-content: center;
+	padding-block: 10px;
+}
+
+.anime-genre p {
+	font-size: 10px;
+	border: 1px solid blanchedalmond;
+	padding: 3px 5px;
+	background-color: blanchedalmond;
+	border-radius: 10px;
+	color: black;
+}
+
+.anime-body {
+	gap: 10px;
+}
+
+.anime-content {
+	overflow: auto;
+	height: 400px;
+}
+
+#text {
+	padding-top: 10px;
+	line-height: 1.4em;
+}
+
+#text button {
+	display: block;
+	margin: auto;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+	padding: 10px 0;
+}
+
+#info p {
+	padding-block: 7px;
+	padding-inline: 2px;
+
+}
+
+#info p:nth-child(odd) {
+	background-color: rgba(226, 137, 43, 0.201)
+	
+}
+
+.anime-footer {
+	justify-content: space-around;
+	padding-block: 10px;
+	background-color: blanchedalmond;
+	align-items: center;
+}
+
+.anime-footer span {
+	color: black;
+}
+
+#add-list {
+	background-color: #4f74c8;
+	border: none;
+	padding: 7px 25px;
+	color: #fff;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: all 0.3s ease-in;
+}
+
+#add-list:hover {
+	opacity: 0.5;
 }
 
 
-#panel div{
-    display: flex;
-    background-color:  rgba(0, 0, 0, 0.139);
-    
-}
 .icon  {
     object-fit: scale-down;
     transition-duration: 500ms;
 
     transition-timing-function: linear;
 }
-
 .icon:hover{
     transform: rotate(360deg);
 
 }
-a{
-    text-decoration: none;
-    
-}
-a:hover{
-    color: brown;
-    
-    
-    
-}
-#flip{
-    margin: auto;
-}
-#fliped{
-    margin: auto;
-}
-
-button {
-    border-radius: 4px;
-    background-color: blanchedalmond;
-    border: none;
-    color: black;
-    text-align: center;
-    transition: all 0.5s;
-    cursor: pointer;
-    box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
-  }
-  
-  button{
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    transition: 0.5s;
-  }
-  
-  button:after {
-    content: '»';
-    position: absolute;
-    opacity: 0;  
-  
-    transition: 0.5s;
-  }
-  
-  button:hover{
-    padding-right: 24px;
-    padding-left:8px;
-  }
-  
-  button:hover:after {
-    opacity: 1;
-    right: 10px;
-  }
-
-
-

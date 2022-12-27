@@ -1,4 +1,17 @@
-const card = document.querySelector('#card');
+// const card = document.querySelector('#card');
+
+  const select = document.getElementById('genre-selector');
+
+  select.addEventListener('change', function handleChange(event) {
+    console.log(event.target.value); // 👉️ get selected VALUE
+  
+    // // 👇️ get selected VALUE even outside event handler
+    // console.log(select.options[select.selectedIndex].value);
+  
+    // // 👇️ get selected TEXT in or outside event handler
+    // console.log(select.options[select.selectedIndex].text);
+  });
+
 
 async function showMore(event){
   // console.log(event.id);
@@ -8,6 +21,7 @@ async function showMore(event){
   const resultJSON = await fetch('https://api.jikan.moe/v4/top/anime');
   const result = await resultJSON.json();
   const animeData = result.data;
+  console.log(result.data)
   console.log(animeData);
 
   const filteredData = animeData.filter((el, index) => {
@@ -19,10 +33,27 @@ async function showMore(event){
   // const filteredData = animeData.map(el => index == event.id);
 
   console.log(filteredData[0].synopsis);
-
   elementSynop.innerHTML = filteredData[0].synopsis;
 
 }
+
+async function search(event) { 
+  const searchField = document.getElementById('search-field');
+  const searchWord = searchField.value;
+  const animes = await fetch('https://api.jikan.moe/v4/top/anime');
+  const animesJSON = await animes.json();
+  const animesData = animesJSON.data;
+
+  const searchResult = animesData.filter(anime => 
+   anime.title.includes(searchWord)
+  )
+  console.log(searchResult);
+
+
+  // console.log(animesData);
+}
+
+// search('Brotherhood')
 
 function getAnimes(data, index) {
 
@@ -38,7 +69,7 @@ function getAnimes(data, index) {
   <div class="anime-status">
     <i class="fa-solid fa-circle-play" style="font-size: 16px"></i>
     <div>
-      <span id="type">${data.type}</span>
+      <span id="type">'${data.type} + ", " '</span>
       <span id="year">${data.year}</span>
       <span id="status">${data.status}</span>
       <span id="eps">${data.episodes}</span>
@@ -96,3 +127,18 @@ fetch('https://api.jikan.moe/v4/top/anime')
       container.innerHTML += getAnimes(element, index)
     })
   })
+
+
+  // async function search(searchWord){
+  
+  //   const resultJSON = await fetch('https://api.jikan.moe/v4/top/anime');
+  //   const result = await resultJSON.json();
+  //   const animeData = result.data;
+  
+  //   const searchResult = animeData.filter(e => e.title.includes(searchWord))
+  //   console.log(searchResult);
+  //   const container = document.querySelector('#anime-container');
+  
+  //     container.innerHTML += getAnimes(searchResult, 0)
+  
+  // }

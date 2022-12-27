@@ -13,7 +13,7 @@
 <body>
     <div id="manga-container">
 
-        <div class="manga-card">
+        <div class="manga-card" id="card">
             <a href="#" id="title"></a>
 
               <div id="manga-nav">
@@ -25,20 +25,42 @@
              </div>
               <div id="bodyCon">
                  <img src="" id="manga-image" alt="">
-                 <div class="content">
-                    <p></p>
-                    <p class="added"></p>
-                    <button id="myBtn">
-                        <i class="fa-solid fa-angle-down"></i>
-                        
-                    </button>
-                    <button id="button">
-                        <i class="fa-sharp fa-solid fa-angle-up"></i>
-                    </button>
-                 </div>
-
+                    <div class="flex">
+                        <div class="content">
+                            <p></p>
+                            <p class="added"></p>
+                            <button id="myBtn">
+                                <i class="fa-solid fa-angle-down"></i>
+                                
+                            </button>
+                            <button id="button">
+                                <i class="fa-sharp fa-solid fa-angle-up"></i>
+                            </button>
+                         </div>
+                         <div id="info">
+                            <p> <strong>Studio:</strong> <a href="#">Bones</a></p>
+                            <p> <strong>Source:</strong> Manga</p>
+                            <p> <strong>Theme:</strong> <a href="#">Military</a></p>
+                            <p> <strong>Demographic:</strong> <a href="#">Shounen</a></p>
+                          </div>
+                    </div>
               </div>
+              <div class="footer">
+                <div id="review">
+                    <i class="fa-regular fa-star"></i>
+                    <span id="number"></span>
+                </div>
+                <div id="pop">
+                    <i class="fa-solid fa-eye"></i>
+                    <span></span>
+                </div>
+                <div id="add">
+                    <button>Add to List</button>
+                </div>
+            </div>
+
         </div>
+        
 
 
 
