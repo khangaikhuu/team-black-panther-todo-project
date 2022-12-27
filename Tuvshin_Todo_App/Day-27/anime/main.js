@@ -14,48 +14,39 @@ fetch(fullMetalAlchemistURL)
         const mangaTitle = document.getElementsByClassName('manga-title')[0].textContent = data.data.titles[0].title;
 
         //text orulsan
-        const mangaText = document.getElementById('manga-container').
-            getElementsByClassName('manga-text')[0].textContent = data.data.synopsis;
+        // const mangaText = document.getElementById('manga-container').
+        //     getElementsByClassName('manga-text')[0].textContent = data.data.synopsis;
 
         // bagshiin filenaas
 
-        const secondText = document.getElementById('second-p');
-        mangaText.textContent = data.data.synopsis.slice(0, 375);
-        const more = data.data.synopsis;
-        const mangaTextLength = more.length;
-        console.log('lenght', mangaTextLength)
-        // const parts = more.slice(375, textLenght);   
-        // secondText.textContent = parts;
-        secondText.style.display = 'none';
+        
+        let switcherButton = document.getElementById('moreBtn');
+        switcherButton.addEventListener('click', switchFunc)
 
-        const moreButton = document.querySelector('.text-btn');
+        let shortText = true;
+        function switchFunc() {
 
-        moreButton.addEventListener('click', () => {
-            if (secondText.style.display == 'none') {
-                secondText.style.display = 'block';
+            document.getElementById('manga-text').innerHTML = data.data.synopsis.substring(0, 337)
 
-            } else {
-                secondText.style.display = 'none';
+
+            if (shortText) {
+                document.getElementById('manga-text').innerHTML = data.data.synopsis;
+                document.getElementById('moreBtn').innerHTML = '<i class="bi bi-caret-up"></i>';
+
+                shortText = false
             }
-        })
+            else {
+                document.getElementById('manga-text').innerHTML = data.data.synopsis.substring(0, 337);
+                document.getElementById('moreBtn').innerHTML = '<i class="bi bi-caret-down"></i>';
+                shortText = true
+
+            }
+        }
+
+        let synopsis = document.getElementById('manga-text').innerHTML = data.data.synopsis.substring(0, 337);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        // bagshiin filenaas duussan
 
 
 
