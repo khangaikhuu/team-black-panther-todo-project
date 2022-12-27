@@ -1,10 +1,38 @@
 const fmaURL = "https://api.jikan.moe/v4/top/anime";
 
-function animeData (data){
-    console.log(data);
+async function showMore(event){
+    console.log(event)
+
+    const index = event.id;
+
+    const fetchedData =await fetch(fmaURL)
+    const fetchedJSON =await fetchedData.json();
+    const fetchedJSONData = fetchedJSON.data;
+    
+    console.log(fetchedJSONData);
+    const foundElement = fetchedJSONData.filter((e, idx) => {
+        if(idx == index){
+            return e;
+        }
+
+    })
+    console.log(foundElement)
+}
+
+function animeData(animes,data,index) {
+
+    
+
+    let genres = data.genres.map(element => {
+        const result = `<button class="buttonGenre">${element.name}</button>`
+        return result
+    })
+
+
+
     
     return `
-    <div id="FMA">
+    <div id="animeCard">
         <h4 id="title">${data.title}</h4>
         <div id="headerDIV">
             <div id="playIMG"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-badge-hd" viewBox="0 0 16 16">
@@ -16,18 +44,19 @@ function animeData (data){
             <path d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707zm2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 1 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708zm5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708zm2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707zM6 8a2 2 0 1 1 2.5 1.937V15.5a.5.5 0 0 1-1 0V9.937A2 2 0 0 1 6 8z"/>
             </svg></div>
         </div>
-        <div id="headerTwo"></div>
+        <div id="headerTwo">${genres.join("")}</div>
 
         <div id="bodyDIV">
             <img id="manga-image" src="${data.images.jpg.image_url}" alt="">
             <div id="text">
-                <p id="defP"></p>
-                <p id="secondP"></p>
-                <a href="#">
-                    <div id="arrowButton"></div>
+                <p id="defP">${data.synopsis.slice(0, 401)}</p>
+                <p id="secondP">${data.synopsis.slice(401, 2000)}</p>
+                <a id="${index}" onclick="showMore(this)">
+                 <div><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
+                 <path d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z"/></svg></div>
                 </a>
                 <div id="info">
-                    <p><strong>Studio:</strong> <a href="#">Bones</a></p>
+                    <p><strong>Studio:</strong> <a href="#">${data.studios[0].name}</a></p>
                     <p><strong>Source:</strong> Manga</p>
                     <p><strong>Theme:</strong> <a href="#">Military</a></p>
                     <p><strong>Demographic:</strong> <a href="#">Shounen</a></p>
@@ -35,12 +64,12 @@ function animeData (data){
             </div>
         </div>
         <div id="bottomDIV">
-            <p id="score"></p>
-            <p id="member"></p>
-            <a id="list" href="#"></a>
+            <p id="score">${data.score}</p>
+            <p id="member">${data.members}</p>
+            <a id="list" href="#">Add to List</a>
         </div>
 
-    </div>` 
+    </div>`
 }
 
 fetch(fmaURL)
@@ -48,10 +77,9 @@ fetch(fmaURL)
     .then(anime => {
         const cont = document.getElementById("container");
         cont.innerHTML = "";
-        anime.data.map((element )=>{
-            // console.log(element);
-            animeData(element);
+        anime.data.map((element,index) => {
 
-            cont.innerHTML += animeData(element);
-        }) 
+            cont.innerHTML += animeData(anime,element,index);
+            // console.log(element);
+        })
     })
