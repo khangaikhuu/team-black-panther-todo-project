@@ -4,14 +4,20 @@
 }
 
 body {
-    background-color: rgb(255, 255, 255);
+    background: rgb(238, 174, 202);
+    background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
     font-family: Avenir, lucida grande, tahoma, verdana, arial, sans-serif;
 }
 
 h1 {
-    margin-top: 80px;
+    color: #ffffff;
+    font-family: 'Raleway', sans-serif;
+    font-size: 62px;
+    font-weight: 800;
+    line-height: 72px;
+    margin: 30px 0 24px;
     text-align: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-transform: uppercase;
 }
 
 .row {
@@ -41,11 +47,11 @@ h1 {
 
 .divContainer {
     margin-top: 30px;
-    width: 334px;
+    width: 350px;
     height: 372px;
     background-color: white;
-    border: 1px solid rgb(202, 202, 202);
     display: inline-block;
+    border-radius: 10px;
 }
 
 #manga-image {
@@ -67,7 +73,7 @@ h1 {
     text-align: center;
     color: #1c439b;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 700;
     font-family: Avenir, lucida grande, tahoma, verdana, arial, sans-serif;
     margin: 10px 0 10px 0;
