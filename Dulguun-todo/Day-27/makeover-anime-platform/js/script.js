@@ -1,31 +1,65 @@
+// // Text more button (Teacher's suggestion)
+// async function showMore(event) {
+//   const elementSynop = document.getElementById(`text_${event.id}`);
+//   const resultJSON = await fetch('https://api.jikan.moe/v4/top/anime');
+//   const result = await resultJSON.json();
+//   const animeData = result.data;
+
+//   const filteredData = animeData.filter((el, index) => {
+//     if (index == event.id) {
+//       return el;
+//     }
+//   })
+//   elementSynop.innerHTML = filteredData[0].text;
+// }
+
+// Anime platform
 const card = document.querySelector('#card');
 
 
-// Text more button
+// Text show button section
 async function showMore(event) {
-  const elementSynop = document.getElementById(`synopsis_${event.id}`);
-  const resultJSON = await fetch('https://api.jikan.moe/v4/top/anime');
-  const result = await resultJSON.json();
-  const animeData = result.data;
+  let textWhole = document.querySelector(`#text-whole_${event.id}`);
+  let textSliced = document.querySelector(`#text-sliced_${event.id}`);
+  let collapseBtn = document.querySelector(`.collapseBtn_${event.id}`);
+  let showMoreBtn = document.querySelector(`.showMoreBtn_${event.id}`);
 
-  const filteredData = animeData.filter((el, index) => {
-    if (index == event.id) {
-      return el;
-    }
-  })
-  elementSynop.innerHTML = filteredData[0].synopsis;
+  textWhole.style.display = 'block';
+  textSliced.style.display = 'none'
+
+  collapseBtn.style.display = 'block'
+  collapseBtn.style.display = 'flex'
+  showMoreBtn.style.display = 'none'
+  showMoreBtn.style.textDecoration = 'none'
+
 }
 
-// Search
-async function search(event) {
+// Text collapse button section
+function collapseBtn(event) {
+  let textWhole = document.querySelector(`#text-whole_${event.id}`);
+  let textSliced = document.querySelector(`#text-sliced_${event.id}`);
+  let collapseBtn = document.querySelector(`.collapseBtn_${event.id}`);
+  let showMoreBtn = document.querySelector(`.showMoreBtn_${event.id}`);
+
+  textWhole.style.display = 'none';
+  textSliced.style.display = 'block'
+
+  collapseBtn.style.display = 'none'
+  showMoreBtn.style.display = 'flex'
+
+}
+
+// Search section
+async function search() {
   const searchField = document.getElementById('search-input');
   const searchWord = searchField.value;
   const animes = await fetch('https://api.jikan.moe/v4/top/anime');
   const animesJSON = await animes.json();
   const animesData = animesJSON.data;
 
-  const searchResult = animesData.filter(anime => anime.title.toLowerCase().includes(searchWord));
-  
+  const searchResult = animesData.filter(anime =>
+    anime.title.toLowerCase().includes(searchWord));
+
   const container = document.querySelector('#anime-container');
   container.innerHTML = '';
   searchResult.map((element) => {
@@ -33,7 +67,56 @@ async function search(event) {
   });
 }
 
+// Select section
+async function filter() {
+  // const animesGenre = await fetch('https://api.jikan.moe/v4/genres/anime');
+  // const animesGenreJSON = await animesGenre.json()
+  // const animesGenreData = animesGenreJSON.data
+  // for (let i = 0; i < animesGenreData.name.length; i++) {
+  //   let option = document.createElement("option");
+  //   option.innerHTML = animesGenreData.name[i];
 
+  //   selectGenre.append(option);
+  // }
+
+  const selectGenre = document.getElementById('select-genre');
+  let selectValue = selectGenre.value;
+  const animes = await fetch('https://api.jikan.moe/v4/top/anime')
+  const animesJSON = await animes.json()
+  const animesData = animesJSON.data
+
+  const selectResult = animesData.filter(anime => {
+    let filteredSelect = anime.genres.filter(genre => {
+      if (genre.name == selectValue) {
+        return genre;
+      }
+    })
+    if (filteredSelect.length > 0) {
+      return filteredSelect;
+    }
+  })
+  console.log(selectResult);
+  const container = document.querySelector(`#anime-container`);
+  container.innerHTML = '';
+  selectResult.map((element) => {
+    container.innerHTML += getAnimes((element));
+  })
+}
+
+// Mapping section
+fetch('https://api.jikan.moe/v4/top/anime')
+  .then((res) => res.json())
+  .then((topAnime) => {
+    const anime = topAnime.data;
+    const container = document.querySelector('#anime-container');
+
+    container.innerHTML = '';
+    anime.map((element, index) => {
+      container.innerHTML += getAnimes(element, index)
+    })
+  })
+
+// Design section
 function getAnimes(data, index) {
 
   const genres = data.genres.map((genre) => {
@@ -77,11 +160,10 @@ function getAnimes(data, index) {
     <img id="image" src=${data.images.jpg.image_url} alt="full-alchemist"/>
     <div class="anime-content">
       <div id="text">
-        <p id="synopsis_${index}">${data.synopsis.slice(0, 230)}</p>
-        <p id="second-p"></p>
-        <button id="${index}" onclick="showMore(this);">
-          <i class="fa-solid fa-angle-down"></i>
-        </button>
+        <p id ='text-sliced_${index}'>${data.synopsis.slice(0, 250)}</p>
+        <p id ='text-whole_${index}' style='display:none'>${data.synopsis}</p>
+        <a href="#" class="showMoreBtn_${index} arrow" id="${index}" onclick="showMore(this)" stlye="text-decoration: none;"><i class="fa-solid fa-angle-down"></i></a>
+        <a href="#" class="collapseBtn_${index} arrow" id="${index}" onclick="collapseBtn(this)" style="display:none; text-decoration: none;"><i class="fa-solid fa-angle-up"></i></a>
       </div>
       <div id="info">
         <p><strong>Studio:</strong> <a href="#">${studio}</a></p>
@@ -105,14 +187,3 @@ function getAnimes(data, index) {
 </div>`
 }
 
-fetch('https://api.jikan.moe/v4/top/anime')
-  .then((res) => res.json())
-  .then((topAnime) => {
-    const anime = topAnime.data;
-    const container = document.querySelector('#anime-container');
-
-    container.innerHTML = '';
-    anime.map((element, index) => {
-      container.innerHTML += getAnimes(element, index)
-    })
-  })
