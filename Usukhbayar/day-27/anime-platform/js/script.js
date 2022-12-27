@@ -1,10 +1,10 @@
 console.log("top 25");
 const card = document.querySelector(".card");
-async function showLess(event){
+async function showLess(event) {
   console.log(event);
 }
 async function showMore(event) {
-  console.log(event)
+  console.log(event);
   const elementSynop = document.getElementById(`synopsis_${event.id}`);
   console.log(elementSynop);
 
@@ -19,15 +19,39 @@ async function showMore(event) {
     }
   });
 
-  console.log(filteredData[0].synopsis);
-
   elementSynop.innerHTML = filteredData[0].synopsis;
-  event.style='display: none;'
+  event.style = "display: none;";
 
-  const showLess = document.getElementsByClassName('showLess');
-  showLess[0].style='display: block';
-  
+  const showLess = document.getElementsByClassName("showLess");
+  showLess[0].style = "display: block";
 }
+
+async function search(event) {
+  const searchField = document.getElementById("search-field");
+  const searchWord = searchField.value;
+  const animes = await fetch("https://api.jikan.moe/v4/top/anime");
+  const animesJSON = await animes.json();
+  const animesData = animesJSON.data;
+  const searchResult = animesData.filter((anime) =>
+    anime.title.includes(searchWord)
+  );
+  console.log(searchResult);
+  fetch('https://api.jikan.moe/v4/top/anime')
+  .then((result) => result.json())
+  .then((data) => {
+    const anime = data.data;
+    const container = document.querySelector("#overall");
+
+    container.innerHTML = "";
+    searchResult.map((element, index) => {
+      container.innerHTML += getAnimes(element, index);
+    });
+  });
+}
+
+
+
+
 function getAnimes(data, index) {
   const genres = data.genres.map((genre) => {
     const result = `<a>${genre.name}</a>`;
@@ -45,7 +69,7 @@ function getAnimes(data, index) {
   <span id="eps">${data.duration.slice(0, 6)}</span> 
   
   </div>
-  <i class="fa-solid fa-signal" style="font-size: 16px"></i>
+  <i class="fa-sharp fa-solid fa-podcast"></i>
   </div>
   <div id="btns">
   ${genres}

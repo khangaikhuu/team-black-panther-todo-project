@@ -1,4 +1,4 @@
-const card = document.querySelector('#card');
+// const card = document.querySelector('#card');
 
 async function showMore(event){
   // console.log(event.id);
@@ -20,7 +20,6 @@ async function showMore(event){
   // const filteredData = animeData.map(el => index == event.id);
 
   console.log(filteredData[0].synopsis);
-
   elementSynop.innerHTML = filteredData[0].synopsis;
 
 }

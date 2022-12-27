@@ -95,3 +95,12 @@ span {
 i{
   color: #000;
 }
+#search{
+  text-align: center;
+}
+#overall{
+  display: grid;
+  grid-template-columns: repeat(4, 500px);
+  gap: 20px;
+  justify-content: center;
+}
