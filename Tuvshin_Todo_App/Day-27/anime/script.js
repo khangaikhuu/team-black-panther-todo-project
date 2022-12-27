@@ -36,20 +36,30 @@ function getDetial(data) {
     const mangaDomImage = document.createElement('img');
     mangaDomImage.src = data.images.jpg.image_url;
     mangaDomImage.className = "manga-images"
+
 //genre oruulax heseg
     const mangaGenre = document.createElement('h4');
-    mangaGenre.innerHTML = `${data.genres.name}`;
+    // mangaGenre.innerHTML = `${data.genres}`;
+
+    data.genres.map(element => {
+        // console.log(element)
+        const a = document.createElement('a');
+        a.href = element.url;
+        a.innerHTML = element.name;
+        mangaGenre.appendChild(a);
+    })
 
 
 
-
-    //erunxii tom DIV
+//erunxii tom DIV
     const myCreate = document.createElement("div")
     myCreate.className = "myMain"
 
 
     myCreate.appendChild(mytitle);  
     myCreate.appendChild(myStat);
+    myCreate.appendChild(mangaGenre);
+    
     myCreate.appendChild(mangaDomImage);
 
 
