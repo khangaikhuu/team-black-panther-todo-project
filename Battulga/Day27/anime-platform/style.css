@@ -1,3 +1,8 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+}
+
 h1 {
     background-color: bisque;
     text-align: center;
@@ -5,6 +10,7 @@ h1 {
 
 h3{
     color: blue;
+	text-align: center;
 }
 
 
@@ -13,11 +19,10 @@ html {
     margin: 0 auto;
 }
 
-#manga-container {
+
+#manga-class {
     margin-right: 10px;
     border: 1px grey solid;
-
-
 }
 
 .anime-status {
@@ -27,14 +32,11 @@ html {
 	padding: 6px 10px;
 }
 
-#moreBtn {
-    
-}
-
 
 #info p {
 	padding-block: 7px;
 	padding-inline: 2px;
+	margin: 0;
 }
 
 #info p:nth-child(odd) {
@@ -53,6 +55,16 @@ html {
 	color: #545454;
 }
 
-body {
-    font-size: 13px;
+#manga-container {
+	display: grid;
+	gap: 10px;
+	font-size: 13px;
+	grid-template-columns: repeat(3, 450px);
 }
+
+#manga-card {
+	border: 3px solid #f8f8f8;
+	width: 450px;
+}
+
+

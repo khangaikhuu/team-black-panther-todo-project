@@ -12,8 +12,22 @@
 		></script>
 	</head>
 	<body>
+		<div id="search-container">
+			<input placeholder="Please Search" id="search-field"> 
+			<input type="button" value="Search" onclick="search(this);">
+		</div>
+		<div>
+			<select id="genre-selector">
+				<option >
+					Action
+				</option>
+				<option >
+					Comedy
+				</option>
+			</select>
+		</div>
 		<div id="anime-container">
-			<div class="anime-card" id="card">
+			<!-- <div class="anime-card" id="card">
 				<a href="#" id="title"></a>
 				<div class="anime-status">
 					<i class="fa-solid fa-circle-play" style="font-size: 16px"></i>
@@ -63,9 +77,9 @@
 					</div>
 					<button id="add-list">Add To List</button>
 				</div>
-			</div>
+			</div> -->
 		</div>
-		<script src="main.js"></script>
-		<!-- <script src="script.js"></script> -->
+		<!-- <script src="main.js"></script> -->
+		<script src="script.js"></script>
 	</body>
 </html>
