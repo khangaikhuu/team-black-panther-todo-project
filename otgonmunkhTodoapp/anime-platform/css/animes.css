@@ -1,0 +1,56 @@
+#manga-container {
+    display: grid;
+    grid-template-columns: repeat(3, 500px);
+    border: 1px solid rgb(183, 179, 179);
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    
+}
+
+.card {
+    margin: 10px;
+    box-sizing: border-box;
+    border: 1px solid rgb(192, 188, 188);
+}
+
+#title {
+    text-decoration: none;
+    color: rgb(2, 67, 67);
+    text-align: center;
+    margin: 5px 0;
+    padding: 10px;
+    font-size: 15px;
+
+}
+.intro {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    background-color: rgb(231, 231, 231);
+}
+.genres {
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 10px;
+    background-color: rgb(240, 240, 240);
+
+}
+.genres p {
+    border-radius: 15px;
+    background-color: white;
+    padding: 5px;
+    box-sizing: border-box;
+    display: inline-block;
+}
+.genres p:hover {
+    background-color: rgb(113, 141, 227);
+}
+.img-container {
+    display: flex;
+    gap: 5px;
+}
+.p-con {
+    overflow: auto;
+    height: 300px;
+}
