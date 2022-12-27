@@ -26,13 +26,6 @@ fetch(fullMetalAlchemistURL)
     })
 
 
-
-
-
-
-
-
-
     // const genres = data.genres.map(genre => {
     //     console.log(genre)
     //     const result = `<p>${genre.name}</p>`
