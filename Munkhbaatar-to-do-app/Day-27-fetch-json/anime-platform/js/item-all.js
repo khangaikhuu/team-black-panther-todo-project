@@ -15,6 +15,33 @@ fetch('https://api.jikan.moe/v4/top/anime')
 })
 
 
+
+
+async function searchFunc(event){
+    let searchValue = document.querySelector('#search-input').value;
+    // let searchValue = event.value;
+    console.log(searchValue);
+
+    const animes = await fetch('https://api.jikan.moe/v4/top/anime');
+    const animeJSON = await animes.json();
+    const animesData = animeJSON.data;
+
+    let searchResult = animesData.filter(anime => 
+        anime.title.toLowerCase().includes(searchValue.toLowerCase())
+    )
+    
+
+    console.log(searchResult);
+    
+    const container = document.querySelector('#all-container');
+    container.innerHTML = '';
+    searchResult.map((element, index) => {
+    container.innerHTML += getAnimes(element, index)
+})
+
+}
+
+
 async function showMore(event) {
     const elementSynop = document.getElementById(`synopsis_${event.id}`);
     console.log(elementSynop);
@@ -29,12 +56,6 @@ async function showMore(event) {
         }
       })
     
-      // const filteredData = animeData.map(el => index == event.id);
-    
-    // console.log(filteredData[0].synopsis);
-    // elementSynop.innerHTML = filteredData[0].synopsis;
-    
-
 
     console.log(document.querySelector(`#synopsisFull_${event.id}`));
     console.log(document.querySelector(`#synopsis_${event.id}`));
@@ -50,10 +71,11 @@ async function showMore(event) {
     let showMoreBtn = document.querySelector(`.showMoreBtn_${event.id}`);
     collapseBtn.style.display = 'block'
     collapseBtn.style.display = 'flex'
-    // collapseBtn.style.width = '100%'
     showMoreBtn.style.display = 'none'
     
 }
+
+
 
 
 function collapseBtn(event) {
@@ -70,20 +92,14 @@ function collapseBtn(event) {
     collapseBtn.style.display = 'none'
     showMoreBtn.style.display = 'block'
     showMoreBtn.style.display = 'flex'
-    
-    
 
 }
-
-
-
-
-
 
 
 const card = document.querySelector('#card');
 function getAnimes(data, index) {
 
+    console.log('inside get Anime');
 
     const genres = data.genres.map(genre => {
         const result = `<a>${genre.name}</a>`;
