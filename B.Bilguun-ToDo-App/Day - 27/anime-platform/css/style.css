@@ -13,6 +13,14 @@ body {
     padding: 20px;
     font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
+.animeHeader a{
+    text-decoration: none;
+    color: #1c439b;
+    font-size: 15px;
+}
+.animeHeader a:hover{
+    text-decoration: underline;
+}
 
 .actions {
     background-color: #f0f0f0;
@@ -27,6 +35,9 @@ body {
     border-radius: 5px;
     border: #e1e7f5 1px solid;
 }
+.actions a:hover {
+    background-color: #a4b5dc;
+}
 
 .titles {
     background-color: #f8f8f8;
@@ -34,7 +45,7 @@ body {
 
 .anime-content {
     overflow: auto;
-    height: 400px;
+    height: 350px;
 }
 
 .titles h6 {
@@ -58,4 +69,8 @@ body {
 
 .gray {
     background-color: #f0f0f0;
+}
+
+.foot {
+    background-color: #f8f8f8;
 }

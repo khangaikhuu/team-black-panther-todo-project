@@ -123,6 +123,26 @@ a {
 	justify-content: center;
 }
 
+#outer-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+#search-container {
+	margin: 20px;
+}
+
+#searchBtn {
+	background-color: #4f74cf;
+	padding: 3px 10px;
+	/* border-radius: 10px; */
+}
+
+#search-input {
+	height: 30px;
+}
 /* 
 
 * {
