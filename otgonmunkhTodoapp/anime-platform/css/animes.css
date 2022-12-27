@@ -46,3 +46,11 @@
 .genres p:hover {
     background-color: rgb(113, 141, 227);
 }
+.img-container {
+    display: flex;
+    gap: 5px;
+}
+.p-con {
+    overflow: auto;
+    height: 300px;
+}
