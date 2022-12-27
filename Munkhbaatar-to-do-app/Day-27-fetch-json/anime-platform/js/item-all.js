@@ -147,6 +147,7 @@ function collapseBtn(event) {
 
 
 const card = document.querySelector('#card');
+
 function getAnimes(data, index) {
 
     console.log('inside get Anime');
