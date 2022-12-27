@@ -97,10 +97,8 @@ i{
 }
 #search{
   text-align: center;
+  margin-bottom: 15px;  
 }
-#overall{
-  display: grid;
-  grid-template-columns: repeat(4, 500px);
-  gap: 20px;
-  justify-content: center;
+#search-field{
+  border: none;
 }

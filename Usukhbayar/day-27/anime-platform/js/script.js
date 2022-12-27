@@ -36,21 +36,18 @@ async function search(event) {
     anime.title.includes(searchWord)
   );
   console.log(searchResult);
-  fetch('https://api.jikan.moe/v4/top/anime')
-  .then((result) => result.json())
-  .then((data) => {
-    const anime = data.data;
-    const container = document.querySelector("#overall");
+  fetch("https://api.jikan.moe/v4/top/anime")
+    .then((result) => result.json())
+    .then((data) => {
+      const anime = data.data;
+      const container = document.querySelector(".cont");
 
-    container.innerHTML = "";
-    searchResult.map((element, index) => {
-      container.innerHTML += getAnimes(element, index);
+      container.innerHTML = "";
+      searchResult.map((element, index) => {
+        container.innerHTML += getAnimes(element, index);
+      });
     });
-  });
 }
-
-
-
 
 function getAnimes(data, index) {
   const genres = data.genres.map((genre) => {
@@ -131,3 +128,5 @@ fetch(topAnime)
       container.innerHTML += getAnimes(element, index);
     });
   });
+
+//onchange
