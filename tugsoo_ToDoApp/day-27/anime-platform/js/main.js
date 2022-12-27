@@ -64,9 +64,11 @@ fetch(fullMetalAlchemistURL)
 
         const score = document.createElement('a')
         const members = document.createElement('a')
+        const button = document.createElement('a')
 
         footer.appendChild(score);
         footer.appendChild(members);
+        footer.appendChild(button);
 
         const mem_number = data.data.members
 
@@ -74,6 +76,6 @@ fetch(fullMetalAlchemistURL)
 
         score.innerHTML = `<i class="fa-regular fa-star"></i> ${data.data.score}`
         members.innerHTML = `<i class="fa-solid fa-user"></i> ${data.data.members}`
-
+        button.innerHTML = `<a class="btn" href="https://myanimelist.net/login.php?error=login_required&from=%2Fanime%2Fgenre%2F2%2FAdventure" role="button">Add to list</a>`
 
     })
