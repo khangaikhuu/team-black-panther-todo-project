@@ -1,19 +1,75 @@
 const card = document.querySelector('#card');
 
 
-// Text more button
+// // Text more button
+// async function showMore(event) {
+//   const elementSynop = document.getElementById(`synopsis_${event.id}`);
+//   const resultJSON = await fetch('https://api.jikan.moe/v4/top/anime');
+//   const result = await resultJSON.json();
+//   const animeData = result.data;
+
+//   const filteredData = animeData.filter((el, index) => {
+//     if (index == event.id) {
+//       return el;
+//     }
+//   })
+//   elementSynop.innerHTML = filteredData[0].synopsis;
+// }
+
 async function showMore(event) {
   const elementSynop = document.getElementById(`synopsis_${event.id}`);
-  const resultJSON = await fetch('https://api.jikan.moe/v4/top/anime');
+  console.log(elementSynop);
+  const resultJSON = await fetch('https://api.jikan.moe/v4/top/anime')
   const result = await resultJSON.json();
   const animeData = result.data;
+  console.log(animeData);
 
   const filteredData = animeData.filter((el, index) => {
-    if (index == event.id) {
-      return el;
-    }
-  })
-  elementSynop.innerHTML = filteredData[0].synopsis;
+      if (index == event.id){
+        return el;
+      }
+    })
+  
+
+  console.log(document.querySelector(`#synopsisFull_${event.id}`));
+  console.log(document.querySelector(`#synopsis_${event.id}`));
+
+  let fullTxt = document.querySelector(`#synopsisFull_${event.id}`);
+  fullTxt.style.display = 'block';
+
+  let halfTxt = document.querySelector(`#synopsis_${event.id}`);
+  halfTxt.style.display = 'none'
+  
+  
+  let collapseBtn = document.querySelector(`.collapseBtn_${event.id}`);
+  let showMoreBtn = document.querySelector(`.showMoreBtn_${event.id}`);
+  collapseBtn.style.display = 'block'
+  collapseBtn.style.textDecoration = 'none'
+
+  collapseBtn.style.display = 'flex'
+  showMoreBtn.style.display = 'none'
+  showMoreBtn.style.textDecoration = 'none'
+  
+}
+
+
+
+
+function collapseBtn(event) {
+
+  console.log(document.querySelector(`#synopsisFull_${event.id}`));
+  console.log(document.querySelector(`#synopsis_${event.id}`));
+  let fullTxt = document.querySelector(`#synopsisFull_${event.id}`);
+  fullTxt.style.display = 'none';
+  let halfTxt = document.querySelector(`#synopsis_${event.id}`);
+  halfTxt.style.display = 'block'
+  
+  let collapseBtn = document.querySelector(`.collapseBtn_${event.id}`);
+  let showMoreBtn = document.querySelector(`.showMoreBtn_${event.id}`);
+  collapseBtn.style.display = 'none'
+  showMoreBtn.style.display = 'block'
+  showMoreBtn.style.display = 'flex'
+
 }
 
 // Search
@@ -25,13 +81,15 @@ async function search(event) {
   const animesData = animesJSON.data;
 
   const searchResult = animesData.filter(anime => anime.title.toLowerCase().includes(searchWord));
-  
+
   const container = document.querySelector('#anime-container');
   container.innerHTML = '';
   searchResult.map((element) => {
     container.innerHTML += getAnimes(element);
   });
 }
+
+//
 
 
 function getAnimes(data, index) {
@@ -77,11 +135,10 @@ function getAnimes(data, index) {
     <img id="image" src=${data.images.jpg.image_url} alt="full-alchemist"/>
     <div class="anime-content">
       <div id="text">
-        <p id="synopsis_${index}">${data.synopsis.slice(0, 230)}</p>
-        <p id="second-p"></p>
-        <button id="${index}" onclick="showMore(this);">
-          <i class="fa-solid fa-angle-down"></i>
-        </button>
+        <p id = 'synopsis_${index}'>${data.synopsis.slice(0, 300)}</p>
+        <p id ='synopsisFull_${index}' style='display:none'>${data.synopsis}</p>
+        <a href="#" class="extend showMoreBtn_${index}" id="${index}" onclick="showMore(this)"><i class="fa-solid fa-angle-down"></i></a>
+        <a href="#" class="extend collapseBtn_${index}" id="${index}" onclick="collapseBtn(this)" style="display:none;"><i class="fa-solid fa-angle-up"></i></a>
       </div>
       <div id="info">
         <p><strong>Studio:</strong> <a href="#">${studio}</a></p>
