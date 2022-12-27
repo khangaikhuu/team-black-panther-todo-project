@@ -56,8 +56,8 @@ function animeData(animes,data,index) {
                 <div id="info">
                     <p><strong>Studio:</strong> <a href="#">${data.studios[0].name}</a></p>
                     <p><strong>Source:</strong> Manga</p>
-                    <p><strong>Theme:</strong> <a href="#">Military</a></p>
-                    <p><strong>Demographic:</strong> <a href="#">Shounen</a></p>
+                    <p><strong>Theme:</strong> <a href="#">${data.themes[0].name}</a></p>
+                    <p><strong>Demographic:</strong> <a href="#">${data.demographics[0].name}</a></p>
                 </div>
             </div>
         </div>
