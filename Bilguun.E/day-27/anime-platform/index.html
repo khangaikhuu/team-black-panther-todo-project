@@ -13,11 +13,14 @@
     <div class="container">
         <h1>Top 25 Animes</h1>
 
-
+        <div id="search-container" class="searchContainer">
+            <input placeholder="Search" id="searchPrompt">
+            <input type="button" value="Search" id="searchBtn" onclick="search(this)">
+        </div>
         <div class="row">
-
-            <div id="mainDiv" class="divContainer">
-                <div class="header">
+            <div id="mainDiv">
+            </div>
+                <!-- <div class="header">
                     <h6></h6>
                 </div>
                 <div id="prodsrc" class="prodsrc">
@@ -27,7 +30,7 @@
                     <p class="prodP"></p>
                     <i class="watchIcon"></i>
                 </div>
-                <div id="genre" class="genre">
+                <div id="genre">
                     <button></button>
                     <button></button>
                     <button></button>
@@ -59,7 +62,7 @@
                     <button class="footerPBtn">Add to list</button>
                 </div>
             </div>
-            <!-- <div id="secondDiv" class="divContainer">
+            <div id="secondDiv" class="divContainer">
             </div>
             <div id="thirdDiv" class="divContainer">
             </div> -->
