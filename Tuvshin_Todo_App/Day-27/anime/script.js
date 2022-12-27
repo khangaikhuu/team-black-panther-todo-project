@@ -37,30 +37,62 @@ function getDetial(data) {
     mangaDomImage.src = data.images.jpg.image_url;
     mangaDomImage.className = "manga-images"
 
-//genre oruulax heseg
+    //genre oruulax heseg
     const mangaGenre = document.createElement('h4');
-    // mangaGenre.innerHTML = `${data.genres}`;
-
+    mangaGenre.className = "mangeGenre"
     data.genres.map(element => {
-        // console.log(element)
         const a = document.createElement('a');
         a.href = element.url;
         a.innerHTML = element.name;
         mangaGenre.appendChild(a);
     })
 
+    // text oruulax heseg
+    const mangaText = document.createElement('h2');
+    mangaText.innerHTML = data.synopsis.substring(0, 370);
+    mangaText.className = "mangaText"
+    // console.log(mangaText);
+    // button, dutuu
+
+    // studio oruulax heseg
+    const studioParts = document.createElement("div")
+
+    const mangaStudio = document.createElement("div");
+    mangaStudio.innerHTML = `<strong> Studio :</strong> <a href="${data.studios[0].url}"> ${data.studios[0].name} </a>`;
+    mangaStudio.className = "mangaStudioGray";
+
+    const mangaStudio2 = document.createElement("div");
+    mangaStudio2.innerHTML = ` <strong> Source :</strong> ${data.source}`
+    console.log(mangaStudio2);
+
+    const mangaStudio3 = document.createElement("div");
+    // mangaStudio3.innerHTML = `<strong>Theme :</strong> <a href="${data.themes[0].url}"> ${data.themes[0].name} </a>`;
+    mangaStudio3.className = "mangaStudioGray";
+
+    const mangaStudio4 = document.createElement("div");
+    // mangaStudio4.innerHTML = `<strong> Democgraphic :</strong> <a href="${data.demographics[0].url}"> ${data.demographics[0].name} </a>`;
+    mangaStudio4.className = "mangaStudio";
 
 
-//erunxii tom DIV
+
+
+
+
+    //erunxii tom DIV
     const myCreate = document.createElement("div")
     myCreate.className = "myMain"
 
 
-    myCreate.appendChild(mytitle);  
+    myCreate.appendChild(mytitle);
     myCreate.appendChild(myStat);
     myCreate.appendChild(mangaGenre);
-    
     myCreate.appendChild(mangaDomImage);
+    myCreate.appendChild(mangaText);
+    myCreate.appendChild(mangaStudio);
+    myCreate.appendChild(mangaStudio2);
+    myCreate.appendChild(mangaStudio3);
+    myCreate.appendChild(mangaStudio4);
+
 
 
 
