@@ -10,11 +10,11 @@ h1{
 
 body {
 	padding: 20px;
-	font-family: fantasy;
 	font-size: 13px;
 }
 
 #anime-container {
+	margin-top: 40px;
 	display: grid;
 	grid-template-columns: repeat(3, 500px);
 	gap: 20px;
@@ -23,9 +23,9 @@ body {
 
 .anime-card {
 	width: 460px;
-	border: 3px solid #93f9a1;
-	box-shadow: -0.5em -0.5em 0.5em 0.5em rgb(4, 68, 22);;
+
 }
+
 
 #title {
 	display: block;

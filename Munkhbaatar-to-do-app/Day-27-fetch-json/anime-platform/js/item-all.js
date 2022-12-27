@@ -1,43 +1,93 @@
+let data = [];
 
+async function getData() {
+    const fetchedData = await fetch('https://api.jikan.moe/v4/top/anime')
+    const fetchedJSON = await fetchedData.json();
+    // console.log(fetchedJSON);
+    data = fetchedJSON.data;
+    console.log(data);
+    // .then((topAnime) => {
+    //     console.log('topAnim', topAnime);
+    //     const anime = topAnime.data;
+    //     console.log('anime', anime);
+    const container = document.querySelector('#all-container');
 
-fetch('https://api.jikan.moe/v4/top/anime')
-    .then((res) => res.json())
-    .then((topAnime) => {
-        console.log('topAnim', topAnime);
-        const anime = topAnime.data;
-        console.log('anime', anime);
-        const container = document.querySelector('#all-container');
-      
-        container.innerHTML = '';
-        anime.map((element, index) => {
+    container.innerHTML = '';
+    data.map((element, index) => {
         container.innerHTML += getAnimes(element, index)
     })
+
+}
+
+getData();
+
+
+
+const select = document.getElementById('genre')
+select.addEventListener('change', function handleChange(event) {
+    console.log(event.target.value); // 👉️ get selected VALUE
+
+    // // 👇️ get selected VALUE even outside event handler
+    // console.log(select.options[select.selectedIndex].value);
+
+    // // 👇️ get selected TEXT in or outside event handler
+    // console.log(select.options[select.selectedIndex].text);
+    getGenres(event);
 })
 
+async function getGenres(event) {
+    console.log(event.target.value);
+
+    let searchValue = event.target.value;
+    console.log(typeof searchValue);
+    // const animes = await fetch('https://api.jikan.moe/v4/top/anime');
+    // const animeJSON = await animes.json();
+    // const animesData = animeJSON.data;
 
 
+    const searchResult = data.filter(anime => {
+        const result = anime.genres.filter(genre =>
+            genre.name.toLowerCase().includes(searchValue.toLowerCase())
+        )
+        if (result.length > 0) {
+            return anime
+        }
+    })
 
-async function searchFunc(event){
+    // console.log(searchResult);
+
+    const container = document.querySelector('#all-container');
+
+    container.innerHTML = '';
+    searchResult.map((element, index) => {
+        container.innerHTML += getAnimes(element, index)
+    })
+}
+
+
+async function searchFunc(event) {
     let searchValue = document.querySelector('#search-input').value;
     // let searchValue = event.value;
     console.log(searchValue);
 
-    const animes = await fetch('https://api.jikan.moe/v4/top/anime');
-    const animeJSON = await animes.json();
-    const animesData = animeJSON.data;
+    // const animes = await fetch('https://api.jikan.moe/v4/top/anime');
+    // const animeJSON = await animes.json();
+    // const animesData = animeJSON.data;
 
-    let searchResult = animesData.filter(anime => 
+
+
+    let searchResult = data.filter(anime =>
         anime.title.toLowerCase().includes(searchValue.toLowerCase())
     )
-    
+
 
     console.log(searchResult);
-    
+
     const container = document.querySelector('#all-container');
     container.innerHTML = '';
     searchResult.map((element, index) => {
-    container.innerHTML += getAnimes(element, index)
-})
+        container.innerHTML += getAnimes(element, index)
+    })
 
 }
 
@@ -45,17 +95,17 @@ async function searchFunc(event){
 async function showMore(event) {
     const elementSynop = document.getElementById(`synopsis_${event.id}`);
     console.log(elementSynop);
-    const resultJSON = await fetch('https://api.jikan.moe/v4/top/anime')
-    const result = await resultJSON.json();
-    const animeData = result.data;
-    console.log(animeData);
+    // const resultJSON = await fetch('https://api.jikan.moe/v4/top/anime')
+    // const result = await resultJSON.json();
+    // const animeData = result.data;
+    // console.log(animeData);
 
-    const filteredData = animeData.filter((el, index) => {
-        if (index == event.id){
-          return el;
+    const filteredData = data.filter((el, index) => {
+        if (index == event.id) {
+            return el;
         }
-      })
-    
+    })
+
 
     console.log(document.querySelector(`#synopsisFull_${event.id}`));
     console.log(document.querySelector(`#synopsis_${event.id}`));
@@ -65,14 +115,14 @@ async function showMore(event) {
 
     let halfTxt = document.querySelector(`#synopsis_${event.id}`);
     halfTxt.style.display = 'none'
-    
-    
+
+
     let collapseBtn = document.querySelector(`.collapseBtn_${event.id}`);
     let showMoreBtn = document.querySelector(`.showMoreBtn_${event.id}`);
     collapseBtn.style.display = 'block'
     collapseBtn.style.display = 'flex'
     showMoreBtn.style.display = 'none'
-    
+
 }
 
 
@@ -86,7 +136,7 @@ function collapseBtn(event) {
     fullTxt.style.display = 'none';
     let halfTxt = document.querySelector(`#synopsis_${event.id}`);
     halfTxt.style.display = 'block'
-    
+
     let collapseBtn = document.querySelector(`.collapseBtn_${event.id}`);
     let showMoreBtn = document.querySelector(`.showMoreBtn_${event.id}`);
     collapseBtn.style.display = 'none'
@@ -97,6 +147,7 @@ function collapseBtn(event) {
 
 
 const card = document.querySelector('#card');
+
 function getAnimes(data, index) {
 
     console.log('inside get Anime');
@@ -153,7 +204,7 @@ function getAnimes(data, index) {
     </div>
     <div id="score-member-button"> 
         <div id="score"><i class="bi bi-star"></i> ${data.score}</div> 
-        <div id="member"><i class="bi bi-person-fill"></i> ${(data.members/1.0e+6).toFixed(1)}M</div> 
+        <div id="member"><i class="bi bi-person-fill"></i> ${(data.members / 1.0e+6).toFixed(1)}M</div> 
         <a id="add-to-list">Add to List</a>
     </div> 
     

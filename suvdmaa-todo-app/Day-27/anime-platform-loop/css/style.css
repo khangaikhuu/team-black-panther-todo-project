@@ -32,8 +32,6 @@ h1 {
     padding: 10px;
 }
 
-
-
 .anime-genre,
 .anime-body,
 .anime-footer {
@@ -67,9 +65,8 @@ h1 {
 	overflow: auto;
 	height: 400px;
 }
-
-#first-p{
-    padding: 0 10px;
+#text{
+	padding: 10px 10px 0 10px;
 }
 
  #second-p{
@@ -125,13 +122,43 @@ h1 {
 	opacity: 0.5;
 }
 
-
-
-
-
 #anime-container {
 	display: grid;
-	grid-template-columns: repeat(3, 500px);
+	grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
 	gap: 20px;
 	justify-content: center;
 }
+
+#search-container{
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+#search-field{
+	height: 50px;
+	padding: 10px;
+	border: 3px solid #3535ff;;
+	width: 500px;
+}
+
+#btn{
+	height: 50px;
+	width: 100px;
+	margin-left: -4px;
+	padding: 12px; 
+	background: #3535ff;
+	color: white;
+	border: none;
+}
+
+#genre-selector{
+	padding: 12px; 
+	background: #3535ff;
+	color: white;
+	border: none;
+	margin: 10px 46% ;
+}
+
+
+
+

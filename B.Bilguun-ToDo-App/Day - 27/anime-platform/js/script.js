@@ -1,13 +1,13 @@
 function getDetial(data) {
-    console.log(data)
+    // console.log(data)
 
     const animeHeader = document.createElement('h5');
     animeHeader.innerHTML = `<a href="${data.url}">${data.titles[0].title}</a>`;
-    animeHeader.className = "p-5 border text-center my-2"
+    animeHeader.className = "p-5 border text-center my-2 animeHeader"
 
     const myCreate = document.createElement("div");
-    myCreate.style = "width: 460px;";
-    myCreate.className = "container border border-2 m-1"
+    // myCreate.style = "width: 460px;";
+    myCreate.className = "col-4 container border border-2"
 
     const animeInfo = document.createElement('h6');
     animeInfo.innerHTML = `${data.type} , ${
@@ -29,7 +29,7 @@ function getDetial(data) {
     });
 
     const foot = document.createElement("div")
-    foot.className = "container d-flex justify-content-evenly align-items-center mb-3"
+    foot.className = "container d-flex justify-content-evenly align-items-center foot m-1"
     const score = document.createElement("div")
     score.innerHTML = `<i class="fa-regular fa-star"></i> ${data.score}`;
     const view = document.createElement("div")
@@ -43,20 +43,21 @@ function getDetial(data) {
     foot.appendChild(addTolist)
 
     const mangaDomImage = document.createElement('img');
-    mangaDomImage.src = data.images.jpg.image_url;
+    mangaDomImage.src = data.images.webp.image_url;
 
     const anime_main = document.createElement("div")
-    anime_main.className = "container d-flex justify-content-evenly gap-4 my-4";
+    anime_main.className = "d-flex gap-4 my-2";
     const anime_content = document.createElement("div");
     anime_content.className = "w-50 overflow-scroll anime-content"
     const text = document.createElement("div");
     text.className = "d-flex flex-column"
 
     const first_p = document.createElement("p");
-    first_p.textContent = data.synopsis.slice(0, 375);
+    first_p.textContent = data.synopsis.slice(0, 320);
+    first_p.style = "margin: 0;"
     const more = data.synopsis;
     const textLength = more.length;
-    const parts = more.slice(375, textLength);
+    const parts = more.slice(320, textLength);
 
 
     const second_p = document.createElement("p");
@@ -86,11 +87,16 @@ function getDetial(data) {
     source.innerHTML = `<strong>Source :</strong> ${data.source}`;
 
     const theme = document.createElement("div");
-    theme.innerHTML = `<strong>Theme :</strong> <a href="${data.themes[0].url}">${data.themes[0].name}</a>`;
+    data.themes.map(t => {
+      theme.innerHTML += `<strong>Theme :</strong> <a href="${t.url}">${t.name}</a><br>`
+    })
+  
     theme.className = "gray";
     const demograph = document.createElement("div");
-    demograph.innerHTML = `<strong>Demographic :</strong> <a href="${data.demographics[0].url}">${data.demographics[0].name}</a>`;
-
+    // demograph.innerHTML = `<strong>Demographic :</strong> <a href="${data.demographics[0].url}">${data.demographics[0].name}</a>`;
+    data.demographics.map(d => {
+      demograph.innerHTML = `<strong>Demographic :</strong> <a href="${d.url}">${d.name}</a>`
+    })
     part2.appendChild(studios)
     part2.appendChild(source)
     part2.appendChild(theme)
@@ -110,9 +116,6 @@ function getDetial(data) {
     myCreate.appendChild(anime_main);
     myCreate.appendChild(foot);
 
-
-
-
     return myCreate;
 }
 
@@ -129,3 +132,24 @@ fetch("https://api.jikan.moe/v4/top/anime")
             container.appendChild(getDetial(element));
         });
     });
+
+    async function search(event) {
+      const searchField = document.getElementById('search-field');
+      const searchWord = searchField.value.toLowerCase();
+      const animes = await fetch("https://api.jikan.moe/v4/top/anime");
+      const animesJSON = await animes.json();
+      const animesData = animesJSON.data;
+      console.log(animesData);
+
+      const searchResult = animesData.filter(anime => 
+        anime.title.toLowerCase().includes(searchWord)
+        
+      );
+      console.log(searchResult);
+      
+      const container = document.querySelector("#anime-container");
+      container.innerHTML = "";
+        searchResult.map((element) => {
+          container.appendChild(getDetial(element));
+        });
+    }

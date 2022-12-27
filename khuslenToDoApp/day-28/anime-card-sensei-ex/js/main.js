@@ -1,6 +1,7 @@
 const card = document.querySelector("#card");
+const container = document.getElementById("anime-container")
 
-async function showMore(element){
+async function showMore(element) {
     console.log(element.id);
     const elementSynop = document.getElementById(`synopsis_${element.id}`);
 
@@ -8,18 +9,20 @@ async function showMore(element){
     const result = await resultJSON.json();
     const animeDATA = result.data;
     console.log(animeDATA)
+    const filteredData = animeDATA.filter((el, index) => {
+        if (index == element.id) {
+            return element;
+        }
+    })
 
-    // const filteredData = animeDATA.filter
-
-
-    .then((res) => res.json())
-    .then((topAnime) => {
-        const anime = topAnime.data
-    }
-    
+    console.log(filteredData[0].synopsis);
+    elementSynop.innerHTML = filteredData[0].synopsis;
 }
 function getAnimes(data, index) {
-    console.log(index);
+    const genres = data.genres.map(genre => {
+        const result = `<p>${genre.name}</p>`;
+        return result;
+    })
     return `
 
     <div class="anime-card" id="card">
@@ -85,16 +88,21 @@ fetch('https://api.jikan.moe/v4/top/anime')
             container.innerHTML += getAnimes(element, index)
         })
     })
+async function search(event) {
+    const searchField = document.getElementById("search-field");
+    const searchWord = searchField.value.toLowerCase();
+    const animes = await fetch('https://api.jikan.moe/v4/top/anime');
+    const animesJson = await animes.json();
+    const animesData = animesJson.data;
 
-// const moreButton = document.querySelector('#moreBtn');
+    const searchResult = animesData.filter(anime => anime.title.toLowerCase().includes(searchWord)
+    );
+    console.log(searchResult)
 
-// console.log(moreButton);
+    const container = document.querySelector('#anime-container');
 
-// moreButton.addEventListener('click', () => {
-//     if (secondText.style.display == 'none') {
-//         secondText.style.display = 'block';
-
-//     } else {
-//         secondText.style.display = 'none';
-//     }
-// })
+    container.innerHTML = "";
+    searchResult.map((element) => {
+        container.innerHTML += getAnimes(element);
+    })
+}
