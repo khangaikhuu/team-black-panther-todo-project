@@ -17,10 +17,26 @@
   <body>
     <h1>Anime Platform</h1>
     <div id="search">
-      <input placeholder="Search" id="search-field">
-      <input type="button" value="Search" onclick="search(this)">
+      <input placeholder="Search" id="search-field" />
+      <input type="button" value="Search" onclick="search(this)" />
     </div>
-    <!-- <div id="overall"></div> -->
+    <div id="filter">
+      <select name="genre" id="genre">
+        <option value="action">Action</option>
+        <option value="comedy">Comedy</option>
+        <option value="drama">Drama</option>
+        <option value="fantasy">Fantasy</option>
+        <option value="adventure">Adventure</option>
+        <option value="romance">Romance</option>
+        <option value="sci">Sci-Fi</option>
+        <option value="suspense">Suspense</option>
+        <option value="slice">Slice of life</option>
+        <option value="mystery">Mystery</option>
+        <option value="super">Supernatural</option>
+        <option value="award">Award Winning</option>
+      </select>
+    </div>
+
     <div class="cont">
       <div id="manga-container">
         <h4></h4>
