@@ -1,10 +1,64 @@
 const container = document.querySelector('#card')
 
-function showMore(event) {
-    console.log(event.id)
-    const elementSynop = document.getElementById('synopsis_S{event.id}')
-    console.log(elementSynop)
+const select = document.getElementById('genre-selector');
+
+select.addEventListener('change', async function handleChange(event) {
+    let genre = event.target.value;
+    const animes = await fetch('https://api.jikan.moe/v4/top/anime')
+    const animesJSON = await animes.json();
+    const animesData = animesJSON.data;
+
+    const searchResult = animesData.filter(anime => {
+        return anime.genres.toLowerCase().includes(genre.value.toLowerCase())
+    }
+
+})
+
+
+async function showMore(event) {
+    // console.log(event.id);
+    const elementSynop = document.getElementById(`firstp_${event.id}`);
+    const element = document.getElementById(`secondp_${event.id}`)
+
+    if (event.innerHTML == `<i class="fa-solid fa-angle-down"></i>`) {
+        event.innerHTML = `<i class="fa-solid fa-angle-up"></i>`
+        elementSynop.style.display = "none"
+        element.style.display = "block";
+    } else if (event.innerHTML = `<i class="fa-solid fa-angle-up"></i>`) {
+        event.innerHTML = `<i class="fa-solid fa-angle-down"></i>`;
+        elementSynop.style.display = "block"
+        element.style.display = "none";
+    }
 }
+
+
+async function search() {
+    const searchField = document.getElementById('search-field');
+
+    const animes = await fetch('https://api.jikan.moe/v4/top/anime')
+    const animesJSON = await animes.json();
+    const animesData = animesJSON.data;
+    console.log(typeof searchField.value)
+
+    const searchResult = animesData.filter(anime => {
+        return anime.title.toLowerCase().includes(searchField.value.toLowerCase())
+    }
+
+    )
+    console.log(searchResult);
+
+
+    const container = document.querySelector('#anime-container');
+
+    container.innerHTML = '';
+    let result = "";
+    searchResult.map((element, index) => {
+        result += getAnimes(element, index)
+    })
+    container.innerHTML = result;
+
+}
+
 
 function getAnimes(data, index) {
     const genres = data.genres.map(genre => {
@@ -12,14 +66,19 @@ function getAnimes(data, index) {
         return result
     })
 
-    const studio = data.studios.map(e =>{
+    const studio = data.studios.map(e => {
         const result = `<a href="#">${e.name}</a>`
         return result
     })
 
-    const theme = data.themes.map(e =>{
+    const theme = data.themes.map(e => {
         const result = `<a href="#">${e.name}</a>`
-        return result 
+        return result
+    })
+
+    const demo = data.demographics.map(e => {
+        const result = `<a href="#">${e.name}</a>`
+        return result
     })
 
 
@@ -40,17 +99,16 @@ function getAnimes(data, index) {
             alt="full-metal">
         <div class="anime-content">
             <div id="text">
-                <p id="first-p">${data.synopsis.slice(0, 375)}</p>
-                <p id="second-p">${data.synopsis.slice(375, data.synopsis.length)}</p>
-                <button id="moreBtn_${index}">
-                    <i class="fa-solid fa-angle-down"></i>
-                </button>
+                <p id="firstp_${index}">${data.synopsis.slice(0, 375)}</p>
+                <p id="secondp_${index}" style="display: none;">${data.synopsis}</p>
+                <button id="${index}" onclick="showMore(this);">
+                <i class="fa-solid fa-angle-down"></i></button>
             </div>
             <div id="info">
                 <p><strong>Studio:</strong> ${studio}</p>
                 <p><strong>Source:</strong> ${data.source}</p>
-                <p><strong>Theme: </strong> ${theme} </p>
-                <p><strong>Demographic:</strong> <a href="#">Shounen</a></p>
+                <p><strong>Theme: </strong> ${theme}</p>
+                <p><strong>Demographic:</strong> ${demo}</p>
             </div>
         </div>
     </div>
@@ -66,17 +124,15 @@ function getAnimes(data, index) {
         <button id="add-list">Add To List</button>
     </div>
 </div>`
-
-
 }
 
 fetch('https://api.jikan.moe/v4/top/anime')
     .then((res) => res.json())
     .then((topAnime) => {
-        console.log("topAnime", topAnime);
+        console.log('topAnim', topAnime);
         const anime = topAnime.data;
         console.log('anime', anime);
-        const container = document.querySelector('#anime-container')
+        const container = document.querySelector('#anime-container');
 
         container.innerHTML = '';
         anime.map((element, index) => {
