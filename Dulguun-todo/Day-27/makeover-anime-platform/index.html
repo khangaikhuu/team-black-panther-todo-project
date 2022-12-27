@@ -5,18 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anime Platform</title>
+    <link rel="stylesheet" href="css/style.css">
 
     <!-- Fontawesome -->
     <script src="https://kit.fontawesome.com/363db86a45.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div id="anime-content"></div>
+    <div id="anime-content">
         <div id="card" class="anime-card">
             <!-- Title -->
             <a id="title" href="#"></a>
 
             <!-- information -->
-            <div class="anime-information">
+            <div class="anime-status">
                 <!-- <i class="fa-solid fa-circle-play" style="font-size: 16px"></i>
 					<div>
 						<span id="type"></span>
@@ -52,9 +53,20 @@
                         <p></p>
                     </div>
                 </div>
-
+            </div>
+            <div class="anime-footer">
+                <div id="review">
+                    <i class="fa-regular fa-star"></i>
+                    <span id="number">9.11</span>
+                </div>
+                <div id="views">
+                    <i class="fa-solid fa-eye"></i>
+                    <span id="view-number">3.0M</span>
+                </div>
+                <button id="add-list">Add To List</button>
             </div>
         </div>
+    </div>
     <script src="js/main.js"></script>
 </body>
 </html>

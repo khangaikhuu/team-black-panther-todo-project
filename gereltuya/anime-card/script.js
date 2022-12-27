@@ -1,5 +1,36 @@
 const card = document.querySelector('#card');
-function getAnimes(data) {
+
+async function showMore(event){
+  // console.log(event.id);
+  const elementSynop = document.getElementById(`synopsis_${event.id}`);
+  console.log(elementSynop);
+  
+  const resultJSON = await fetch('https://api.jikan.moe/v4/top/anime');
+  const result = await resultJSON.json();
+  const animeData = result.data;
+  console.log(animeData);
+
+  const filteredData = animeData.filter((el, index) => {
+    if (index == event.id){
+      return el;
+    }
+  })
+
+  // const filteredData = animeData.map(el => index == event.id);
+
+  console.log(filteredData[0].synopsis);
+  elementSynop.innerHTML = filteredData[0].synopsis;
+
+}
+
+function getAnimes(data, index) {
+
+  const genres = data.genres.map(genre => {
+     const result = `<p>${genre.name}</p>`;
+     return result;
+  })
+
+
   return `
   <div class="anime-card" id="card">
   <a href="#" id="title">${data.title}</a>
@@ -14,10 +45,7 @@ function getAnimes(data) {
     <i class="fa-solid fa-signal" style="font-size: 16px"></i>
   </div>
   <div class="anime-genre">
-    <p>Action</p>
-    <p>Adventure</p>
-    <p>Drama</p>
-    <p>Fantasy</p>
+   ${genres}
   </div>
   <div class="anime-body">
     <img
@@ -26,9 +54,9 @@ function getAnimes(data) {
     />
     <div class="anime-content">
       <div id="text">
-        <p>${data.synopsis.slice(0, 300)}</p>
+        <p id="synopsis_${index}">${data.synopsis.slice(0, 300)}</p>
         <p id="second-p"></p>
-        <button id="moreBtn">
+        <button id="${index}" onclick="showMore(this);">
           <i class="fa-solid fa-angle-down"></i>
         </button>
       </div>
@@ -63,7 +91,7 @@ fetch('https://api.jikan.moe/v4/top/anime')
     const container = document.querySelector('#anime-container');
 
     container.innerHTML = '';
-    anime.map((element) => {
-      container.innerHTML += getAnimes(element)
+    anime.map((element, index) => {
+      container.innerHTML += getAnimes(element, index)
     })
   })

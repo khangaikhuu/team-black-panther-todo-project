@@ -1,8 +1,6 @@
 
-body{
-   
-    
-}
+
+
 #manga-container{
     display: flex;
     flex-wrap: wrap;
@@ -93,7 +91,7 @@ h6{
 i{
     margin: 5px;
 }
-#down{
+.down{
     display: block;
     width: 100%;
     border: none;

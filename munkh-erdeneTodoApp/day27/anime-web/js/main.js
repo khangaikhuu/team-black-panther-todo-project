@@ -32,15 +32,15 @@ fetch(fullMetal)
 
 
         // genre uuudan
-        const genreContainer=document.getElementById('genre-container')
+        const genreContainer = document.getElementById('genre-container')
 
-        const genres=data.data.genres
-       
-        genres.map(element=>{
+        const genres = data.data.genres
+
+        genres.map(element => {
             console.log(element)
-            const a=document.createElement('a');
-            a.href=element.url;
-            a.textContent=element.name;
+            const a = document.createElement('a');
+            a.href = element.url;
+            a.textContent = element.name;
             genreContainer.appendChild(a);
         })
 
@@ -127,3 +127,31 @@ fetch(fullMetal)
 
         
     })
+
+function mFunction() {
+    for (let i = 0; i < 100; i++) {
+        document.getElementById("text").style.display = "block";
+        document.getElementById("flip").style.display = "none";
+        document.getElementById("fliped").style.display = "block";
+        document.getElementById("texted").style.display = "none";
+
+
+    }
+}
+
+
+
+
+
+
+
+
+    // function showMore(event){
+    //     console.log(event);
+    // }
+    // function getAnimes(data,index){
+    //     const genres
+    // }
+
+
+
