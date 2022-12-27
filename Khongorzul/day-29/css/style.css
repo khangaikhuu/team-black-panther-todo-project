@@ -8,6 +8,13 @@ h1{
     padding: 15px;
     text-align: center;
 }
+.dropdown{
+    margin-top: 20px;
+    margin-bottom: -45px;
+}
+.dropdown ul li{
+    cursor: pointer;
+}
 #searching{
     width: 300px;
     margin: auto;

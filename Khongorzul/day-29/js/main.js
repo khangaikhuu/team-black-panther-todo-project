@@ -30,6 +30,10 @@ document.addEventListener("keypress", (event) => {
 });
 
 
+//SELECT GENRE
+
+
+
 //SHOW MORE
 function showMoreFunc(event){
     const elementSynop = document.getElementById(`anime-text_${event.id}`);
