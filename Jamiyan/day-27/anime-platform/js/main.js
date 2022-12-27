@@ -61,62 +61,40 @@ console.log("anime  ");
 //             iconStar.innerHTML = ' <i class="fa-regular fa-star" style= "font-size: 16px"></i> '
 //             document.getElementById("score").appendChild(iconStar)
 //         })
-
+const container = document.getElementById("manga-container");
 const animeFetchfetch = fetch("https://api.jikan.moe/v4/top/anime")
     .then((res) => res.json())
     .then(data => {
         console.log(data);
-        const container = document.getElementById("manga-container");
+
 
         data.data.map((element, index) => {
             container.innerHTML += getAnimes(element, index)
 
         })
-       
-  
     })
 
-// let color = true
-// function showMore(data) {
-//     console.log(data);
-//     if (color) {
-//         data.innerHTML = `<i class="fa-solid fa-caret-up"></i>`
-//         color = false
+async function search(event) {
+    const searchField = document.getElementById("input");
+    const searchWord = searchField.value;
+    const animes = await fetch('https://api.jikan.moe/v4/top/anime');
+    const animesJSON = await animes.json();
+    const animesData = animesJSON.data;
 
-//     } else {
-//         data.innerHTML = `<i class="fa-solid fa-caret-down"></i>`
-//         color = true;
-//     }
-// }
-let color = true
-async function showMore(event){
-    console.log(event.id)
-    const elementSynop = document.getElementById(`synopsis_${event.id}`);
-    console.log(elementSynop);
 
-    const resultJSON = await fetch('https://api.jikan.moe/v4/top/anime');
-    const result = await resultJSON.json();
-    const animeData = result.data;
-    console.log(animeData);
+    const searchResult = animesData.filter(anime =>
+        anime.title.toLowerCase().includes(searchWord.toLowerCase()))
 
-    const filteredData = animeData.filter((el, index) => {
-        if(index == event.id){
-            return el;
-        }
+    container.innerHTML = '';
+    searchResult.map((element, index) => {
+        container.innerHTML += getAnimes(element, index)
+
+
     })
-
-    if (color) {
-        elementSynop.innerHTML = filteredData[0].synopsis
-        color = false
-        console.log(color)
-
-    } else {
-        elementSynop.innerHTML = filteredData[0].synopsis.slice(0, 300)
-        color = true;
-    }
-   
 
 }
+
+
 function getAnimes(data, index) {
 
     const genres = data.genres.map(parametr => {
@@ -139,15 +117,16 @@ function getAnimes(data, index) {
         return result
     })
 
-   
+
 
     return `
+    
             <div id="manga">
         <h6>${data.title}</h6>
         <p1 id="inf-p1">${data.type},${data.year} | ${data.status.substring(0, 8)} |  ${data.episodes}eps, ${data.duration.substring(0, 7)}</p1>
         <div id="genre">
             <i class="fa-regular fa-circle-play"></i>
-            ${genres}
+            ${genres.join("")}
             <i class="fa-solid fa-signal" style="font-size: 16px"></i>
         </div>
         <div id="img-div">
@@ -178,20 +157,75 @@ function getAnimes(data, index) {
     `
 }
 
-function showText(){
-  
-    console.log(colors)
-    
+
+let colors = true
+let color = true
+async function showMore(event) {
+    console.log(event.id)
+    const elementSynop = document.getElementById(`synopsis_${event.id}`);
+    console.log(elementSynop);
+
+    const resultJSON = await fetch('https://api.jikan.moe/v4/top/anime');
+    const result = await resultJSON.json();
+
+    console.log(result);
+
+    const filteredData = result.data.filter((el, index) => {
+        if (index == event.id) {
+            return el;
+        }
+
+    })
+    console.log(filteredData)
+
+    if (color) {
+        elementSynop.innerHTML = filteredData[0].synopsis
+        color = false
+
+
+    } else {
+        elementSynop.innerHTML = filteredData[0].synopsis.slice(0, 300)
+        color = true;
+    }
+
+    if (colors) {
+        event.innerHTML = `<i class="fa-solid fa-caret-up"></i>`
+        colors = false
+
+    } else {
+        event.innerHTML = `<i class="fa-solid fa-caret-down"></i>`
+        colors = true;
+    }
 }
 
 
-let colors = 1;
-// document.getElementById(`down_${index}`).addEventListener("click", () => {
-//     if (colors == 1) {
-//         document.getElementById("img-text").textContent = data.data.synopsis;
-//         colors = 2;
-//     } else {
-//         document.getElementById("img-text").textContent = data.data.synopsis.slice(0, 200);
-//         colors = 1;
-//     }
-// })
+const select = document.getElementById('genre-selector');
+const selectElement = document.querySelector('.ice-cream');
+
+selectElement.addEventListener('change', async (event) => {
+
+
+    const animes = await fetch('https://api.jikan.moe/v4/top/anime');
+    const animesJSON = await animes.json();
+    const animesData = animesJSON.data;
+    const option = document.getElementsByTagName("option")
+    console.log(event.target.value)
+
+    let optionResult = animesData.filter(par => {
+        for (i = 0; i < par.genres.length; i++) {
+            if (event.target.value == par.genres[i].name) {
+                return par
+            }
+        }
+    })
+    console.log(optionResult)
+    if (event.target.value == `All`) {
+        optionResult = animesData;
+    }
+
+    container.innerHTML = '';
+    optionResult.map((element, index) => {
+        container.innerHTML += getAnimes(element, index)
+    })
+
+});
