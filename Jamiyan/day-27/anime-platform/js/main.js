@@ -67,16 +67,79 @@ const animeFetchfetch = fetch("https://api.jikan.moe/v4/top/anime")
     .then(data => {
         console.log(data);
         const container = document.getElementById("manga-container");
-       
-        data.data.map(element => {
-            container.innerHTML += getAnimes(element)
+
+        data.data.map((element, index) => {
+            container.innerHTML += getAnimes(element, index)
 
         })
-
-
+       
+  
     })
-function getAnimes(data) {
 
+// let color = true
+// function showMore(data) {
+//     console.log(data);
+//     if (color) {
+//         data.innerHTML = `<i class="fa-solid fa-caret-up"></i>`
+//         color = false
+
+//     } else {
+//         data.innerHTML = `<i class="fa-solid fa-caret-down"></i>`
+//         color = true;
+//     }
+// }
+let color = true
+async function showMore(event){
+    console.log(event.id)
+    const elementSynop = document.getElementById(`synopsis_${event.id}`);
+    console.log(elementSynop);
+
+    const resultJSON = await fetch('https://api.jikan.moe/v4/top/anime');
+    const result = await resultJSON.json();
+    const animeData = result.data;
+    console.log(animeData);
+
+    const filteredData = animeData.filter((el, index) => {
+        if(index == event.id){
+            return el;
+        }
+    })
+
+    if (color) {
+        elementSynop.innerHTML = filteredData[0].synopsis
+        color = false
+        console.log(color)
+
+    } else {
+        elementSynop.innerHTML = filteredData[0].synopsis.slice(0, 300)
+        color = true;
+    }
+   
+
+}
+function getAnimes(data, index) {
+
+    const genres = data.genres.map(parametr => {
+        const result = `<button>${parametr.name}</button>`
+        return result;
+    })
+    const studios = data.studios.map(parametr => {
+
+        const result = `<p1>${parametr.name}</p1>`
+        return result
+    })
+    const themes = data.themes.map(parametr => {
+
+        const result = `<p1>${parametr.name}</p1>`
+        return result
+    })
+    const demographics = data.demographics.map(parametr => {
+
+        const result = `<p1>${parametr.name}</p1>`
+        return result
+    })
+
+   
 
     return `
             <div id="manga">
@@ -84,21 +147,18 @@ function getAnimes(data) {
         <p1 id="inf-p1">${data.type},${data.year} | ${data.status.substring(0, 8)} |  ${data.episodes}eps, ${data.duration.substring(0, 7)}</p1>
         <div id="genre">
             <i class="fa-regular fa-circle-play"></i>
-            <button id="action">${data.genres[0].name}</button>
-            <button id="adventure">${data.genres[0].name}</button>
-            <button id="drama">${data.genres[0].name}</button>
-            <button id="fantasy">${data.genres[0].name}</button>
+            ${genres}
             <i class="fa-solid fa-signal" style="font-size: 16px"></i>
         </div>
         <div id="img-div">
             <img id="manga-image" src=${data.images.jpg.image_url}>
             <div id="div-text">
-                <p1 id="img-text">${data.synopsis.slice(0, 300)}</p1>
-                <button id="down"><i class="fa-solid fa-caret-down"></i></button>
-                <p id="img-type1">Studio: <a href="${data.studios[0].url}">${data.studios[0].name}</a></p>
+                <p1 id="synopsis_${index}" >${data.synopsis.slice(0, 300)}</p1>
+                <button id="${index}" class="down" onclick="showMore(this)"><i class="fa-solid fa-caret-down"></i></button>
+                <p id="img-type1">Studio: <a href="${data.studios[0].url}">${studios}</a></p>
                 <p id="img-type2">Source: ${data.source}</p>
-                <p id="img-type3">Theme: <a href="${data.studios[0].url}">${data.studios[0].name}</a></p>
-                <p id="img-type4">Demographic:<a href="${data.studios[0].url}">${data.studios[0].name}</a></p>
+                <p id="img-type3">Theme: <a href="${data.studios[0].url}">${themes}</a></p>
+                <p id="img-type4">Demographic:<a href="${data.studios[0].url}">${demographics}</a></p>
             </div>
         </div>
 
@@ -114,5 +174,24 @@ function getAnimes(data) {
             <button id="add">Add to List</button>
         </div>
     </div>
+
     `
 }
+
+function showText(){
+  
+    console.log(colors)
+    
+}
+
+
+let colors = 1;
+// document.getElementById(`down_${index}`).addEventListener("click", () => {
+//     if (colors == 1) {
+//         document.getElementById("img-text").textContent = data.data.synopsis;
+//         colors = 2;
+//     } else {
+//         document.getElementById("img-text").textContent = data.data.synopsis.slice(0, 200);
+//         colors = 1;
+//     }
+// })
