@@ -8,6 +8,7 @@ async function showMore(event){
   const resultJSON = await fetch('https://api.jikan.moe/v4/top/anime');
   const result = await resultJSON.json();
   const animeData = result.data;
+  console.log(result.data)
   console.log(animeData);
 
   const filteredData = animeData.filter((el, index) => {
