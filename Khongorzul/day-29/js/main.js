@@ -31,6 +31,12 @@ function getAnimes(data, index){
         return result;
     })
 
+// function getAnimes(data, index){
+//     const themes = data.themes.map(theme => {
+//         const result = `<p>Themes: <a>${theme[index].name}</a></p>`;
+//         return result;
+//     })
+// }
 
     return `
     <div class="anime" id="card">
@@ -61,6 +67,7 @@ function getAnimes(data, index){
                 <div id="right-bottom">
                     <p>Studios: <a href="${data.studios[0].url}" id="studio">${data.studios[0].name}</a></p>
                     <p>Source: <a>${data.source}</a></p>
+                    
                 </div>
             </div>
         </div>
