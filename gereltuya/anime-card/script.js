@@ -1,4 +1,4 @@
-const card = document.querySelector('#card');
+// const card = document.querySelector('#card');
 
 async function showMore(event){
   // console.log(event.id);
