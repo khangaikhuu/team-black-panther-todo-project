@@ -91,26 +91,51 @@ async function search() {
     const animesJSON = await animes.json()
     const animesData = animesJSON.data
     const searchResult = animesData.filter(anime =>
-        anime.title.includes(searchWord))
-    console.log(searchResult)
-    
+        anime.title.toLowerCase().includes(searchWord.toLowerCase()))
+    const container = document.getElementById("mainDiv");
+    container.innerHTML = '';
+    searchResult.map((element, index) => {
+        container.innerHTML += getAnimes(element, index)
+    })
+
+}
+
+async function filter() {
+    const filterSelect = document.getElementById("filterSelect")
+    let filterValue = filterSelect.value
+    const animes = await fetch('https://api.jikan.moe/v4/top/anime')
+    const animesJSON = await animes.json()
+    const animesData = animesJSON.data
+    const filterResult = animesData.filter(anime => {
+        // console.log(anime.genres))
+        let arr = anime.genres.filter(genre => {
+            if (genre.name == filterValue) {
+                return genre
+            }
+        })
+        if (arr.length > 0) {
+            return arr
+        }
+    })
+    console.log(filterResult)
+    const container = document.getElementById("mainDiv");
+    container.innerHTML = '';
+    filterResult.map((element, index) => {
+        container.innerHTML += getAnimes(element, index)
+    })
 }
 
 async function showMore(event) {
-    console.log("event", event);
     const elementSynop = document.getElementById(`synopsis_${event.id}`);
-    console.log(elementSynop)
     const resultJSON = await fetch('https://api.jikan.moe/v4/top/anime');
     const result = await resultJSON.json();
     const animeData = result.data;
-    console.log(animeData)
 
     const filteredData = animeData.filter((el, index) => {
         if (index == event.id) {
             return el;
         }
     })
-    console.log(filteredData)
     elementSynop.innerHTML = filteredData[0].synopsis;
 }
 
