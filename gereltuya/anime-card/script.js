@@ -21,6 +21,7 @@ async function showMore(event){
   const resultJSON = await fetch('https://api.jikan.moe/v4/top/anime');
   const result = await resultJSON.json();
   const animeData = result.data;
+  console.log(result.data)
   console.log(animeData);
 
   const filteredData = animeData.filter((el, index) => {
@@ -68,7 +69,7 @@ function getAnimes(data, index) {
   <div class="anime-status">
     <i class="fa-solid fa-circle-play" style="font-size: 16px"></i>
     <div>
-      <span id="type">${data.type}</span>
+      <span id="type">'${data.type} + ", " '</span>
       <span id="year">${data.year}</span>
       <span id="status">${data.status}</span>
       <span id="eps">${data.episodes}</span>

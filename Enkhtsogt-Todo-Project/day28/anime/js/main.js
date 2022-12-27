@@ -23,7 +23,29 @@ async function showMore(event){
     elementSynop.innerHTML = filteredData[0].synopsis;
   
   }
-  
+  async function search(event){
+    console.log(event);
+    const searchField = document.getElementById("search-field");
+    console.log(searchField);
+    console.log(searchField.value);
+    const searchWord = searchField.value;
+    const animes = await fetch("https://api.jikan.moe/v4/top/anime")
+    const animesJSON = await animes.json();
+    const animeData = animesJSON.data;
+
+    const searchResult = animeData.filter(anime => anime.title.toLowerCase().includes(searchWord)
+    )
+    console.log(searchResult);
+    
+    const container = document.querySelector("#anime-container");
+    container.innerHTML = "";
+        searchResult.map((element) => {
+            container.innerHTML = getAnimes(element)
+        });
+    
+
+  }
+
   function getAnimes(data, index) {
   
     const genres = data.genres.map(genre => {
