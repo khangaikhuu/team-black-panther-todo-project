@@ -77,4 +77,86 @@ fetch(fullMetalAlchemistURL)
         footerStats1.querySelector('#footer-stats2').textContent =`${data.data.popularity}.0M`;
 })
 
-    
+
+
+
+
+    // SECOND ------------------------>
+
+    const secondfullMetalAlchemistURL = `https://api.jikan.moe/v4/anime/11757`;
+    fetch(secondfullMetalAlchemistURL)
+    .then(result => result.json())
+    .then(data => {
+
+    // manga-image 
+        console.log(data.data.images.jpg.image_url);
+        const secondmangaDomImage = document.getElementById(`second-manga-image`);
+        secondmangaDomImage.src = data.data.images.jpg.image_url;
+
+    // h6 text garchigiin heseg
+        document.getElementById(`second-manga-container`).
+        getElementsByTagName(`h6`)[0].textContent = data.data.titles
+        [0].title
+
+    // type list bars
+   
+        const secondlistBar = document.getElementById('second-list-1'); // TV
+        secondlistBar.textContent = `${data.data.type}, `
+        const secondlistBar1 = document.getElementById('second-list-2'); // 2009
+        secondlistBar1.textContent = `${data.data.year} `
+        const secondlistBar2 = document.getElementById('second-list-3'); // Finished
+        secondlistBar2.textContent = `${data.data.status.substring(0, 8)} `
+        const secondlistbar3 = document.getElementById(`second-list-4`) // episode 64
+        secondlistbar3.textContent = `${data.data.episodes} eps,`
+        const secondlistbar4 = document.getElementById(`second-list-5`) // minute 24
+        secondlistbar4.textContent = `${data.data.duration.substring(0, 6)}`
+         
+        
+    // category lists
+        const secondcategoryList = document.getElementById('second-category-list')
+        const secondgenres = data.data.genres
+
+        secondgenres.map(element=> {
+            console.log(element)
+            const a=document.createElement('p');
+            a.href=element.url;
+            a.textContent=element.name;
+            secondcategoryList.appendChild(a).style=" background-color: rgb(255, 200, 69); padding: 2px 10px; border-radius: 15px;";
+        })
+
+    // scroll metal alchemist text 
+    const secondanimeText = document.querySelector('#second-metalalchemist-text p')
+    const secondmoreText = document.querySelector('#second-more-text')
+    secondanimeText.textContent = data.data.synopsis.slice(0, 375)
+    const secondmore = data.data.synopsis
+    console.log(secondmore);
+    const secondtextLength = more.length;
+    const secondparts = more.slice(375, secondtextLength);
+    console.log(secondparts)
+    secondmoreText.textContent = parts;
+    secondmoreText.style.display = 'none'
+
+    const secondmoreButton = document.querySelector('#second-more-button');
+    secondmoreButton.addEventListener(`click`, () => {
+        if (secondmoreText.style.display == 'none') {
+            secondmoreText.style.display = 'block'
+        } else {
+            secondmoreText.style.display = 'none'
+        }
+    })
+
+    // anime genres
+    document.querySelector('#second-genres1 a').textContent = data.data.studios[0].name
+    document.querySelector('#second-genres2 a').textContent = data.data.source
+    document.querySelector('#second-genres3 a').textContent = data.data.themes[0].name
+    document.querySelector('#second-genres4 a').textContent = data.data.demographics[0].name
+
+
+
+        
+    // footer stats list
+        const secondfooterStats= document.querySelector('#second-manga-container');
+        secondfooterStats.querySelector('#second-footer-stats').textContent = data.data.score;
+        const secondfooterStats1= document.querySelector('#second-manga-container');
+        secondfooterStats1.querySelector('#second-footer-stats2').textContent =`${data.data.popularity}.0M`;
+})

@@ -52,17 +52,27 @@ fetch(fullMetalAlchemistURL)
    
         Row4Para2.textContent = data.data.source;
 
-        let MilitaryA = document.createElement("a")
-        Row4Para1.appendChild(BonesA)
+        const Row4Para3= document.getElementById("Row4-Sider-para3")
 
-        BonesA.textContent = data.data.studios[0].name;
-        BonesA.href = data.data.studios[0].url;
+        let MilitaryA = document.createElement("a")
+        Row4Para3.appendChild(MilitaryA)
+
+        MilitaryA.textContent = data.data.themes[0].name;
+        MilitaryA.href = data.data.themes[0].url;
+
+        const Row4Para4= document.getElementById("Row4-Sider-para4")
 
         let ShounenA = document.createElement("a")
-        Row4Para1.appendChild(BonesA)
+        Row4Para4.appendChild(ShounenA)
 
-        BonesA.textContent = data.data.studios[0].name;
-        BonesA.href = data.data.studios[0].url;
+        ShounenA.textContent = data.data.demographics[0].name;
+        ShounenA.href = data.data.demographics[0].url;
+
+        // let ShounenA = document.createElement("a")
+        // Row4Para1.appendChild(BonesA)
+
+        // BonesA.textContent = data.data.studios[0].name;
+        // BonesA.href = data.data.studios[0].url;
 
        
         
