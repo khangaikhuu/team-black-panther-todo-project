@@ -1,35 +1,33 @@
 const fmaURL = "https://api.jikan.moe/v4/top/anime";
 
 async function showMore(event){
-    console.log(event)
 
     const index = event.id;
 
+    const elementSynop =document.getElementById(`synopsis_${index}`);
+    
+    console.log(elementSynop);
+    
     const fetchedData =await fetch(fmaURL)
     const fetchedJSON =await fetchedData.json();
     const fetchedJSONData = fetchedJSON.data;
     
-    console.log(fetchedJSONData);
     const foundElement = fetchedJSONData.filter((e, idx) => {
         if(idx == index){
             return e;
         }
 
     })
-    console.log(foundElement)
+    console.log(foundElement[0].synopsis);
+    elementSynop.innerHTML = foundElement[0].synopsis;
 }
 
 function animeData(animes,data,index) {
-
-    
 
     let genres = data.genres.map(element => {
         const result = `<button class="buttonGenre">${element.name}</button>`
         return result
     })
-
-
-
     
     return `
     <div id="animeCard">
@@ -49,8 +47,8 @@ function animeData(animes,data,index) {
         <div id="bodyDIV">
             <img id="manga-image" src="${data.images.jpg.image_url}" alt="">
             <div id="text">
-                <p id="defP">${data.synopsis.slice(0, 401)}</p>
-                <p id="secondP">${data.synopsis.slice(401, 2000)}</p>
+                <p id="synopsis_${index}">${data.synopsis.slice(0, 401)}</p>
+                <p id="secondP"></p>
                 <a id="${index}" onclick="showMore(this)">
                  <div><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
                  <path d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z"/></svg></div>
