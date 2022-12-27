@@ -37,7 +37,7 @@ function getAnimes(data, index) {
   <div class="anime-status">
     <i class="fa-solid fa-circle-play" style="font-size: 16px"></i>
     <div>
-      <span id="type">${data.type}</span>
+      <span id="type">'${data.type} + ", " '</span>
       <span id="year">${data.year}</span>
       <span id="status">${data.status}</span>
       <span id="eps">${data.episodes}</span>
