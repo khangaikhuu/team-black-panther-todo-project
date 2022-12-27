@@ -68,7 +68,7 @@ async function search() {
 }
 
 // Select section
-async function filter() {
+async function select() {
   // const animesGenre = await fetch('https://api.jikan.moe/v4/genres/anime');
   // const animesGenreJSON = await animesGenre.json()
   // const animesGenreData = animesGenreJSON.data
@@ -95,13 +95,36 @@ async function filter() {
       return filteredSelect;
     }
   })
-  console.log(selectResult);
   const container = document.querySelector(`#anime-container`);
   container.innerHTML = '';
   selectResult.map((element) => {
     container.innerHTML += getAnimes((element));
   })
 }
+
+function genre(data) {
+  const selectGenre = data.data.map((genre) => {
+    const result = `<option>${genre.name}</option>`
+    return result;
+  });
+
+  return `
+    ${selectGenre}
+  `
+}
+
+// // Select mapping section ATTEMPT
+// fetch('https://api.jikan.moe/v4/genres/anime')
+//   .then((res) => res.json())
+//   .then((animeGenre) => {
+//     const animeGenres = animeGenre.data;
+//     const genreContainer = document.querySelector('#select-genre');
+
+//     genreContainer.innerHTML = '';
+//     animeGenres.map((element) => {
+//       genreContainer.innerHTML += genre(element)
+//     })
+//   })
 
 // Mapping section
 fetch('https://api.jikan.moe/v4/top/anime')
