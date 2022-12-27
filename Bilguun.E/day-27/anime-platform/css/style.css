@@ -28,7 +28,17 @@ h1 {
 
 .searchContainer {
     margin: 20px 0 20px 0;
+    display: flex;
+    justify-content: space-between;
 }
+
+.searchBtn {
+    background-color: #4f74c8;
+    color: #fff;
+    width: 96px;
+    border-radius: 3px;
+}
+
 .divContainer {
     margin-top: 30px;
     width: 334px;
@@ -51,6 +61,7 @@ h1 {
     justify-content: center;
     align-items: center;
 }
+
 .header a {
     text-decoration: none;
     text-align: center;
@@ -61,6 +72,7 @@ h1 {
     font-family: Avenir, lucida grande, tahoma, verdana, arial, sans-serif;
     margin: 10px 0 10px 0;
 }
+
 /* h6 {
     text-align: center;
     color: #1c439b;
