@@ -1,8 +1,52 @@
 console.log("hello world");
 
+// const numbers = [1, 2, 3, 4, 5];
+// numbers.filter(number => number < 3)
 const card = document.querySelector(".card");
+async function search(event) {
+    const searchField = document.getElementById("search-field");
+    const searchWord = searchField.value;
+    const animes = await fetch('https://api.jikan.moe/v4/top/anime')
+    const animesJSON = await animes.json();
+    const animesData = animesJSON.data;
 
-function getAnimes(animes) {
+    const searchResult = animesData.filter(anime =>
+        anime.title.includes(searchWord)
+
+    )
+    console.log(searchResult);
+    const container = document.querySelector("#manga-container");
+    container.innerHTML = "" ;
+    searchResult.map((element, index) => {
+        console.log(element);
+        container.innerHTML += getAnimes(element, index)
+    })
+    console.log(searchResult);
+
+}
+async function showMore(event) {
+    const synop = document.getElementById(`synopsis${event.id}`);
+
+    const resultJSON = await fetch('https://api.jikan.moe/v4/top/anime');
+    const result = await resultJSON.json();
+    const animeData = result.data;
+
+    const filteredData = animeData.filter((el, index) => {
+        if (index == event.id) {
+            return el;
+        }
+
+    })
+
+    console.log(filteredData);
+
+
+
+
+
+}
+
+function getAnimes(animes, index) {
 
 
     const genres = animes.genres.map(genre => {
@@ -10,6 +54,10 @@ function getAnimes(animes) {
         const result = `<p>${genre.name}</p>`;
         return result;
     })
+    const score = animes.score;
+    const members = animes.members;
+
+
 
 
     return `
@@ -22,20 +70,43 @@ function getAnimes(animes) {
              
 
          </div>
-         <div class="genres" id="genres">
+         <div class="genres" >
            ${genres.join('')}
          </div>
 
          <div class="img-container">
             <img src=${animes.images.jpg.image_url}>
             <div class="p-con">
-                 <p class="first-p"></p>
-                 <i class="fa-sharp fa-solid fa-chevron-up"></i>
-                 <p class="second"></p>
-                 <i class="fa-solid fa-chevron-down"></i>
+                 <div class="first-p" id="synopsis_${index}">${animes.synopsis.slice(0, 369)}</div>
+                 <div class="second" ></div>
+                 <button id="${index}" onclick="showMore(this);">
+                    <i class="fa-sharp fa-solid fa-chevron-up"></i>
+                 </button>
+                 <button id="${index}" onclick="showMore(this);">
+                    <i class="fa-solid fa-chevron-down"></i>
+                 </button>
+                 <div class="source" >
+                   
+                 </div>
+                 
 
             </div>
          </div>
+        <div class="card-footer" >
+             <div class="score">
+             
+             <i class="fa-regular fa-star"></i>
+                 ${score}
+            </div>
+            <div class="members">
+            <i class="fa-solid fa-person"></i>
+                ${members}        
+            </div>
+            <div class="button">
+                <button>Add to List</button>       
+            </div>
+            
+        </div>
          
     </div>
     `
@@ -46,33 +117,15 @@ fetch(animesURL)
     .then(animes => {
         console.log(animes.data);
         const container = document.querySelector("#manga-container");
-        console.log(container);
-        animes.data.map(element => {
+
+        animes.data.map((element, index) => {
             console.log(element);
-            container.innerHTML += getAnimes(element)
+            container.innerHTML += getAnimes(element, index)
         })
 
-        const para = document.querySelector(".first-p");
-        const second = document.querySelector(".second");
-        const more = animes.synopsis;
-        const textlength = more.length;
 
 
-        para.innerHTML = `${animes.synopsis.substring(0, 369)}`
-        second.innerHTML = `${para, textlength}`
-        
-        // const more = `${textlength}`
 
-        
-
-        const firstIcon = document.getElementsByTagName("i")[0];
-        const lastIcon = document.getElementsByTagName("i")[1];
-
-        lastIcon.style.display = "none"
-
-        // firstIcon.addEventListener("click", () => {
-        //     if()
-        // })
 
 
 
