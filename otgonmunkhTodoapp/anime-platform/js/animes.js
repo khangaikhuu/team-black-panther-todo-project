@@ -40,10 +40,6 @@ async function showMore(event) {
 
     console.log(filteredData);
 
-
-
-
-
 }
 
 function getAnimes(animes, index) {
@@ -56,8 +52,6 @@ function getAnimes(animes, index) {
     })
     const score = animes.score;
     const members = animes.members;
-
-
 
 
     return `
@@ -122,13 +116,6 @@ fetch(animesURL)
             console.log(element);
             container.innerHTML += getAnimes(element, index)
         })
-
-
-
-
-
-
-
 
 
 
