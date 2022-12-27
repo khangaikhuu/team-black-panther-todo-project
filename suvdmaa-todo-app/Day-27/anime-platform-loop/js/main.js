@@ -29,8 +29,7 @@ async function showMore(event) {
         elementSynop.style.display = "block"
         element.style.display = "none";
     }
-}
-
+}//////
 
 async function search() {
     const searchField = document.getElementById('search-field');
