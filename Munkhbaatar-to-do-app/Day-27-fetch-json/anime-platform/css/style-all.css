@@ -1,0 +1,174 @@
+* {
+	box-sizing: border-box;
+	font-family: Avenir, lucida grande, tahoma, verdana, arial, sans-serif
+}
+
+h1 {
+	text-align: center;
+	background-color: bisque;
+}
+
+h4 {
+	color: #1c439b;
+}
+
+#anime-container {
+	border: 1px solid #ddd;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	width: 400px;
+	height: 434px;
+}
+
+.type-container {
+	display: flex;
+	justify-content: space-between;
+	background-color: #f8f8f8;
+	align-items: center;
+	padding: 0px 10px;
+}
+
+#type-all {
+	font-size: 12px;
+	color: #787878;
+}
+
+.play-icon {
+	color: #4f74cf;
+	font-size: 20px;
+}
+
+
+#genres {
+	background-color: #f0f0f0;
+	padding: 5px;
+}
+
+a {
+	text-decoration: none;
+}
+
+#genres a {
+	margin: 10px 5px;
+	text-decoration: none;
+	color: #787878;
+	background-color: white;
+	border-radius: 5px;
+	padding: 0px 6px;
+	font-size: 11px;
+}
+
+
+.text-img {
+	display: flex;
+	height: 280px;
+}
+
+#manga-image {
+	width: 50%;
+}
+
+#studio-info {
+	overflow: auto;
+	text-align: start;
+	font-size: 11px;
+	padding: 0 10px;
+
+}
+
+#add-to-list {
+	background-color: #4f74c8;
+	padding: 3px 20px;
+	color: white;
+}
+
+#score-member-button {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	color: #545454;
+	background-color: #f0f0f0;
+	padding: 3px 0;
+	font-size: 12px;
+}
+
+#studio,
+#theme {
+	background-color: #f0f0f0;
+	padding: 3px 0px;
+}
+
+#source,
+#demographic {
+	padding: 3px 0px;
+}
+
+.extend {
+	width: 100%;
+	margin: 0 auto;
+	display: flex;
+	justify-content: center;
+	margin-bottom: 10px;
+}
+
+#all-container {
+	display: grid;
+	grid-template-columns: repeat(3, 380px);
+	gap: 80px;
+	justify-content: center;
+}
+
+#outer-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+#search-container {
+	width: 500px;
+}
+
+/* Style the search field */
+#search-container input[type=text] {
+	padding: 10px;
+	font-size: 17px;
+	border: 1px solid grey;
+	float: left;
+	width: 80%;
+	background: #f1f1f1;
+}
+
+/* Style the submit button */
+#search-container button {
+	float: left;
+	width: 20%;
+	padding: 10px;
+	background: #2196F3;
+	color: white;
+	font-size: 17px;
+	border: 1px solid grey;
+	border-left: none;
+	/* Prevent double borders */
+	cursor: pointer;
+}
+
+#search-container button:hover {
+	background: #0b7dda;
+}
+
+/* Clear floats */
+#search-container::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+#genre {
+	margin: 10px;
+	justify-content: end;
+	display: flex;
+	justify-content: flex-start;
+}
+

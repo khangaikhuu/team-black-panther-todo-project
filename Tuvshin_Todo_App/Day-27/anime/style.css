@@ -40,17 +40,16 @@ h1 {
     margin-top: 5px;
 
 }
-.text-container {
+/* .text-container {
+
+} */
+
+#manga-text {
     overflow-y: auto;
-
-}
-
-.manga-text {
     color: black;
     width: 157px;
     height: 160px;
     padding: 5px;
-    /* border: 1px solid black; */
     margin-top: -16px;
     text-align: justify;
     font-size: 11px;
@@ -93,11 +92,10 @@ h1 {
 
 }
 
-.text-btn {
+#moreBtn {
     position: absolute;
     margin-top: -45px;
     margin-left: 65px;
-
 }
 
 #add-to-list {
@@ -131,4 +129,8 @@ h1 {
 .manga-type-studio,
 .manga-type-studio3 {
     background-color: #afb5b49d;
+}
+.myMain {
+    /* display: flex; */
+    width: 340px;
 }

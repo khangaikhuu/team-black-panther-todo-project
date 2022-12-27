@@ -12,6 +12,20 @@
 		></script>
 	</head>
 	<body>
+		<div id="search-container">
+			<input placeholder="Please Search" id="search-field"> 
+			<input type="button" value="Search" onclick="search(this);">
+		</div>
+		<div>
+			<select id="genre-selector">
+				<option >
+					Action
+				</option>
+				<option >
+					Comedy
+				</option>
+			</select>
+		</div>
 		<div id="anime-container">
 			<div class="anime-card" id="card">
 				<a href="#" id="title"></a>
@@ -66,6 +80,6 @@
 			</div>
 		</div>
 		<script src="main.js"></script>
-		<!-- <script src="script.js"></script> -->
+
 	</body>
 </html>

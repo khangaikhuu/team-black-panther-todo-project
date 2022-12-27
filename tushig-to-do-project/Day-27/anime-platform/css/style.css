@@ -3,16 +3,36 @@
     margin: 0 auto;
     padding: 0;
     box-sizing: border-box;
-    
 }
 
 body {
-   background-color: rgb(172, 237, 247);
+   background-color: rgba(157, 216, 255, 0.5);
+}
+
+/* ALL ANIMES CONTAINER ------------------------------> */
+.animes-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+#manga-container {
+    margin: 20px;
+    width: 500px;
+    background-image: linear-gradient(rgb(255, 255, 255), rgb(42, 205, 255));
+    border-radius: 5px;
+    border: 1.4px solid rgb(0, 0, 0);
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* CATEGORYS -----------------------> */
+a:first-child {
+    text-decoration: none;
 }
 
 h6 {
     color: rgb(12, 59, 168);
-    font-size: 20px;
+    font-size: 18px;
     text-align: center;
     padding: 20px;
     background-color: rgb(255, 255, 255);
@@ -30,21 +50,24 @@ h6 {
     display: flex;
 }
 
-#manga-container {
-    margin: 20px;
-    width: 500px;
-    background-image: linear-gradient(rgb(255, 255, 255), rgb(42, 205, 255));
-    border-radius: 5px;
-    border: 1.4px solid rgb(0, 0, 0);
-    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
-}
-
 #list-3 {
     border-left: 1px solid rgba(0, 0, 0, 0.4);
     border-right: 1px solid rgba(10, 10, 10, 0.4);
     padding-left: 15px;
     padding-right: 15px;
 }
+
+.fa-solid {
+    font-size: 16px;
+    color: rgb(5, 73, 162);
+}
+
+.fa-sharp {
+    font-size: 16px;
+    color: rgb(5, 73, 162);
+}
+
+/* CATEGORY LIST AREA -----------------------> */
 
 #category-list {
     background-color: rgba(11, 11, 11, 0.3);
@@ -53,15 +76,59 @@ h6 {
     color: rgb(19, 19, 19);
 }
 
+#category-list {
+    background-color: rgb(31, 103, 176);
+    color: white
+}
+
+/* PICTURES AND ALLTEXT AREA ----------------------> */
+.anime-text {
+    overflow: auto;
+}
+
+#metalalchemist-text {
+    padding: 10px;
+    height: 300px;
+}
+
+#metalalchemist-text p {
+    color: rgb(6, 6, 6);
+    letter-spacing: 1.3px;
+}
+
+
+#genres p {
+    color: rgb(255, 247, 205);
+    background-color: rgba(0, 0, 0, 0.15);
+    margin-bottom: 5px;
+    padding: 3px 5px;
+}
+
+#genres a {
+    text-decoration: none;
+    color: rgb(255, 192, 20);
+}
+
+
+/* FOOTER AREA -----------------------> */
+
 #footer-list {
     background-color: rgb(255, 255, 255);
-    padding:16px;
+    padding:17px;
     display: flex;
     font-size: 16px;
     color: rgb(0, 0, 0);
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
     border-top: 1.4px solid black;
+}
+
+.fa-regular {
+    color: orange;
+}
+
+.fa-solid {
+    color: orange;
 }
 
 #foot-btn {
@@ -81,31 +148,137 @@ h6 {
     border-radius: 2px;
 }
 
-.anime-text {
-    overflow: auto;
-    
+
+/* --------------------------------- SECOND ANIME CARD ---------------------------------*/
+
+#second-manga-container {
+    margin: 20px;
+    width: 500px;
+    background-image: linear-gradient(rgb(255, 255, 255), rgb(42, 205, 255));
+    border-radius: 5px;
+    border: 1.4px solid rgb(0, 0, 0);
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
 }
 
-#metalalchemist-text {
+/* SECOND CATEGORYS -----------------------> */
+a:first-child {
+    text-decoration: none;
+}
+
+h6 {
+    color: rgb(12, 59, 168);
+    font-size: 18px;
+    text-align: center;
+    padding: 20px;
+    background-color: rgb(255, 255, 255);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom: 1.4px solid rgb(0, 0, 0);
+    letter-spacing: 2px;
+}
+
+#second-type-list-bar{
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 7px;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    display: flex;
+}
+
+#second-list-3 {
+    border-left: 1px solid rgba(0, 0, 0, 0.4);
+    border-right: 1px solid rgba(10, 10, 10, 0.4);
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.fa-solid {
+    font-size: 16px;
+    color: rgb(5, 73, 162);
+}
+
+.fa-sharp {
+    font-size: 16px;
+    color: rgb(5, 73, 162);
+}
+
+/* SECOND CATEGORY LIST AREA -----------------------> */
+
+#second-category-list {
+    background-color: rgba(11, 11, 11, 0.3);
+    padding: 7px;
+    display: flex;
+    color: rgb(19, 19, 19);
+}
+
+#second-category-list {
+    background-color: rgb(31, 103, 176);
+    color: white
+}
+
+/* SECOND PICTURES AND ALLTEXT AREA ----------------------> */
+.second-anime-text {
+    overflow: auto;
+}
+
+#second-metalalchemist-text {
     padding: 10px;
     height: 300px;
 }
 
-#metalalchemist-text p {
+#second-metalalchemist-text p {
     color: rgb(6, 6, 6);
     letter-spacing: 1.3px;
 }
 
-#genres p {
+
+#second-genres p {
     color: rgb(255, 247, 205);
     background-color: rgba(0, 0, 0, 0.15);
     margin-bottom: 5px;
     padding: 3px 5px;
 }
 
-#genres a {
+#second-genres a {
     text-decoration: none;
     color: rgb(255, 192, 20);
 }
 
 
+/* SECOND FOOTER AREA -----------------------> */
+
+#second-footer-list {
+    background-color: rgb(255, 255, 255);
+    padding:17px;
+    display: flex;
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-top: 1.4px solid black;
+}
+
+.fa-regular {
+    color: orange;
+}
+
+.fa-solid {
+    color: orange;
+}
+
+#second-foot-btn {
+    border: none;
+    padding: 3px 30px;
+    background-color: rgb(37, 104, 185);
+    color: aliceblue;
+    border-radius: 2px;
+    transition: all 500ms;
+}
+
+#second-foot-btn:hover {
+    border: none;
+    padding: 3px 30px;
+    background-color: rgb(35, 55, 145);
+    color: rgb(255, 255, 255);
+    border-radius: 2px;
+}
