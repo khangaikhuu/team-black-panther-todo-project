@@ -37,6 +37,7 @@ fetch('https://api.jikan.moe/v4/anime/5114')
         const text = document.querySelector('#text p');
         const secondText = document.querySelector('#second-p');
         const more = animeData.synopsis;
+        
         const textLength = more.length;
         const parts = more.slice(375, textLength);
         text.textContent = animeData.synopsis.slice(0, 375);

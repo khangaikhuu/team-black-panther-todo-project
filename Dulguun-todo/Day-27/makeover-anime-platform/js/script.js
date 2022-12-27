@@ -13,6 +13,23 @@ async function showMore(event) {
     }
   })
   elementSynop.innerHTML = filteredData[0].synopsis;
+  // const text = document.querySelector('#text p');
+  // const secondText = document.querySelector('#second-p');
+  // const textLength = elementSynop.length;
+  // const parts = elementSynop.slice(300, textLength);
+  // text.textContent = elementSynop.slice(0, 300);
+  // secondText.textContent = parts;
+  // secondText.style.display = 'none';
+  // const moreButton = document.querySelector('#moreBtn');
+
+  // moreButton.addEventListener('click', () => {
+  //   if (secondText.style.display == 'none') {
+  //     secondText.style.display = 'block';
+
+  //   } else {
+  //     secondText.style.display = 'none';
+  //   }
+  // })
 }
 
 
