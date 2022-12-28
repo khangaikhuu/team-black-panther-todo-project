@@ -28,8 +28,8 @@ async function search(event) {
     const searchWord = searchField.value;
     // console.log(searchWord);
 
-    const searchResult = fetchedJSONData.filter((anime) =>{
-        if(anime.title.toLowerCase().includes(searchWord.toLowerCase())){
+    const searchResult = fetchedJSONData.filter((anime) => {
+        if (anime.title.toLowerCase().includes(searchWord.toLowerCase())) {
             return anime
         }
     })
@@ -39,7 +39,16 @@ async function search(event) {
         console.log(element);
         cont.innerHTML += animeData(element, index);
     })
-    }
+}
+
+const genreSelector = document.getElementById("genre-selector");
+genreSelector.addEventListener('change', async (event) => {
+    const fetchedData = await fetch(fmaURL)
+    const fetchedJSON = await fetchedData.json();
+    const fetchedJSONData = fetchedJSON.data;
+    console.log(event.target.value);
+})
+
 
 
 
@@ -90,7 +99,7 @@ function animeData(data, index) {
 
     </div>`
 }
-    
+
 fetch(fmaURL)
     .then(result => result.json())
     .then(anime => {
