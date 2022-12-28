@@ -92,10 +92,39 @@
     background-color: white;
     color: black;
 }
-.source span {
-    display: block;
+
+#search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: azure;
+    padding: 10px;
+
     
 }
-.odd {
-    background-color: rgb(230, 230, 230);
+#search input:first-child {
+    border: 1px solid rgb(244, 243, 245);
+    height: 20px;
+    padding: 8px;
+    width: 100px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    
+}
+#search input:last-child {
+   border: none;
+   border-top-right-radius: 15px;
+   border-bottom-right-radius: 15px;
+   padding: 10px;
+   width: 100px;
+   background-image: url(https://www.freeiconspng.com/thumbs/search-icon-png/search-icon-png-2.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+#search input:first-child:hover {
+    flex: 1;
+    background-color: bisque;
+    border: none;
+    transition: all 500ms ease-in-out;
 }
