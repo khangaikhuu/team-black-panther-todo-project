@@ -1,3 +1,33 @@
+let animeData = []
+
+async function callURL(){
+  const fetchedData = await fetch('https://api.jikan.moe/v4/top/anime')
+  const fetchedJSON = await fetchedData.json();
+  animeData = fetchedJSON.data;
+  console.log(animeData);
+  const container = document.querySelector('#anime-container');
+
+  container.innerHTML = '';
+  animeData.map((element, index) => {
+    container.innerHTML += getAnimes(element, index)
+  })
+}
+
+callURL()
+
+
+
+  // .then((res) => res.json())
+  // .then((topAnime) => {
+  //   console.log('topAnim', topAnime);
+  //   const anime = topAnime.data;
+  //   console.log('anime', anime);
+ 
+  // })
+
+
+
+
 // const card = document.querySelector('#card');
 
   const select = document.getElementById('genre-selector');
@@ -17,12 +47,6 @@ async function showMore(event){
   // console.log(event.id);
   const elementSynop = document.getElementById(`synopsis_${event.id}`);
   console.log(elementSynop);
-  
-  const resultJSON = await fetch('https://api.jikan.moe/v4/top/anime');
-  const result = await resultJSON.json();
-  const animeData = result.data;
-  console.log(result.data)
-  console.log(animeData);
 
   const filteredData = animeData.filter((el, index) => {
     if (index == event.id){
@@ -40,11 +64,7 @@ async function showMore(event){
 async function search(event) { 
   const searchField = document.getElementById('search-field');
   const searchWord = searchField.value;
-  const animes = await fetch('https://api.jikan.moe/v4/top/anime');
-  const animesJSON = await animes.json();
-  const animesData = animesJSON.data;
-
-  const searchResult = animesData.filter(anime => 
+  const searchResult = animeData.filter(anime => 
    anime.title.includes(searchWord)
   )
   console.log(searchResult);
@@ -114,19 +134,7 @@ function getAnimes(data, index) {
 </div>`
 }
 
-fetch('https://api.jikan.moe/v4/top/anime')
-  .then((res) => res.json())
-  .then((topAnime) => {
-    console.log('topAnim', topAnime);
-    const anime = topAnime.data;
-    console.log('anime', anime);
-    const container = document.querySelector('#anime-container');
 
-    container.innerHTML = '';
-    anime.map((element, index) => {
-      container.innerHTML += getAnimes(element, index)
-    })
-  })
 
 
   // async function search(searchWord){

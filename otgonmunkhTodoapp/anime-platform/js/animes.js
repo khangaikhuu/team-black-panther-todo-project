@@ -1,16 +1,72 @@
 console.log("hello world");
 
-// const numbers = [1, 2, 3, 4, 5];
-// numbers.filter(number => number < 3)
+let animeData = []
+async function callURL() {
+    const fetchedData = await fetch('https://api.jikan.moe/v4/top/anime'); //data awahiin tuld await use
+    const fetchedJSON = await fetchedData.json();
+    animeData = fetchedJSON.data;
+    const container = document.querySelector("#manga-container");
+
+    container.innerHTML = "";
+    animeData.map((element, index) => {
+        console.log(element);
+        container.innerHTML += getAnimes(element, index)
+    })
+
+}
+callURL()
+
+
 const card = document.querySelector(".card");
+
+function getAnimes(animes, index) {
+
+
+    const genres = animes.genres.map(genre => {
+        console.log(genre);
+        const result = `<p>${genre.name}</p>`;
+        return result;
+    })
+
+
+    const searchResult = animeData.filter(anime =>
+        anime.title.includes(searchWord)
+
+    )
+    console.log(searchResult);
+    const container = document.querySelector("#manga-container");
+    container.innerHTML = "";
+    searchResult.map((element, index) => {
+        console.log(element);
+        container.innerHTML += getAnimes(element, index)
+    })
+    console.log(searchResult);
+
+}
+function showMore(event) {
+    console.log('event', event);
+    const synop = document.getElementById(`${event.id}`);
+
+
+    const filteredData = animeData.filter((el, index) => {
+        if (index == event.id) {
+            return el;
+        }
+        
+       
+
+    })
+
+    console.log(filteredData);
+    
+
+}
+
 async function search(event) {
     const searchField = document.getElementById("search-field");
     const searchWord = searchField.value;
-    const animes = await fetch('https://api.jikan.moe/v4/top/anime')
-    const animesJSON = await animes.json();
-    const animesData = animesJSON.data;
 
-    const searchResult = animesData.filter(anime =>
+    const searchResult = animeData.filter(anime =>
         anime.title.includes(searchWord)
 
     )
@@ -24,27 +80,6 @@ async function search(event) {
     console.log(searchResult);
 
 }
-async function showMore(event) {
-    const synop = document.getElementById(`synopsis${event.id}`);
-
-    const resultJSON = await fetch('https://api.jikan.moe/v4/top/anime');
-    const result = await resultJSON.json();
-    const animeData = result.data;
-
-    const filteredData = animeData.filter((el, index) => {
-        if (index == event.id) {
-            return el;
-        }
-
-    })
-
-    console.log(filteredData);
-
-
-
-
-
-}
 
 function getAnimes(animes, index) {
 
@@ -56,8 +91,10 @@ function getAnimes(animes, index) {
     })
     const score = animes.score;
     const members = animes.members;
-
-
+    const studio = animes.studios.map(elem => {
+        const res = `<a href="#"> ${elem.name}</a>`
+        return res;
+    })
 
 
     return `
@@ -70,66 +107,41 @@ function getAnimes(animes, index) {
              
 
          </div>
-         <div class="genres" >
+         <div class="genres" id="genres">
            ${genres.join('')}
          </div>
-
          <div class="img-container">
-            <img src=${animes.images.jpg.image_url}>
-            <div class="p-con">
-                 <div class="first-p" id="synopsis_${index}">${animes.synopsis.slice(0, 369)}</div>
-                 <div class="second" ></div>
-                 <button id="${index}" onclick="showMore(this);">
-                    <i class="fa-sharp fa-solid fa-chevron-up"></i>
-                 </button>
-                 <button id="${index}" onclick="showMore(this);">
-                    <i class="fa-solid fa-chevron-down"></i>
-                 </button>
-                 <div class="source" >
-                   
-                 </div>
-                 
-
+         <img src=${animes.images.jpg.image_url}>
+         <div class="anime-content">
+            <div id="detail">
+                <p id="synopsis_${index}">${animes.synopsis.slice(0, 369)}<p/>
+                <p id="second-p"></p>
+                <button id="synopsis_${index}" onclick="showMore(this);">
+                    <i class="fa-solid fa-angles-down"></i>
+                    <i class="fa-solid fa-angles-up"></i>
+                </button>
+            </div>
+            <div class="info">
+                <p class="studio"><strong>Studio:</strong>${studio}</p> 
+                <p class="source"><strong>Source:</strong></p> 
+                <p class="theme"><strong>Theme:</strong></p> 
+                <p class="dem"><strong>Demographic:</strong></p> 
             </div>
          </div>
-        <div class="card-footer" >
-             <div class="score">
-             
-             <i class="fa-regular fa-star"></i>
-                 ${score}
-            </div>
+         </div>
+         <div class="card-footer">
+            <div class="score">
+                <i class="fa-regular fa-star"></i>
+                ${score}</div>
             <div class="members">
             <i class="fa-solid fa-person"></i>
-                ${members}        
-            </div>
+                ${members}</div>
             <div class="button">
-                <button>Add to List</button>       
+                <button>Add to List</button>
             </div>
-            
-        </div>
+
+         </div>
          
     </div>
     `
 }
-const animesURL = 'https://api.jikan.moe/v4/top/anime';
-fetch(animesURL)
-    .then(res => res.json())
-    .then(animes => {
-        console.log(animes.data);
-        const container = document.querySelector("#manga-container");
-
-        animes.data.map((element, index) => {
-            console.log(element);
-            container.innerHTML += getAnimes(element, index)
-        })
-
-
-
-
-
-
-
-
-
-
-    })

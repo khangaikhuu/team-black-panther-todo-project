@@ -6,7 +6,7 @@
 }
 
 body {
-    background: linear-gradient(rgb(79, 189, 201), rgb(219, 255, 250));
+    background: linear-gradient(rgb(125, 229, 255), rgb(211, 247, 255));
 }
 
 a {
@@ -33,6 +33,15 @@ h6 {
     border: 1px solid black;
     width: 450px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    transition-duration: 300ms;
+    border-radius: 1%;
+}
+
+.manga-container:hover {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid black;
+    width: 450px;
+    box-shadow: 3px 3px 13px rgba(0, 0, 0, 0.5);
 }
 
 .type-list-bar {
@@ -75,3 +84,43 @@ h6 {
     border: none;
     background-color: rgb(255, 195, 57);
 }
+
+#search-container {
+    margin: 30px 35px;
+    text-align: center;
+    padding: 40px;
+    border-top: 1px solid black;
+    
+}
+
+input {
+    padding: 16px;
+    border: 1px solid black;
+    font-size: 18px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+#search-container input:first-child {
+    width: 800px;
+}
+
+#search-container input:last-child {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border: 1px solid black;
+    background-color: rgb(207, 247, 255);
+}
+
+select {
+    background-color: aliceblue;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    border: 1px solid black;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    font-size: 18px;
+    text-align: center;
+}
+
+
+

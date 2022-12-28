@@ -65,24 +65,6 @@ fetch(fullMetalAlchemistURL)
 
 
 
-    // // ANIMES SEARCHING AREA 
-    // async function search(event) {
-    //     console.log(event.value);
-    //     const searchField = document.getElementById('search-field');
-    //     const searchWord = searchField.value
-    //     const animes = await fetch ('https://api.jikan.moe/v4/top/anime');
-    //     const animesJSON = await animes.json();
-    //     const animesData = animesJSON.data;
-
-    //     const searchResult = animesData.filter(anime => {
-    //         anime.title.includes(searchWord)
-    //     })
-
-    // }
-
-
-
-
     //------------------ SECOND ------------------------>
     const secondfullMetalAlchemistURL = `https://api.jikan.moe/v4/anime/11757`;
     fetch(secondfullMetalAlchemistURL)

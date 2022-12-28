@@ -65,9 +65,8 @@ h1 {
 	overflow: auto;
 	height: 400px;
 }
-
-#first-p{
-    padding: 0 10px;
+#text{
+	padding: 10px 10px 0 10px;
 }
 
  #second-p{
@@ -125,27 +124,41 @@ h1 {
 
 #anime-container {
 	display: grid;
-	grid-template-columns:  repeat(3, 500px);
+	grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
 	gap: 20px;
 	justify-content: center;
 }
 
 #search-container{
-	text-align: center;
 	margin-bottom: 20px;
+	text-align: center;
 }
 
 #search-field{
+	height: 50px;
 	padding: 10px;
 	border: 3px solid #3535ff;;
-	border-radius: 10px;
-	width: 200px;
+	width: 500px;
 }
 
 #btn{
+	height: 50px;
+	width: 100px;
+	margin-left: -4px;
 	padding: 12px; 
 	background: #3535ff;
 	color: white;
-	border-radius: 10px;
 	border: none;
 }
+
+#genre-selector{
+	padding: 12px; 
+	background: #3535ff;
+	color: white;
+	border: none;
+	margin: 10px 43% ;
+}
+
+
+
+

@@ -16,13 +16,50 @@
   </head>
   <body>
     <h1>Anime Platform</h1>
-    <div id="search">
-      <input placeholder="Search" id="search-field">
-      <input type="button" value="Search" onclick="search(this)">
+
+    <div class="pagination-btn">
+      <div id="search">
+        <input placeholder="Search" id="search-field" />
+        <input type="button" value="search" onclick="search(this)" />
+      </div>
+      <div class="pagination">
+        <ul>
+          <li class="link active" value="1" onclick="activeLink(); page()">
+            1
+          </li>
+          <li class="link" value="2" onclick="activeLink(); page2()">2</li>
+          <li class="link" value="3" onclick="activeLink(); page3()">3</li>
+          <li class="link" value="4" onclick="activeLink(); page4()">4</li>
+          <li class="link" value="5" onclick="activeLink(); page5()">5</li>
+          <li class="link" value="6" onclick="activeLink(); page6()">6</li>
+          <li class="link" value="7" onclick="activeLink(); page7()">7</li>
+          <li class="link" value="8" onclick="activeLink(); page8()">8</li>
+          <li class="link" value="9" onclick="activeLink(); page9()">9</li>
+          <li class="link" value="10" onclick="activeLink(); page10()">10</li>
+        </ul>
+      </div>
+
+      <div id="filter">
+        <select name="genre" id="genre">
+          <option value="">Filter</option>
+          <option value="action">Action</option>
+          <option value="comedy">Comedy</option>
+          <option value="drama">Drama</option>
+          <option value="fantasy">Fantasy</option>
+          <option value="adventure">Adventure</option>
+          <option value="romance">Romance</option>
+          <option value="sci">Sci-Fi</option>
+          <option value="suspense">Suspense</option>
+          <option value="slice">Slice of life</option>
+          <option value="mystery">Mystery</option>
+          <option value="super">Supernatural</option>
+          <option value="award">Award Winning</option>
+        </select>
+      </div>
     </div>
-    <!-- <div id="overall"></div> -->
+
     <div class="cont">
-      <div id="manga-container">
+      <!-- <div id="manga-container">
         <h4></h4>
         <p class="para"></p>
         <div id="btns">
@@ -71,7 +108,7 @@
             <button class="btn">Add to List</button>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
     <script src="/Usukhbayar/day-27/anime-platform/js/script.js"></script>
   </body>

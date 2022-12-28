@@ -1,3 +1,4 @@
+//SEARCH
 async function search(event){
     const searchField = document.getElementById("search-input").value;
     //const searchWord = searchField;
@@ -31,7 +32,24 @@ document.addEventListener("keypress", (event) => {
 
 
 //SELECT GENRE
+async function dropdown(event){
+    const animes = await fetch("https://api.jikan.moe/v4/top/anime");
+    const animesJSON = await animes.json();
+    const animesData = animesJSON.data;
 
+    const dropdownSearch = animesData.filter((element, index) =>
+        console.log(animesData[index].genres[index].name)
+        //element.genres[index].name.includes(event)
+    )
+
+    const dropdownAnimes = document.getElementById("animes");
+    let result = "";
+    dropdownSearch.map((element, index) => {
+        result += getAnimes(element, index);
+        console.log(result);
+    })
+    dropdownAnimes.innerHTML = result;
+}
 
 
 //SHOW MORE
