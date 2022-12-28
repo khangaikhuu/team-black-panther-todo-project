@@ -1,17 +1,46 @@
 let data = [];
+let pagination = {};
 
-async function getData() {
-    const fetchedData = await fetch('https://api.jikan.moe/v4/top/anime')
+let page = 1;
+let current_page = page;
+
+async function getData(event) {
+    console.log(event.id)
+    console.log(current_page)
+    if (event.id == 'next') {
+        page = current_page + 1;
+        current_page = page;
+    } else if(event.id == 'previous') {
+        page = current_page - 1;
+        current_page = page;
+    } else {
+        page = event.text
+        // current_page = page;
+    }
+
+
+    if (page == undefined || page < 1) {
+        page = 1;
+        current_page = 1;
+    } 
+    if (page >= 10) {
+        console.log("inside page 10");
+        page = 10;
+        current_page = 10;
+    }
+    console.log(`https://api.jikan.moe/v4/top/anime?page=${page}`);
+    console.log('page = ' + page)
+    const fetchedData = await fetch(`https://api.jikan.moe/v4/top/anime?page=${page}`)
+
     const fetchedJSON = await fetchedData.json();
     // console.log(fetchedJSON);
     data = fetchedJSON.data;
-    console.log(data);
-    // .then((topAnime) => {
-    //     console.log('topAnim', topAnime);
-    //     const anime = topAnime.data;
-    //     console.log('anime', anime);
+    pagination = fetchedJSON.pagination
+    // console.log(data);
+    console.log(pagination.current_page)
     const container = document.querySelector('#all-container');
 
+    createPagenation(page)
     container.innerHTML = '';
     data.map((element, index) => {
         container.innerHTML += getAnimes(element, index)
@@ -19,8 +48,33 @@ async function getData() {
 
 }
 
-getData();
+getData(page);
 
+
+function createPagenation(page) {
+    let pageNation = document.querySelector('.pagination');
+    pageNation.innerHTML = '';
+
+    let previous = `<a href="#" onclick='getData(this)' id="previous">&laquo;</a>`;
+
+
+    pageNation.innerHTML = previous;
+    for (let i = 0; i < 10; i++) {
+        let link = '';
+        if (page == (i + 1)) {
+            link = `<a href="#" class="active" onclick='getData(this)'>${i + 1}</a>`
+        } else {
+            link = `<a href="#" onclick='getData(this)'>${i + 1}</a>`
+        }
+        pageNation.innerHTML += link;
+    }
+
+
+    let next = `<a href="#" onclick='getData(this)' id="next">&raquo;</a>`;
+    // pageNation.appendChild(last)
+    pageNation.innerHTML += next;
+
+}
 
 
 const select = document.getElementById('genre')
@@ -150,8 +204,6 @@ const card = document.querySelector('#card');
 
 function getAnimes(data, index) {
 
-    console.log('inside get Anime');
-
     const genres = data.genres.map(genre => {
         const result = `<a>${genre.name}</a>`;
         return result;
@@ -167,6 +219,16 @@ function getAnimes(data, index) {
         return result;
     })
 
+
+    const studios = data.studios.map(res => {
+        const result = `${data.studios[0].name}`
+        return result
+    })
+
+    const studio_url = data.studios.map(res => {
+        const result = `${data.studios[0].url}`
+        return result
+    })
 
     return `
 <div id="anime-container">
@@ -196,7 +258,7 @@ function getAnimes(data, index) {
             <p id ='synopsisFull_${index}' style='display:none'>${data.synopsis}</p>
             <a href="#" class="extend showMoreBtn_${index}" id="${index}" onclick="showMore(this)"><i class="bi bi-caret-down-fill"></i> </a>
             <a href="#" class="extend collapseBtn_${index}" id="${index}" onclick="collapseBtn(this)" style="display:none;"><i class="bi bi-caret-up-fill"></i> </a>
-            <div id="studio"><strong>Studio:</strong> <a href='${data.studios[0].url}' > ${data.studios[0].name}</a></div>
+            <div id="studio"><strong>Studio:</strong> <a href='${studio_url}' > ${studios}</a></div>
             <div id="source"><strong>Source:</strong> ${data.source}</div>
             <div id="theme"><strong>Theme:</strong> ${themes}</div>
             <div id="demographic"><strong>Demographic:</strong> ${demographics}</div>
