@@ -3,6 +3,7 @@ const card = document.querySelector(".card");
 async function showLess(event) {
   console.log(event);
 }
+
 async function showMore(event) {
   console.log(event);
   const elementSynop = document.getElementById(`synopsis_${event.id}`);
@@ -24,6 +25,46 @@ async function showMore(event) {
 
   const showLess = document.getElementsByClassName("showLess");
   showLess[0].style = "display: block";
+}
+
+const select = document.getElementById("genre");
+select.addEventListener("change", function handleChange(event) {
+  console.log(event.target.value); // 👉️ get selected VALUE
+
+  // // 👇️ get selected VALUE even outside event handler
+  // console.log(select.options[select.selectedIndex].value);
+
+  // // 👇️ get selected TEXT in or outside event handler
+  // console.log(select.options[select.selectedIndex].text);
+  getGenres(event);
+});
+
+async function getGenres(event) {
+  console.log(event.target.value);
+
+  let searchValue = event.target.value;
+  console.log(typeof searchValue);
+  const animes = await fetch("https://api.jikan.moe/v4/top/anime");
+  const animeJSON = await animes.json();
+  const animesData = animeJSON.data;
+  data = animeJSON.data;
+
+  const searchResult = data.filter((anime) => {
+    const result = anime.genres.filter((genre) =>
+      genre.name.toLowerCase().includes(searchValue.toLowerCase())
+    );
+    if (result.length > 0) {
+      return anime;
+    }
+  });
+
+  console.log(searchResult);
+  const container = document.querySelector(".cont");
+
+  container.innerHTML = "";
+  searchResult.map((element, index) => {
+    container.innerHTML += getAnimes(element, index);
+  });
 }
 
 async function search(event) {

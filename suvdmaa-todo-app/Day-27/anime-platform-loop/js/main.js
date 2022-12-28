@@ -4,13 +4,27 @@ const select = document.getElementById('genre-selector');
 
 select.addEventListener('change', async function handleChange(event) {
     let genre = event.target.value;
-    const animes = await fetch('https://api.jikan.moe/v4/top/anime')
+    // const animes = await fetch('https://api.jikan.moe/v4/top/anime')
+    const animes = await fetch('https://api.jikan.moe/v4/genres/anime')
     const animesJSON = await animes.json();
     const animesData = animesJSON.data;
 
+  
     const searchResult = animesData.filter(anime => {
-        return anime.genres.toLowerCase().includes(genre.value.toLowerCase())
-    }
+        // console.log(anime.name)
+        // return anime.genres.toLowerCase().includes(genre.toLowerCase());
+        return anime.name.toLowerCase().includes(genre.toLowerCase());
+    })
+    console.log(searchResult)
+
+    const container = document.querySelector('#anime-container');
+
+    container.innerHTML = '';
+    let result = "";
+    searchResult.map((element, index) => {
+        result += getAnimes(element, index)
+    })
+    container.innerHTML = result;
 
 })
 
