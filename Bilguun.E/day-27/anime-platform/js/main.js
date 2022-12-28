@@ -1,10 +1,12 @@
+// ** Call data **// 
+
+
 let animeData = []
 
 async function callURL() {
   const fetchedData = await fetch("https://api.jikan.moe/v4/top/anime")
   const fetchedJSON = await fetchedData.json()
   animeData = fetchedJSON.data
-  console.log(animeData)
   const container = document.getElementById("mainDiv");
   container.innerHTML = '';
   animeData.map((element, index) => {
@@ -14,9 +16,94 @@ async function callURL() {
 
 callURL()
 
+
+// ** go to page 1 function **// 
+
+
+function goToPage1() {
+  let animeData = []
+
+  async function callURL() {
+    const fetchedData = await fetch("https://api.jikan.moe/v4/top/anime")
+    const fetchedJSON = await fetchedData.json()
+    animeData = fetchedJSON.data
+    const container = document.getElementById("mainDiv");
+    container.innerHTML = '';
+    animeData.map((element, index) => {
+      container.innerHTML += getAnimes(element, index)
+    })
+  }
+
+  callURL()
+}
+
+// ** go to page 2 function **// 
+
+function goToPage2() {
+  let animeData2 = []
+
+  async function callURL2() {
+    const fetchedData = await fetch("https://api.jikan.moe/v4/top/anime?page=2")
+    const fetchedJSON = await fetchedData.json()
+    animeData2 = fetchedJSON.data
+    const container = document.getElementById("mainDiv");
+    container.innerHTML = '';
+    animeData2.map((element, index) => {
+      return container.innerHTML += getAnimes(element, index)
+    })
+    animeData = animeData2
+  }
+
+  callURL2()
+}
+
+// ** go to page 3 function **// 
+
+
+function goToPage3() {
+  let animeData3 = []
+
+  async function callURL3() {
+    const fetchedData = await fetch("https://api.jikan.moe/v4/top/anime?page=3")
+    const fetchedJSON = await fetchedData.json()
+    animeData3 = fetchedJSON.data
+    const container = document.getElementById("mainDiv");
+    container.innerHTML = '';
+    animeData3.map((element, index) => {
+      container.innerHTML += getAnimes(element, index)
+    })
+    animeData = animeData3
+
+  }
+
+  callURL3()
+}
+
+// ** go to page 4 function **// 
+
+function goToPage4() {
+  let animeData4 = []
+
+  async function callURL4() {
+    const fetchedData = await fetch("https://api.jikan.moe/v4/top/anime?page=4")
+    const fetchedJSON = await fetchedData.json()
+    animeData4 = fetchedJSON.data
+    const container = document.getElementById("mainDiv");
+    container.innerHTML = '';
+    animeData4.map((element, index) => {
+      container.innerHTML += getAnimes(element, index)
+    })
+    animeData = animeData4
+  }
+
+  callURL4()
+}
+// ** Search function ** //
+
 async function search() {
   const search = document.getElementById("searchPrompt")
   const searchWord = search.value
+  console.log(searchWord)
   // const animes = await fetch('https://api.jikan.moe/v4/top/anime')
   // const animesJSON = await animes.json()
   // const animesData = animesJSON.data
@@ -29,95 +116,32 @@ async function search() {
   }
   )
 }
-function goToPage1() {
-  let animeData = []
 
-  async function callURL() {
-    const fetchedData = await fetch("https://api.jikan.moe/v4/top/anime")
-    const fetchedJSON = await fetchedData.json()
-    animeData = fetchedJSON.data
-    console.log(animeData)
-    const container = document.getElementById("mainDiv");
-    container.innerHTML = '';
-    animeData.map((element, index) => {
-      container.innerHTML += getAnimes(element, index)
-    })
-  }
-
-  callURL()
-}
-
-
-function goToPage2() {
-  let animeData2 = []
-
-  async function callURL2() {
-    const fetchedData = await fetch("https://api.jikan.moe/v4/top/anime?page=2")
-    const fetchedJSON = await fetchedData.json()
-    animeData2 = fetchedJSON.data
-    console.log(animeData2)
-    const container = document.getElementById("mainDiv");
-    container.innerHTML = '';
-    animeData2.map((element, index) => {
-      container.innerHTML += getAnimes(element, index)
-    })
-  }
-
-  callURL2()
-}
-
-function goToPage3() {
-  let animeData3 = []
-
-  async function callURL3() {
-    const fetchedData = await fetch("https://api.jikan.moe/v4/top/anime?page=3")
-    const fetchedJSON = await fetchedData.json()
-    animeData3 = fetchedJSON.data
-    console.log(animeData3)
-    const container = document.getElementById("mainDiv");
-    container.innerHTML = '';
-    animeData3.map((element, index) => {
-      container.innerHTML += getAnimes(element, index)
-    })
-  }
-
-  callURL3()
-}
-
-function goToPage4() {
-  let animeData4 = []
-
-  async function callURL4() {
-    const fetchedData = await fetch("https://api.jikan.moe/v4/top/anime?page=4")
-    const fetchedJSON = await fetchedData.json()
-    animeData4 = fetchedJSON.data
-    console.log(animeData4)
-    const container = document.getElementById("mainDiv");
-    container.innerHTML = '';
-    animeData4.map((element, index) => {
-      container.innerHTML += getAnimes(element, index)
-    })
-  }
-
-  callURL4()
-}
-
+// ** Clear function **// 
 
 async function clearFunc() {
   const search = document.getElementById("searchPrompt")
   search.value = ""
-  const fetchedData = await fetch("https://api.jikan.moe/v4/top/anime")
-  const fetchedJSON = await fetchedData.json()
-  animeData = fetchedJSON.data
-  console.log(animeData)
+  // const fetchedData = await fetch("https://api.jikan.moe/v4/top/anime")
+  // const fetchedJSON = await fetchedData.json()
+  // animeData = fetchedJSON.data
+  // console.log(animeData)
+  // const container = document.getElementById("mainDiv");
+  // container.innerHTML = '';
+  // animeData.map((element, index) => {
+  //   container.innerHTML += getAnimes(element, index)
+  // })
+  const searchResult = animeData.filter(anime =>
+    anime.title.toLowerCase().includes(search.value.toLowerCase()))
   const container = document.getElementById("mainDiv");
   container.innerHTML = '';
-  animeData.map((element, index) => {
+  searchResult.map((element, index) => {
     container.innerHTML += getAnimes(element, index)
-  })
+  }
+  )
 }
 
-
+// ** Filter function **// 
 
 async function filter() {
   const filterSelect = document.getElementById("filterSelect")
@@ -143,7 +167,11 @@ async function filter() {
   })
 }
 
+// ** Show more function **// 
+
+
 async function showMore(event) {
+  debugger
   const elementSynop = document.getElementById(`synopsis_${event.id}`);
   // const resultJSON = await fetch('https://api.jikan.moe/v4/top/anime');
   // const result = await resultJSON.json();
@@ -157,16 +185,6 @@ async function showMore(event) {
 }
 
 
-// fetch("https://api.jikan.moe/v4/top/anime")
-//   .then((res) => res.json())
-//   .then(data => {
-//     const container = document.getElementById("mainDiv");
-//     container.innerHTML = '';
-//     data.data.map((element, index) => {
-//       container.innerHTML += getAnimes(element, index)
-//     })
-//   })
-
 const card = document.querySelector('#card');
 function getAnimes(data, index) {
   const genres = data.genres.map(genre => {
@@ -175,9 +193,15 @@ function getAnimes(data, index) {
   })
 
   let membersNum = data.members
+  if (membersNum == 7) {
+    let millions = "<p class='footerP member'>${members2Num}.${members2Num2nd}M</p>"
+  } else {
+    let thousands = "<p class='footerP member'>${members2Num}${members2Num2nd}0K</p>"
+  }
   let members2Num = String(membersNum).substring(0, 1)
   let membersNum2nd = data.members
   let members2Num2nd = String(membersNum2nd).substring(1, 2)
+
   const durationStr = data.duration.substring(0, 3)
 
   return `
