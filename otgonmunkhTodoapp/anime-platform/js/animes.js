@@ -92,11 +92,13 @@ async function showMore(event) {
             return el;
         }
     })
+
     filteredData.map(element => {
         console.log(element);
         const detail = element.synopsis;
         console.log(detail);
         synop.innerHTML = detail;
+        
     })
 
 
@@ -143,8 +145,8 @@ genreCon.addEventListener("change", function handleChange(event) {
     const container = document.querySelector("#anime-container");
     container.innerHTML = "";
     genreFilter.map((element, index) => {
-        container.textContent += getAnimes(element, index)  
-        console.log(genreFilter);
+        container.innerHTML += getAnimes(element, index)  
+        console.log(container);
     })
 
 })
@@ -158,6 +160,12 @@ function getAnimes(animes, index) {
         const result = `<p>${genre.name}</p>`;
         return result;
     })
+
+    // const year = animes.year.map(element => {
+    //     const result = element.year;
+    //     return result;console.log(year);
+
+    // })
 
     const score = animes.score;
     const members = animes.members;
@@ -216,7 +224,7 @@ function getAnimes(animes, index) {
                 ${score}</div>
             <div class="members">
             <i class="fa-solid fa-person"></i>
-                ${members}</div>
+                ${(members / 1.0e+6).toFixed(1)} M</div>
             <div class="button">
                 <button>Add to List</button>
             </div>
