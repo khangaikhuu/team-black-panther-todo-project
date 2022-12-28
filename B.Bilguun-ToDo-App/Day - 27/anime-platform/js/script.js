@@ -94,6 +94,30 @@ function getDetial(data) {
     theme.innerHTML += `<strong>Theme :</strong> <a href="${t.url}">${t.name}</a><br>`;
   });
 
+<<<<<<< HEAD
+    const theme = document.createElement("div");
+    data.themes.map(t => {
+        theme.innerHTML += `<strong>Theme :</strong> <a href="${t.url}">${t.name}</a><br>`
+    })
+
+    theme.className = "gray";
+    const demograph = document.createElement("div");
+    // demograph.innerHTML = `<strong>Demographic :</strong> <a href="${data.demographics[0].url}">${data.demographics[0].name}</a>`;
+    data.demographics.map(d => {
+        demograph.innerHTML = `<strong>Demographic :</strong> <a href="${d.url}">${d.name}</a>`
+    })
+    part2.appendChild(studios)
+    part2.appendChild(source)
+    part2.appendChild(theme)
+    part2.appendChild(demograph)
+    anime_main.appendChild(mangaDomImage);
+    anime_main.appendChild(anime_content);
+    anime_content.appendChild(text);
+    anime_content.appendChild(part2);
+    text.appendChild(first_p);
+    text.appendChild(second_p);
+    text.appendChild(moreButton);
+=======
   theme.className = "gray";
   const demograph = document.createElement("div");
   // demograph.innerHTML = `<strong>Demographic :</strong> <a href="${data.demographics[0].url}">${data.demographics[0].name}</a>`;
@@ -111,6 +135,7 @@ function getDetial(data) {
   text.appendChild(first_p);
   text.appendChild(second_p);
   text.appendChild(moreButton);
+>>>>>>> 8865d3f0fa06a03a63c10133facaa32b1c335d53
 
   myCreate.appendChild(animeHeader);
 
@@ -264,4 +289,37 @@ d[0].addEventListener("click", ()=>{
 
 
 
+<<<<<<< HEAD
+async function search(event) {
+    const searchField = document.getElementById('search-field');
+    const searchWord = searchField.value.toLowerCase();
+    const animes = await fetch("https://api.jikan.moe/v4/top/anime");
+    const animesJSON = await animes.json();
+    const animesData = animesJSON.data;
+    console.log(animesData);
 
+    const searchResult = animesData.filter(anime =>
+        anime.title.toLowerCase().includes(searchWord)
+
+    );
+    console.log(searchResult);
+
+    const container = document.querySelector("#anime-container");
+    container.innerHTML = "";
+    searchResult.map((element) => {
+        container.appendChild(getDetial(element));
+    });
+}
+
+const select = document.getElementById("genre-selecter");
+
+function handleChange(event) {
+    console.log(event.target.value);
+    console.log(select.option[select.selectedIndex].value);
+    console.log(select.option[select.selectedIndex].text);
+
+
+}
+=======
+
+>>>>>>> 8865d3f0fa06a03a63c10133facaa32b1c335d53

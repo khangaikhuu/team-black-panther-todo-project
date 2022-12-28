@@ -1,0 +1,41 @@
+* {
+    margin-left: 5px;
+    font-family: 'Kodchasan', sans-serif;
+}
+
+.ProductContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.eachPro {
+    /* display: flex; */
+    flex-wrap: wrap;
+    width: 300px;
+    height: 350px;
+    border: 1px solid rgb(143, 190, 243);
+    background-color: rgb(221, 229, 238);
+    box-shadow: 15;
+    border-radius: 15px;
+}
+
+.phoneTitle {
+    color: black;
+    /* font-weight: 300; */
+    font-size: 20px;
+    margin: 10px auto;
+}
+
+.phoneImage {
+    width: 150px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+.phoneInfo {
+    margin: 0 auto;
+}
+h4, h3 {
+    font-size: 14px;
+    font-weight: 200;
+}
