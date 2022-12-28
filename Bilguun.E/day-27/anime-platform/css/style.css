@@ -27,7 +27,7 @@ h1 {
 }
 
 .container {
-    max-width: 1060px;
+    max-width: 1280px;
     width: 100%;
     margin: auto;
 }
@@ -38,6 +38,10 @@ h1 {
     justify-content: space-between;
 }
 
+.searchDiv {
+    width: 900px;
+}
+
 .searchBtn {
     background-color: #4f74c8;
     color: #fff;
@@ -46,7 +50,7 @@ h1 {
 }
 
 .divContainer {
-    margin-top: 30px;
+    margin: 30px 30px 15px 30px;
     width: 350px;
     height: 372px;
     background-color: white;
@@ -187,7 +191,6 @@ h1 {
 }
 
 .bodyDivProducer p {
-    padding-bottom: 5px;
     line-height: 1.5em;
 }
 
@@ -211,7 +214,7 @@ h1 {
     align-items: center;
     height: 22px;
     width: 332px;
-    margin: 0;
+    margin: 0 0 0 10px;
     background-color: rgba(248, 248, 248, 255);
 
 }
@@ -242,4 +245,11 @@ h1 {
     opacity: 1;
     padding: 2px 4px;
     cursor: pointer;
+}
+
+.ulClass {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
 }
