@@ -1,28 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Document</title>
-		<link rel="stylesheet" href="css/style.css" />
-		<script
-			src="https://kit.fontawesome.com/531a46f112.js"
-			crossorigin="anonymous"
-		></script>
-	</head>
-	<body>
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Anime platform</title>
+
+	<!-- CSS link -->
+	<link rel="stylesheet" href="css/style.css" />
+
+	<!-- Fontawesome -->
+	<script src="https://kit.fontawesome.com/531a46f112.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+	<div id="search-select">
 		<!-- Search section -->
 		<div id="search-engine">
 			<input id="search-input" placeholder="Search for name...">
 			<input type="button" id="search-button" value="Search" onclick="search(this);">
 		</div>
-		
-		<!-- Anime card section-->
-		<div id="anime-container"></div>
+	
+		<!-- Select section -->
+		<div id="select-container">
+			<select id="select-genre" onchange="filter()">
+				<option value="">Select Genre</option>
+				<option value="Action">Action</option>
+				<option value="Comedy">Comedy</option>
+				<option value="Drama">Drama</option>
+			</select>
+		</div>
+	</div>
+
+	<!-- Anime card section-->
+	<div id="anime-container"></div>
 
 
-		<!-- <script src="main.js"></script> -->
-		<script src="js/script.js"></script>
-	</body>
+	<!-- JS link -->
+	<script src="js/script.js"></script>
+</body>
+
 </html>
