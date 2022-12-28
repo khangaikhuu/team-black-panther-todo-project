@@ -106,3 +106,14 @@ i{
   text-align: center;
   margin-bottom: 15px;
 }
+.pagination-btn{
+text-align: center;
+margin-top: 25px;
+}
+.next-btn,.prev-btn{
+  border: none;
+  background-color: #FFBF00;
+  border-radius: 15px;
+  padding: 10px;
+  color: #fff;
+}
