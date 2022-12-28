@@ -1,23 +1,3 @@
-
-
-// const allAnimeURL = 'https://api.jikan.moe/v4/top/anime' 
-
-
-
-// fetch(allAnimeURL)
-//     .then(result => result.json())
-//     .then(data => {
-//         console.log(data);
-//         console.log(data.data[1].mal_id);
-
-//         console.log(data.data[1].images.jpg.image_url);
-//         const mangaImages = document.getElementById('manga-image');
-//         mangaImages.src = data.data[1].images.jpg.image_url;
-
-//     })
-
-
-
 function getDetial(data) {
     // console.log(data.mal_id);
 
@@ -48,53 +28,85 @@ function getDetial(data) {
     })
 
     // text oruulax heseg
-    const mangaText = document.createElement('h2');
+    const mangaText = document.createElement('div');
+
+
+
     mangaText.innerHTML = data.synopsis.substring(0, 370);
     mangaText.className = "mangaText"
     // console.log(mangaText);
     // button, dutuu
 
     // studio oruulax heseg
-    const studioParts = document.createElement("div")
+    // const studioParts = document.createElement("p")
+    // studioParts.className = "studioParts";
 
     const mangaStudio = document.createElement("div");
     mangaStudio.innerHTML = `<strong> Studio :</strong> <a href="${data.studios[0].url}"> ${data.studios[0].name} </a>`;
     mangaStudio.className = "mangaStudioGray";
 
-    const mangaStudio2 = document.createElement("div");
-    mangaStudio2.innerHTML = ` <strong> Source :</strong> ${data.source}`
-    console.log(mangaStudio2);
+    const mangaSource = document.createElement("div");
+    mangaSource.className = "mangaStudioGray";
 
-    const mangaStudio3 = document.createElement("div");
-    // mangaStudio3.innerHTML = `<strong>Theme :</strong> <a href="${data.themes[0].url}"> ${data.themes[0].name} </a>`;
-    mangaStudio3.className = "mangaStudioGray";
+    mangaSource.innerHTML = ` <strong> Source :</strong> ${data.source}`;
 
-    const mangaStudio4 = document.createElement("div");
-    // mangaStudio4.innerHTML = `<strong> Democgraphic :</strong> <a href="${data.demographics[0].url}"> ${data.demographics[0].name} </a>`;
-    mangaStudio4.className = "mangaStudio";
+    const mangaThemeContainer = document.createElement('div');
+    mangaThemeContainer.className = "mangaStudioGray"
+    const mangaThemeTitle = '<strong> Theme :</strong>'
+    mangaThemeContainer.innerHTML += mangaThemeTitle
+    data.themes.map(element => {
+        const a = document.createElement('div');
+        a.innerHTML += ` <a href="${element.url}"> ${element.name} </a>`;
+        mangaThemeContainer.appendChild(a);
+    })
+
+    const mangaDemographics = document.createElement("div");
+    mangaDemographics.className = "mangaStudioGray"
+
+    data.demographics.map(element => {
+        const a = document.createElement('div')
+        a.innerHTML += `<strong> Democgraphic :</strong> <a href="${element.url}">${element.name}</a><br>`;
+        mangaDemographics.appendChild(a);
+    })
+
+    // rating heseg 
+
+    const ratingContainer = document.createElement('div')
+    ratingContainer.className = "ratingContainer";
+
+    const mangaSeen = document.createElement('h4');
+    mangaSeen.className = "mangaSeen"
+    mangaSeen.innerHTML = '<i class="fa-sharp fa-solid fa-star"></i>  ' + data.score;
 
 
+    const mangaScore = document.createElement('h4');
+    mangaScore.className = "mangaScore"
 
+    mangaScore.innerHTML = '<i class="fa-solid fa-eye"></i>  ' + (((data.members) / 1_000_000).toFixed(1)) + " M";
 
-
+    const addTolist = document.createElement('add-to-list')
+    addTolist.classList = "addTolist";
+    addTolist.innerHTML = `<a href="https://myanimelist.net/login.php?error=login_required&from=%2Fanime%2Fgenre%2F2%2FAdventure" style="text-decoration: none; color: #ffffff;">Add to list</a>`;
 
     //erunxii tom DIV
     const myCreate = document.createElement("div")
     myCreate.className = "myMain"
-
 
     myCreate.appendChild(mytitle);
     myCreate.appendChild(myStat);
     myCreate.appendChild(mangaGenre);
     myCreate.appendChild(mangaDomImage);
     myCreate.appendChild(mangaText);
-    myCreate.appendChild(mangaStudio);
-    myCreate.appendChild(mangaStudio2);
-    myCreate.appendChild(mangaStudio3);
-    myCreate.appendChild(mangaStudio4);
 
+    mangaText.appendChild(mangaStudio);
+    mangaText.appendChild(mangaSource);
+    mangaText.appendChild(mangaThemeContainer);
+    mangaText.appendChild(mangaDemographics);
 
-
+    myCreate.appendChild(ratingContainer);
+        ratingContainer.appendChild(mangaSeen);
+        ratingContainer.appendChild(mangaScore);
+    ratingContainer.appendChild(addTolist);
 
     return myCreate;
 }
