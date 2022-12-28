@@ -125,8 +125,17 @@ async function search(event) {
     const searchWord = searchField.value.toLowerCase();
     const animes = await fetch("https://api.jikan.moe/v4/top/anime");
     const animesJSON = await animes.json();
-    const animeData = animesJSON.data;
+    const animesData = animesJSON.data;
+        console.log(animesData);
+
+    const searchResult = animesData.filter(anime =>
+        anime.title.toLowerCase().includes(searchWord)
+        );
+    console.log(searchResult);
+
     
+    
+
 }
 
 
