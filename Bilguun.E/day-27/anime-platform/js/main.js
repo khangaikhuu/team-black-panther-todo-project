@@ -21,17 +21,18 @@ callURL()
 
 
 function goToPage1() {
-  let animeData = []
+  let animeData1 = []
 
   async function callURL() {
     const fetchedData = await fetch("https://api.jikan.moe/v4/top/anime")
     const fetchedJSON = await fetchedData.json()
-    animeData = fetchedJSON.data
+    animeData1 = fetchedJSON.data
     const container = document.getElementById("mainDiv");
     container.innerHTML = '';
-    animeData.map((element, index) => {
+    animeData1.map((element, index) => {
       container.innerHTML += getAnimes(element, index)
     })
+    animeData = animeData1
   }
 
   callURL()
