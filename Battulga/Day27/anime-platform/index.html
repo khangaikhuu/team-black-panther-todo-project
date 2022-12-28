@@ -16,10 +16,21 @@
     <h1>Anime platform</h1>
 
 
-    <div>
+    <div id="search-container">
 
-        <input type="text" placeholder="Search">
-        <input type="button"  value="Search">
+        <input placeholder="Please Search" id="search-field">
+        <input type="button"  value="Search" onclick="search(this)">
+    </div>
+
+    <div>
+        <select id="genre-selector">
+            <option >
+                Action
+            </option>
+            <option >
+                Comedy
+            </option>
+        </select>
     </div>
 
     <div id="manga-container">
