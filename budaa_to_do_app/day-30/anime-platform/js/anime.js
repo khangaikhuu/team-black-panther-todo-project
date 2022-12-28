@@ -37,7 +37,7 @@ function createCart(data) {
     // animeImage.src = data.images.jpg.image_url
     // animeCard.appendChild(animeImage)
 
-
+//asdasdasd
 
 
     

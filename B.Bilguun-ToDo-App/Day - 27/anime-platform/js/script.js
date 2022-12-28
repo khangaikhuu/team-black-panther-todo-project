@@ -246,7 +246,7 @@ console.log(d[0]);
 
 d[0].addEventListener("click", ()=>{
   console.log('clicked');
-  
+
 })
 // function pagination() {
 

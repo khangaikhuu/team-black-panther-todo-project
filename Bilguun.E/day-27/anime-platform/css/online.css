@@ -53,7 +53,7 @@
     border: 0;
     line-height: 40px;
     font-family: inherit;
-    padding: 10px 12px 0 12px;
+    padding: 0 12px 0 12px;
     font-size: 16px;
     font-weight: 400;
     background: rgba(0, 0, 0, 0.02);
@@ -108,7 +108,7 @@
     cursor: pointer;
     position: relative;
     background-color: rgba(0, 0, 0, 0);
-    margin: 15px 0 0 0;
+    margin: 15px 15px 0 15px;
     font-family: "Roboto Mono", monospace;
 }
 
@@ -122,6 +122,21 @@
     top: 7px;
     left: 7px;
     transition: 0.2s;
+}
+.blue::after {
+    background-color: skyblue;
+}
+.red::after {
+    background-color: rgb(238, 96, 96);
+}
+.grey::after {
+    background-color: rgb(136, 136, 136);
+}
+.green::after {
+    background-color: rgb(83, 245, 132);
+}
+.orange::after {
+    background-color: rgb(244, 163, 70);
 }
 
 .fill:hover::after {
@@ -201,7 +216,6 @@ select[multiple] {
      * Firefox and Chrome allow showing 
      * a partial option
      */
-    height: 6rem;
     /* 
      * Experimental - styling of selected options
      * in the multiselect
