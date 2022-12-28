@@ -88,14 +88,14 @@ function getDetial(data) {
 
     const theme = document.createElement("div");
     data.themes.map(t => {
-      theme.innerHTML += `<strong>Theme :</strong> <a href="${t.url}">${t.name}</a><br>`
+        theme.innerHTML += `<strong>Theme :</strong> <a href="${t.url}">${t.name}</a><br>`
     })
-  
+
     theme.className = "gray";
     const demograph = document.createElement("div");
     // demograph.innerHTML = `<strong>Demographic :</strong> <a href="${data.demographics[0].url}">${data.demographics[0].name}</a>`;
     data.demographics.map(d => {
-      demograph.innerHTML = `<strong>Demographic :</strong> <a href="${d.url}">${d.name}</a>`
+        demograph.innerHTML = `<strong>Demographic :</strong> <a href="${d.url}">${d.name}</a>`
     })
     part2.appendChild(studios)
     part2.appendChild(source)
@@ -133,23 +133,33 @@ fetch("https://api.jikan.moe/v4/top/anime")
         });
     });
 
-    async function search(event) {
-      const searchField = document.getElementById('search-field');
-      const searchWord = searchField.value.toLowerCase();
-      const animes = await fetch("https://api.jikan.moe/v4/top/anime");
-      const animesJSON = await animes.json();
-      const animesData = animesJSON.data;
-      console.log(animesData);
+async function search(event) {
+    const searchField = document.getElementById('search-field');
+    const searchWord = searchField.value.toLowerCase();
+    const animes = await fetch("https://api.jikan.moe/v4/top/anime");
+    const animesJSON = await animes.json();
+    const animesData = animesJSON.data;
+    console.log(animesData);
 
-      const searchResult = animesData.filter(anime => 
+    const searchResult = animesData.filter(anime =>
         anime.title.toLowerCase().includes(searchWord)
-        
-      );
-      console.log(searchResult);
-      
-      const container = document.querySelector("#anime-container");
-      container.innerHTML = "";
-        searchResult.map((element) => {
-          container.appendChild(getDetial(element));
-        });
-    }
+
+    );
+    console.log(searchResult);
+
+    const container = document.querySelector("#anime-container");
+    container.innerHTML = "";
+    searchResult.map((element) => {
+        container.appendChild(getDetial(element));
+    });
+}
+
+const select = document.getElementById("genre-selecter");
+
+function handleChange(event) {
+    console.log(event.target.value);
+    console.log(select.option[select.selectedIndex].value);
+    console.log(select.option[select.selectedIndex].text);
+
+
+}
