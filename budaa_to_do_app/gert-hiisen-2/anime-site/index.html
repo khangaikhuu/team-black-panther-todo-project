@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <h1>Anime Card</h1>
+  
+    <div id = "search-container">
+        <input placeholder="Pleace Search" id="search-field">
+        <input type="button" value="Search" onclick="search(this);">
+    </div>
+    <div id="select-container">
+        <select id="select-genre" onchange="filter()">
+            <option value="">Select Genre</option>
+            <option value="Action">Action</option>
+            <option value="Comedy">Comedy</option>
+            <option value="Drama">Drama</option>
+        </select>
+    </div>
+    <div id="anime-container">
+        
+    </div>
+
+    <script src="./js/main.js"></script>
+</body>
+</html>
