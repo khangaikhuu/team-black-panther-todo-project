@@ -17,12 +17,12 @@
 //         console.log(data.data.type)
 //     })
 
-
+let anime = []
 fetch('https://api.jikan.moe/v4/top/anime')
     .then((res) => res.json())
     .then((topAnime) => {
         console.log("topAnime", topAnime);
-        const anime = topAnime.data;
+        anime = topAnime.data;
         console.log(anime);
         const container = document.querySelector('#manga-container')
 
@@ -35,7 +35,13 @@ fetch('https://api.jikan.moe/v4/top/anime')
 
 function getAnimes(data, index) {
 
+    const genres = data.genres.map(genre => {
+        const result = `<p>${genre.name}</p>`;
+        return result;
+     })
+
     return `
+    
     <div id="manga-container">
     <div id="manga-card">
         <h3 class="title">${data.title}</h3>
@@ -61,15 +67,14 @@ function getAnimes(data, index) {
             <br>
         </div>
         <br>
-
         <div class="anime-body">
             <div class="row">
                 <div class="col-6 col-sm-6 col-md-6">
                     <img id='manga-image' alt="" src=${data.images.jpg.image_url}>
                 </div>
                 <div class="col-6">
-                    <p id="breif">${data.synopsis.slice(0, 300)}</p>
-                    <button id='more-btn'> <i class="fa-solid fa-angle-down"> </i> </button>
+                    <p id="brief_${index}">${data.synopsis.slice(0, 300)}</p>
+                    <button id="${index}" onclick="showMore(this);"> <i class="fa-solid fa-angle-down"> </i> </button>
                     <div id="info">
                         <p><strong>Studio:</strong> <a href="#">${data.studios[0].name}</a></p>
                         <p><strong>Source:</strong>${data.source}</p>
@@ -98,7 +103,37 @@ function getAnimes(data, index) {
 
 
 
-async function showMore(event) {
-console,log(event.id)
 
+
+
+
+// const select = document.getElementById('genre-selector')
+
+// select.addEventListener('change', function handleChange(event) {
+//     console.log(event.target.value)
+// })
+
+
+
+
+
+
+async function showMore(event) {
+    const elementSynop = document.getElementById(`brief_${event.id}`)
+    console.log(elementSynop)
+    const filteredData = anime.filter((el, index) =>{
+        if (index == event.id) {
+            return el
+        } 
+    })  
+    console.log(filteredData)
+    elementSynop.textContent = filteredData[0].synopsis
+}
+
+
+
+async function search(event) {
+    const searchField = document.getElementById('search-field')
+    const searchWord = searchField.value
+    console.log(searchWord)
 }
