@@ -17,7 +17,7 @@ fetch(fullMetalAlchemistURL)
         // const mangaText = document.getElementById('manga-container').
         //     getElementsByClassName('manga-text')[0].textContent = data.data.synopsis;
 
-        // bagshiin filenaas
+        // ba filenaas
 
         
         let switcherButton = document.getElementById('moreBtn');
@@ -46,7 +46,7 @@ fetch(fullMetalAlchemistURL)
         let synopsis = document.getElementById('manga-text').innerHTML = data.data.synopsis.substring(0, 337);
 
 
-        // bagshiin filenaas duussan
+        // b  filenaas duussan
 
 
 

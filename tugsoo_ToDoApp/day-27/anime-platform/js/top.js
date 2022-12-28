@@ -1,26 +1,54 @@
-fetch('https://api.jikan.moe/v4/top/anime')
-  .then((res) => res.json())
-  .then((topAnime) => {
-    console.log('topAnim', topAnime);
-    const anime = topAnime.data;
-    console.log('anime', anime);
-    const container = document.querySelector('#manga-container');
+let animeData = []
 
-    container.innerHTML = '';
-    anime.map((element, index) => {
-      container.innerHTML += getAnimes(element, index)
-    })
+async function callURL() {
+  const fetchedData = await fetch('https://api.jikan.moe/v4/top/anime')
+  const fetchedJSON = await fetchedData.json();
+  animeData = fetchedJSON.data;
+  console.log(animeData);
+  const container = document.querySelector('#manga-container');
+
+  container.innerHTML = '';
+  animeData.map((element, index) => {
+    container.innerHTML += getAnimes(element, index)
   })
+}
+
+callURL()
+
+// -----------------------------//
+
+const select = document.getElementById('genre-selector')
+let genreData = []
+
+async function callGenre() {
+  const fetchedData = await fetch('https://api.jikan.moe/v4/genres/anime')
+  const fetchedJSON = await fetchedData.json();
+  genreData = fetchedJSON.data;
+  genreData.map((genre, index) => {
+    const option = document.createElement("option");
+    option.value = genre.mal_id;
+    option.textContent = genre.name;
+    select.appendChild(option);
+  })
+
+}
+
+callGenre()
+
+//----------------pagination--------------------//
+
+const pagination = document.getElementById("pagination")
+
+
+
+
+// ------------------search button-------------------//
 
 async function search(event) {
   const searchField = document.getElementById('search-field')
   const searchWord = searchField.value;
-  const animes = await fetch('https://api.jikan.moe/v4/top/anime');
-  const animesJSON = await animes.json();
-  const animesData = animesJSON.data;
-
-  const searchResult = animesData.filter(anime =>
-    anime.title.includes(searchWord)
+  const searchResult = animeData.filter(anime =>
+    anime.title.toLowerCase().includes(searchWord)
   )
   const container = document.querySelector('#manga-container');
 
@@ -31,21 +59,48 @@ async function search(event) {
   console.log(searchResult);
 }
 
+
+
+// genres filter button
+
+
+async function getGenres(event) {
+  console.log(event);
+  console.log(event.value);
+
+  let searchValue = event.value;
+  console.log(searchValue);
+
+  const searchResult = animeData.filter(anime => {
+    const result = anime.genres.filter(genre =>
+
+      genre.mal_id == searchValue
+    )
+    if (result.length > 0) {
+      return anime
+    }
+  })
+  console.log(searchResult);
+
+  const container = document.querySelector('#manga-container');
+
+  container.innerHTML = '';
+  searchResult.map((element, index) => {
+    container.innerHTML += getAnimes(element, index)
+  })
+}
+
+
 // more button
 
 async function showMore(event) {
-  // console.log(event.id);
+
   const elementSynop = document.getElementById(`synopsis_${event.id}`);
   console.log(elementSynop);
 
-  const resultJSON = await fetch('https://api.jikan.moe/v4/top/anime');
-  const result = await resultJSON.json();
-  const animeData = result.data;
-  console.log(animeData);
-
-  const filteredData = animeData.filter((el, index) => {
+  const filteredData = animeData.filter((element, index) => {
     if (index == event.id) {
-      return el;
+      return element;
     }
   })
 
@@ -53,6 +108,8 @@ async function showMore(event) {
   elementSynop.innerHTML = filteredData[0].synopsis;
 
 }
+
+
 
 function getAnimes(element, index) {
 
@@ -70,7 +127,6 @@ function getAnimes(element, index) {
     const result = `<a href="#">${e.name}</a>`
     return result
   })
-
 
 
 
@@ -116,5 +172,6 @@ function getAnimes(element, index) {
         </div>
         <button class="add-list">Add To List</button>
     </div>
+   
 </div>`
 }

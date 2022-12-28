@@ -1,15 +1,46 @@
+let animeData = [];
+
+async function callURL(){
+  const fetchData = await fetch('https://api.jikan.moe/v4/top/anime');
+  const fetchJSON = await fetchData.json();
+  animeData = fetchJSON.data;
+  console.log(animeData);
+  const container = document.querySelector('#anime-container');
+
+  container.innerHTML = '';
+  animeData.map((element, index) => {
+    container.innerHTML += getAnimes(element, index)
+  })
+
+}
+callURL()
+
+
+
+
+
+
+
+// fetch('https://api.jikan.moe/v4/top/anime')
+// .then((res) => res.json())
+// .then((topAnime) => {
+//   console.log('topAnim', topAnime);
+//   const anime = topAnime.data;
+//   console.log('anime', anime);
+//   const container = document.querySelector('#anime-container');
+
+//   container.innerHTML = '';
+//   anime.map((element, index) => {
+//     container.innerHTML += getAnimes(element, index)
+//   })
+// })
+
 // const card = document.querySelector('#card');
 
-async function showMore(event){
+function showMore(event){
     // console.log(event.id);
     const elementSynop = document.getElementById(`synopsis_${event.id}`);
     console.log(elementSynop);
-    
-    const resultJSON = await fetch('https://api.jikan.moe/v4/top/anime');
-    const result = await resultJSON.json();
-    const animeData = result.data;
-    console.log(animeData);
-  
     const filteredData = animeData.filter((el, index) => {
       if (index == event.id){
         return el;
@@ -23,15 +54,12 @@ async function showMore(event){
     elementSynop.innerHTML = filteredData[0].synopsis;
   
   }
-  async function search(event){
+function search(event){
     console.log(event);
     const searchField = document.getElementById("search-field");
     console.log(searchField);
     console.log(searchField.value);
     const searchWord = searchField.value;
-    const animes = await fetch("https://api.jikan.moe/v4/top/anime")
-    const animesJSON = await animes.json();
-    const animeData = animesJSON.data;
 
     const searchResult = animeData.filter(anime => anime.title.toLowerCase().includes(searchWord)
     )
@@ -40,9 +68,38 @@ async function showMore(event){
     const container = document.querySelector("#anime-container");
     container.innerHTML = "";
         searchResult.map((element) => {
-            container.innerHTML = getAnimes(element)
+            container.innerHTML += getAnimes(element)
         });
     
+
+  }
+//selection 
+
+  function filter() {
+  
+    const selectGenre = document.getElementById('select-genre');
+    let selectValue = selectGenre.value;
+    
+
+    const selectResult = animeData.filter(anime => {
+      let filteredSelect = anime.genres.filter(genre => {
+        if (genre.name == selectValue) {
+          return genre;
+        }
+      })
+      if (filteredSelect.length > 0) {
+        return filteredSelect;
+      }
+    })
+
+
+
+    console.log(selectResult);
+    const container = document.querySelector(`#anime-container`);
+    container.innerHTML = '';
+    selectResult.map((element) => {
+      container.innerHTML += getAnimes((element));
+    })
 
   }
 
@@ -105,17 +162,5 @@ async function showMore(event){
   </div>`
   }
   
-  fetch('https://api.jikan.moe/v4/top/anime')
-    .then((res) => res.json())
-    .then((topAnime) => {
-      console.log('topAnim', topAnime);
-      const anime = topAnime.data;
-      console.log('anime', anime);
-      const container = document.querySelector('#anime-container');
-  
-      container.innerHTML = '';
-      anime.map((element, index) => {
-        container.innerHTML += getAnimes(element, index)
-      })
-    })
+
 
