@@ -22,23 +22,70 @@ async function search(event) {
     })
     animesContainer.innerHTML = result;
 }
-// YMAR TURUL SONGOGDOH HESEG
-    async function callData () {
-        const animeGenre = await fetch('https://api.jikan.moe/v4/genres/anime');
-        const animeJSON = await animeGenre.json () 
-        const animeData = animeJSON.data
-        
-        let dropdown = document.getElementById('genres-selector');
-        let option = document.createElement('option');
-        dropdown.add(option);
-    
-      
-    
-    }
-    
-  callData ()
 
- 
+// YMAR TURUL SONGOGDOH HESEG
+let selector = []
+let animesGenre = []
+const select = document.getElementById('genres-selector');
+
+async function callURL(){
+    const fetchedData = await fetch('https://api.jikan.moe/v4/top/anime')
+    const fetchedJSON = await fetchedData.json();
+    animesGenre = fetchedJSON.data;
+    console.log(animesGenre);
+    const container = document.querySelector('#animes-container');
+
+    container.innerHTML = '';
+    animesGenre.map((element, index) => {
+        container.innerHTML += getAnimes(element, index)
+    })
+}
+async function callGenre (){
+    const fetchedgenreData = await fetch('https://api.jikan.moe/v4/genres/anime') 
+    const genrefetchedJSON = await fetchedgenreData.json();
+    selector = genrefetchedJSON.data;
+    console.log(selector)
+
+    selector.map((genre) =>{
+        const option = document.createElement('option')
+        option.value = genre.mal_id;
+        option.textContent = genre.name;
+
+        select.appendChild(option);
+    })
+}
+
+callGenre()
+callURL();
+
+// TURUL SONGOGDOH HESEG
+select.addEventListener('change', async function handleChange(event) {
+    let searchValue = event.target.value;
+    const genreFilter = animesGenre.filter(anime => {
+       
+        const genres = anime.genres;
+        const result = genres.filter((genre) =>{
+            if(genre.mal_id == searchValue){
+                return genre   
+            }
+        })    
+        
+        if(result.length > 0){
+            return anime
+        }         
+    })
+
+    const container = document.querySelector('#animes-container');
+
+    container.innerHTML = '';
+    genreFilter.map((element, index) => {
+        container.innerHTML += getAnimes(element, index)
+    })
+
+})
+
+// BUSAD ANIME TABLE RUU VSREH ZUIL 
+
 
 // TOP 25 ANIME ORUULJ IRJ BGA DATAG AVCHIRSAN HESEG
 function getAnimes (p1, p2 ) {
