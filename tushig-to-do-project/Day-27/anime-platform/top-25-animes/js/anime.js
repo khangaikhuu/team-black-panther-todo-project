@@ -22,9 +22,21 @@ async function search(event) {
     })
     animesContainer.innerHTML = result;
 }
-  callData ()
-
 // YMAR TURUL SONGOGDOH HESEG
+    async function callData () {
+        const animeGenre = await fetch('https://api.jikan.moe/v4/genres/anime');
+        const animeJSON = await animeGenre.json () 
+        const animeData = animeJSON.data
+        
+        let dropdown = document.getElementById('genres-selector');
+        let option = document.createElement('option');
+        dropdown.add(option);
+    
+      
+    
+    }
+    
+  callData ()
 
  
 

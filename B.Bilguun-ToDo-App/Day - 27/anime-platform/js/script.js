@@ -79,10 +79,12 @@ function getDetial(data) {
     });
 
     const part2 = document.createElement("div");
+
+
     const studios = document.createElement("div");
     studios.className = "gray";
-
     studios.innerHTML = `<strong>Studio :</strong> <a href="${data.studios[0].url}">${data.studios[0].name}</a>`;
+
     const source = document.createElement("div");
     source.innerHTML = `<strong>Source :</strong> ${data.source}`;
 
@@ -92,6 +94,7 @@ function getDetial(data) {
     })
   
     theme.className = "gray";
+    
     const demograph = document.createElement("div");
     // demograph.innerHTML = `<strong>Demographic :</strong> <a href="${data.demographics[0].url}">${data.demographics[0].name}</a>`;
     data.demographics.map(d => {

@@ -92,13 +92,7 @@
     background-color: white;
     color: black;
 }
-/* .source span {
-    display: block;
-    
-}
-.odd {
-    background-color: rgb(230, 230, 230);
-} */
+
 #search {
     display: flex;
     justify-content: center;
