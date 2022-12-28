@@ -1,14 +1,135 @@
 * {
-    margin: 0;
-    padding: 0;
+	box-sizing: border-box;
+	margin: 0;
 }
-.card-container {
-    max-width: 768px;
-    margin: auto;
-    background-color: yellow;
+
+body {
+	padding: 20px;
+	font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+		"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+	font-size: 13px;
 }
-.status {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
+#anime-container {
+	display: grid;
+	grid-template-columns: repeat(3, 500px);
+	gap: 20px;
+	justify-content: center;
+}
+
+.anime-card {
+	width: 460px;
+	border: 3px solid #f8f8f8;
+}
+
+#title {
+	display: block;
+	text-align: center;
+	padding-block: 30px;
+	font-size: 18px;
+	text-decoration: none;
+}
+
+.anime-genre,
+.anime-body,
+.anime-footer {
+	display: flex;
+}
+
+.anime-status {
+	display: flex;
+	justify-content: space-between;
+	background-color: #f8f8f8;
+	padding: 6px 10px;
+}
+
+.anime-status span {
+	color: gray;
+}
+
+#year {
+	border-right: 1px solid;
+	padding-right: 5px;
+}
+
+#status {
+	padding-inline: 5px;
+}
+
+#eps {
+	border-left: 1px solid;
+	padding-left: 5px;
+}
+
+.anime-genre {
+	background-color: #f0f0f0;
+	gap: 10px;
+	justify-content: center;
+	padding-block: 10px;
+}
+
+.anime-genre p {
+	font-size: 10px;
+	border: 1px solid gray;
+	padding: 3px 5px;
+	background-color: #fff;
+	border-radius: 10px;
+	color: gray;
+}
+
+.anime-body {
+	gap: 10px;
+}
+
+.anime-content {
+	overflow: auto;
+	height: 400px;
+}
+
+#text {
+	padding-top: 10px;
+	line-height: 1.4em;
+}
+
+#text button {
+	display: block;
+	margin: auto;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+	padding: 10px 0;
+}
+
+#info p {
+	padding-block: 7px;
+	padding-inline: 2px;
+}
+
+#info p:nth-child(odd) {
+	background-color: #f0f0f0;
+}
+
+.anime-footer {
+	justify-content: space-around;
+	padding-block: 10px;
+	background-color: #f8f8f8;
+	align-items: center;
+}
+
+.anime-footer span {
+	color: #545454;
+}
+
+#add-list {
+	background-color: #4f74c8;
+	border: none;
+	padding: 7px 25px;
+	color: #fff;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: all 0.3s ease-in;
+}
+
+#add-list:hover {
+	opacity: 0.5;
 }
