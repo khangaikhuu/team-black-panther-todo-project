@@ -18,9 +18,6 @@
 //     })
 
 
-
-
-
 fetch('https://api.jikan.moe/v4/top/anime')
     .then((res) => res.json())
     .then((topAnime) => {
@@ -72,7 +69,7 @@ function getAnimes(data, index) {
                 </div>
                 <div class="col-6">
                     <p id="breif">${data.synopsis.slice(0, 300)}</p>
-                    <button> <i class="fa-solid fa-angle-down"> </i> </button>
+                    <button id='more-btn'> <i class="fa-solid fa-angle-down"> </i> </button>
                     <div id="info">
                         <p><strong>Studio:</strong> <a href="#">${data.studios[0].name}</a></p>
                         <p><strong>Source:</strong>${data.source}</p>
@@ -97,7 +94,11 @@ function getAnimes(data, index) {
     </div>
 
 </div>`
-
-
 }
 
+
+
+async function showMore(event) {
+console,log(event.id)
+
+}
