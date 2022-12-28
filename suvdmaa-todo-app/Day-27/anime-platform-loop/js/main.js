@@ -14,6 +14,7 @@ async function callURL(){
         container.innerHTML += getAnimes(element, index)
     })
 }
+
 async function callGenre (){
     const fetchedgenreData = await fetch('https://api.jikan.moe/v4/genres/anime') 
     const genrefetchedJSON = await fetchedgenreData.json();
@@ -54,10 +55,9 @@ const container = document.querySelector('#card')
 // console.log(filterResult)
 
 
-// genre selector
+// genre selector-------------------------------------------------------
 select.addEventListener('change', async function handleChange(event) {
     let searchValue = event.target.value;
-    // console.log(searchValue)
 
     const genreFilter = animeData.filter(anime => {
        
@@ -83,7 +83,7 @@ select.addEventListener('change', async function handleChange(event) {
 })
 
 
-// text-dropdown and up 
+// text-dropdown and up ------------------------------------------------
 async function showMore(event) {
     // console.log(event.id);
     const elementSynop = document.getElementById(`firstp_${event.id}`);
@@ -100,7 +100,7 @@ async function showMore(event) {
     }
 }
 
-// search selector
+// search selector------------------------------------------------------
 async function search() {
     const searchField = document.getElementById('search-field');
 
@@ -125,7 +125,44 @@ async function search() {
     container.innerHTML = result;
 }
 
-const pageContainer = document.getElementById('page-selector')
+/// page selection -----------------------------------------------------
+const pageContainer = document.getElementById('page-selector');
+
+let page = 1;
+let currentpage = page;
+async function getPageData() {
+    
+   
+    
+
+    const fetchedData = await fetch('https://api.jikan.moe/v4/top/anime?page=${page}')
+    const fetchedJSON = await fetchedData.json();
+    animeData = fetchedJSON.data;
+    console.log(animeData);
+
+    const container = document.querySelector('#anime-container');
+
+    container.innerHTML = '';
+    animeData.map((element, index) => {
+        container.innerHTML += getAnimes(element, index)
+    })
+}
+
+function createPage(){
+    pageContainer.innerHTML = "";
+
+    let aElement = `<a href="#" onclick='getPageData(this)' id="a-element"></a>`;
+
+    pageContainer.innerHTML = aElement;
+    for(let i = 0; i < 10; i++){
+        let pagelink =  '';
+        if(page = (i + 1)){
+            pagelink = `<a href="#" onclick='getPageData(this)' id="a-element">${i + 1}</a>`;
+        }
+        pageContainer.innerHTML += pagelink
+    }
+
+}
 
 
 
@@ -133,7 +170,17 @@ const pageContainer = document.getElementById('page-selector')
 
 
 
-// data
+
+
+
+
+
+
+
+
+
+
+// data-----------------------------------------------------------------
 function getAnimes(data, index) {
     const genres = data.genres.map(genre => {
         const result = `<p>${genre.name}</p>`;
