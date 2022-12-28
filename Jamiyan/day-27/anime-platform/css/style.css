@@ -10,7 +10,9 @@ header {
     display: flex;
     justify-content: end;
     align-items: center;
-    height: 5vh;
+    height: 30px;
+    width: 100%;
+  
 }
 
 #input {
@@ -37,7 +39,11 @@ select {
     flex-wrap: wrap;
  
 }
-
+#pages{
+display: flex;
+justify-content: center;
+margin: 10px;
+}
 #manga {
     width: 334px;
     border: 1px solid lightgrey;
@@ -45,7 +51,31 @@ select {
     margin: 8px;
 
 }
-
+#pages a{
+    width: 50px;
+    height: 20px;
+    background-color: #d8dbe0 ;
+   display: inline-block;
+   color: white;
+   text-align: center;
+   text-decoration: none;
+   margin: 0 5px;
+}
+#pages a:hover{
+    background-color: #1c439b;
+}
+#pages button{
+    border: none;
+    height: 20px;
+    width: 20px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   background-color: #d8dbe0;
+}
+#pages button:hover{
+    background-color: white;
+}
 h6 {
     color: #1c439b;
     font-size: 18px;

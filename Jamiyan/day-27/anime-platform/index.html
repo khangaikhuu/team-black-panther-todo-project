@@ -8,14 +8,14 @@
     <title>Document</title>
     <link rel="stylesheet" href="./css/style.css">
     <script src="https://kit.fontawesome.com/db3b639c81.js" crossorigin="anonymous"></script>
-    
-    
+
+
 </head>
 
 <body>
     <header>
- 
-        <select id="gnere-selector" class="ice-cream" >
+
+        <select id="gnere-selector" class="ice-cream">
             <option>
                 All
             </option>
@@ -23,7 +23,7 @@
                 Action
             </option>
             <option>
-              Adventure
+                Adventure
             </option>
             <option>
                 Drama
@@ -35,10 +35,10 @@
                 Romance
             </option>
             <option>
-              Sci-Fi
+                Sci-Fi
             </option>
             <option>
-              Suspense
+                Suspense
             </option>
             <option>
                 Supernatural
@@ -50,16 +50,27 @@
                 Award Winning
             </option>
             <option>
-               Mystery
+                Mystery
             </option>
         </select>
 
-          <input id="input" type="text" placeholder="Search Anime, Manga, and more...">
-        <button id="input-button" onclick="search(this)"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <input id="input" type="text" placeholder="Search Anime, Manga, and more...">
+        <button id="input-button" onclick="search()"><i class="fa-solid fa-magnifying-glass"></i></button>
 
     </header>
+    <div id="pages">
+        <button id="next" onclick="page2()"><i class="fa-sharp fa-solid fa-chevron-left"></i></button>
+        <!-- <a href="#" onclick="nextPage(this)">1</a>
+        <a href="#" onclick="nextPage(this)">2</a>
+        <a href="#" onclick="nextPage(this)">3</a> -->
+        <button id="next" onclick="page2()"><i class="fa-solid fa-chevron-right"></i></button>
+        <div id="pagination"></div>
+    </div>
+
+    <!-- <a href="#" onclick="a4()">4</a> 
+    <a href="#" onclick="a5()">5</a> -->
     <div id="manga-container">
-       
+
         <!-- <h6></h6>
         <p1 id="inf-p1"></p1>
         <div id="genre">
