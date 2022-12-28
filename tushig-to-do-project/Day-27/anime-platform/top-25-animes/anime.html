@@ -11,9 +11,15 @@
     <title>Top 25 anime</title>
 </head>
 <body>
-    <div id="animes-container">
-       
-    </div>
+    <div id="search-container">
+        <select id="genres-selector" name="category">
+            
+        </select>
+
+		<input placeholder="Search anime names" id="search-field" style="width: 800px;  letter-spacing: 1px;"> 
+		<input type="button" value="Search" onclick="search(this)">
+	</div>
+    <div id="animes-container"> </div>
     <script src="js/anime.js"></script>
 </body>
 </html>
