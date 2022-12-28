@@ -8,6 +8,38 @@ h1{
     padding: 15px;
     text-align: center;
 }
+.dropdown{
+    margin-top: 20px;
+    margin-bottom: -45px;
+}
+.dropdown ul li{
+    cursor: pointer;
+}
+#searching{
+    width: 300px;
+    margin: auto;
+}
+#search-input{
+    font-size: 18px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 15px 0 0 15px;
+    border: 0;
+    background-color: pink;
+}
+#search-btn{
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 0 15px 15px 0;
+    margin-left: -5px;
+    border: 0;
+    background-color: rgba(220, 20, 60, 0.7);
+    cursor: pointer;
+}
+#search-btn:hover{
+    background-color: crimson;
+    color: white;
+}
 #animes{
     display: flex;
     flex-wrap: wrap;
@@ -17,7 +49,7 @@ h1{
 .anime{
     width: 500px;
     background-color: rgba(255, 255, 255, 0.5);
-    box-shadow: 0 0 10px lightblue;
+    box-shadow: 0 0 20px lightblue;
     padding: 10px;
 }
 h3{

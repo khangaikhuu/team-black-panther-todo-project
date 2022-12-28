@@ -1,10 +1,15 @@
+
+
 #manga-container {
     display: grid;
     grid-template-columns: repeat(3, 500px);
     border: 1px solid rgb(183, 179, 179);
     font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
         "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-    
+    text-align: center;
+    margin: 0 auto;
+    max-width: 1500px;
+
 }
 
 .card {
@@ -22,6 +27,7 @@
     font-size: 15px;
 
 }
+
 .intro {
     display: flex;
     justify-content: space-between;
@@ -29,6 +35,7 @@
     font-size: 12px;
     background-color: rgb(231, 231, 231);
 }
+
 .genres {
     display: flex;
     justify-content: space-evenly;
@@ -36,6 +43,7 @@
     background-color: rgb(240, 240, 240);
 
 }
+
 .genres p {
     border-radius: 15px;
     background-color: white;
@@ -43,14 +51,86 @@
     box-sizing: border-box;
     display: inline-block;
 }
+
 .genres p:hover {
     background-color: rgb(113, 141, 227);
 }
+
 .img-container {
     display: flex;
     gap: 5px;
 }
+
 .p-con {
     overflow: auto;
     height: 300px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 5px;
+    align-items: center;
+
+}
+
+.button button {
+    border: none;
+    border-radius: 5px;
+    padding: 7px;
+    background-color: rgb(87, 87, 255);
+    color: white;
+    width: 150px;
+    box-sizing: border-box;
+}
+
+.button button:hover {
+    transition: all 500ms ease-in-out;
+    background-color: white;
+    color: black;
+}
+/* .source span {
+    display: block;
+    
+}
+.odd {
+    background-color: rgb(230, 230, 230);
+} */
+#search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: azure;
+    padding: 10px;
+
+    
+}
+#search input:first-child {
+    border: 1px solid rgb(244, 243, 245);
+    height: 20px;
+    padding: 8px;
+    width: 100px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    
+}
+#search input:last-child {
+   border: none;
+   border-top-right-radius: 15px;
+   border-bottom-right-radius: 15px;
+   padding: 10px;
+   width: 100px;
+   background-image: url(https://www.freeiconspng.com/thumbs/search-icon-png/search-icon-png-2.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+#search input:first-child:hover {
+    flex: 1;
+    background-color: bisque;
+    border: none;
+    transition: all 500ms ease-in-out;
 }

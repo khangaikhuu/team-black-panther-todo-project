@@ -6,7 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anime page</title>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="css/online.css">
 </head>
 
 <body>
@@ -14,13 +18,29 @@
         <h1>Top 25 Animes</h1>
 
         <div id="search-container" class="searchContainer">
-            <input placeholder="Search" id="searchPrompt">
-            <input type="button" value="Search" id="searchBtn" onclick="search(this)">
+            <div>
+                <label for="inp" class="inp">
+                    <input type="text" id="searchPrompt" placeholder="Search">
+                    <span class="focus-bg"></span>
+                </label>
+                <button type="button" class="fill" id="searchBtn" onclick="search(this)">Search</button>
+                <!-- <input type="button" value="Search" id="searchBtn" onclick="search(this)" class="fill"> -->
+                <!-- <input placeholder="Search" id="searchPrompt"> -->
+            </div>
+            <div class="select select--multiple">
+                <select id="filterSelect" onchange="filter()" multiple>
+                    <option value="Action">Action</option>
+                    <option value="Comedy">Comedy</option>
+                    <option value="Drama">Drama</option>
+                    <option value="Sci-Fi">Sci-Fi</option>
+                    <option value="Fantasy">Fantasy</option>
+                </select>
+            </div>
         </div>
         <div class="row">
             <div id="mainDiv">
             </div>
-                <!-- <div class="header">
+            <!-- <div class="header">
                     <h6></h6>
                 </div>
                 <div id="prodsrc" class="prodsrc">
