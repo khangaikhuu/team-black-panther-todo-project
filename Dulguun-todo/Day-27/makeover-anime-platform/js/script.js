@@ -131,19 +131,19 @@ rightArrow.addEventListener ('click',() => {
 })
 pagination.appendChild(rightArrow);
 
-async function nextPage() {
-  const page2 = await fetch(`https://api.jikan.moe/v4/top/anime?page=2`)
-  const page2JSON = await page2.json();
-  page2Data = page2JSON.data;
+// async function nextPage() {
+//   const page2 = await fetch(`https://api.jikan.moe/v4/top/anime?page=2`)
+//   const page2JSON = await page2.json();
+//   page2Data = page2JSON.data;
 
-  const container = document.querySelector('#anime-container');
+//   const container = document.querySelector('#anime-container');
 
-  container.innerHTML = '';
-  page2Data.map((element) => {
-    container.innerHTML += getAnimes(element)
-  })
-}
-nextPage();
+//   container.innerHTML = '';
+//   page2Data.map((element) => {
+//     container.innerHTML += getAnimes(element)
+//   })
+// }
+// nextPage();
 
 // Design section
 function getAnimes(data, index) {
