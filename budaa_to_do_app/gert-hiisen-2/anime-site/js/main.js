@@ -1,9 +1,27 @@
+
+const animesURL = "https://api.jikan.moe/v4/top/anime";
+let animeData = [];
+async function fetchData () {
+  const fetchData = await fetch(animesURL)
+  const fetchJSON = await fetchData.json()
+  animeData = fetchJSON.data 
+
+  console.log(animeData)
+    animeData.map((anime) => {
+      createCard(anime);
+    });
+ 
+
+}
+
+fetchData ()
+
 function createCard(data) {
   // console.log(data)
-  const animeContainer = document.getElementById("anime-container");
+  const animeContainer = document.querySelector("#anime-container");
   const animeCard = document.createElement("div");
   animeCard.className = "anime-card";
-  animeContainer.appendChild(animeCard);
+ 
   animeCard.className = "anime-card";
   const title = document.createElement("a");
   animeCard.appendChild(title);
@@ -23,26 +41,22 @@ function createCard(data) {
   animeStatusApendchild.appendChild(status);
   animeStatusApendchild.appendChild(eps);
   animeStatusApendchild.className = "animes-front"
-  type.textContent = data.type;
-  year.textContent = data.year;
-  status.textContent = data.status;
-  eps.textContent = data.episodes;
+  type.textContent = `${data.type} `;
+  year.textContent = ` ${data.year} ` + `|`;
+  status.textContent =`| ${data.status} | `;
+  eps.textContent = `| ${data.episodes}`;
   const animeGenre = document.createElement("div");
   animeCard.appendChild(animeGenre);
   animeGenre.className = "anime-genre";
-  const action = document.createElement("p");
-  const adventure = document.createElement("p");
-  const drama = document.createElement("p");
-  const fantas = document.createElement("p");
-  animeGenre.appendChild(action);
-  animeGenre.appendChild(adventure);
-  animeGenre.appendChild(drama);
-  animeGenre.appendChild(fantas);
-  action.textContent = data.genres[0].name;
-  adventure.textContent = data.genres[0].name;
-  drama.textContent = data.genres[0].name;
-  fantas.textContent = data.genres[0].name;
 
+  const genreContainer = document.createElement("div")
+  animeGenre.appendChild(genreContainer) 
+  data.genres.map(genre =>{
+    const genreElement = document.createElement("p")
+    genreElement.textContent = genre.name
+    animeGenre.appendChild(genreElement)
+  })
+  
   const animeBody = document.createElement("div");
   animeCard.appendChild(animeBody);
   animeBody.className = "anime-body";
@@ -88,7 +102,9 @@ function createCard(data) {
 
   const button = document.createElement("button");
   text.appendChild(button)
-  button.className = "moreBtn"
+  button.className = "moreBtn fa-angle-down"
+  
+
 //   bodyText.textContent = data.synopsis.slice(0, 300);
 //   const infoText = document.createElement("p");
 //   info.appendChild(infoText);
@@ -137,9 +153,13 @@ const addList = document.createElement("span")
 review.appendChild(addList)
 addList.textContent = data.producers[0].mal_id
 review.className = "views-anime"
+const addToList = document.createElement("button");
+animeFooter.appendChild(addToList)
+addToList.textContent = `Add to list`
 
 
 
+animeContainer.appendChild(animeCard);
 
 
 
@@ -164,15 +184,80 @@ review.className = "views-anime"
   // const animeIamge = document.createElement("img");
   // animeIamge.src = data.images.jpg.image_url;
   // animeCard.appendChild(animeIamge)
+  return animeContainer;
 }
 
-const animes = "https://api.jikan.moe/v4/top/anime";
-fetch(animes)
-  .then((result) => result.json())
-  .then((data) => {
-    const animeData = data.data;
 
-    animeData.map((anime) => {
-      createCard(anime);
-    });
-  });
+
+
+async function search(event) {
+  const searchField = document.getElementById("search-field")
+  const searchWord = searchField.value;
+  console.log(searchField.value);
+  const searchResult = animeData.filter(anime => 
+    anime.title.toLowerCase().includes(searchWord)
+    )
+    console.log(searchResult)
+    console.log(searchWord)
+
+
+   const container = document.querySelector("#anime-container")
+    removeAllChildNodes(container)
+    searchResult.map((element) =>{
+      createCard(element)
+    }) 
+
+}
+
+async function filter() {
+ const selectGenre = document.getElementById("select-genre");
+ let selectValue = selectGenre.value;
+
+ const selectResult = animeData.filter(anime => {
+   let filteredSelect = anime.genres.filter(genre => {
+     if(genre.name == selectValue) {
+       return genre;
+     }
+   })
+   if(filteredSelect.length > 0 ) {
+     return filteredSelect;
+   }
+ })
+ console.log(selectResult);
+ const container = document.querySelector("#anime-container");
+//  container.innerHTML = "";
+removeAllChildNodes(container)
+ selectResult.map((element) => {
+  //  container.innerHTML += createCard((element))
+  createCard(element)
+ })
+
+
+
+
+ // const selectGenre = document.getElementById('select-genre');
+ // let selectValue = selectGenre.value;
+}
+
+function removeAllChildNodes(parent) {
+  while (parent.firstChild) {
+      parent.removeChild(parent.firstChild);
+  }
+}
+
+// const selectResult = animesData.filter(anime => {
+//   let filteredSelect = anime.genres.filter(genre => {
+//     if (genre.name == selectValue) {
+//       return genre;
+//     }
+//   })
+//   if (filteredSelect.length > 0) {
+//     return filteredSelect;
+//   }
+// })
+// console.log(selectResult);
+// const container = document.querySelector(`#anime-container`);
+// container.innerHTML = '';
+// selectResult.map((element) => {
+//   container.innerHTML += getAnimes((element));
+// })
