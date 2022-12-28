@@ -61,12 +61,12 @@ console.log("anime  ");
 //             iconStar.innerHTML = ' <i class="fa-regular fa-star" style= "font-size: 16px"></i> '
 //             document.getElementById("score").appendChild(iconStar)
 //         })
-
+const container = document.getElementById("manga-container");
 const animeFetchfetch = fetch("https://api.jikan.moe/v4/top/anime")
     .then((res) => res.json())
     .then(data => {
         console.log(data);
-        const container = document.getElementById("manga-container");
+
 
         data.data.map((element, index) => {
             container.innerHTML += getAnimes(element, index)
@@ -83,58 +83,16 @@ async function search(event) {
 
 
     const searchResult = animesData.filter(anime =>
-        anime.title.includes(searchWord)
-    )
+        anime.title.toLowerCase().includes(searchWord.toLowerCase()))
 
-    const div = document.getElementById("input-div")
-    div.innerHTML = getSearch(searchResult)
+    container.innerHTML = '';
+    searchResult.map((element, index) => {
+        container.innerHTML += getAnimes(element, index)
+
+
+    })
+
 }
-
-
-
-function getSearch(searchResult) {
-
-
-    console.log(searchResult)
-
-    return `
-    
-    <div id="manga">
-<h6>${searchResult[0].title}</h6>
-<p1 id="inf-p1">${searchResult[0].type},${searchResult[0].year} | ${searchResult[0].status.substring(0, 8)} |  ${searchResult[0].episodes}eps, ${searchResult[0].duration.substring(0, 7)}</p1>
-<div id="genre">
-    <i class="fa-regular fa-circle-play"></i>
-    
-    <i class="fa-solid fa-signal" style="font-size: 16px"></i>
-</div>
-<div id="img-div">
-    <img id="manga-image" src=${searchResult[0].images.jpg.image_url}>
-    <div id="div-text">
-        <p1 id="synopsis_" >${searchResult[0].synopsis.slice(0, 300)}</p1>
-        <button id="" class="down" onclick="showMore(this)"><i class="fa-solid fa-caret-down"></i></button>
-        <p id="img-type1">Studio: <a href="${searchResult[0].studios[0].url}"></a></p>
-        <p id="img-type2">Source: ${searchResult[0].source}</p>
-        <p id="img-type3">Theme: <a href="${searchResult[0].studios[0].url}"></a></p>
-        <p id="img-type4">Demographic:<a href="${searchResult[0].studios[0].url}"></a></p>
-    </div>
-</div>
-
-<div id="rank">
-    <div id="score">
-        <i class="fa-regular fa-star"></i>
-        <span id="score-number">${searchResult[0].score} </span>
-    </div>
-    <div id="popularity-container">
-        <i class="fa-solid fa-eye"></i>
-        <strong id="popularity">${searchResult[0].popularity}.0M </strong>
-    </div>
-    <button id="add">Add to List</button>
-</div>
-</div>
-
-`
-}
-
 
 
 function getAnimes(data, index) {
@@ -200,18 +158,7 @@ function getAnimes(data, index) {
 }
 
 
-// let color = true
-// function showMore(data) {
-//     console.log(data);
-//     if (color) {
-//         data.innerHTML = `<i class="fa-solid fa-caret-up"></i>`
-//         color = false
-
-//     } else {
-//         data.innerHTML = `<i class="fa-solid fa-caret-down"></i>`
-//         color = true;
-//     }
-// }
+let colors = true
 let color = true
 async function showMore(event) {
     console.log(event.id)
@@ -241,5 +188,44 @@ async function showMore(event) {
         color = true;
     }
 
+    if (colors) {
+        event.innerHTML = `<i class="fa-solid fa-caret-up"></i>`
+        colors = false
+
+    } else {
+        event.innerHTML = `<i class="fa-solid fa-caret-down"></i>`
+        colors = true;
+    }
 }
 
+
+const select = document.getElementById('genre-selector');
+const selectElement = document.querySelector('.ice-cream');
+
+selectElement.addEventListener('change', async (event) => {
+
+
+    const animes = await fetch('https://api.jikan.moe/v4/top/anime');
+    const animesJSON = await animes.json();
+    const animesData = animesJSON.data;
+    const option = document.getElementsByTagName("option")
+    console.log(event.target.value)
+
+    let optionResult = animesData.filter(par => {
+        for (i = 0; i < par.genres.length; i++) {
+            if (event.target.value == par.genres[i].name) {
+                return par
+            }
+        }
+    })
+    console.log(optionResult)
+    if (event.target.value == `All`) {
+        optionResult = animesData;
+    }
+
+    container.innerHTML = '';
+    optionResult.map((element, index) => {
+        container.innerHTML += getAnimes(element, index)
+    })
+
+});

@@ -1,28 +1,60 @@
-
-
-#search{
+body {
+    max-width: 1060px;
     width: 100%;
+    margin: auto;
+
 }
 
-#manga-container{
+header {
+    background-color: #1c439b;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    height: 5vh;
+}
+
+#input {
+    width: 20%;
+    border-radius: 4px;
+}
+
+#input-button {
+    height: 19px;
+    width: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+
+}
+
+select {
+    border-radius: 4px;
+}
+
+#manga-container {
     display: flex;
     flex-wrap: wrap;
+ 
 }
-#manga{
+
+#manga {
     width: 334px;
     border: 1px solid lightgrey;
-    font-family: Avenir,lucida grande,tahoma,verdana,arial,sans-serif;
-    margin: 10px;
-    
+    font-family: Avenir, lucida grande, tahoma, verdana, arial, sans-serif;
+    margin: 8px;
+
 }
-h6{
+
+h6 {
     color: #1c439b;
     font-size: 18px;
     text-align: center;
     margin: 23px;
-    
+
 }
-#inf-p1{
+
+#inf-p1 {
     padding: 1px 6px;
     display: flex;
     justify-content: center;
@@ -31,46 +63,53 @@ h6{
     font-size: 12px;
 }
 
-#genre{
+#genre {
     background-color: #f0f0f0;
-   display: flex;
+    display: flex;
     height: 25px;
     justify-content: space-between;
     align-items: center;
     padding: 1px 6px;
 }
-#genre button{
-    color:#787878 ;
+
+#genre button {
+    color: #787878;
     background-color: #fff;
-    border:#e1e7f5 1px solid ;
+    border: #e1e7f5 1px solid;
     border-radius: 5px;
     height: 12.5px;
     font-size: 9px;
 }
-#manga-image{
+
+#manga-image {
     width: 238.25px;
-    
+
 }
-#div-text{
+
+#div-text {
     overflow: auto;
-    
+
 }
-#manga-image{
+
+#manga-image {
     display: inline-block;
 }
-#img-div{
+
+#img-div {
     display: flex;
     height: 250px;
     padding: 6px 4px 0 8px;
     font-size: 11px;
 }
-#rank{
+
+#rank {
     display: flex;
     padding: 2px;
     height: 24px;
     background-color: #f8f8f8;
 }
-#rank div{
+
+#rank div {
     width: 83.5px;
     background-color: #f8f8f8;
     color: black;
@@ -81,7 +120,8 @@ h6{
     justify-content: center;
     align-items: center;
 }
-#add{
+
+#add {
     width: 104px;
     height: 24px;
     background-color: #4f74c8;
@@ -91,10 +131,12 @@ h6{
     border-radius: 5px;
 
 }
-i{
+
+i {
     margin: 5px;
 }
-.down{
+
+.down {
     display: block;
     width: 100%;
     border: none;
