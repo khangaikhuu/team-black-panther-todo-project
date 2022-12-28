@@ -34,28 +34,27 @@ callURL();
 
 const container = document.querySelector('#card')
 
-const array = [1, 2, 3, 4, 5, 7, 8, 9]
-const mapResult = array.map((e)=>{
-    if(e < 5){
-        return e
-    } 
+// filter and map example
+// const array = [1, 2, 3, 4, 5, 7, 8, 9]
+// const mapResult = array.map((e)=>{
+//     if(e < 5){
+//         return e
+//     } 
 
-})
-console.log(mapResult)
-
-
-const filterResult = array.filter((e)=>{
-    if(e < 5){
-        return e
-    } 
-
-})
-console.log(filterResult)
+// })
+// console.log(mapResult)
 
 
+// const filterResult = array.filter((e)=>{
+//     if(e < 5){
+//         return e
+//     } 
+
+// })
+// console.log(filterResult)
 
 
-
+// genre selector
 select.addEventListener('change', async function handleChange(event) {
     let searchValue = event.target.value;
     // console.log(searchValue)
@@ -63,9 +62,7 @@ select.addEventListener('change', async function handleChange(event) {
     const genreFilter = animeData.filter(anime => {
        
         const genres = anime.genres;
-        // check whether genreName is in genres
         const result = genres.filter((genre) =>{
-            
             if(genre.mal_id == searchValue){
                 return genre   
             }
@@ -86,6 +83,7 @@ select.addEventListener('change', async function handleChange(event) {
 })
 
 
+// text-dropdown and up 
 async function showMore(event) {
     // console.log(event.id);
     const elementSynop = document.getElementById(`firstp_${event.id}`);
@@ -102,6 +100,7 @@ async function showMore(event) {
     }
 }
 
+// search selector
 async function search() {
     const searchField = document.getElementById('search-field');
 
@@ -126,7 +125,15 @@ async function search() {
     container.innerHTML = result;
 }
 
+const pageContainer = document.getElementById('page-selector')
 
+
+
+
+
+
+
+// data
 function getAnimes(data, index) {
     const genres = data.genres.map(genre => {
         const result = `<p>${genre.name}</p>`;
