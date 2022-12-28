@@ -8,10 +8,58 @@
     <title>Document</title>
     <link rel="stylesheet" href="./css/style.css">
     <script src="https://kit.fontawesome.com/db3b639c81.js" crossorigin="anonymous"></script>
+    
+    
 </head>
 
 <body>
+    <header>
+ 
+        <select id="gnere-selector" class="ice-cream" >
+            <option>
+                All
+            </option>
+            <option>
+                Action
+            </option>
+            <option>
+              Adventure
+            </option>
+            <option>
+                Drama
+            </option>
+            <option>
+                Fantasy
+            </option>
+            <option>
+                Romance
+            </option>
+            <option>
+              Sci-Fi
+            </option>
+            <option>
+              Suspense
+            </option>
+            <option>
+                Supernatural
+            </option>
+            <option>
+                Slice of Life
+            </option>
+            <option>
+                Award Winning
+            </option>
+            <option>
+               Mystery
+            </option>
+        </select>
+
+          <input id="input" type="text" placeholder="Search Anime, Manga, and more...">
+        <button id="input-button" onclick="search(this)"><i class="fa-solid fa-magnifying-glass"></i></button>
+
+    </header>
     <div id="manga-container">
+       
         <!-- <h6></h6>
         <p1 id="inf-p1"></p1>
         <div id="genre">
@@ -46,7 +94,7 @@
             <button id="add"></button>
         </div> -->
     </div>
-    
+
     <script src="./js/main.js"></script>
 </body>
 

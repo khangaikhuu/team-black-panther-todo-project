@@ -133,3 +133,8 @@ body {
 #add-list:hover {
 	opacity: 0.5;
 }
+
+.search{
+    width: 30%;
+    height: 40px;
+}

@@ -6,52 +6,88 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anime page</title>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="css/online.css">
 </head>
 
 <body>
-    <h1>Anime</h1>
+    <div class="container">
+        <h1>Top 25 Animes</h1>
 
-    <div id="mainDiv">
-        <div class="header">
-            <h6></h6>
-        </div>  
-        <div id="prodsrc">
-            <p class="prodP"></p>
-            <p class="prodP"></p>
-            <p class="prodP"></p>
-        </div>
-        <div id="genre">
-            <button></button>
-            <button></button>
-            <button></button>
-            <button></button>
-        </div>
-        <div id="bodyDiv">
+        <div id="search-container" class="searchContainer">
             <div>
-                <img id="manga-image">
+                <label for="inp" class="inp">
+                    <input type="text" id="searchPrompt" placeholder="Search">
+                    <span class="focus-bg"></span>
+                </label>
+                <button type="button" class="fill" id="searchBtn" onclick="search(this)">Search</button>
+                <!-- <input type="button" value="Search" id="searchBtn" onclick="search(this)" class="fill"> -->
+                <!-- <input placeholder="Search" id="searchPrompt"> -->
             </div>
-            <div id="bodyDivRight">
-                <div id="bodyDivP">
-                    <p class="bodyParagraph"></p>
-                    <button id="readMoreBtn"><i class="moreIcon"></i></button>
-                    <p id="secondBodyP"></p>
-                </div>
-                <div id="bodyDivProducer">
-                    <p></p>
-                    <p></p>
-                    <p></p>
-                    <p></p>
-                </div>
+            <div class="select select--multiple">
+                <select id="filterSelect" onchange="filter()" multiple>
+                    <option value="Action">Action</option>
+                    <option value="Comedy">Comedy</option>
+                    <option value="Drama">Drama</option>
+                    <option value="Sci-Fi">Sci-Fi</option>
+                    <option value="Fantasy">Fantasy</option>
+                </select>
             </div>
         </div>
-        <div id="footer">
-            <p class="footerP score"></p>
-            <p class="footerP member"></p>
-            <button class="footerPBtn">Add to list</button>
+        <div class="row">
+            <div id="mainDiv">
+            </div>
+            <!-- <div class="header">
+                    <h6></h6>
+                </div>
+                <div id="prodsrc" class="prodsrc">
+                    <i class="playIcon"></i>
+                    <p class="prodP"></p>
+                    <p class="prodP"></p>
+                    <p class="prodP"></p>
+                    <i class="watchIcon"></i>
+                </div>
+                <div id="genre">
+                    <button></button>
+                    <button></button>
+                    <button></button>
+                    <button></button>
+                </div>
+                <div id="bodyDiv" class="bodyDiv">
+                    <div>
+                        <img id="manga-image">
+                    </div>
+                    <div id="bodyDivRight" class="bodyDivRight">
+                        <div id="bodyDivP" class="bodyDivP">
+                            <p id="firstBodyP" class="bodyParagraph"></p>
+                            <p id="secondBodyP" class="bodyParagraph"></p>
+                            <div class="moreBtn">
+                                <button id="readMoreBtn" class="readMoreBtn"><i class="moreIcon"></i></button>
+                            </div>
+                        </div>
+                        <div id="bodyDivProducer" class="bodyDivProducer">
+                            <p></p>
+                            <p></p>
+                            <p></p>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+                <div id="footer" class="footer">
+                    <p class="footerP score"></p>
+                    <p class="footerP member"></p>
+                    <button class="footerPBtn">Add to list</button>
+                </div>
+            </div>
+            <div id="secondDiv" class="divContainer">
+            </div>
+            <div id="thirdDiv" class="divContainer">
+            </div> -->
         </div>
     </div>
-
     <script src="./js/main.js"></script>
 </body>
 

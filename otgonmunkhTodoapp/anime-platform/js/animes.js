@@ -25,6 +25,10 @@ function getAnimes(animes) {
          <div class="genres" id="genres">
            ${genres.join('')}
          </div>
+         <div id="detail">
+             <p><p/>
+             <p class="second"></p>
+         </div>
          <img src=${animes.images.jpg.image_url}>
          
     </div>
