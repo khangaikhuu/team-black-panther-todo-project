@@ -30,7 +30,8 @@ body {
 
 }
 
-#search-engine input {
+#search-engine input,
+#reset-genre-btn {
 	appearance: none;
 	border: none;
 	outline: none;
@@ -52,7 +53,7 @@ body {
 }
 
 #search-button {
-	color: #4f74c8;
+	color: #1c439b;
 	font-size: 1rem;
 	font-weight: 700;
 	cursor: pointer;
@@ -74,11 +75,12 @@ body {
 #title {
 	display: block;
 	text-align: center;
-	padding-block: 20px;
+	padding-block: 25px;
 	font-size: 14px;
 	text-decoration: none;
 	color: #1c439b;
 	font-weight: 700;
+	height: 70px;
 }
 
 #image {
@@ -147,7 +149,7 @@ body {
 
 .anime-content {
 	overflow: auto;
-	height: 243px;
+	height: 250px;
 }
 
 #text {
@@ -206,4 +208,54 @@ body {
 
 .fa-icon {
 	font-size: 1.2rem;
+}
+
+#pagination {
+	display: flex;
+	justify-content: center;
+	margin: 10px auto 25px;
+	align-items: center;
+}
+
+#pagination a {
+	margin: 0 10px;
+	background-color: #4f73c8bc;
+	width: 37px;
+	height: 37px;
+	text-align: center;
+	padding: 10px 0;
+	border-radius: 50%;
+	color: white;
+	text-decoration: none;
+	font-size: 0.8rem;
+}
+
+#pagination a:first-child {
+	background-color: white;
+	color: #4f74c8;
+	font-weight: 700;
+	font-size: 2rem;
+	padding: 0;
+	margin-top: -8px;
+}
+
+#pagination a:last-child {
+	background-color: white;
+	color: #4f74c8;
+	font-weight: 700;
+	font-size: 2rem;
+	padding: 0;
+	margin-top: -8px;
+}
+
+#reset-genre-btn {
+	background-color: #1c439b;
+	color: white;
+	padding: 6px 20px;
+	border-radius: 5px;
+}
+
+#select-container {
+	display: flex;
+	gap: 10px;
 }

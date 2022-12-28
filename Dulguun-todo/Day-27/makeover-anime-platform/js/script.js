@@ -1,17 +1,39 @@
-// // Text more button (Teacher's suggestion)
-// async function showMore(event) {
-//   const elementSynop = document.getElementById(`text_${event.id}`);
-//   const resultJSON = await fetch('https://api.jikan.moe/v4/top/anime');
-//   const result = await resultJSON.json();
-//   const animeData = result.data;
+let animeData = []
+let animesGenreData = []
 
-//   const filteredData = animeData.filter((el, index) => {
-//     if (index == event.id) {
-//       return el;
-//     }
-//   })
-//   elementSynop.innerHTML = filteredData[0].text;
-// }
+async function callURL() {
+  const fetchedData = await fetch('https://api.jikan.moe/v4/top/anime')
+  const fetchedJSON = await fetchedData.json();
+  animeData = fetchedJSON.data;
+  const container = document.querySelector('#anime-container');
+
+  container.innerHTML = '';
+  animeData.map((element, index) => {
+    container.innerHTML += getAnimes(element, index)
+  })
+}
+callURL();
+
+async function callGenre() {
+  const animesGenre = await fetch('https://api.jikan.moe/v4/genres/anime');
+  const animesGenreJSON = await animesGenre.json()
+  animesGenreData = animesGenreJSON.data
+
+  const selectGenre = document.getElementById('select-genre');
+
+  animesGenreData.map((genre) => {
+    const option = document.createElement('option');
+    option.value = genre.name;
+    option.textContent = genre.name;
+    selectGenre.appendChild(option);
+  })
+}
+callGenre();
+
+// Reload page button
+function resetGenre() {
+  location.reload();
+}
 
 // Anime platform
 const card = document.querySelector('#card');
@@ -53,11 +75,8 @@ function collapseBtn(event) {
 async function search() {
   const searchField = document.getElementById('search-input');
   const searchWord = searchField.value;
-  const animes = await fetch('https://api.jikan.moe/v4/top/anime');
-  const animesJSON = await animes.json();
-  const animesData = animesJSON.data;
 
-  const searchResult = animesData.filter(anime =>
+  const searchResult = animeData.filter(anime =>
     anime.title.toLowerCase().includes(searchWord));
 
   const container = document.querySelector('#anime-container');
@@ -69,23 +88,11 @@ async function search() {
 
 // Select section
 async function select() {
-  // const animesGenre = await fetch('https://api.jikan.moe/v4/genres/anime');
-  // const animesGenreJSON = await animesGenre.json()
-  // const animesGenreData = animesGenreJSON.data
-  // for (let i = 0; i < animesGenreData.name.length; i++) {
-  //   let option = document.createElement("option");
-  //   option.innerHTML = animesGenreData.name[i];
-
-  //   selectGenre.append(option);
-  // }
 
   const selectGenre = document.getElementById('select-genre');
   let selectValue = selectGenre.value;
-  const animes = await fetch('https://api.jikan.moe/v4/top/anime')
-  const animesJSON = await animes.json()
-  const animesData = animesJSON.data
 
-  const selectResult = animesData.filter(anime => {
+  const selectResult = animeData.filter(anime => {
     let filteredSelect = anime.genres.filter(genre => {
       if (genre.name == selectValue) {
         return genre;
@@ -102,42 +109,41 @@ async function select() {
   })
 }
 
-function genre(data) {
-  const selectGenre = data.data.map((genre) => {
-    const result = `<option>${genre.name}</option>`
-    return result;
-  });
+// Pagination
+const pagination = document.querySelector('#pagination');
+const leftArrow = document.createElement('a')
+leftArrow.href = '#';
+leftArrow.innerText = "<";
+// leftArrow.onclick = previousPage();
+pagination.appendChild(leftArrow);
 
-  return `
-    ${selectGenre}
-  `
+for (let i = 0; i < 10; i++) {
+  let anchorTag = document.createElement('a');
+  anchorTag.href = '#';
+  anchorTag.innerText = i + 1;
+  pagination.appendChild(anchorTag);
 }
+const rightArrow = document.createElement('a')
+rightArrow.href = '#';
+rightArrow.innerText = ">";
+rightArrow.addEventListener ('click',() => {
+  nextPage();
+})
+pagination.appendChild(rightArrow);
 
-// // Select mapping section ATTEMPT
-// fetch('https://api.jikan.moe/v4/genres/anime')
-//   .then((res) => res.json())
-//   .then((animeGenre) => {
-//     const animeGenres = animeGenre.data;
-//     const genreContainer = document.querySelector('#select-genre');
+async function nextPage() {
+  const page2 = await fetch(`https://api.jikan.moe/v4/top/anime?page=2`)
+  const page2JSON = await page2.json();
+  page2Data = page2JSON.data;
 
-//     genreContainer.innerHTML = '';
-//     animeGenres.map((element) => {
-//       genreContainer.innerHTML += genre(element)
-//     })
-//   })
+  const container = document.querySelector('#anime-container');
 
-// Mapping section
-fetch('https://api.jikan.moe/v4/top/anime')
-  .then((res) => res.json())
-  .then((topAnime) => {
-    const anime = topAnime.data;
-    const container = document.querySelector('#anime-container');
-
-    container.innerHTML = '';
-    anime.map((element, index) => {
-      container.innerHTML += getAnimes(element, index)
-    })
+  container.innerHTML = '';
+  page2Data.map((element) => {
+    container.innerHTML += getAnimes(element)
   })
+}
+nextPage();
 
 // Design section
 function getAnimes(data, index) {
@@ -210,3 +216,45 @@ function getAnimes(data, index) {
 </div>`
 }
 
+
+// // Mapping section
+// fetch('https://api.jikan.moe/v4/top/anime')
+//   .then((res) => res.json())
+//   .then((topAnime) => {
+//     const anime = topAnime.data;
+//     const container = document.querySelector('#anime-container');
+
+//     container.innerHTML = '';
+//     anime.map((element, index) => {
+//       container.innerHTML += getAnimes(element, index)
+//     })
+//   })
+
+// // Text more button (Teacher's suggestion)
+// async function showMore(event) {
+//   const elementSynop = document.getElementById(`text_${event.id}`);
+//   const resultJSON = await fetch('https://api.jikan.moe/v4/top/anime');
+//   const result = await resultJSON.json();
+//   const animeData = result.data;
+
+//   const filteredData = animeData.filter((el, index) => {
+//     if (index == event.id) {
+//       return el;
+//     }
+//   })
+//   elementSynop.innerHTML = filteredData[0].text;
+// }
+
+
+// // Select mapping section ATTEMPT
+// fetch('https://api.jikan.moe/v4/genres/anime')
+//   .then((res) => res.json())
+//   .then((animeGenre) => {
+//     const animeGenres = animeGenre.data;
+//     const genreContainer = document.querySelector('#select-genre');
+
+//     genreContainer.innerHTML = '';
+//     animeGenres.map((element) => {
+//       genreContainer.innerHTML += genre(element)
+//     })
+//   })
