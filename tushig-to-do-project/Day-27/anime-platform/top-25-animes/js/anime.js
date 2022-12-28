@@ -84,6 +84,9 @@ select.addEventListener('change', async function handleChange(event) {
 
 })
 
+// BUSAD ANIME TABLE RUU VSREH ZUIL 
+
+
 // TOP 25 ANIME ORUULJ IRJ BGA DATAG AVCHIRSAN HESEG
 function getAnimes (p1, p2 ) {
     console.log(p1);
