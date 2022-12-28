@@ -10,14 +10,27 @@ function getAnimes(data, index) {
         const result = `<p1>${parametr.name}</p1>`
         return result
     })
+
+    const sturdiosURL = data.studios.map(par => {
+        const result = par.url
+        return result
+    })
     const themes = data.themes.map(parametr => {
 
         const result = `<p1>${parametr.name}</p1>`
         return result
     })
+    const themesURL = data.themes.map(par => {
+        const result = par.url
+        return result
+    })
     const demographics = data.demographics.map(parametr => {
 
         const result = `<p1>${parametr.name}</p1>`
+        return result
+    })
+    const demographicsURL = data.demographics.map(par => {
+        const result = par.url
         return result
     })
     return `
@@ -34,10 +47,10 @@ function getAnimes(data, index) {
             <div id="div-text">
                 <p1 id="synopsis_${index}" >${data.synopsis.slice(0, 300)}</p1>
                 <button id="${index}" class="down" onclick="showMore(this)"><i class="fa-solid fa-caret-down"></i></button>
-                <p id="img-type1">Studio: <a href="${data.studios[0].url}">${studios}</a></p>
+                <p id="img-type1">Studio: <a href="${sturdiosURL}">${studios}</a></p>
                 <p id="img-type2">Source: ${data.source}</p>
-                <p id="img-type3">Theme: <a href="${data.studios[0].url}">${themes}</a></p>
-                <p id="img-type4">Demographic:<a href="${data.studios[0].url}">${demographics}</a></p>
+                <p id="img-type3">Theme: <a href="${themesURL}">${themes}</a></p>
+                <p id="img-type4">Demographic:<a href="${demographicsURL}">${demographics}</a></p>
             </div>
         </div>
 
@@ -62,25 +75,15 @@ let animeData = [];
 async function callURL() {
     const fetchedData = await fetch("https://api.jikan.moe/v4/top/anime")
     const fetchedJson = await fetchedData.json();
-    console.log(fetchedJson)
+
     animeData = fetchedJson.data;
     container.innerHTML = "";
     animeData.map((element, index) => {
         container.innerHTML += getAnimes(element, index)
     })
-    const pages = document.querySelector("#pages");
-    for(i = 1; i <= 10; i++){
-        const a = document.createElement("a");
-        a.href = "#";
 
-        a.textContent = i
-        a.addEventListener("click", (event) => {
-            console.log(event.target.text)
-            nextPage(event.target);
-        })
-        pages.appendChild(a);
-    }
 }
+
 callURL();
 
 function search() {
@@ -93,7 +96,7 @@ function search() {
     container.innerHTML = '';
     searchResult.map((element, index) => {
         container.innerHTML += getAnimes(element, index)
-        console.log(element)
+        
     })
 }
 
@@ -153,88 +156,62 @@ selectElement.addEventListener('change', (event) => {
 
 });
 
-let page = 2
-// next version
-function page2() {
-
-    async function callURL2() {
-        const fetchedData2 = await fetch(`https://api.jikan.moe/v4/top/anime?page=${page}`);
-        const fetchedData2Json = await fetchedData2.json();
-        page2Data = fetchedData2Json.data
-        console.log(fetchedData2.url)
-    }
-    callURL2();
-    container.innerHTML = "";
-    page2Data.map((element, index) => {
-        container.innerHTML += getAnimes(element, index)
-    })
-    page = page + 1;
-    console.log(page)
-}
 
 
 
-
-
-
-
-async function nextPage(event){
-    console.log(event.text)
-    
-    const fetchedData = await fetch(`https://api.jikan.moe/v4/top/anime?page=${event.text}`);
+async function nextPage(event) {
+    const fetchedData = await fetch(`https://api.jikan.moe/v4/top/anime?page=${event}`);
     const fetchedDataJson = await fetchedData.json();
     const pageData = fetchedDataJson.data
-    console.log(pageData)
-
     container.innerHTML = "";
     pageData.map((element, index) => {
         container.innerHTML += getAnimes(element, index)
     })
 }
 
+const pages = document.querySelector("#pages");
+for (i = 1; i <= 10; i++) {
+    const a = document.createElement("a");
+    a.href = "#";
+    pages.appendChild(a);
+    a.textContent = i
+    a.addEventListener("click", x = (event) => {
+        nextPage(event.target.text);
+        nextPageNumber(event.target.text)
+        prevPageNumber(event.target.text)
+        console.log(event.target.text)
+    })
 
-// let page4Data = [];
-// async function callURL4() {
-//     const fetchedData2 = await fetch(`https://api.jikan.moe/v4/top/anime?page=4`);
-//     const fetchedData2Json = await fetchedData2.json();
-//     page4Data = fetchedData2Json.data
-//     console.log(fetchedData2.url)
-// }
-// callURL4();
-// function a4(){
-//     container.innerHTML = "";
-//     page4Data.map((element, index) => {
-//         container.innerHTML += getAnimes(element, index)
-//     })
-// }
-
-// let page5Data = [];
-// async function callURL5() {
-//     const fetchedData2 = await fetch(`https://api.jikan.moe/v4/top/anime?page=4`);
-//     const fetchedData2Json = await fetchedData2.json();
-//     page5Data = fetchedData2Json.data
-//     console.log(fetchedData2.url)
-// }
-// callURL5();
-// function a5(){
-//     container.innerHTML = "";
-//     page5Data.map((element, index) => {
-//         container.innerHTML += getAnimes(element, index)
-//     })
-// }
-
-
-for(let i = 1; i< 5; i++) {
-    // dom -> <a>${i}</>
 }
-// const page2a = document.createElement("a")
-// const pagination = document.querySelector("#pagination");
-// pagination.appendChild(page2a)
-// page2a.innerHTML = `26-50`
-// page2a.href = `#`;
-// page2a.addEventListener("click", () =>  {
-//     container.innerHTML = "";
-//     page2Data.map((element, index) => {
-//         container.innerHTML += getAnimes(element, index)
-//     })
-// })
+
+
+function nextPageNumber(event) {
+   page = Number(event) + 1
+}
+nextPageNumber();
+
+function nextButton(event){
+    if(!Number.isInteger(page)){
+        page = 2;
+    }
+    console.log(page)
+    nextPage(page)
+    page = page + 1
+}
+
+function prevPageNumber(event) {
+    page = Number(event) - 1
+ }
+ prevPageNumber();
+ 
+ function prevButton(event){
+     if(!Number.isInteger(page)){
+         page = 1;
+     }
+     console.log(page)
+     nextPage(page)
+     page = page - 1
+ }
+ 
+
+

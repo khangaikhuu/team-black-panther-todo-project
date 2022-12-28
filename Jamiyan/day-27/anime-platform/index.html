@@ -23,6 +23,9 @@
                 Action
             </option>
             <option>
+                Comedy
+            </option>
+            <option>
                 Adventure
             </option>
             <option>
@@ -58,15 +61,12 @@
         <button id="input-button" onclick="search()"><i class="fa-solid fa-magnifying-glass"></i></button>
 
     </header>
+    <div id="pagination">
+        <button id="next" onclick="prevButton()"><i class="fa-sharp fa-solid fa-chevron-left"></i></button>
     <div id="pages">
-        <button id="next" onclick="page2()"><i class="fa-sharp fa-solid fa-chevron-left"></i></button>
-        <!-- <a href="#" onclick="nextPage(this)">1</a>
-        <a href="#" onclick="nextPage(this)">2</a>
-        <a href="#" onclick="nextPage(this)">3</a> -->
-        <button id="next" onclick="page2()"><i class="fa-solid fa-chevron-right"></i></button>
-        <div id="pagination"></div>
     </div>
-
+    <button id="next" onclick="nextButton()"><i class="fa-solid fa-chevron-right"></i></button>
+</div>
     <!-- <a href="#" onclick="a4()">4</a> 
     <a href="#" onclick="a5()">5</a> -->
     <div id="manga-container">
