@@ -21,17 +21,18 @@ callURL()
 
 
 function goToPage1() {
-  let animeData = []
+  let animeData1 = []
 
   async function callURL() {
     const fetchedData = await fetch("https://api.jikan.moe/v4/top/anime")
     const fetchedJSON = await fetchedData.json()
-    animeData = fetchedJSON.data
+    animeData1 = fetchedJSON.data
     const container = document.getElementById("mainDiv");
     container.innerHTML = '';
-    animeData.map((element, index) => {
+    animeData1.map((element, index) => {
       container.innerHTML += getAnimes(element, index)
     })
+    animeData = animeData1
   }
 
   callURL()
@@ -186,6 +187,7 @@ async function showMore(event) {
 
 
 const card = document.querySelector('#card');
+
 function getAnimes(data, index) {
   const genres = data.genres.map(genre => {
     const result = `<button>${genre.name}</button>`;
@@ -204,6 +206,7 @@ function getAnimes(data, index) {
 
   const durationStr = data.duration.substring(0, 3)
 
+  console.log(data.year)
   return `
       <div class="divContainer" id="mainDiv">
       <div class="header">
@@ -221,7 +224,7 @@ function getAnimes(data, index) {
         <i class="watchIcon"></i>
       </div>
       <div class="genre">
-      ${genres}
+      ${genres.join('')}
       </div>
       <div class="bodyDiv">
         <img
