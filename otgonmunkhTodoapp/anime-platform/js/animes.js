@@ -27,12 +27,32 @@ async function callGenre() {
 
     genreData.map((element, index) => {
         const option = document.createElement("option");
+        option.value = element.mal_id;
         option.textContent = element.name;
         genreCon.appendChild(option)
     })
 }
 callGenre()
 callURL()
+
+// filter and map example
+// const array = [1, 2, 3, 4, 5, 7, 8, 9]
+// const mapResult = array.map((e)=>{
+//     if(e < 5){
+//         return e
+//     } 
+
+// })
+// console.log(mapResult)
+
+
+// const filterResult = array.filter((e)=>{
+//     if(e < 5){
+//         return e
+//     } 
+
+// })
+// console.log(filterResult)
 
 
 const card = document.querySelector(".card");
@@ -104,7 +124,29 @@ async function search(event) {
 }
 
 genreCon.addEventListener("change", function handleChange(event) {
-    console.log(event.target.value);
+    // console.log(event.target.value);
+    let searchValue = event.target.value;
+    // console.log(searchValue);
+    const genreFilter = animeData.filter(anime => {
+
+        const genres = anime.genres;
+        const result = genres.filter((genre) => {
+            if(genre.mal_id == searchValue){
+                return genre;
+            }
+        })
+        if(result.length > 0){
+            return anime;
+        }
+    })
+
+    const container = document.querySelector("#anime-container");
+    container.innerHTML = "";
+    genreFilter.map((element, index) => {
+        container.textContent += getAnimes(element, index)  
+        console.log(genreFilter);
+    })
+
 })
 
 
