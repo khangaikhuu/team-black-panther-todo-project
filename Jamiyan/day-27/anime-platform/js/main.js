@@ -68,6 +68,18 @@ async function callURL() {
     animeData.map((element, index) => {
         container.innerHTML += getAnimes(element, index)
     })
+    const pages = document.querySelector("#pages");
+    for(i = 1; i <= 10; i++){
+        const a = document.createElement("a");
+        a.href = "#";
+
+        a.textContent = i
+        a.addEventListener("click", (event) => {
+            console.log(event.target.text)
+            nextPage(event.target);
+        })
+        pages.appendChild(a);
+    }
 }
 callURL();
 
@@ -161,50 +173,26 @@ function page2() {
 }
 
 
-let page1Data = [];
-async function callURL1() {
-    const fetchedData2 = await fetch(`https://api.jikan.moe/v4/top/anime?page=1`);
-    const fetchedData2Json = await fetchedData2.json();
-    page1Data = fetchedData2Json.data
-    console.log(fetchedData2.url)
-}
-callURL1();
-function a1(){
+
+
+
+
+
+async function nextPage(event){
+    console.log(event.text)
+    
+    const fetchedData = await fetch(`https://api.jikan.moe/v4/top/anime?page=${event.text}`);
+    const fetchedDataJson = await fetchedData.json();
+    const pageData = fetchedDataJson.data
+    console.log(pageData)
+
     container.innerHTML = "";
-    page1Data.map((element, index) => {
+    pageData.map((element, index) => {
         container.innerHTML += getAnimes(element, index)
     })
 }
 
-let page2Data = [];
-async function callURL2() {
-    const fetchedData2 = await fetch(`https://api.jikan.moe/v4/top/anime?page=2`);
-    const fetchedData2Json = await fetchedData2.json();
-    page2Data = fetchedData2Json.data
-    console.log(fetchedData2.url)
-}
-callURL2();
-function a2(){
-    container.innerHTML = "";
-    page2Data.map((element, index) => {
-        container.innerHTML += getAnimes(element, index)
-    })
-}
-let page3Data = [];
-async function callURL3() {
-    const fetchedData2 = await fetch(`https://api.jikan.moe/v4/top/anime?page=3`);
-    const fetchedData2Json = await fetchedData2.json();
-    page3Data = fetchedData2Json.data
-    console.log(fetchedData2.url)
-}
-callURL3();
 
-function a3(){
-    container.innerHTML = "";
-    page3Data.map((element, index) => {
-        container.innerHTML += getAnimes(element, index)
-    })
-}
 // let page4Data = [];
 // async function callURL4() {
 //     const fetchedData2 = await fetch(`https://api.jikan.moe/v4/top/anime?page=4`);
