@@ -186,31 +186,35 @@ for (i = 1; i <= 10; i++) {
 
 
 function nextPageNumber(event) {
-   page = Number(event) + 1
+   page = Number(event) 
 }
 nextPageNumber();
 
 function nextButton(event){
     if(!Number.isInteger(page)){
         page = 2;
-    }
-    console.log(page)
-    nextPage(page)
+    }else{
     page = page + 1
+    }
+    nextPage(page)
+    console.log(page)
 }
 
 function prevPageNumber(event) {
-    page = Number(event) - 1
+    page = Number(event) 
  }
  prevPageNumber();
  
  function prevButton(event){
-     if(!Number.isInteger(page)){
+     if(!Number.isInteger(page) ){
          page = 1;
+     }else if(page <= 1 ){
+     page = 1
+     } else {
+        page = page - 1;
      }
      console.log(page)
      nextPage(page)
-     page = page - 1
  }
  
 
