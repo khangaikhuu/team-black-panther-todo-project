@@ -9,14 +9,21 @@ h1{
     text-align: center;
 }
 select{
-    padding: 10px;
+    height: 40px;
+    font-size: 15px;
     border-radius: 10px;
+    border: 0;
     background-color: crimson;
     color: white;
-    border: 0;
+    margin-left: 100px;
+    padding: 10px;
+}
+.search{
+    display: flex;
+    
 }
 #searching{
-    width: 300px;
+    width: 500px;
     margin: auto;
 }
 #search-input{
