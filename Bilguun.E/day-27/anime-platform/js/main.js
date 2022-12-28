@@ -187,6 +187,7 @@ async function showMore(event) {
 
 
 const card = document.querySelector('#card');
+
 function getAnimes(data, index) {
   const genres = data.genres.map(genre => {
     const result = `<button>${genre.name}</button>`;
@@ -194,17 +195,13 @@ function getAnimes(data, index) {
   })
 
   let membersNum = data.members
-  if (membersNum == 7) {
-    let millions = "<p class='footerP member'>${members2Num}.${members2Num2nd}M</p>"
-  } else {
-    let thousands = "<p class='footerP member'>${members2Num}${members2Num2nd}0K</p>"
-  }
   let members2Num = String(membersNum).substring(0, 1)
   let membersNum2nd = data.members
   let members2Num2nd = String(membersNum2nd).substring(1, 2)
 
   const durationStr = data.duration.substring(0, 3)
 
+  console.log(data.year)
   return `
       <div class="divContainer" id="mainDiv">
       <div class="header">
@@ -222,7 +219,7 @@ function getAnimes(data, index) {
         <i class="watchIcon"></i>
       </div>
       <div class="genre">
-      ${genres}
+      ${genres.join('')}
       </div>
       <div class="bodyDiv">
         <img
