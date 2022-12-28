@@ -15,6 +15,9 @@
 </head>
 
 <body>
+	<!-- Page selector section -->
+	<div id="pagination-anime"></div>
+
 	<div id="search-select">
 		<!-- Search section -->
 		<div id="search-engine">
@@ -24,18 +27,15 @@
 	
 		<!-- Select section -->
 		<div id="select-container">
-			<select id="select-genre" onchange="filter()">
+			<select id="select-genre" onchange="select()">
 				<option value="">Select Genre</option>
-				<option value="Action">Action</option>
-				<option value="Comedy">Comedy</option>
-				<option value="Drama">Drama</option>
 			</select>
+			<button id="reset-genre-btn"  onclick="resetGenre(this);">Reload</button>
 		</div>
 	</div>
 
 	<!-- Anime card section-->
 	<div id="anime-container"></div>
-
 
 	<!-- JS link -->
 	<script src="js/script.js"></script>

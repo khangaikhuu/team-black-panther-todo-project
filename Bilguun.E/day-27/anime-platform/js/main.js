@@ -195,6 +195,11 @@ function getAnimes(data, index) {
   })
 
   let membersNum = data.members
+  if (membersNum == 7) {
+    let millions = "<p class='footerP member'>${members2Num}.${members2Num2nd}M</p>"
+  } else {
+    let thousands = "<p class='footerP member'>${members2Num}${members2Num2nd}0K</p>"
+  }
   let members2Num = String(membersNum).substring(0, 1)
   let membersNum2nd = data.members
   let members2Num2nd = String(membersNum2nd).substring(1, 2)
