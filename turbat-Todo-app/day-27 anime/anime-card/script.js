@@ -47,7 +47,7 @@ function getAnimes(data) {
     </div>
     <div id="views">
       <i class="fa-solid fa-eye"></i>
-      <span id="view-number">3.0M</span>
+      <span id="view-number">${data.rank}</span>
     </div>
     <button id="add-list">Add To List</button>
   </div>

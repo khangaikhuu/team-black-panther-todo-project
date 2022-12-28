@@ -261,3 +261,37 @@ d[0].addEventListener("click", () => {
 //   })
 
 // }
+
+
+
+
+async function search(event) {
+    const searchField = document.getElementById('search-field');
+    const searchWord = searchField.value.toLowerCase();
+    const animes = await fetch("https://api.jikan.moe/v4/top/anime");
+    const animesJSON = await animes.json();
+    const animesData = animesJSON.data;
+    console.log(animesData);
+
+    const searchResult = animesData.filter(anime =>
+        anime.title.toLowerCase().includes(searchWord)
+
+    );
+    console.log(searchResult);
+
+    const container = document.querySelector("#anime-container");
+    container.innerHTML = "";
+    searchResult.map((element) => {
+        container.appendChild(getDetial(element));
+    });
+}
+
+const select = document.getElementById("genre-selecter");
+
+function handleChange(event) {
+    console.log(event.target.value);
+    console.log(select.option[select.selectedIndex].value);
+    console.log(select.option[select.selectedIndex].text);
+
+
+}
