@@ -1,34 +1,55 @@
 const fmaURL = "https://api.jikan.moe/v4/top/anime";
-
-async function showMore(event){
+const cont = document.getElementById("container");
+async function showMore(event) {
 
     const index = event.id;
 
-    const elementSynop =document.getElementById(`synopsis_${index}`);
-    
-    console.log(elementSynop);
-    
-    const fetchedData =await fetch(fmaURL)
-    const fetchedJSON =await fetchedData.json();
+    const elementSynop = document.getElementById(`synopsis_${index}`);
+
+    const fetchedData = await fetch(fmaURL)
+    const fetchedJSON = await fetchedData.json();
     const fetchedJSONData = fetchedJSON.data;
-    
+
     const foundElement = fetchedJSONData.filter((e, idx) => {
-        if(idx == index){
+        if (idx == index) {
             return e;
         }
 
     })
-    console.log(foundElement[0].synopsis);
     elementSynop.innerHTML = foundElement[0].synopsis;
 }
 
-function animeData(animes,data,index) {
+async function search(event) {
+    const fetchedData = await fetch(fmaURL)
+    const fetchedJSON = await fetchedData.json();
+    const fetchedJSONData = fetchedJSON.data;
+    // console.log(fetchedJSONData)
+    const searchField = document.getElementById('search-field');
+    const searchWord = searchField.value;
+    // console.log(searchWord);
 
-    let genres = data.genres.map(element => {
-        const result = `<button class="buttonGenre">${element.name}</button>`
+    const searchResult = fetchedJSONData.filter((anime) =>{
+        if(anime.title.toLowerCase().includes(searchWord.toLowerCase())){
+            return anime
+        }
+    })
+    console.log(searchResult);
+    cont.innerHTML = "";
+    searchResult.map((element, index) => {
+        console.log(element);
+        cont.innerHTML += animeData(element, index);
+    })
+    }
+
+
+
+function animeData(data, index) {
+
+    let genres = data.genres.map(ele => {
+        const result = `<button class="buttonGenre">${ele.name}</button>`
         return result
     })
-    
+
     return `
     <div id="animeCard">
         <h4 id="title">${data.title}</h4>
@@ -56,8 +77,8 @@ function animeData(animes,data,index) {
                 <div id="info">
                     <p><strong>Studio:</strong> <a href="#">${data.studios[0].name}</a></p>
                     <p><strong>Source:</strong> Manga</p>
-                    <p><strong>Theme:</strong> <a href="#">${data.themes[0].name}</a></p>
-                    <p><strong>Demographic:</strong> <a href="#">${data.demographics[0].name}</a></p>
+                    <p><strong>Theme:</strong> <a href="#"></a></p>
+                    <p><strong>Demographic:</strong> <a href="#"></a></p>
                 </div>
             </div>
         </div>
@@ -69,15 +90,14 @@ function animeData(animes,data,index) {
 
     </div>`
 }
-
+    
 fetch(fmaURL)
     .then(result => result.json())
     .then(anime => {
-        const cont = document.getElementById("container");
-        cont.innerHTML = "";
-        anime.data.map((element,index) => {
 
-            cont.innerHTML += animeData(anime,element,index);
-            // console.log(element);
+        cont.innerHTML = "";
+        anime.data.map((element, index) => {
+
+            cont.innerHTML += animeData(element, index);
         })
     })

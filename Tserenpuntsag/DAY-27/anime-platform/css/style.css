@@ -1,14 +1,16 @@
 #container{
-    width: 90%;
+    margin: auto;
+    width: 1048px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
 }
 
 #animeCard{
-   width: 334px;
+   width: 30%;
    text-align: center;
    border: 1px solid rgb(216, 216, 216);
+   margin-top: 20px;
 }
 
 h1{
@@ -73,6 +75,7 @@ h4{
     background-color: #f8f8f8;
     height: 30px;
     margin-top: 0px;
+    font-size: 11px;
 }
 #score::before{
     content: "\2606";

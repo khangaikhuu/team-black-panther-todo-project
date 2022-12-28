@@ -9,9 +9,26 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
-<body id="container">
+<body>
     <h1>JS Anime Platform</h1>
 
+    <div id="search-container">
+        <input placeholder="Please Search" id="search-field"> 
+        <input type="button" value="Search" onclick="search(this);">
+    </div>
+    <div>
+        <select id="genre-selector" multiple>
+            <option >Action</option>
+            <option>Comedy</option>
+            <option>Horror</option>
+            <option>Sports</option>
+            <option>Adventure</option>
+            <option>Drama</option>
+            <option>Fantasy</option>
+            <option>Romance</option>
+        </select>
+    </div>
+<div id="container">
     <div id="FMA">
         <h4 id="title"></h4>
         <div id="headerDIV">
@@ -44,6 +61,7 @@
         </div>
 
     </div>
+</div>
     <!-- <script src="./js/main.js"></script> -->
     <script src="./js/script.js"></script>
 </body>
