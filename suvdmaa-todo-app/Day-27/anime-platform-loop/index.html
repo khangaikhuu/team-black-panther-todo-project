@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,8 +9,32 @@
     <script src="https://kit.fontawesome.com/e39c02655c.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
+
 <body>
     <h1>Anime Platform Loop</h1>
+
+    <div id="search-container">
+        <input type="text" placeholder="Please Search" id="search-field">
+        <input type="button" value="Search" onclick="search()" id="btn">
+    </div>
+
+    <select id="genre-selector">
+        <option value="action">Action</option>
+        <option value="adventure">Adventure</option>
+        <option value="award-winnig">Award Winning</option>
+        <option value="comedy">Comedy</option>
+        <option value="drama">Drama</option>
+        <option value="fantasy">Fantasy</option>
+        <option value="horror">Horror</option>
+        <option value="mystery">Mystery</option>
+        <option value="romance">Romance</option>
+        <option value="sci-fi">Sci-fi</option>
+        <option value="slice-of-life">Slice of Life</option>
+        <option value="sports">Sports</option>
+        <option value="supernatural">Supernatural</option>
+        <option value="suspense">Suspense</option>
+        <option value="detective">Detective</option>
+    </select>
 
     <div id="anime-container">
 
@@ -17,4 +42,5 @@
 
     <script src="./js/main.js"></script>
 </body>
+
 </html>

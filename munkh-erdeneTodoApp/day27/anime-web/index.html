@@ -6,11 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ANIME LIST</title>
-    <link rel="stylesheet" href="/munkh-erdeneTodoApp/day27/anime-web/css/style.css">
+    <link rel="stylesheet" href="/munkh-erdeneTodoApp/day27/anime-web/css/my.css">
 </head>
 
 <body>
     <h1>ANIME WEB SITE</h1>
+
+    <div id="container" style="display: flex; justify-content: space-between;">
 
     <!-- anime card -->
 
@@ -18,7 +20,7 @@
     <div id="manga-container">
 
         <!-- header heseg -->
-        <a href=""></a>
+        <a href="https://myanimelist.net/anime/5114/Fullmetal_Alchemist__Brotherhood"></a>
         <div id="headerheseg" style="display: flex; justify-content: space-evenly;">
             <a href="https://www.youtube.com/watch?v=--IcmZkvL0Q"><img class="icon"
                     src="https://64.media.tumblr.com/9a0ba2579dd1a9984d7df51627ba8dd3/c9ad1288287dc47a-1d/s1280x1920/77c0e51020d47fe01cfa032e0803ac50c6607507.png"
@@ -45,9 +47,18 @@
         <div style="display: flex; justify-content: space-between; padding: 20px;">
             <img id="manga-image">
             <div id="rigth">
+                <p id="texted" style="text-align: start;"></p>
                 
-                <p id="text" style="text-align: start;"></p>
+                <p id="text" style="text-align: start; display: none;"></p>
+
+
+                <button id="flip"  onclick="myFunction()">v</button>
+                   <a href=""> <button id="fliped" style="display: none;" onclick="myFunction()">^</button></a>
                 <div id="alert">
+
+
+                    
+                    
                     
                     
                         <div><b>Studio:</b>
@@ -76,9 +87,9 @@
         <!-- footer heseg -->
 
         <div id="footer-container" style="display: flex; justify-content: space-evenly;">
-            <div id="score"></div>
-            <div id="view"></div>
-            <button style="background-color: rgb(10, 247, 255); color: black;"> Add to List</button>
+            <div style="color: black;" id="score"></div>
+            <div style="color: black;" id="view"></div>
+            <button style="background-color: burlywood; color: black; "> Add to List</button>
 
         </div>
     </div>
@@ -99,7 +110,197 @@
 
 
 
+    <!-- swort art online -->
 
+    <div id="manga-container-second">
+
+        <!-- header heseg -->
+        <a href="https://myanimelist.net/anime/11757/Sword_Art_Online"></a>
+        <div id="second-headerheseg" style="display: flex; justify-content: space-evenly;">
+            <a href="https://www.youtube.com/watch?v=--IcmZkvL0Q"><img class="icon"
+                    src="https://64.media.tumblr.com/9a0ba2579dd1a9984d7df51627ba8dd3/c9ad1288287dc47a-1d/s1280x1920/77c0e51020d47fe01cfa032e0803ac50c6607507.png"
+                    alt="" width="40px" height="40px"></a>
+            <div style="display: flex;">
+                <p id="second-type"></p>
+                <p id="second-type1"></p>
+                <p id="second-type2"></p>
+            </div>
+            <a href=""><img class="icon"
+                src="https://64.media.tumblr.com/05fda8644cecc62bd880764ef2d40fd5/c9ad1288287dc47a-25/s1280x1920/a33fe30bf3ed216377a53dbb45b3c76840dd7053.png"
+                alt="" width="40px" height="40px"></a>
+        </div>
+        
+        <div id="second-genre-container" style="display: flex; justify-content: space-evenly; background-color: bisque;">
+
+
+        </div>
+
+
+        <!-- gol heseg -->
+
+
+        <div style="display: flex; justify-content: space-between; padding: 20px;">
+            <img id="second-manga-image">
+            <div id="second-rigth">
+                <p id="second-texted" style="text-align: start;"></p>
+                
+                <p id="second-text" style="text-align: start; display: none;"></p>
+
+
+                <button id="second-flip"  onclick="myyFunction()">v</button>
+                   <a href=""> <button id="second-fliped" style="display: none;" onclick="myyFunction()">^</button></a>
+                <div id="second-alert">
+
+
+                    
+                    
+                    
+                    
+                        <div><b>Studio:</b>
+                            <div id="second-alert-text"></div>
+                        </div>
+                        <div><b>Source:</b>
+                            <div id="second-alert-text1"></div>
+                        </div>
+                        <div><b>Theme:</b>
+                            <div id="second-alert-text2"></div>
+                        </div>
+                        <div><b>Demographic:</b>
+                            <div id="second-alert-text3"></div>
+                        </div>
+                   
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+
+
+        <!-- footer heseg -->
+
+        <div id="second-footer-container" style="display: flex; justify-content: space-evenly;">
+            <div style="color: black;" id="second-score"></div>
+            <div style="color: black;" id="second-view"></div>
+            <button style="background-color: burlywood; color: black; "> Add to List</button>
+
+        </div>
+    </div>
+
+
+
+
+
+   
+
+
+
+
+
+
+   
+
+
+   
+
+
+
+
+
+
+<!-- gurav -->
+
+<div id="gurav-manga-container">
+
+    <!-- header heseg -->
+    <a href="https://myanimelist.net/anime/5114/Fullmetal_Alchemist__Brotherhood"></a>
+    <div id="gurav-headerheseg" style="display: flex; justify-content: space-evenly;">
+        <a href="https://www.youtube.com/watch?v=--IcmZkvL0Q"><img class="icon"
+                src="https://64.media.tumblr.com/9a0ba2579dd1a9984d7df51627ba8dd3/c9ad1288287dc47a-1d/s1280x1920/77c0e51020d47fe01cfa032e0803ac50c6607507.png"
+                alt="" width="40px" height="40px"></a>
+        <div style="display: flex;">
+            <p id="gurav-type"></p>
+            <p id="gurav-type1"></p>
+            <p id="gurav-type2"></p>
+        </div>
+        <a href=""><img class="icon"
+            src="https://64.media.tumblr.com/05fda8644cecc62bd880764ef2d40fd5/c9ad1288287dc47a-25/s1280x1920/a33fe30bf3ed216377a53dbb45b3c76840dd7053.png"
+            alt="" width="40px" height="40px"></a>
+    </div>
+    
+    <div id="gurav-genre-container" style="display: flex; justify-content: space-evenly; background-color: bisque;">
+
+
+    </div>
+
+
+    <!-- gol heseg -->
+
+
+    <div style="display: flex; justify-content: space-between; padding: 20px;">
+        <img id="gurav-manga-image">
+        <div id="gurav-rigth">
+            <p id="gurav-texted" style="text-align: start;"></p>
+            
+            <p id="gurav-text" style="text-align: start; display: none;"></p>
+
+
+            <button id="gurav-flip"  onclick="myFunction()">v</button>
+               <a href=""> <button id="gurav-fliped" style="display: none;" onclick="myFunction()">^</button></a>
+            <div id="gurav-alert">
+
+
+                
+                
+                
+                
+                    <div><b>Studio:</b>
+                        <div id="gurav-alert-text"></div>
+                    </div>
+                    <div><b>Source:</b>
+                        <div id="gurav-alert-text1"></div>
+                    </div>
+                    <div><b>Theme:</b>
+                        <div id="gurav-alert-text2"></div>
+                    </div>
+                    <div><b>Demographic:</b>
+                        <div id="gurav-alert-text3"></div>
+                    </div>
+               
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- footer heseg -->
+
+    <div id="gurav-footer-container" style="display: flex; justify-content: space-evenly;">
+        <div style="color: black;" id="gurav-score"></div>
+        <div style="color: black;" id="gurav-view"></div>
+        <button style="background-color: burlywood; color: black; "> Add to List</button>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
 
 
 

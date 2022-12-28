@@ -1,0 +1,77 @@
+* {
+    font-family: 'Staatliches', cursive;
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(rgb(79, 189, 201), rgb(219, 255, 250));
+}
+
+a {
+    text-decoration: none;
+    color: rgb(27, 73, 154);
+}
+
+h6 {
+    font-size: 18px;
+    text-align: center;
+    padding: 15px;
+    border-bottom: 1px solid black;
+}
+
+#animes-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin:10px;
+}
+
+.manga-container {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid black;
+    width: 450px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.type-list-bar {
+    display: flex;
+    background-color: rgb(58, 219, 255);
+    padding: 5px;
+    gap: 10px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.demographic {
+    display: flex;
+    padding: 5px;
+}
+
+.ratings {
+    display: flex;
+    padding: 5px;
+    border-top: 1px solid black;
+}
+
+.anime-content {
+    display: flex;
+}
+
+#status {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    padding: 0 16px;
+}
+
+#anime-text {
+    overflow: auto;
+    padding: 10px;
+}
+
+#add-list {
+    padding: 0 30px;
+    border: none;
+    background-color: rgb(255, 195, 57);
+}
