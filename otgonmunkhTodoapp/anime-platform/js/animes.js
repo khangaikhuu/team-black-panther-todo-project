@@ -12,6 +12,50 @@ function getAnimes(animes) {
         })
 
 
+    const searchResult = animesData.filter(anime =>
+        anime.title.includes(searchWord)
+
+    )
+    console.log(searchResult);
+    const container = document.querySelector("#manga-container");
+    container.innerHTML = "" ;
+    searchResult.map((element, index) => {
+        console.log(element);
+        container.innerHTML += getAnimes(element, index)
+    })
+    console.log(searchResult);
+
+}
+async function showMore(event) {
+    const synop = document.getElementById(`synopsis${event.id}`);
+
+    const resultJSON = await fetch('https://api.jikan.moe/v4/top/anime');
+    const result = await resultJSON.json();
+    const animeData = result.data;
+
+    const filteredData = animeData.filter((el, index) => {
+        if (index == event.id) {
+            return el;
+        }
+
+    })
+
+    console.log(filteredData);
+
+}
+
+function getAnimes(animes, index) {
+
+
+    const genres = animes.genres.map(genre => {
+        console.log(genre);
+        const result = `<p>${genre.name}</p>`;
+        return result;
+    })
+    const score = animes.score;
+    const members = animes.members;
+
+
     return `
     <div class="card">
          <a href="#" id="title" style="display:block">${animes.title}</a>
@@ -45,4 +89,7 @@ fetch(animesURL)
             console.log(element);
             container.innerHTML += getAnimes(element)
         })
+
+
+
     })
