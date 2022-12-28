@@ -5,30 +5,25 @@ let page = 1;
 let current_page = page;
 
 async function getData(event) {
-    console.log(event.id)
-    console.log(current_page)
     if (event.id == 'next') {
-        page = current_page + 1;
-        current_page = page;
+        page = Number(current_page) + 1;
     } else if(event.id == 'previous') {
-        page = current_page - 1;
-        current_page = page;
+        page = Number(current_page) - 1;
     } else {
         page = event.text
-        // current_page = page;
     }
 
+    current_page = page;
 
     if (page == undefined || page < 1) {
         page = 1;
         current_page = 1;
     } 
     if (page >= 10) {
-        console.log("inside page 10");
         page = 10;
         current_page = 10;
     }
-    console.log(`https://api.jikan.moe/v4/top/anime?page=${page}`);
+    // console.log(`https://api.jikan.moe/v4/top/anime?page=${page}`);
     console.log('page = ' + page)
     const fetchedData = await fetch(`https://api.jikan.moe/v4/top/anime?page=${page}`)
 
@@ -37,7 +32,7 @@ async function getData(event) {
     data = fetchedJSON.data;
     pagination = fetchedJSON.pagination
     // console.log(data);
-    console.log(pagination.current_page)
+    // console.log(pagination.current_page)
     const container = document.querySelector('#all-container');
 
     createPagenation(page)
@@ -56,7 +51,6 @@ function createPagenation(page) {
     pageNation.innerHTML = '';
 
     let previous = `<a href="#" onclick='getData(this)' id="previous">&laquo;</a>`;
-
 
     pageNation.innerHTML = previous;
     for (let i = 0; i < 10; i++) {
