@@ -1,6 +1,6 @@
 const card = document.querySelector("#card");
 const container = document.getElementById("anime-container")
-const selectGenre = document.getElementById("full-genre")
+
 let animeData = [];
 
 async function callURL() {
@@ -40,6 +40,7 @@ function getAnimes(data, index) {
         const result = `<p>${genre.name}</p>`;
         return result;
     })
+    
     return `
 
     <div class="anime-card" id="card">
@@ -125,19 +126,41 @@ async function search(event) {
     })
 }
 
-function change() {
-    let selectValue = selectGenre.value;
-    const selectResult = animeData.filter((anime) => {
-      let filteredSelect = anime.genres.filter((genre)=> {
-        if (genre.name == selectValue) {
-          return genre;
+// function change() {
+//     let selectValue = selectGenre.value;
+//     const selectResult = animeData.filter((anime) => {
+//       let filteredSelect = anime.genres.filter((genre)=> {
+//         if (genre.name == selectValue) {
+//           return genre;
+//         }
+//       });
+//       if (filteredSelect.length > 0) {
+//         return filteredSelect;
+//       }
+//     })
+//   }
+const selectGenre = document.getElementById("full-genre");
+selectGenre.addEventListener("change", (event) => {
+   
+    const option = document.getElementsByTagName("option")
+    console.log(event.target.value)
+
+    let cateResult = animeData.filter(cat => {
+        for (i = 0; i < cat.genres.length ; i++) {
+            if (event.target.value == cat.genres[i].name) { 
+                return cat
+            }
         }
-      });
-      if (filteredSelect.length > 0) {
-        return filteredSelect;
-      }
     })
-  }
-  
-  
-  
+    console.log(cateResult);
+    if (event.target.value == `Defaul`) {
+        cateResult = animeData;
+    }
+    container.innerHTML= "";
+    cateResult.map((element, index) => {
+        container.innerHTML += getAnimes(element, index)
+    })
+
+});
+
+
