@@ -8,6 +8,32 @@ h1{
     padding: 15px;
     text-align: center;
 }
+#pages{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+#pages a{
+    text-decoration: none;
+    font-size: 20px;
+    border: 3px solid crimson;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+#prev{
+    margin: 0 20px;
+}
+#next{
+    margin: 0 20px;
+}
+.active{
+    background-color: crimson;
+    color: white;
+    box-shadow: 0 0 10px gray;
+    border: 1px solid green;
+}
 select{
     height: 40px;
     font-size: 15px;
@@ -15,16 +41,17 @@ select{
     border: 0;
     background-color: crimson;
     color: white;
-    margin-left: 100px;
+    margin-right: 100px;
     padding: 10px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 .search{
     display: flex;
-    
 }
 #searching{
     width: 500px;
     margin: auto;
+    margin-left: 100px;
 }
 #search-input{
     font-size: 18px;
@@ -87,6 +114,9 @@ h3{
 #genres{
     text-align: center;
     margin-bottom: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 #genres a {
     margin: 10px;
@@ -107,6 +137,12 @@ h3{
     height: 300px;
     overflow: auto;
     line-height: 25px;
+}
+#right-bottom p{
+    margin: 5px 0;
+}
+#right-bottom p:nth-child(2n){
+    background-color: white;
 }
 .more-button{
     background-color: rgba(220, 20, 60, 0);
