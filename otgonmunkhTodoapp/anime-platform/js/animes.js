@@ -35,6 +35,24 @@ async function callGenre() {
 callGenre()
 callURL()
 
+
+async function callPages() {
+    const fetchedData = await fetch('https://api.jikan.moe/v4/top/anime?page=10');
+    const fetchedJSON = await fetchedData.json();
+    pageData = fetchedJSON.data;
+    const pageCon = document.querySelector("#jump");
+
+    pageCon.innerHTML = "";
+
+    pageData.map((element, index) => {
+        
+    })
+
+
+
+    
+}
+
 // filter and map example
 // const array = [1, 2, 3, 4, 5, 7, 8, 9]
 // const mapResult = array.map((e)=>{
