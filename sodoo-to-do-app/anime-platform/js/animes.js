@@ -92,7 +92,7 @@
 //         // }
 //     })
 
-
+console.log('test');
 
 //-----------------------------------------Animes--------------------------------------------
 
@@ -137,6 +137,9 @@ function getCard(data) {
 }
 
 //
+// <div id="synopsis">${synoText}</div>
+// <div id="synopsis">${synoText}</div>
+// <div id="synopsis">${synoText}</div>
 // <div id="synopsis">${synoText}</div>
 
 // let switcherButton = document.getElementById('switcher');
