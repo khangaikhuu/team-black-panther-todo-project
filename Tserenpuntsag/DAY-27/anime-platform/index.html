@@ -9,40 +9,58 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
-<body id="container">
+<body>
     <h1>JS Anime Platform</h1>
 
-    <div id="FMA">
-        <h4 id="title"></h4>
-        <div id="headerDIV">
-            <div id="playIMG"></div>
-            <div id="headerOne"></div>
-            <div id="radioIMG"></div>
+    <div id="headerMain">
+        <div id="search-container">
+            <input placeholder="Please Search" id="search-field">
+            <input type="button" value="Search" onclick="search(this);">
         </div>
-        <div id="headerTwo"></div>
+        <div>
+            <select id="genre-selector">
+                <option>All</option>
+            </select>
+        </div>
+    </div>
+    <div id="pagination">
+        <div id="prevBtn"> < </div>
+        <div id="pageContainer"></div>
+        <div id="nextBtn"> > </div>
+    </div>
+    <div id="container">
+        <div id="FMA">
+            <h4 id="title"></h4>
+            <div id="headerDIV">
+                <div id="playIMG"></div>
+                <div id="headerOne"></div>
+                <div id="radioIMG"></div>
+            </div>
+            <div id="headerTwo"></div>
 
-        <div id="bodyDIV">
-            <img id="manga-image" src="" alt="">
-            <div id="text">
-                <p id="defP"></p>
-                <p id="secondP"></p>
-                <a href="#">
-                    <div id="arrowButton"></div>
-                </a>
-                <div id="info">
-                    <p><strong>Studio:</strong> <a href="#">Bones</a></p>
-                    <p><strong>Source:</strong> Manga</p>
-                    <p><strong>Theme:</strong> <a href="#">Military</a></p>
-                    <p><strong>Demographic:</strong> <a href="#">Shounen</a></p>
+            <div id="bodyDIV">
+                <img id="manga-image" src="" alt="">
+                <div id="text">
+                    <p id="defP"></p>
+                    <p id="secondP"></p>
+                    <a href="#">
+                        <div id="arrowButton"></div>
+                    </a>
+                    <div id="info">
+                        <p><strong>Studio:</strong> <a href="#">Bones</a></p>
+                        <p><strong>Source:</strong> Manga</p>
+                        <p><strong>Theme:</strong> <a href="#">Military</a></p>
+                        <p><strong>Demographic:</strong> <a href="#">Shounen</a></p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div id="bottomDIV">
-            <p id="score"></p>
-            <p id="member"></p>
-            <a id="list" href="#"></a>
-        </div>
+            <div id="bottomDIV">
+                <p id="score"></p>
+                <p id="member"></p>
+                <a id="list" href="#"></a>
+            </div>
 
+        </div>
     </div>
     <!-- <script src="./js/main.js"></script> -->
     <script src="./js/script.js"></script>

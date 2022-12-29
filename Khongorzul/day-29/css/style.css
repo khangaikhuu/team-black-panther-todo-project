@@ -8,6 +8,16 @@ h1{
     padding: 15px;
     text-align: center;
 }
+#my-animes{
+    font-size: 16px;
+    margin-left: 50px;
+    margin-bottom: 10px;
+    background-color: crimson;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    border: 0;
+}
 #pages{
     display: flex;
     gap: 10px;
@@ -44,6 +54,7 @@ select{
     margin-right: 100px;
     padding: 10px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    cursor: pointer;
 }
 .search{
     display: flex;
@@ -91,7 +102,7 @@ h3{
     margin: 0;
     margin-top: 10px;
 }
-#anime-title{
+.anime-title{
     text-decoration: none;
     font-size: 20px;
     color: crimson;
@@ -157,7 +168,7 @@ h3{
     gap: 100px;
     margin-top: 20px;
 }
-#add{
+.add{
     background-color: crimson;
     color: white;
     border-radius: 10px;

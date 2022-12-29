@@ -3,6 +3,9 @@ h1{
     background-color: chartreuse;
 
 }
+.page-btn {
+	margin: 20px;
+}
 * {
 	box-sizing: border-box;
 	margin: 0;
