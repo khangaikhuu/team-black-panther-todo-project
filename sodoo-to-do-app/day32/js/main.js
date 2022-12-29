@@ -135,5 +135,5 @@ class Pyramid extends Triangle {
     }
 }
 
-let geizaPrymid = new Pyramid();
-console.log(geizaPrymid);
+let geizaPyramid = new Pyramid();
+console.log(geizaPyramid);
