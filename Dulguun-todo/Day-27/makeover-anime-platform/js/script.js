@@ -1,69 +1,98 @@
 // Anime platform
 const card = document.querySelector('#card');
+document.getElementById('pagination-anime').style.cursor = "pointer";
 
-let animeData = [];
-let pagination = {};
 
-let page = 1;
-let currentPage = page;
-
-async function callData(event) {
-  if (event.id == 'next-page') {
-    page = Number(currentPage) + 1;
-  } else if (event.id == 'previous-page') {
-    page = Number(currentPage) - 1;
-  } else {
-    page = event.text;
-  }
-  currentPage = page;
-
-  if (page == undefined || page < 1) {
-    page = 1;
-    currentPage = 1;
-  }
-
-  if (page >= 9) {
-    page = 9;
-    currentPage = 9;
-  }
-
-  console.log('Current page >', page);
-
-  const fetchedData = await fetch(`https://api.jikan.moe/v4/top/anime?page=${page}`)
-  const fetchedJSON = await fetchedData.json();
-  animeData = fetchedJSON.data;
-  // console.log(animeData);
-  pagination = fetchedJSON.pagination;
-  // console.log(pagination);
+let animeData = []
+// MY VERSION!!!
+// let page = 1;
+// let currentPage = page;
+async function MyPage(event) {
+  const fetchedData = await fetch(`https://api.jikan.moe/v4/top/anime?page=${event}`);
+  const fetchedDataJson = await fetchedData.json();
+  animeData = fetchedDataJson.data
 
   const container = document.querySelector('#anime-container');
-  pageSelector(page);
-  container.innerHTML = '';
+  container.innerHTML = "";
   animeData.map((element, index) => {
-    container.innerHTML += getAnimes(element, index)
+      container.innerHTML += getAnimes(element, index)
   })
+  // console.log(event)
 }
-callData(page);
-// Pagination
-function pageSelector(page) {
-  let pageSelector = document.querySelector('#pagination-anime');
-  pageSelector.innerHTML = '';
 
-  let leftArrow = `<a id="previous-page" href="#" onclick="callData(this)"><i class="fa-solid fa-angles-left"></i></a>`;
-  pageSelector.innerHTML = leftArrow;
+const paginationContainer = document.getElementById('pagination-anime')
+const pagination = document.querySelector('#pagination-anime');
+const leftArrow = document.createElement('a')
+// PREV BUTTON
+leftArrow.href = '#';
+leftArrow.innerText = "<";
+leftArrow.addEventListener ('click',() => {
+  prevButton();
+  console.log('Current page =',page)
+})
+pagination.appendChild(leftArrow);
 
-  for (let i = 0; i < 9; i++) {
-    let pageNum = '';
-    if (page == (i + 1)) {
-      pageNum = `<a href="#" class="active" onclick='callData(this)'>${i + 1}</a>`
-    } else {
-      pageNum = `<a href="#" onclick='callData(this)'>${i + 1}</a>`
-    }
-    pageSelector.innerHTML += pageNum;
-  }
+let anchorTag = [];
+for (let i = 0; i <9 ; i++) {
+  const anchorTag = document.createElement('a');
+  paginationContainer.appendChild(anchorTag);
+  anchorTag.innerHTML = i + 1;
+  anchorTag.addEventListener('click', async (event) => {
+    console.log('Current Page =',event.target.text);
+    const fetchedData = await fetch(`https://api.jikan.moe/v4/top/anime?page=${page}`)
+    const fetchedJSON = await fetchedData.json();
+    
+    anchorTag.className = "active";
 
-  let rightArrow = `<a id="next-page" href="#" onclick="callData(this)"><i class="fa-solid fa-angles-right"></i></a>`;
-  pageSelector.innerHTML += rightArrow;
+    animeData = fetchedJSON.data;
+    MyPage(event.target.text);
+    nextPageNumber(event.target.text);
+    const container = document.querySelector('#anime-container');
+    container.innerHTML = '';
+    animeData.map((element, index) => {
+    container.innerHTML += getAnimes(element, index);
+  })
+})
+}
+
+//NEXT BUTTON
+const rightArrow = document.createElement('a')
+rightArrow.href = '#';
+rightArrow.innerText = ">";
+rightArrow.addEventListener ('click',() => {
+      nextButton();
+      console.log('Current page =',page)
+    })
+pagination.appendChild(rightArrow);
+
+function nextPageNumber(event) {
+  page = Number(event) 
+}
+nextPageNumber();
+
+function nextButton(event){
+  if(!Number.isInteger(page)){
+      page = 2;
+      }else{
+  page = page + 1;}
+  MyPage(page);
+}
+
+function prevPageNumber(event) {
+  page = Number(event) 
+}
+prevPageNumber();
+
+function prevButton(event){
+   if(!Number.isInteger(page) ){
+       page = 1;
+   }else if(page <= 1 ){
+   page = 1
+   } else {
+      page = page - 1;
+      
+   }
+   MyPage(page);
 }
 
 // Reload page button
@@ -241,18 +270,18 @@ function collapseBtn(event) {
 // }
 // callURL();
 
-// // Mapping section
-// fetch('https://api.jikan.moe/v4/top/anime')
-//   .then((res) => res.json())
-//   .then((topAnime) => {
-//     const anime = topAnime.data;
-//     const container = document.querySelector('#anime-container');
+// Mapping section
+fetch('https://api.jikan.moe/v4/top/anime')
+  .then((res) => res.json())
+  .then((topAnime) => {
+    const animeData = topAnime.data;
+    const container = document.querySelector('#anime-container');
 
-//     container.innerHTML = '';
-//     anime.map((element, index) => {
-//       container.innerHTML += getAnimes(element, index)
-//     })
-//   })
+    container.innerHTML = '';
+    animeData.map((element, index) => {
+      container.innerHTML += getAnimes(element, index)
+    })
+  })
 
 // // Text more button (Teacher's suggestion)
 // async function showMore(event) {
@@ -284,37 +313,112 @@ function collapseBtn(event) {
 //   })
 
 // // Pagination
-// const pagination = document.querySelector('#pagination');
-// const leftArrow = document.createElement('a')
-// leftArrow.href = '#';
-// leftArrow.innerText = "<";
-// // leftArrow.onclick = previousPage();
-// pagination.appendChild(leftArrow);
+// let page = 1;
+// let currentPage = page;
 
-// for (let i = 0; i < 10; i++) {
-//   let anchorTag = document.createElement('a');
-//   anchorTag.href = '#';
-//   anchorTag.innerText = i + 1;
-//   pagination.appendChild(anchorTag);
+// function pageSelector (page) {
+//   const pagination = document.querySelector('#pagination-anime');
+//   const leftArrow = document.createElement('a')
+//   leftArrow.href = '#';
+//   leftArrow.innerText = "<";
+//   // leftArrow.onclick = previousPage();
+//   pagination.appendChild(leftArrow);
+  
+//   for (let i = 0; i < 9; i++) {
+//     let anchorTag = document.createElement('a');
+//     anchorTag.href = '#';
+//     anchorTag.innerText = i + 1;
+//     pagination.appendChild(anchorTag);
+//   }
+//   const rightArrow = document.createElement('a')
+//   rightArrow.href = '#';
+//   rightArrow.innerText = ">";
+//   rightArrow.addEventListener ('click',() => {
+//     changePage();
+//   })
+//   pagination.appendChild(rightArrow);
+
 // }
-// const rightArrow = document.createElement('a')
-// rightArrow.href = '#';
-// rightArrow.innerText = ">";
-// rightArrow.addEventListener ('click',() => {
-//   nextPage();
-// })
-// pagination.appendChild(rightArrow);
 
-// async function nextPage() {
-//   const page2 = await fetch(`https://api.jikan.moe/v4/top/anime?page=2`)
-//   const page2JSON = await page2.json();
-//   page2Data = page2JSON.data;
+// async function callData() {
+  
+//   const fetchedData = await fetch(`https://api.jikan.moe/v4/top/anime?page=${page}`)
+//   const fetchedJSON = await fetchedData.json();
+//   animeData = fetchedJSON.data;
 
 //   const container = document.querySelector('#anime-container');
-
+//   pageSelector(page);
 //   container.innerHTML = '';
-//   page2Data.map((element) => {
-//     container.innerHTML += getAnimes(element)
+//   animeData.map((element) => {
+//     container.innerHTML += getAnimes(element);
 //   })
 // }
-// nextPage();
+// callData(page);
+
+// let animeData = [];
+// let pagination = {};
+
+// let page = 1;
+// let currentPage = page;
+
+// async function callData(event) {
+//   if (event.id == 'next-page') {
+//     page = Number(currentPage) + 1;
+//   } else if (event.id == 'previous-page') {
+//     page = Number(currentPage) - 1;
+//   } else {
+//     page = event.text;
+//   }
+//   currentPage = page;
+
+//   if (page == undefined || page < 1) {
+//     page = 1;
+//     currentPage = 1;
+//   }
+
+//   if (page >= 9) {
+//     page = 9;
+//     currentPage = 9;
+//   }
+
+//   if (currentPage === 1) {
+    
+//   }
+
+//   console.log('Current page >', page);
+
+//   const fetchedData = await fetch(`https://api.jikan.moe/v4/top/anime?page=${page}`)
+//   const fetchedJSON = await fetchedData.json();
+//   animeData = fetchedJSON.data;
+//   pagination = fetchedJSON.pagination;
+
+//   const container = document.querySelector('#anime-container');
+//   pageSelector(page);
+//   container.innerHTML = '';
+//   animeData.map((element, index) => {
+//     container.innerHTML += getAnimes(element, index)
+//   })
+// }
+// callData(page);
+
+// // Pagination
+// function pageSelector(page) {
+//   let pageSelector = document.querySelector('#pagination-anime');
+//   pageSelector.innerHTML = '';
+
+//   let leftArrow = `<a id="previous-page" href="#" onclick="callData(this)"><i class="fa-solid fa-angles-left"></i></a>`;
+//   pageSelector.innerHTML = leftArrow;
+
+//   for (let i = 0; i < 9; i++) {
+//     let pageNum = '';
+//     if (page == (i + 1)) {
+//       pageNum = `<a href="#" class="active" onclick='callData(this)'>${i + 1}</a>`
+//     } else {
+//       pageNum = `<a href="#" onclick='callData(this)'>${i + 1}</a>`
+//     }
+//     pageSelector.innerHTML += pageNum;
+//   }
+
+//   let rightArrow = `<a id="next-page" href="#" onclick="callData(this)"><i class="fa-solid fa-angles-right"></i></a>`;
+//   pageSelector.innerHTML += rightArrow;
+// }
