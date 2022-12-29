@@ -3,6 +3,7 @@ let pageData = [];
 let pagination = {};
 let page = 1;
 let currenPage = page;
+
 //GET PAGE DATA
 async function getPageData(event){
     if(event.id == "prev"){

@@ -27,7 +27,7 @@ async function callData(event) {
     currentPage = 9;
   }
 
-  console.log('Current page >', page)
+  console.log('Current page >', page);
 
   const fetchedData = await fetch(`https://api.jikan.moe/v4/top/anime?page=${page}`)
   const fetchedJSON = await fetchedData.json();
@@ -44,7 +44,6 @@ async function callData(event) {
   })
 }
 callData(page);
-
 // Pagination
 function pageSelector(page) {
   let pageSelector = document.querySelector('#pagination-anime');
@@ -61,7 +60,7 @@ function pageSelector(page) {
       pageNum = `<a href="#" onclick='callData(this)'>${i + 1}</a>`
     }
     pageSelector.innerHTML += pageNum;
-}
+  }
 
   let rightArrow = `<a id="next-page" href="#" onclick="callData(this)"><i class="fa-solid fa-angles-right"></i></a>`;
   pageSelector.innerHTML += rightArrow;

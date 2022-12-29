@@ -1,5 +1,5 @@
 let data = [];
-let pagination = {};
+// let pagination = {};
 
 let page = 1;
 let current_page = page;
@@ -7,7 +7,7 @@ let current_page = page;
 async function getData(event) {
     if (event.id == 'next') {
         page = Number(current_page) + 1;
-    } else if(event.id == 'previous') {
+    } else if (event.id == 'previous') {
         page = Number(current_page) - 1;
     } else {
         page = event.text
@@ -18,17 +18,15 @@ async function getData(event) {
     if (page == undefined || page < 1) {
         page = 1;
         current_page = 1;
-    } 
+    }
     if (page >= 10) {
         page = 10;
         current_page = 10;
     }
-    // console.log(`https://api.jikan.moe/v4/top/anime?page=${page}`);
     console.log('page = ' + page)
-    const fetchedData = await fetch(`https://api.jikan.moe/v4/top/anime?page=${page}`)
 
+    const fetchedData = await fetch(`https://api.jikan.moe/v4/top/anime?page=${page}`)
     const fetchedJSON = await fetchedData.json();
-    // console.log(fetchedJSON);
     data = fetchedJSON.data;
     pagination = fetchedJSON.pagination
     // console.log(data);
@@ -51,8 +49,8 @@ function createPagenation(page) {
     pageNation.innerHTML = '';
 
     let previous = `<a href="#" onclick='getData(this)' id="previous">&laquo;</a>`;
-
     pageNation.innerHTML = previous;
+
     for (let i = 0; i < 10; i++) {
         let link = '';
         if (page == (i + 1)) {
@@ -63,9 +61,7 @@ function createPagenation(page) {
         pageNation.innerHTML += link;
     }
 
-
     let next = `<a href="#" onclick='getData(this)' id="next">&raquo;</a>`;
-    // pageNation.appendChild(last)
     pageNation.innerHTML += next;
 
 }
@@ -75,24 +71,20 @@ const select = document.getElementById('genre')
 select.addEventListener('change', function handleChange(event) {
     console.log(event.target.value); // 👉️ get selected VALUE
 
-    // // 👇️ get selected VALUE even outside event handler
+    //// 👇️ get selected VALUE even outside event handler
     // console.log(select.options[select.selectedIndex].value);
 
-    // // 👇️ get selected TEXT in or outside event handler
+    //// 👇️ get selected TEXT in or outside event handler
     // console.log(select.options[select.selectedIndex].text);
     getGenres(event);
 })
+
 
 async function getGenres(event) {
     console.log(event.target.value);
 
     let searchValue = event.target.value;
     console.log(typeof searchValue);
-    // const animes = await fetch('https://api.jikan.moe/v4/top/anime');
-    // const animeJSON = await animes.json();
-    // const animesData = animeJSON.data;
-
-
     const searchResult = data.filter(anime => {
         const result = anime.genres.filter(genre =>
             genre.name.toLowerCase().includes(searchValue.toLowerCase())
@@ -101,8 +93,6 @@ async function getGenres(event) {
             return anime
         }
     })
-
-    // console.log(searchResult);
 
     const container = document.querySelector('#all-container');
 
@@ -115,19 +105,11 @@ async function getGenres(event) {
 
 async function searchFunc(event) {
     let searchValue = document.querySelector('#search-input').value;
-    // let searchValue = event.value;
     console.log(searchValue);
-
-    // const animes = await fetch('https://api.jikan.moe/v4/top/anime');
-    // const animeJSON = await animes.json();
-    // const animesData = animeJSON.data;
-
-
 
     let searchResult = data.filter(anime =>
         anime.title.toLowerCase().includes(searchValue.toLowerCase())
     )
-
 
     console.log(searchResult);
 
@@ -143,11 +125,6 @@ async function searchFunc(event) {
 async function showMore(event) {
     const elementSynop = document.getElementById(`synopsis_${event.id}`);
     console.log(elementSynop);
-    // const resultJSON = await fetch('https://api.jikan.moe/v4/top/anime')
-    // const result = await resultJSON.json();
-    // const animeData = result.data;
-    // console.log(animeData);
-
     const filteredData = data.filter((el, index) => {
         if (index == event.id) {
             return el;
@@ -155,8 +132,8 @@ async function showMore(event) {
     })
 
 
-    console.log(document.querySelector(`#synopsisFull_${event.id}`));
-    console.log(document.querySelector(`#synopsis_${event.id}`));
+    // console.log(document.querySelector(`#synopsisFull_${event.id}`));
+    // console.log(document.querySelector(`#synopsis_${event.id}`));
 
     let fullTxt = document.querySelector(`#synopsisFull_${event.id}`);
     fullTxt.style.display = 'block';
@@ -164,20 +141,15 @@ async function showMore(event) {
     let halfTxt = document.querySelector(`#synopsis_${event.id}`);
     halfTxt.style.display = 'none'
 
-
     let collapseBtn = document.querySelector(`.collapseBtn_${event.id}`);
     let showMoreBtn = document.querySelector(`.showMoreBtn_${event.id}`);
     collapseBtn.style.display = 'block'
     collapseBtn.style.display = 'flex'
     showMoreBtn.style.display = 'none'
-
 }
 
 
-
-
 function collapseBtn(event) {
-
     console.log(document.querySelector(`#synopsisFull_${event.id}`));
     console.log(document.querySelector(`#synopsis_${event.id}`));
     let fullTxt = document.querySelector(`#synopsisFull_${event.id}`);
@@ -190,14 +162,12 @@ function collapseBtn(event) {
     collapseBtn.style.display = 'none'
     showMoreBtn.style.display = 'block'
     showMoreBtn.style.display = 'flex'
-
 }
 
 
 const card = document.querySelector('#card');
 
 function getAnimes(data, index) {
-
     const genres = data.genres.map(genre => {
         const result = `<a>${genre.name}</a>`;
         return result;
@@ -208,19 +178,18 @@ function getAnimes(data, index) {
         return result;
     })
 
-    const demographics = data.demographics.map(themes => {
-        const result = `${data.demographics[0].name}`;
+    const demographics = data.demographics.map(demo => {
+        const result = `${demo.name}`;
         return result;
     })
 
-
     const studios = data.studios.map(res => {
-        const result = `${data.studios[0].name}`
+        const result = `${res.name}`
         return result
     })
 
     const studio_url = data.studios.map(res => {
-        const result = `${data.studios[0].url}`
+        const result = `${res.url}`
         return result
     })
 
