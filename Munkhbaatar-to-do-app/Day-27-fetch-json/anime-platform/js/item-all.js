@@ -78,7 +78,7 @@ select.addEventListener('change', function handleChange(event) {
     // 👇️ get selected VALUE even outside event handler
     // console.log(select.options[select.selectedIndex].value);
 
-    // // 👇️ get selected TEXT in or outside event handler
+    // 👇️ get selected TEXT in or outside event handler
     // console.log(select.options[select.selectedIndex].text);
     getGenres(event);
 })
