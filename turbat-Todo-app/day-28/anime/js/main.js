@@ -48,7 +48,9 @@ async function fetchGenres() {
         //select hiiheer teriig n sanaj/barij/ bas hewlej bgaa
         const select = document.getElementById('anime-selector');
         select.addEventListener('change', function handleChange(event) {
+            let selectValue = event.target.value;
             console.log(event.target.value);
+            
             
         });
         
