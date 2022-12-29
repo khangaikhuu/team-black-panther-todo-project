@@ -1,5 +1,7 @@
 let animeData = [];
 let genreData = [];
+let currentPage = 1;
+let page = 1;
 const selectGenre = document.getElementById("select-genre");
 const container = document.querySelector("#anime-container");
 
@@ -86,7 +88,12 @@ function getDetial(data) {
     const studios = document.createElement("div");
     studios.className = "gray";
 
-    studios.innerHTML = `<strong>Studio :</strong> <a href="${data.studios[0].url}">${data.studios[0].name}</a>`;
+    data.studios.map((element) => {
+        studios.innerHTML = `<strong>Studio :</strong> <a href="${element.url}">${element.name}</a>`;
+    });
+  
+
+
     const source = document.createElement("div");
     source.innerHTML = `<strong>Source :</strong> ${data.source}`;
 
@@ -160,7 +167,7 @@ async function callGenre() {
     })
 }
 callURL();
-callGenre();
+// callGenre();
 
 function filter() {
     let selectValue = selectGenre.value;
@@ -193,51 +200,65 @@ document.getElementById("reset").addEventListener("change", () => {
 // Buttons
 const emp = []
 const pagination = document.getElementById("pagination")
-for (let i = 0; i < 10; i++) {
+
+// // Previus button
+// const addB = document.createElement("a");
+// pagination.appendChild(addB)
+// addB.className = "btn btn-primary";
+// addB.innerText = "<";
+
+// 1 - 10 numbers
+for (let i = 0; i <= 11; i++) {
     const addA = document.createElement("a");
     pagination.appendChild(addA);
-    addA.innerHTML = i + 1;
+    addA.innerHTML = i;
     addA.className = "btn btn-primary";
     addA.href = "#";
+    if(i == 0){
+        addA.innerHTML = "<";
+    }
+    if(i == 11){
+        addA.innerHTML = ">";
+    }
     emp.push(i)
 }
 
+
+// // Next button
+// const addC = document.createElement("a");
+// pagination.appendChild(addC)
+// addC.className = "btn btn-primary";
+// addC.innerText = ">";
+
+
 let d = document.querySelectorAll("a")
-console.log(d);
+console.log('d' ,d);
 console.log(emp);
 
+// console.log(typeof(d[0].innerText));
+console.log('d 0 iin dotorh',(Number(d[1].innerText)+1));
+
 emp.map((numb) => {
-    console.log(numb);
+    
+    // console.log('d numbiin dotorh',d[numb].innerText);
+    
+
     d[numb].addEventListener("click", () => {
-        console.log('clicked');
+        page = numb;
+        console.log('numb', numb);
+        if(Number(d[numb].innerText) === "<" || numb > 1){
+            page = numb - 1;
+        }
         async function callPage() {
-            let point = numb + 1;
-            const fetchedData = await fetch(`"https://api.jikan.moe/v4/top/anime?page=${point}"`);
+            const fetchedData = await fetch(`https://api.jikan.moe/v4/top/anime?page=${page}`);
+            
             const fetchedJSON = await fetchedData.json();
             page2Data = fetchedJSON.data;
-            console.log(page2Data);
             container.innerHTML = "";
             page2Data.map((element) => {
                 container.appendChild(getDetial(element));
             });
         }
-
+        callPage(this)
     })
 })
-
-
-// async function callPage() {
-//     const fetchedData = await fetch("https://api.jikan.moe/v4/top/anime?page=2");
-//     const fetchedJSON = await fetchedData.json();
-//     page2Data = fetchedJSON.data;
-//     console.log(page2Data);
-//     container.innerHTML = "";
-//     page2Data.map((element) => {
-//         container.appendChild(getDetial(element));
-//     });
-// }
-
-
-// d[1].addEventListener("click", () => {
-//     console.log('clicked');
-// })
