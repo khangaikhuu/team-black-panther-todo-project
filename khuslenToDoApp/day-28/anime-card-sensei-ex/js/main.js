@@ -139,8 +139,31 @@ async function search(event) {
 //       }
 //     })
 //   }
-const selectGenre = document.getElementById("full-genre");
-selectGenre.addEventListener("change", (event) => {
+// const selectGenre = document.getElementById("full-genre");
+// selectGenre.addEventListener("change", (event) => {
+   
+//     const option = document.getElementsByTagName("option")
+//     console.log(event.target.value)
+
+//     let cateResult = animeData.filter(cat => {
+//         for (i = 0; i < cat.genres.length ; i++) {
+//             if (event.target.value == cat.genres[i].name) { 
+//                 return cat
+//             }
+//         }
+//     })
+//     console.log(cateResult);
+//     if (event.target.value == `Defaul`) {
+//         cateResult = animeData;
+//     }
+//     container.innerHTML= "";
+//     cateResult.map((element, index) => {
+//         container.innerHTML += getAnimes(element, index)
+//     })
+
+// });
+
+function selGenre (event) {
    
     const option = document.getElementsByTagName("option")
     console.log(event.target.value)
@@ -161,6 +184,6 @@ selectGenre.addEventListener("change", (event) => {
         container.innerHTML += getAnimes(element, index)
     })
 
-});
+};
 
 
