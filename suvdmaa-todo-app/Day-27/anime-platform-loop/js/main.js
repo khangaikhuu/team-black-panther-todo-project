@@ -14,6 +14,7 @@ async function callURL(){
         container.innerHTML += getAnimes(element, index)
     })
 }
+
 async function callGenre (){
     const fetchedgenreData = await fetch('https://api.jikan.moe/v4/genres/anime') 
     const genrefetchedJSON = await fetchedgenreData.json();
@@ -32,81 +33,57 @@ async function callGenre (){
 callGenre()
 callURL();
 
-// fetch('https://api.jikan.moe/v4/top/anime')
-// .then((res) => res.json())
-// .then((topAnime) => {
-//     console.log('topAnim', topAnime);
-//     const anime = topAnime.data;
-//     console.log('anime', anime);
-//     const container = document.querySelector('#anime-container');
-
-//     container.innerHTML = '';
-//     anime.map((element, index) => {
-//         container.innerHTML += getAnimes(element, index)
-//     })
-// })
-
-
 const container = document.querySelector('#card')
 
-const array = [1, 2, 3, 4, 5, 7, 8, 9]
-const mapResult = array.map((e)=>{
-    if(e < 5){
-        return e
-    } 
+// filter and map example
+// const array = [1, 2, 3, 4, 5, 7, 8, 9]
+// const mapResult = array.map((e)=>{
+//     if(e < 5){
+//         return e
+//     } 
 
-})
-console.log(mapResult)
-
-
-const filterResult = array.filter((e)=>{
-    if(e < 5){
-        return e
-    } 
-
-})
-console.log(filterResult)
+// })
+// console.log(mapResult)
 
 
+// const filterResult = array.filter((e)=>{
+//     if(e < 5){
+//         return e
+//     } 
+
+// })
+// console.log(filterResult)
 
 
-
+// genre selector-------------------------------------------------------
 select.addEventListener('change', async function handleChange(event) {
     let searchValue = event.target.value;
-  
-  
-    const searchResult = genreData.filter(genre => {
-        if(genre.mal_id == searchValue){
-            const genreName = genre.name;
-            console.log(genreName)
 
-            const genreFilter = animeData.map(anime => {
-                const genres = anime.genres;
-                // check whether genreName is in genres
-                const result = genres.filter((data) =>{
-                    // data.name == genreName
-                    if(data.name == genreName){
-                     return data
-                    }
-                })             
-                // if true, then return genre
-                return result
-            })
-            return genreFilter
-        }
+    const genreFilter = animeData.filter(anime => {
+       
+        const genres = anime.genres;
+        const result = genres.filter((genre) =>{
+            if(genre.mal_id == searchValue){
+                return genre   
+            }
+        })    
+        
+        if(result.length > 0){
+            return anime
+        }         
     })
-    console.log("searchResult", searchResult)
 
     const container = document.querySelector('#anime-container');
 
     container.innerHTML = '';
-    searchResult.map((element, index) => {
+    genreFilter.map((element, index) => {
         container.innerHTML += getAnimes(element, index)
     })
 
 })
 
 
+// text-dropdown and up ------------------------------------------------
 async function showMore(event) {
     // console.log(event.id);
     const elementSynop = document.getElementById(`firstp_${event.id}`);
@@ -123,6 +100,7 @@ async function showMore(event) {
     }
 }
 
+// search selector------------------------------------------------------
 async function search() {
     const searchField = document.getElementById('search-field');
 
@@ -147,7 +125,62 @@ async function search() {
     container.innerHTML = result;
 }
 
+/// page selection -----------------------------------------------------
+const pageContainer = document.getElementById('page-selector');
 
+let page = 1;
+let currentpage = page;
+async function getPageData() {
+    
+   
+    
+
+    const fetchedData = await fetch('https://api.jikan.moe/v4/top/anime?page=${page}')
+    const fetchedJSON = await fetchedData.json();
+    animeData = fetchedJSON.data;
+    console.log(animeData);
+
+    const container = document.querySelector('#anime-container');
+
+    container.innerHTML = '';
+    animeData.map((element, index) => {
+        container.innerHTML += getAnimes(element, index)
+    })
+}
+
+function createPage(){
+    pageContainer.innerHTML = "";
+
+    let aElement = `<a href="#" onclick='getPageData(this)' id="a-element"></a>`;
+
+    pageContainer.innerHTML = aElement;
+    for(let i = 0; i < 10; i++){
+        let pagelink =  '';
+        if(page = (i + 1)){
+            pagelink = `<a href="#" onclick='getPageData(this)' id="a-element">${i + 1}</a>`;
+        }
+        pageContainer.innerHTML += pagelink
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// data-----------------------------------------------------------------
 function getAnimes(data, index) {
     const genres = data.genres.map(genre => {
         const result = `<p>${genre.name}</p>`;

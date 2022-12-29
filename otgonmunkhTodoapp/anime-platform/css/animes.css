@@ -74,6 +74,7 @@
     justify-content: space-evenly;
     margin: 5px;
     align-items: center;
+    font-size: 13px;
 
 }
 
@@ -127,4 +128,44 @@
     background-color: bisque;
     border: none;
     transition: all 500ms ease-in-out;
+}
+.info {
+   font-size: 12px;
+   display: flex;
+   flex-direction: column;
+   align-items: baseline;
+   justify-content: center;
+   
+}
+
+.info a {
+    text-decoration: none;
+}
+.studio {
+    background-color: rgb(229, 229, 229);
+    display: block;
+}
+.theme {
+    background-color:  rgb(229, 229, 229);
+}
+#genre-selector {
+    border: none;
+    background-color: azure;
+    border: 1px solid plum;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 0 auto;
+    text-align: center;
+    margin: 5px;
+}
+#genre-selector:focus {
+    transition: all 500ms ease-out;
+    background-color: rgb(87, 87, 255);
+    color: whitesmoke;
+}
+#anime-container {
+    display: flex;
+    max-width: 1500px;
+    margin:0 auto;
+    box-shadow: 5px 3px -10px;
 }
