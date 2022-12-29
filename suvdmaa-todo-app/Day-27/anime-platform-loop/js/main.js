@@ -124,22 +124,22 @@ async function search() {
 /// page selection ------------------------------------------------------------------------
 const pageContainer = document.getElementById('page-selector');
 
-// let page = 1;
-// let pagecount = 0;
-// let currentpage = page;
-// let pageContainer = document.getElementById('page-selector');
+let page = 1;
+let pagecount = 0;
+let currentpage = page;
+let pageContainer = document.getElementById('page-selector');
 
-// function elem(event){
-//     let li = "";
+function elem(event){
+    let li = "";
 
-//     if(event.id > 1){
-//         li += `<a><i class="fa-solid fa-angle-left"></i></a>`
-//     } 
-//     animePage.appendChild(li)
+    if(event.id > 1){
+        li += `<a><i class="fa-solid fa-angle-left"></i></a>`
+    } 
+    animePage.appendChild(li)
     
     
-// }
-// elem()
+}
+elem()
 
 
 
