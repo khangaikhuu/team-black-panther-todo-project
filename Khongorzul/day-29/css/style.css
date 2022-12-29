@@ -8,12 +8,12 @@ h1{
     padding: 15px;
     text-align: center;
 }
-.dropdown{
-    margin-top: 20px;
-    margin-bottom: -45px;
-}
-.dropdown ul li{
-    cursor: pointer;
+select{
+    padding: 10px;
+    border-radius: 10px;
+    background-color: crimson;
+    color: white;
+    border: 0;
 }
 #searching{
     width: 300px;
