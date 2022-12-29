@@ -6,7 +6,7 @@ async function fetchData() {
   const fetchJSON = await fetchData.json()
   animeData = fetchJSON.data
 
-  console.log(animeData)
+  // console.log(animeData)
   animeData.map((anime) => {
     createCard(anime);
   });
@@ -78,7 +78,7 @@ function createCard(data) {
   bodyText.textContent = data.synopsis.slice(0, 300);
   const infoText = document.createElement("p");
   info.appendChild(infoText);
-  infoText.textContent = `Studio: ${data.studios[0].name}`;
+  infoText.textContent = `Studio: Pierrot`;
   const source = document.createElement("p");
   info.appendChild(source);
   source.textContent = `Source: ${data.source}`;
@@ -153,7 +153,7 @@ function createCard(data) {
   faSolid.className = "fa fa-eye"
   const addList = document.createElement("span")
   review.appendChild(addList)
-  addList.textContent = data.producers[0].mal_id
+  addList.textContent = `${data.mal_id}`
   review.className = "views-anime"
   const addToList = document.createElement("button");
   animeFooter.appendChild(addToList)
@@ -280,7 +280,11 @@ function removeAllChildNodes(parent) {
 // }
 const animeContainer = document.getElementById("page-container")
 
+let pageNation = document.getElementById("page-container");
+pageNation.innerHTML = "";
 
+let previous = `<a href="#" onclick="getData(this)" id="previous">&laquo;</a>`;
+  pageNation.innerHTML = previous;
   for (let i = 0; i < 9; i++) {
     const animePage = document.createElement("a")
     animeContainer.appendChild(animePage)
@@ -292,15 +296,24 @@ const animeContainer = document.getElementById("page-container")
       const pageData = fetchJSON.data;
       console.log(pageData);
       animeData = pageData;
+      console.log(fetchedURL)
+      console.log(animeData);
+      const container = document.querySelector("#anime-container");
+      removeAllChildNodes(container)
       animeData.map((anime) => {
         createCard(anime);
       });
-
+      // let arrow = removeAllChildNodes(container)
+      // const searchRemove = 
+      // removeAllChildNodes()
     })
-  
+    
   }
 
-
+  
+  let next = `<a href="#" onclick="getData(this)" id="previous">&raquo;</a>`;
+  pageNation.innerHTML += next;
+  
 
 
 
