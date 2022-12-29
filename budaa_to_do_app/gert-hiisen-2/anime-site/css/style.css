@@ -79,3 +79,8 @@ img{
 .moreBtn::after {
    content: \f107;
 }
+#page-container {
+    display:flex;
+    justify-content: space-around;
+
+}

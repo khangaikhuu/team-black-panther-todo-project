@@ -16,6 +16,8 @@ async function fetchData() {
 
 fetchData()
 
+
+
 function createCard(data) {
   // console.log(data)
   const animeContainer = document.querySelector("#anime-container");
@@ -114,7 +116,7 @@ function createCard(data) {
   const parts = more.slice(300, textLength);
   showText.textContent = parts;
 
-  console.log(button);
+
 
   button.addEventListener("click", () => {
     if (showText.style.display == "none") {
@@ -160,6 +162,7 @@ function createCard(data) {
 
 
   animeContainer.appendChild(animeCard);
+
 
 
 
@@ -236,7 +239,6 @@ async function filter() {
 
 
 
-
   // const selectGenre = document.getElementById('select-genre');
   // let selectValue = selectGenre.value;
 }
@@ -263,3 +265,45 @@ function removeAllChildNodes(parent) {
 // selectResult.map((element) => {
 //   container.innerHTML += getAnimes((element));
 // })
+// page change 
+
+// function pageSelector (page) {
+
+// const animeContainer = document.getElementById("page-container")
+//   animeContainer.innerHTML = "";
+
+//   for (let i = 0; i < 9 ; i++){
+//     animeContainer.appendChild(animePage)
+//     let animePage = document.createElement("a")
+//     animePage.textContent = 1
+//   }
+// }
+const animeContainer = document.getElementById("page-container")
+
+
+  for (let i = 0; i < 9; i++) {
+    const animePage = document.createElement("a")
+    animeContainer.appendChild(animePage)
+    animePage.innerHTML = i + 1
+    animePage.addEventListener('click', async (event) => {
+      console.log(event.target.text)
+      const fetchedURL = await fetch(`https://api.jikan.moe/v4/top/anime?page=${event.target.text}`);
+      const fetchJSON = await fetchedURL.json();
+      const pageData = fetchJSON.data;
+      console.log(pageData);
+      animeData = pageData;
+      animeData.map((anime) => {
+        createCard(anime);
+      });
+
+    })
+  
+  }
+
+
+
+
+
+
+
+
