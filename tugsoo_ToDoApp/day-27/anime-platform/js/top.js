@@ -38,6 +38,55 @@ callGenre()
 //----------------pagination--------------------//
 
 const pagination = document.getElementById("pagination")
+const prev = document.createElement('a')
+const next = document.createElement('a')
+pagination.appendChild(prev)
+
+
+prev.innerHTML = "prev"
+next.innerHTML = "next"
+
+prev.addEventListener('click', async (event)=>{
+  
+
+})
+
+
+for (let i = 0; i < 10; i++) {
+  const animePage = document.createElement("a")
+  
+  pagination.appendChild(animePage)
+  
+  animePage.innerHTML = i + 1;
+  animePage.addEventListener('click', async (event) => {
+
+    animePage.style.backgroundColor = "yellow"
+    console.log(event.target.text);
+    const fetchedURL = await fetch(`https://api.jikan.moe/v4/top/anime?page=${event.target.text}`);
+    const fetchJSON = await fetchedURL.json();
+    const pageData = fetchJSON.data;
+    console.log(pageData);
+    animeData = pageData;
+
+
+    animeData.map((anime) => {
+      getAnimes(anime);
+      const container = document.querySelector('#manga-container');
+      container.innerHTML = '';
+      animeData.map((element, index) => {
+        container.innerHTML += getAnimes(element, index)
+      })
+    })
+
+  })
+
+
+
+
+}
+
+pagination.appendChild(next)
+
 
 
 
