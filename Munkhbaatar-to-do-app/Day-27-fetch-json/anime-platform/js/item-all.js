@@ -86,6 +86,7 @@ select.addEventListener('change', function handleChange(event) {
 // console.log('Test');
 // test 2
 // test 3
+// test 4
 
 async function getGenres(event) {
     console.log(event.target.value);
