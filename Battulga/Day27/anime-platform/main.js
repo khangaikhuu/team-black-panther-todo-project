@@ -38,13 +38,13 @@ function getAnimes(data, index) {
     const genres = data.genres.map(genre => {
         const result = `<p>${genre.name}</p>`;
         return result;
-     })
+    })
 
     return `
     
     <div id="manga-container">
     <div id="manga-card">
-        <h3 class="title">${data.title}</h3>
+        <h3 class="title" id="manga_${index}">${data.title}</h3>
         <div class="anime-status">
 
             <i class="fa-solid fa-circle-play" style="font-size: 16px"></i>
@@ -121,11 +121,11 @@ function getAnimes(data, index) {
 async function showMore(event) {
     const elementSynop = document.getElementById(`brief_${event.id}`)
     console.log(elementSynop)
-    const filteredData = anime.filter((el, index) =>{
+    const filteredData = anime.filter((el, index) => {
         if (index == event.id) {
             return el
-        } 
-    })  
+        }
+    })
     console.log(filteredData)
     elementSynop.textContent = filteredData[0].synopsis
 }
@@ -133,7 +133,31 @@ async function showMore(event) {
 
 
 async function search(event) {
+    const mangaName = document.getElementById(`manga_${event.id}`)
     const searchField = document.getElementById('search-field')
-    const searchWord = searchField.value
+    const searchWord = searchField.value.toLowerCase()
+    console.log(searchResult)
     console.log(searchWord)
+    const searchResult = anime.filter((animee) =>
+        animee.title.toLowerCase().includes(searchWord)
+    )
+    container.innerHTML = "";
+    searchResult.map((element) => {
+        container.appendChild(getDetial(element));
+    });
+
+
+
 }
+
+// function search(event) {
+//     const searchField = document.getElementById("search-field");
+//     const searchWord = searchField.value.toLowerCase();
+//     const searchResult = animeData.filter((anime) =>
+//         anime.title.toLowerCase().includes(searchWord)
+//     );
+//     container.innerHTML = "";
+//     searchResult.map((element) => {
+//         container.appendChild(getDetial(element));
+//     });
+// }
