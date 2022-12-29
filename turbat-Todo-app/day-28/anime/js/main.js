@@ -1,32 +1,64 @@
+const animeGrid = document.querySelector("#anime-container");
+const animeSelector = document.querySelector("#anime-selector");
 const topDataURL = "https://api.jikan.moe/v4/top/anime"
+const genreDataURL = "https://api.jikan.moe/v4/genres/anime"
 let animeData = [];
 async function fetchAnimes() {
-  const fetchedData = await fetch(topDataURL);
-  const fetchedJSON = await fetchedData.json();
-  animeData = fetchedJSON.data;
+    const fetchedData = await fetch(topDataURL);
+    const fetchedJSON = await fetchedData.json();
+    animeData = fetchedJSON.data;
 
-  const animeGrid = document.querySelector("#anime-container");
-  animeData.map((anime) => {
-    animeGrid.innerHTML += createAnimeCard(anime)
 
-  })
-  // console.log('anime grid' + animeGrid[0])
-  // 
+    animeData.map((anime) => {
+        animeGrid.innerHTML += createAnimeCard(anime)
+
+    })
+
+    // animeData.genre.map(genre => {
+    //     const genreElement = document.createElement("p")
+    //     console.log(genreElement)
+    //     genreElement.textContent = genre.name;
+    //     console.log(genreElement)
+    //     animeGenre.appendChild(genreElement)
+
+    // })
+
+    // animeGrid.appendChild(animeGenre)
+    // console.log('anime grid' + animeGrid[0])
+    // 
 
 }
 fetchAnimes();
 
+//6-15 fetch genres async function
+async function fetchGenres() {
+    const fetchedData = await fetch(genreDataURL);
+    const fetchedJSON = await fetchedData.json();
+    genreData = fetchedJSON.data;
+
+    const animeGenre = document.createElement("select")
+    animeGenre.className = ("anime-genre");
+    animeSelector.appendChild(animeGenre)
+    genreData.map((genre) => {
+        const option = document.createElement("option")
+        option.textContent = genre.name
+        console.log(genre)
+        animeGenre.appendChild(option)
+
+        //select hiiheer teriig n sanaj/barij/ bas hewlej bgaa
+        const select = document.getElementById('anime-selector');
+        select.addEventListener('change', function handleChange(event) {
+            console.log(event.target.value);
+            
+        });
+        
+
+    })
+}
+fetchGenres()
+
 //GENRES
-const genreContainer = document.createElement("div")
-const animeGenre = document.createElement("div")
-animeGenre.className("anime-genre");
-data.genre.map(genre => {
-  const genreElement = document.createElement("p")
-  console.log(genreElement)
-  genreElement.textContent = genre.name;
-  console.log(genreElement)
-  animeGenre.appendChild(genreElement)
-})
+// const genreContainer = document.createElement("div")
 
 
 
@@ -50,8 +82,8 @@ data.genre.map(genre => {
 //   })
 
 function createAnimeCard(anime) {
-  console.log(anime);
-  const animeContainer = `
+    console.log(anime);
+    const animeContainer = `
   <div class="anime-card" id="card">
           <a href="#" id="title">${anime.title}</a>
           <div class="anime-status">
@@ -64,7 +96,6 @@ function createAnimeCard(anime) {
               </div>
               <i class="fa-solid fa-signal" style="font-size: 16px"></i>
           </div>
-      
           <div class="anime-body">
               <img
                   src="${anime.images.jpg.image_url}"
@@ -89,15 +120,15 @@ function createAnimeCard(anime) {
           <div class="anime-footer">
               <div id="review">
                   <i class="fa-regular fa-star"></i>
-                  <span id="number">9.11</span>
+                  <span id="number">${anime.score}</span>
               </div>
               <div id="views">
                   <i class="fa-solid fa-eye"></i>
-                  <span id="view-number">3.0M</span>
+                  <span id="view-number">${anime.members}</span>
               </div>
               <button id="add-list">Add To List</button>
           </div>
       </div>`
 
-  return animeContainer;
+    return animeContainer;
 }
