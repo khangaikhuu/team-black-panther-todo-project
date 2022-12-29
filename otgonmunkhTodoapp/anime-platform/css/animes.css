@@ -150,7 +150,8 @@
 }
 #genre-selector {
     border: none;
-    background-color: darkorchid;
+    background-color: azure;
+    border: 1px solid plum;
     padding: 10px;
     border-radius: 10px;
     margin: 0 auto;
@@ -161,4 +162,10 @@
     transition: all 500ms ease-out;
     background-color: rgb(87, 87, 255);
     color: whitesmoke;
+}
+#anime-container {
+    display: flex;
+    max-width: 1500px;
+    margin:0 auto;
+    box-shadow: 5px 3px -10px;
 }

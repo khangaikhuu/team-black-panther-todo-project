@@ -1,6 +1,10 @@
 let animeData = [];
 
 async function callURL(){
+  
+
+
+
   const fetchData = await fetch('https://api.jikan.moe/v4/top/anime');
   const fetchJSON = await fetchData.json();
   animeData = fetchJSON.data;
@@ -72,6 +76,27 @@ function search(event){
         });
     
 
+  }
+  // Pagination
+  function pageSelector(page) {
+    let pageSelector = document.querySelector('#pagination-anime');
+    pageSelector.innerHTML = '';
+
+    let leftArrow = `<a id="previous-page" href="#" onclick="callData(this)"><i class="fa-solid fa-angles-left"></i></a>`;
+    pageSelector.innerHTML = leftArrow;
+
+    for (let i = 0; i < 9; i++) {
+      let pageNum = '';
+      if (page == (i + 1)) {
+        pageNum = `<a href="#" class="active" onclick='callData(this)'>${i + 1}</a>`
+      } else {
+        pageNum = `<a href="#" onclick='callData(this)'>${i + 1}</a>`
+      }
+      pageSelector.innerHTML += pageNum;
+  }
+
+    let rightArrow = `<a id="next-page" href="#" onclick="callData(this)"><i class="fa-solid fa-angles-right"></i></a>`;
+    pageSelector.innerHTML += rightArrow;
   }
 //selection 
 

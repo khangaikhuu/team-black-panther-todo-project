@@ -232,6 +232,7 @@ body {
 
 #pagination-anime a:hover:not(.active) {
 	background-color: #1c439b;
+	color: white;
 }
 
 #pagination-anime a:first-child {
