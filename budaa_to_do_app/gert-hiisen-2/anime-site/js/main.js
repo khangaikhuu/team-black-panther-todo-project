@@ -1,27 +1,27 @@
 
 const animesURL = "https://api.jikan.moe/v4/top/anime";
 let animeData = [];
-async function fetchData () {
+async function fetchData() {
   const fetchData = await fetch(animesURL)
   const fetchJSON = await fetchData.json()
-  animeData = fetchJSON.data 
+  animeData = fetchJSON.data
 
   console.log(animeData)
-    animeData.map((anime) => {
-      createCard(anime);
-    });
- 
+  animeData.map((anime) => {
+    createCard(anime);
+  });
+
 
 }
 
-fetchData ()
+fetchData()
 
 function createCard(data) {
   // console.log(data)
   const animeContainer = document.querySelector("#anime-container");
   const animeCard = document.createElement("div");
   animeCard.className = "anime-card";
- 
+
   animeCard.className = "anime-card";
   const title = document.createElement("a");
   animeCard.appendChild(title);
@@ -43,20 +43,20 @@ function createCard(data) {
   animeStatusApendchild.className = "animes-front"
   type.textContent = `${data.type} `;
   year.textContent = ` ${data.year} ` + `|`;
-  status.textContent =`| ${data.status} | `;
+  status.textContent = `| ${data.status} | `;
   eps.textContent = `| ${data.episodes}`;
   const animeGenre = document.createElement("div");
   animeCard.appendChild(animeGenre);
   animeGenre.className = "anime-genre";
 
   const genreContainer = document.createElement("div")
-  animeGenre.appendChild(genreContainer) 
-  data.genres.map(genre =>{
+  animeGenre.appendChild(genreContainer)
+  data.genres.map(genre => {
     const genreElement = document.createElement("p")
     genreElement.textContent = genre.name
     animeGenre.appendChild(genreElement)
   })
-  
+
   const animeBody = document.createElement("div");
   animeCard.appendChild(animeBody);
   animeBody.className = "anime-body";
@@ -92,74 +92,74 @@ function createCard(data) {
   const showText = document.createElement("p")
   text.appendChild(showText)
   showText.className = "second-p"
-//   showText.textContent = `and then sacrificed an arm to keep Alphonse's soul in the physical realm by binding it to a hulking suit of armor.
+  //   showText.textContent = `and then sacrificed an arm to keep Alphonse's soul in the physical realm by binding it to a hulking suit of armor.
 
-//   The brothers are rescued by their neighbor Pinako Rockbell and her granddaughter Winry. Known as a bio-mechanical engineering prodigy, Winry creates prosthetic limbs for Edward by utilizing "automail," a tough, versatile metal used in robots and combat armor. After years of training, the Elric brothers set off on a quest to restore their bodies by locating the Philosopher's Stone—a powerful gem that allows an alchemist to defy the traditional laws of Equivalent Exchange.
-  
-//   As Edward becomes an infamous alchemist and gains the nickname "Fullmetal," the boys' journey embroils them in a growing conspiracy that threatens the fate of the world.
-  
-//   [Written by MAL Rewrite]`
+  //   The brothers are rescued by their neighbor Pinako Rockbell and her granddaughter Winry. Known as a bio-mechanical engineering prodigy, Winry creates prosthetic limbs for Edward by utilizing "automail," a tough, versatile metal used in robots and combat armor. After years of training, the Elric brothers set off on a quest to restore their bodies by locating the Philosopher's Stone—a powerful gem that allows an alchemist to defy the traditional laws of Equivalent Exchange.
+
+  //   As Edward becomes an infamous alchemist and gains the nickname "Fullmetal," the boys' journey embroils them in a growing conspiracy that threatens the fate of the world.
+
+  //   [Written by MAL Rewrite]`
 
   const button = document.createElement("button");
   text.appendChild(button)
   button.className = "moreBtn fa-angle-down"
-  
 
-//   bodyText.textContent = data.synopsis.slice(0, 300);
-//   const infoText = document.createElement("p");
-//   info.appendChild(infoText);
 
-const more = data.synopsis;
-const textLength = more.length;
-const parts = more.slice(300, textLength);
-showText.textContent = parts;
+  //   bodyText.textContent = data.synopsis.slice(0, 300);
+  //   const infoText = document.createElement("p");
+  //   info.appendChild(infoText);
 
-console.log(button);
+  const more = data.synopsis;
+  const textLength = more.length;
+  const parts = more.slice(300, textLength);
+  showText.textContent = parts;
 
-button.addEventListener("click", () => {
-    if(showText.style.display == "none") {
-        showText.style.display = "block"
-        showText.style.width = "200px"
-        showText.style.height = "100px"
-        
+  console.log(button);
+
+  button.addEventListener("click", () => {
+    if (showText.style.display == "none") {
+      showText.style.display = "block"
+      showText.style.width = "200px"
+      showText.style.height = "100px"
+
     } else {
-        showText.style.display = "none";
+      showText.style.display = "none";
     }
-})
+  })
 
-// {/* <i class="fas fa-star"></i> */}
+  // {/* <i class="fas fa-star"></i> */}
 
-const animeFooter = document.createElement("div");
-animeFooter.className = "anime-footer"
-const views = document.createElement("div")
-const faStar = document.createElement("i");
-animeCard.appendChild(animeFooter);
-animeFooter.appendChild(faStar);
-faStar.className = "fa fa-star"
-const number = document.createElement("span");
-animeFooter.appendChild(views)
-views.appendChild(faStar)
-animeFooter.appendChild(number);
-views.appendChild(number)
-views.className = "review"
-number.textContent = data.score
+  const animeFooter = document.createElement("div");
+  animeFooter.className = "anime-footer"
+  const views = document.createElement("div")
+  const faStar = document.createElement("i");
+  animeCard.appendChild(animeFooter);
+  animeFooter.appendChild(faStar);
+  faStar.className = "fa fa-star"
+  const number = document.createElement("span");
+  animeFooter.appendChild(views)
+  views.appendChild(faStar)
+  animeFooter.appendChild(number);
+  views.appendChild(number)
+  views.className = "review"
+  number.textContent = data.score
 
-const review = document.createElement("div")
-const faSolid = document.createElement("i")
-animeFooter.appendChild(review)
-review.appendChild(faSolid)
-faSolid.className = "fa fa-eye"
-const addList = document.createElement("span")
-review.appendChild(addList)
-addList.textContent = data.producers[0].mal_id
-review.className = "views-anime"
-const addToList = document.createElement("button");
-animeFooter.appendChild(addToList)
-addToList.textContent = `Add to list`
+  const review = document.createElement("div")
+  const faSolid = document.createElement("i")
+  animeFooter.appendChild(review)
+  review.appendChild(faSolid)
+  faSolid.className = "fa fa-eye"
+  const addList = document.createElement("span")
+  review.appendChild(addList)
+  addList.textContent = data.producers[0].mal_id
+  review.className = "views-anime"
+  const addToList = document.createElement("button");
+  animeFooter.appendChild(addToList)
+  addToList.textContent = `Add to list`
 
 
 
-animeContainer.appendChild(animeCard);
+  animeContainer.appendChild(animeCard);
 
 
 
@@ -194,54 +194,56 @@ async function search(event) {
   const searchField = document.getElementById("search-field")
   const searchWord = searchField.value;
   console.log(searchField.value);
-  const searchResult = animeData.filter(anime => 
+  const searchResult = animeData.filter(anime =>
     anime.title.toLowerCase().includes(searchWord)
-    )
-    console.log(searchResult)
-    console.log(searchWord)
+  )
+  console.log(searchResult)
+  console.log(searchWord)
 
 
-   const container = document.querySelector("#anime-container")
-    removeAllChildNodes(container)
-    searchResult.map((element) =>{
-      createCard(element)
-    }) 
+  const container = document.querySelector("#anime-container")
+  removeAllChildNodes(container)
+  searchResult.map((element) => {
+    createCard(element)
+  })
 
 }
 
 async function filter() {
- const selectGenre = document.getElementById("select-genre");
- let selectValue = selectGenre.value;
+  const selectGenre = document.getElementById("select-genre");
+  let selectValue = selectGenre.value;
 
- const selectResult = animeData.filter(anime => {
-   let filteredSelect = anime.genres.filter(genre => {
-     if(genre.name == selectValue) {
-       return genre;
-     }
-   })
-   if(filteredSelect.length > 0 ) {
-     return filteredSelect;
-   }
- })
- console.log(selectResult);
- const container = document.querySelector("#anime-container");
-//  container.innerHTML = "";
-removeAllChildNodes(container)
- selectResult.map((element) => {
-  //  container.innerHTML += createCard((element))
-  createCard(element)
- })
+  const selectResult = animeData.filter(anime => {
+    let filteredSelect = anime.genres.filter(genre => {
+      if (genre.name == selectValue) {
+        return genre;
+      }
+    })
+    if (filteredSelect.length > 0) {
+      return filteredSelect;
+    } else {
+      //  return document.getElementById("anime-container");
+    }
+  })
+  console.log(selectResult);
+  const container = document.querySelector("#anime-container");
+  //  container.innerHTML = "";
+  removeAllChildNodes(container)
+  selectResult.map((element) => {
+    //  container.innerHTML += createCard((element))
+    createCard(element)
+  })
 
 
 
 
- // const selectGenre = document.getElementById('select-genre');
- // let selectValue = selectGenre.value;
+  // const selectGenre = document.getElementById('select-genre');
+  // let selectValue = selectGenre.value;
 }
 
 function removeAllChildNodes(parent) {
   while (parent.firstChild) {
-      parent.removeChild(parent.firstChild);
+    parent.removeChild(parent.firstChild);
   }
 }
 
