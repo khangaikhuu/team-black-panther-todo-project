@@ -6,6 +6,25 @@
     justify-content: space-around;
 }
 
+#headerMain {
+    display: flex;
+    justify-content: space-around;
+    background-color: black;
+    color: aliceblue;
+}
+
+#pagination{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+#pageContainer{
+    width: 60%;
+    display: flex;
+    justify-content: space-around;
+}
+
 #animeCard{
    width: 30%;
    text-align: center;

@@ -1,14 +1,61 @@
+let fetchedJSONData = [];
+
 const fmaURL = "https://api.jikan.moe/v4/top/anime";
+const genreURL = "https://api.jikan.moe/v4/genres/anime";
 const cont = document.getElementById("container");
+const genreSelector = document.getElementById("genre-selector");
+
+async function callURL() {
+    const fetchedData = await fetch('https://api.jikan.moe/v4/top/anime')
+    const fetchedJSON = await fetchedData.json();
+    fetchedJSONData = fetchedJSON.data;
+    cont.innerHTML = "";
+    fetchedJSONData.map((element, index) => {
+
+        cont.innerHTML += animeData(element, index);
+    })
+}
+callURL();
+
+async function fetchGenres() {
+    const fetchedGenre = await fetch(genreURL);
+    const fetchedGenreJSON = await fetchedGenre.json();
+    const genreData = fetchedGenreJSON.data;
+
+    genreData.map((element) => {
+        const option = document.createElement("option");
+        option.innerHTML = element.name;
+        genreSelector.appendChild(option);
+    })
+
+}
+fetchGenres();
+
+const pageContainer = document.getElementById("pageContainer");
+
+for(i = 0; i < 9; i++){
+    const animePage = document.createElement("a");
+    animePage.innerHTML = i + 1;
+    pageContainer.appendChild(animePage);
+    animePage.addEventListener("click", async (event) =>{
+        console.log(event.target.text);
+        const fetchedURL = await fetch(`https://api.jikan.moe/v4/top/anime?page=${event.target.text}`)
+        const fetchJSON = await fetchedURL.json();
+        const pageData = fetchJSON.data;
+        fetchedJSONData = pageData;
+        container.innerHTML = "";
+        fetchedJSONData.map((element, index) => {
+            container.innerHTML += animeData(element,index);
+        })
+    })
+
+}
+
 async function showMore(event) {
 
     const index = event.id;
 
     const elementSynop = document.getElementById(`synopsis_${index}`);
-
-    const fetchedData = await fetch(fmaURL)
-    const fetchedJSON = await fetchedData.json();
-    const fetchedJSONData = fetchedJSON.data;
 
     const foundElement = fetchedJSONData.filter((e, idx) => {
         if (idx == index) {
@@ -20,13 +67,8 @@ async function showMore(event) {
 }
 
 async function search(event) {
-    const fetchedData = await fetch(fmaURL)
-    const fetchedJSON = await fetchedData.json();
-    const fetchedJSONData = fetchedJSON.data;
-    // console.log(fetchedJSONData)
     const searchField = document.getElementById('search-field');
     const searchWord = searchField.value;
-    // console.log(searchWord);
 
     const searchResult = fetchedJSONData.filter((anime) => {
         if (anime.title.toLowerCase().includes(searchWord.toLowerCase())) {
@@ -41,16 +83,28 @@ async function search(event) {
     })
 }
 
-const genreSelector = document.getElementById("genre-selector");
 genreSelector.addEventListener('change', async (event) => {
-    const fetchedData = await fetch(fmaURL)
-    const fetchedJSON = await fetchedData.json();
-    const fetchedJSONData = fetchedJSON.data;
+    const option = document.getElementsByTagName("option");
     console.log(event.target.value);
+
+    let optionResult = fetchedJSONData.filter(element => {
+        for (i = 0; i < element.genres.length; i++) {
+            if (event.target.value == element.genres[i].name) {
+                return element;
+            }
+        }
+    })
+    console.log(optionResult);
+
+    if (event.target.value == `All`) {
+        optionResult = fetchedJSONData;
+    }
+
+    container.innerHTML = "";
+    optionResult.map((element, index) => {
+        container.innerHTML += animeData(element, index)
+    })
 })
-
-
-
 
 function animeData(data, index) {
 
@@ -99,14 +153,3 @@ function animeData(data, index) {
 
     </div>`
 }
-
-fetch(fmaURL)
-    .then(result => result.json())
-    .then(anime => {
-
-        cont.innerHTML = "";
-        anime.data.map((element, index) => {
-
-            cont.innerHTML += animeData(element, index);
-        })
-    })
