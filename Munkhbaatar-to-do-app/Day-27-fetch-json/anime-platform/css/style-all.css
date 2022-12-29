@@ -172,7 +172,9 @@ a {
 	justify-content: flex-start;
 }
 
-
+.pagination  {
+	margin: 20px;
+}
 /* Pagination links */
 .pagination a {
 	color: black;

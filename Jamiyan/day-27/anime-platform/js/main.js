@@ -167,23 +167,33 @@ async function nextPage(event) {
     pageData.map((element, index) => {
         container.innerHTML += getAnimes(element, index)
     })
+    console.log(event)
 }
 
 const pages = document.querySelector("#pages");
+let anchor = [];
 for (i = 1; i <= 10; i++) {
     const a = document.createElement("a");
     a.href = "#";
     pages.appendChild(a);
+    anchor.push(a);
     a.textContent = i
+   
     a.addEventListener("click", x = (event) => {
         nextPage(event.target.text);
         nextPageNumber(event.target.text)
         prevPageNumber(event.target.text)
         console.log(event.target.text)
+        for(i = 0; i < 10; i++){
+            anchor[i].style = "background-color:#d8dbe0"
+        }
+        anchor[a.text - 1].style = "background-color:#1c439b"
     })
-
+    console.log(a.text)
+    
 }
-
+console.log(anchor)
+anchor[0].style = "background-color:#1c439b"
 
 function nextPageNumber(event) {
    page = Number(event) 
@@ -193,11 +203,20 @@ nextPageNumber();
 function nextButton(event){
     if(!Number.isInteger(page)){
         page = 2;
+        for(i = 0; i < 10; i++){
+            anchor[i].style = "background-color:#d8dbe0"
+        }
+        anchor[1].style = "background-color:#1c439b"
     }else{
-    page = page + 1
+    page = page + 1;
+    for(i = 0; i < 10; i++){
+        anchor[i].style = "background-color:#d8dbe0"
+    }
+    anchor[page - 1].style = "background-color:#1c439b"
     }
     nextPage(page)
     console.log(page)
+  
 }
 
 function prevPageNumber(event) {
@@ -212,10 +231,14 @@ function prevPageNumber(event) {
      page = 1
      } else {
         page = page - 1;
+        for(i = 0; i < 10; i++){
+            anchor[i].style = "background-color:#d8dbe0"
+        }
+        anchor[page - 1].style = "background-color:#1c439b"
      }
      console.log(page)
      nextPage(page)
  }
  
-
+ console.log(page)
 
