@@ -74,6 +74,7 @@
     justify-content: space-evenly;
     margin: 5px;
     align-items: center;
+    font-size: 13px;
 
 }
 
@@ -146,4 +147,18 @@
 }
 .theme {
     background-color:  rgb(229, 229, 229);
+}
+#genre-selector {
+    border: none;
+    background-color: darkorchid;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 0 auto;
+    text-align: center;
+    margin: 5px;
+}
+#genre-selector:focus {
+    transition: all 500ms ease-out;
+    background-color: rgb(87, 87, 255);
+    color: whitesmoke;
 }
