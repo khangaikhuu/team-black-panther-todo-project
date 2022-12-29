@@ -112,6 +112,41 @@
     font-family: "Roboto Mono", monospace;
 }
 
+.pagination {
+    margin-top: 50px;
+}
+
+.pagination a {
+    font-size: 20px;
+    font-weight: 200;
+    letter-spacing: 1px;
+    padding: 13px 40px 13px;
+    outline: 0;
+    border: 1px solid black;
+    cursor: pointer;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0);
+    margin: 15px 15px 0 15px;
+    font-family: "Roboto Mono", monospace;
+}
+
+.pagination a::after {
+    content: "";
+    background-color: rgb(244, 42, 255);
+    width: 100%;
+    z-index: -1;
+    position: absolute;
+    height: 100%;
+    top: 7px;
+    left: 7px;
+    transition: 0.2s;
+}
+
+.pagination a:hover::after {
+    top: 0px;
+    left: 0px;
+}
+
 .fill::after {
     content: "";
     background-color: #ffe54c;
@@ -123,18 +158,23 @@
     left: 7px;
     transition: 0.2s;
 }
+
 .blue::after {
     background-color: skyblue;
 }
+
 .red::after {
     background-color: rgb(238, 96, 96);
 }
+
 .grey::after {
     background-color: rgb(136, 136, 136);
 }
+
 .green::after {
     background-color: rgb(83, 245, 132);
 }
+
 .orange::after {
     background-color: rgb(244, 163, 70);
 }

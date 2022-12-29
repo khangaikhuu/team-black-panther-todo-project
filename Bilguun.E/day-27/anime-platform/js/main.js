@@ -1,6 +1,5 @@
 // ** Call data **// 
 
-
 let animeData = []
 
 async function callURL() {
@@ -17,6 +16,24 @@ async function callURL() {
 callURL()
 
 // ** go to page 1 function **// 
+const animeContainer = document.getElementById("test-container")
+for (let i = 0; i < 9; i++) {
+  const animePage = document.createElement("a")
+  animeContainer.appendChild(animePage)
+  animePage.innerHTML = i + 1
+  animePage.addEventListener("click", async (event) => {
+    const fetchedURL = await fetch(`https://api.jikan.moe/v4/top/anime?page=${event.target.text}`)
+    const fetchedJSON = await fetchedURL.json()
+    const pageData = fetchedJSON.data
+    animeData = pageData
+    const container = document.getElementById("mainDiv");
+    container.innerHTML = '';
+    animeData.map((element, index) => {
+      container.innerHTML += getAnimes(element, index)
+    })
+  })
+}
+
 
 function goToPage1() {
   let animeData1 = []
@@ -129,6 +146,25 @@ async function clearFunc() {
 
 // ** Filter function **// 
 
+// let genreAPI = []
+
+// async function getGenreAPI() {
+//   let temp = []
+//   const filterSelect = document.getElementById("filterSelect")
+//   const fetchedAPI = await fetch("https://api.jikan.moe/v4/genres/anime")
+//   const fetchedJSON = await fetchedAPI.json()
+//   console.log(fetchedJSON)
+//   temp = fetchedJSON.data[3]
+//   filterSelect.innerText = `1`
+
+//   genreAPI = temp
+//   console.log(genreAPI)
+// }
+
+// getGenreAPI()
+// console.log(genreAPI)
+
+
 async function filter() {
   const filterSelect = document.getElementById("filterSelect")
   let filterValue = filterSelect.value
@@ -168,19 +204,12 @@ async function showMore(event) {
 }
 
 
-const card = document.querySelector('#card');
-
 function getAnimes(data, index) {
   const genres = data.genres.map(genre => {
     const result = `<button>${genre.name}</button>`;
     return result;
   })
 
-  let membersNum = data.members
-  let members2Num = String(membersNum).substring(0, 1)
-  let membersNum2nd = data.members
-  let members2Num2nd = String(membersNum2nd).substring(1, 2)
-  
   const durationStr = data.duration.substring(0, 3)
 
   return `
@@ -224,7 +253,7 @@ function getAnimes(data, index) {
       </div>
       <div class="footer">
         <p class="footerP score">${data.score}</p>
-        <p class="footerP member">${members2Num}.${members2Num2nd}M</p>
+        <p class="footerP member">${(data.members / 1.0e+6).toFixed(1)}M</p>
         <button class="footerPBtn">Add To List</button>
       </div>
     </div>`
