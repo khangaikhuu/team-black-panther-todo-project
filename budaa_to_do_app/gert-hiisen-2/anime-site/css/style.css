@@ -82,5 +82,12 @@ img{
 #page-container {
     display:flex;
     justify-content: space-around;
-
+ 
+}
+#page-container a {
+    border:solid 1px blue;
+    height: 30px;
+    width:30px;
+    text-align:center;
+    background-color:rgba(0, 0, 255, 0.454);
 }

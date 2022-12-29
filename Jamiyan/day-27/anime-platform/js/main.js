@@ -231,10 +231,10 @@ function prevPageNumber(event) {
      page = 1
      } else {
         page = page - 1;
-        for(i = 0; i < 10; i++){
-            anchor[i].style = "background-color:#d8dbe0"
-        }
-        anchor[page - 1].style = "background-color:#1c439b"
+          for(i = 0; i < 10; i++){
+        anchor[i].style = "background-color:#d8dbe0"
+    }
+    anchor[page - 1].style = "background-color:#1c439b"
      }
      console.log(page)
      nextPage(page)
