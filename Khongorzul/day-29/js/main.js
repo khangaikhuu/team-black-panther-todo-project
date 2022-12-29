@@ -16,6 +16,7 @@ async function getPageData(event){
         page = event.text
     }
     currenPage = page;
+    
     if(page == undefined || page < 1){
         page = 1;
         currenPage = 1;
@@ -59,6 +60,7 @@ function createPagenation(page){
         }
         paging.innerHTML += nthPage;
     }
+
     let next = `<a onclick="getPageData(this)" id="next"><i class="fa-solid fa-arrow-down-1-9"></i></a>`
     paging.innerHTML += next;
 }
@@ -158,6 +160,19 @@ select.addEventListener('change', function handleChange(event) {
     selectedAnimes.innerHTML = result;
 });
 
+
+
+//MY ANIME LIST
+let animeList = document.getElementById("my-animes");
+function addToList(event){
+    let list = document.createElement("option");
+    list = document.getElementById(`anime-title_${event.id}`);
+    console.log(event);
+    console.log(list);
+}
+
+
+
 //SHOW MORE
 function showMoreFunc(event){
     const elementSynop = document.getElementById(`anime-text_${event.id}`);
@@ -175,11 +190,18 @@ function showMoreFunc(event){
     }
 }
 
+
+
 //GET ANIMES
 function getAnimes(data, index){
 
     const genres = data.genres.map(genre => {
         const result = `<a>${genre.name}</a>`;
+        return result;
+    })
+
+    const studio = data.studios.map(el => {
+        const result = `<a href="${el.url}">${el.name}</a>`;
         return result;
     })
 
@@ -195,7 +217,7 @@ function getAnimes(data, index){
 
     return `
     <div class="anime" id="card">
-        <h3><a id="anime-title" href="${data.url}">${data.title}</a></h3>
+        <h3><a id="anime-title_${index}" class="anime-title" href="${data.url}">${data.title}</a></h3>
 
         <div class="anime-status">
             <i class="fa-brands fa-youtube"></i>
@@ -226,7 +248,7 @@ function getAnimes(data, index){
                 <button class="more-button" id="${index}" onclick="showMoreFunc(this)"><i class="fa-solid fa-sort-down"></i></button>
 
                 <div id="right-bottom">
-                    <p>Studios: <a href="${data.studios[0].url}" id="studio">${data.studios[0].name}</a></p>
+                    <p>Studios: ${studio}</p>
                     <p>Source: <a>${data.source}</a></p>
                     <p>Theme: <a>${theme}</a></p>
                     <p>Demographics: <a>${demo}</a></p>
@@ -238,7 +260,7 @@ function getAnimes(data, index){
         <div id="bottom">
             <div><i class="fa-regular fa-star"></i> <span>${data.score}</span></div>
             <div><i class="fa-solid fa-user"></i> <span>${(data.members / 1.0e+6).toFixed(1)}M</span></div>
-            <div><button id="add">Add to List</button></div>
+            <div><button id="add_${index}" class="add" onclick="addToList(this)">Add to List</button></div>
         </div>
     </div>`
 }
