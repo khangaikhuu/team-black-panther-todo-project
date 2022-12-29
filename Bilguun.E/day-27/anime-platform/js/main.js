@@ -16,9 +16,7 @@ async function callURL() {
 
 callURL()
 
-
 // ** go to page 1 function **// 
-
 
 function goToPage1() {
   let animeData1 = []
@@ -59,7 +57,6 @@ function goToPage2() {
 }
 
 // ** go to page 3 function **// 
-
 
 function goToPage3() {
   let animeData3 = []
@@ -105,9 +102,6 @@ async function search() {
   const search = document.getElementById("searchPrompt")
   const searchWord = search.value
   console.log(searchWord)
-  // const animes = await fetch('https://api.jikan.moe/v4/top/anime')
-  // const animesJSON = await animes.json()
-  // const animesData = animesJSON.data
   const searchResult = animeData.filter(anime =>
     anime.title.toLowerCase().includes(searchWord.toLowerCase()))
   const container = document.getElementById("mainDiv");
@@ -123,15 +117,6 @@ async function search() {
 async function clearFunc() {
   const search = document.getElementById("searchPrompt")
   search.value = ""
-  // const fetchedData = await fetch("https://api.jikan.moe/v4/top/anime")
-  // const fetchedJSON = await fetchedData.json()
-  // animeData = fetchedJSON.data
-  // console.log(animeData)
-  // const container = document.getElementById("mainDiv");
-  // container.innerHTML = '';
-  // animeData.map((element, index) => {
-  //   container.innerHTML += getAnimes(element, index)
-  // })
   const searchResult = animeData.filter(anime =>
     anime.title.toLowerCase().includes(search.value.toLowerCase()))
   const container = document.getElementById("mainDiv");
@@ -147,9 +132,6 @@ async function clearFunc() {
 async function filter() {
   const filterSelect = document.getElementById("filterSelect")
   let filterValue = filterSelect.value
-  // const animes = await fetch('https://api.jikan.moe/v4/top/anime')
-  // const animesJSON = await animes.json()
-  // const animesData = animesJSON.data
   const filterResult = animeData.filter(anime => {
     let arr = anime.genres.filter(genre => {
       if (genre.name == filterValue) {
@@ -195,18 +177,12 @@ function getAnimes(data, index) {
   })
 
   let membersNum = data.members
-  if (membersNum == 7) {
-    let millions = "<p class='footerP member'>${members2Num}.${members2Num2nd}M</p>"
-  } else {
-    let thousands = "<p class='footerP member'>${members2Num}${members2Num2nd}0K</p>"
-  }
   let members2Num = String(membersNum).substring(0, 1)
   let membersNum2nd = data.members
   let members2Num2nd = String(membersNum2nd).substring(1, 2)
-
+  
   const durationStr = data.duration.substring(0, 3)
 
-  console.log(data.year)
   return `
       <div class="divContainer" id="mainDiv">
       <div class="header">
