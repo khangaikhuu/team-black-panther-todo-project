@@ -22,7 +22,7 @@ async function callGenre() {
     const fetchJSON = await fetchData.json();
     genreData = fetchJSON.data;
     console.log(genreData);
-   
+
     genreCon.innerHTML = "";
 
     genreData.map((element, index) => {
@@ -35,42 +35,6 @@ async function callGenre() {
 callGenre()
 callURL()
 
-
-async function callPages() {
-    const fetchedData = await fetch('https://api.jikan.moe/v4/top/anime?page=10');
-    const fetchedJSON = await fetchedData.json();
-    pageData = fetchedJSON.data;
-    const pageCon = document.querySelector("#jump");
-
-    pageCon.innerHTML = "";
-
-    pageData.map((element, index) => {
-        
-    })
-
-
-
-    
-}
-
-// filter and map example
-// const array = [1, 2, 3, 4, 5, 7, 8, 9]
-// const mapResult = array.map((e)=>{
-//     if(e < 5){
-//         return e
-//     } 
-
-// })
-// console.log(mapResult)
-
-
-// const filterResult = array.filter((e)=>{
-//     if(e < 5){
-//         return e
-//     } 
-
-// })
-// console.log(filterResult)
 
 
 const card = document.querySelector(".card");
@@ -99,6 +63,35 @@ function getAnimes(animes, index) {
     console.log(searchResult);
 
 }
+
+const pageCon = document.querySelector("#jump");
+for(let i = 0; i < 10 ; i++){
+    const animePage = document.createElement("button");
+    pageCon.appendChild(animePage);
+    console.log(pageCon);
+    animePage.innerHTML = i + 1;
+    animePage.addEventListener("click", async(event) => {
+        console.log(event.target.textContent);
+        const fetchedURL = await fetch(`https://api.jikan.moe/v4/top/anime?page=${event.target.textContent}`);
+        const fetchedJSON = await fetchedURL.json();
+        const pageData = fetchedJSON.data;
+        console.log(pageData);
+        animeData = pageData;
+        animeData.map((anime) => {
+            getAnimes(anime);
+            const container = document.querySelector("#manga-container");
+            container.innerHTML = '';
+            animeData.map((element, index) => {
+                container.innerHTML += getAnimes(element, index)
+            })
+        })
+        
+
+    })
+
+
+}
+
 async function showMore(event) {
     console.log('event', event);
     const synop = document.getElementById(`synopsis_${event.id}`);
@@ -116,7 +109,7 @@ async function showMore(event) {
         const detail = element.synopsis;
         console.log(detail);
         synop.innerHTML = detail;
-        
+
     })
 
 
@@ -151,11 +144,11 @@ genreCon.addEventListener("change", function handleChange(event) {
 
         const genres = anime.genres;
         const result = genres.filter((genre) => {
-            if(genre.mal_id == searchValue){
+            if (genre.mal_id == searchValue) {
                 return genre;
             }
         })
-        if(result.length > 0){
+        if (result.length > 0) {
             return anime;
         }
     })
@@ -163,7 +156,7 @@ genreCon.addEventListener("change", function handleChange(event) {
     const container = document.querySelector("#anime-container");
     container.innerHTML = "";
     genreFilter.map((element, index) => {
-        container.innerHTML += getAnimes(element, index)  
+        container.innerHTML += getAnimes(element, index)
         console.log(container);
     })
 
