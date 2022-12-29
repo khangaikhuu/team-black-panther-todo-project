@@ -101,3 +101,15 @@ h1 {
     gap: 20px;
 }
 
+#pagination {
+    margin: 20px;
+    text-align: center;
+
+}
+#pagination a {
+    margin: 20px 20px;
+    border: 2px solid rgb(205, 231, 235);
+    border-radius: 20px;
+    padding: 10px 15px;
+    background-color: azure;
+}
