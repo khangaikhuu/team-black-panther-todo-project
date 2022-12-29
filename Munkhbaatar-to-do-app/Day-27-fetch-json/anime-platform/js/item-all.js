@@ -75,15 +75,15 @@ const select = document.getElementById('genre')
 select.addEventListener('change', function handleChange(event) {
     console.log(event.target.value); // 👉️ get selected VALUE
 
-    // 👇️ get selected VALUE even outside event handler
+    //// 👇️ get selected VALUE even outside event handler
     // console.log(select.options[select.selectedIndex].value);
 
-    // 👇️ get selected TEXT in or outside event handler
+    //// 👇️ get selected TEXT in or outside event handler
     // console.log(select.options[select.selectedIndex].text);
     getGenres(event);
 })
 
-console.log('Test');
+// console.log('Test');
 
 async function getGenres(event) {
     console.log(event.target.value);
