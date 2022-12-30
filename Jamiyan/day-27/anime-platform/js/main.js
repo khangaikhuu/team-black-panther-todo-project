@@ -75,16 +75,18 @@ let animeData = [];
 async function callURL() {
     const fetchedData = await fetch("https://api.jikan.moe/v4/top/anime")
     const fetchedJson = await fetchedData.json();
-
     animeData = fetchedJson.data;
+    animeMap(animeData)
+    }
+callURL();
+console.log(animeData)
+
+function animeMap(par){
     container.innerHTML = "";
-    animeData.map((element, index) => {
+    par.map((element, index) => {
         container.innerHTML += getAnimes(element, index)
     })
-
 }
-
-callURL();
 
 function search() {
     const searchField = document.getElementById("input");
@@ -92,21 +94,14 @@ function search() {
     console.log(animeData)
     const searchResult = animeData.filter(anime =>
         anime.title.toLowerCase().includes(searchWord.toLowerCase()))
-
-    container.innerHTML = '';
-    searchResult.map((element, index) => {
-        container.innerHTML += getAnimes(element, index)
-        
-    })
+    animeMap(searchResult)
 }
 
 let colors = true
 let color = true
 function showMore(event) {
-    console.log(event.id)
     const elementSynop = document.getElementById(`synopsis_${event.id}`);
     console.log(elementSynop);
-
     const filteredData = animeData.filter((el, index) => {
         if (index == event.id) {
             return el;
@@ -133,7 +128,6 @@ function showMore(event) {
 
 const selectElement = document.querySelector('.ice-cream');
 selectElement.addEventListener('change', (event) => {
-
     const option = document.getElementsByTagName("option")
     console.log(event.target.value)
 
@@ -148,25 +142,14 @@ selectElement.addEventListener('change', (event) => {
     if (event.target.value == `All`) {
         optionResult = animeData;
     }
-
-    container.innerHTML = '';
-    optionResult.map((element, index) => {
-        container.innerHTML += getAnimes(element, index)
-    })
-
+    animeMap(optionResult);
 });
-
-
-
 
 async function nextPage(event) {
     const fetchedData = await fetch(`https://api.jikan.moe/v4/top/anime?page=${event}`);
     const fetchedDataJson = await fetchedData.json();
     const pageData = fetchedDataJson.data
-    container.innerHTML = "";
-    pageData.map((element, index) => {
-        container.innerHTML += getAnimes(element, index)
-    })
+    animeMap(pageData)
 }
 let anchor = [];
 const pages = document.querySelector("#pages");
@@ -186,9 +169,9 @@ for (i = 1; i <= 10; i++) {
         }
         anchor[a.text - 1].style = "background-color:#1c439b"
     })
-
 }
 console.log(anchor)
+
 anchor[0].style = "background-color:#1c439b"
 
 function nextPageNumber(event) {
@@ -210,7 +193,6 @@ function nextButton(event){
     }
     anchor[page - 1].style = "background-color:#1c439b"
     } console.log(page)
-    nextPage(page)
     nextPage(page)
     console.log(page)
 }
