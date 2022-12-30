@@ -11,7 +11,6 @@ async function MyPage(event) {
   const fetchedData = await fetch(`https://api.jikan.moe/v4/top/anime?page=${event}`);
   const fetchedDataJson = await fetchedData.json();
   animeData = fetchedDataJson.data
-
   const container = document.querySelector('#anime-container');
   container.innerHTML = "";
   animeData.map((element, index) => {
@@ -55,13 +54,13 @@ for (let i = 0; i <9 ; i++) {
 };
 
 // Active style for Pagination
-let pageButton = document.querySelectorAll('.page-button');
-pageButton.forEach((a) => {
-  a.addEventListener('click', function () {
-    pageButton.forEach(btn => btn.classList.remove('active'));
-    this.classList.add('active');
+  let pageButton = document.querySelectorAll('.page-button');
+  pageButton.forEach((a) => {
+    a.addEventListener('click', function () {
+      pageButton.forEach(btn => btn.classList.remove('active'));
+      this.classList.add('active');
+    });
   });
-});
 
 //NEXT BUTTON
 const rightArrow = document.createElement('a')
@@ -83,7 +82,7 @@ function nextButton(event){
   if(!Number.isInteger(page)){
       page = 2;
       } else if (page >=9) {
-        page = 9;
+        rightArrow.setAttribute("disabled", true);
       }
       else{
       page = page + 1;}
@@ -98,6 +97,7 @@ prevPageNumber();
 function prevButton(event){
    if(!Number.isInteger(page)){
        page = 1;
+       leftArrow.setAttribute("disabled", true);
    }else if(page <= 1 ){
    page = 1
    } else {
@@ -288,7 +288,10 @@ fetch('https://api.jikan.moe/v4/top/anime')
   .then((topAnime) => {
     const animeData = topAnime.data;
     const container = document.querySelector('#anime-container');
-
+    if (page = 1) {
+      let firstButton = document.querySelector('.page-button');
+      firstButton.classList = 'active';
+    }
     container.innerHTML = '';
     animeData.map((element, index) => {
       container.innerHTML += getAnimes(element, index)
