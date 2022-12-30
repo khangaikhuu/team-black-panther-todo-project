@@ -6,7 +6,7 @@
 }
 
 body {
-    background: linear-gradient(rgb(125, 229, 255), rgb(211, 247, 255));
+    background: linear-gradient(rgb(97, 97, 97), rgb(170, 255, 239));
 }
 
 a {
@@ -35,6 +35,7 @@ h6 {
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
     transition-duration: 300ms;
     border-radius: 1%;
+    margin-bottom: 40px;
 }
 
 .manga-container:hover {
@@ -131,6 +132,18 @@ select {
 
 #pages-list {
     display: flex;
+    margin-bottom: 60px;
+    padding: 10px;
+    background-color: rgb(255, 208, 37);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+
+#pages-list a {
+   color: rgb(195, 136, 25);
+   border: 1px solid black;
+   background-color: rgb(255, 212, 132);
+   padding: 2px 15px;
 }
 
 #animes-list {

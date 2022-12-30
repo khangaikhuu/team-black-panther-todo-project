@@ -77,13 +77,13 @@ select.addEventListener('change', async function handleChange(event) {
 
 // BUSAD ANIME TABLE RUU VSREH ZUIL 
 console.log('Pagination')
-
+//PAGES
 let pageData = [];
 let pagination = {};
 let page = 1;
 let currenPage = page;
 
-//BUH PAGUDIN DATA
+//GET PAGE DATA
 async function getPageData(event){
     if(event.id == "prev"){
         page = Number(currenPage) - 1;
@@ -95,6 +95,7 @@ async function getPageData(event){
         page = event.text
     }
     currenPage = page;
+    
     if(page == undefined || page < 1){
         page = 1;
         currenPage = 1;
@@ -119,11 +120,13 @@ async function getPageData(event){
 }
 getPageData(page);
 
-//PAGENATION VVSGEGCH
+//CREATE PAGENATION
 function createPagenation(page){
     let paging = document.getElementById("pages-list");
     paging.innerHTML = "";
-    let prev = `<a onclick="getPageData(this)" id="prev"></a>`;
+
+    let prev = `<a onclick="getPageData(this)" id="prev">Back</a>`;
+
     paging.innerHTML = prev;
 
     for(let i = 0; i < 10; i++){
@@ -136,9 +139,13 @@ function createPagenation(page){
         }
         paging.innerHTML += nthPage;
     }
-    let next = `<a onclick="getPageData(this)" id="next"></a>`
+
+    let next = `<a onclick="getPageData(this)" id="next">next</a>`
     paging.innerHTML += next;
 }
+
+
+
 
 // FETCH
 let genreData = [];
