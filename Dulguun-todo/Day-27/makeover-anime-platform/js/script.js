@@ -32,18 +32,16 @@ leftArrow.addEventListener ('click',() => {
 })
 pagination.appendChild(leftArrow);
 
-let anchorTag = [];
+
 for (let i = 0; i <9 ; i++) {
   const anchorTag = document.createElement('a');
   paginationContainer.appendChild(anchorTag);
   anchorTag.innerHTML = i + 1;
+  anchorTag.classList = 'page-button';
   anchorTag.addEventListener('click', async (event) => {
     console.log('Current Page =',event.target.text);
     const fetchedData = await fetch(`https://api.jikan.moe/v4/top/anime?page=${page}`)
     const fetchedJSON = await fetchedData.json();
-    
-    anchorTag.className = "active";
-
     animeData = fetchedJSON.data;
     MyPage(event.target.text);
     nextPageNumber(event.target.text);
@@ -53,7 +51,16 @@ for (let i = 0; i <9 ; i++) {
     container.innerHTML += getAnimes(element, index);
   })
 })
-}
+};
+
+// Active style for Pagination
+let pageButton = document.querySelectorAll('.page-button');
+pageButton.forEach((a) => {
+  a.addEventListener('click', function () {
+    pageButton.forEach(btn => btn.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
 
 //NEXT BUTTON
 const rightArrow = document.createElement('a')
