@@ -146,23 +146,23 @@ async function clearFunc() {
 
 // ** Filter function **// 
 
-// let genreAPI = []
+let genreAPI = []
 
-// async function getGenreAPI() {
-//   let temp = []
-//   const filterSelect = document.getElementById("filterSelect")
-//   const fetchedAPI = await fetch("https://api.jikan.moe/v4/genres/anime")
-//   const fetchedJSON = await fetchedAPI.json()
-//   console.log(fetchedJSON)
-//   temp = fetchedJSON.data[3]
-//   filterSelect.innerText = `1`
+async function getGenreAPI() {
+  const filterSelect = document.getElementById("filterSelect")
+  const fetchedAPI = await fetch("https://api.jikan.moe/v4/genres/anime")
+  const fetchedJSON = await fetchedAPI.json()
+  genreAPI = fetchedJSON.data
+  genreAPI.map((genre) => {
+    const option = document.createElement("option")
+    option.value = genre.name
+    option.textContent = genre.name
+    filterSelect.appendChild(option)
+  })
+}
 
-//   genreAPI = temp
-//   console.log(genreAPI)
-// }
-
-// getGenreAPI()
-// console.log(genreAPI)
+getGenreAPI()
+console.log(genreAPI)
 
 
 async function filter() {
@@ -190,10 +190,7 @@ async function filter() {
 
 
 async function showMore(event) {
-  debugger
   const elementSynop = document.getElementById(`synopsis_${event.id}`);
-  // const resultJSON = await fetch('https://api.jikan.moe/v4/top/anime');
-  // const result = await resultJSON.json();
   const showData = animeData;
   const filteredData = showData.filter((el, index) => {
     if (index == event.id) {
