@@ -162,8 +162,6 @@ async function getGenreAPI() {
 }
 
 getGenreAPI()
-console.log(genreAPI)
-
 
 async function filter() {
   const filterSelect = document.getElementById("filterSelect")
@@ -188,7 +186,6 @@ async function filter() {
 
 // ** Show more function **// 
 
-
 async function showMore(event) {
   const elementSynop = document.getElementById(`synopsis_${event.id}`);
   const showData = animeData;
@@ -197,7 +194,30 @@ async function showMore(event) {
       return el;
     }
   })
-  elementSynop.innerHTML = filteredData[0].synopsis;
+  const readMoreBtn = document.querySelector(".readMoreBtn")
+  const readLessBtn = document.querySelector(".readLessBtn")
+  if (readMoreBtn.style = "display: none") {
+    elementSynop.innerHTML = filteredData[0].synopsis;
+  readLessBtn.style = "display: block"
+  }
+}
+
+// ** Show less function **//
+
+async function showLess(event) {
+  const elementSynop = document.getElementById(`synopsis_${event.id}`);
+  const showData = animeData;
+  const filteredData = showData.filter((el, index) => {
+    if (index == event.id) {
+
+      return el;
+    }
+  })
+  elementSynop.innerHTML = filteredData[0].synopsis.slice(0, 300);
+  const readMoreBtn = document.querySelector(".readMoreBtn")
+  readMoreBtn.style = "display: block"
+  const readLessBtn = document.querySelector(".readLessBtn")
+  readLessBtn.style = "display: none"
 }
 
 
@@ -207,12 +227,40 @@ function getAnimes(data, index) {
     return result;
   })
 
+  const studio = data.studios.map((studio) => {
+    const result = `${studio.name}`
+    return result;
+  })
+
+  const theme = data.themes.map((theme) => {
+    const result = ` ${theme.name}`
+    return result;
+  })
+
+  const demographics = data.demographics.map((demographics) => {
+    const result = `${demographics.name}`
+    return result;
+  })
+
   const durationStr = data.duration.substring(0, 3)
+
+  function formatMembers(int) {
+    if (int >= 1000000) {
+      let result = (int / 1000000).toFixed(2) + "M";
+      return result;
+    } else {
+      let str = int.toString();
+      let firstTwo = str.substring(0, 1);
+      let result = 0 + "." + firstTwo + "M";
+      return result;
+    }
+  }
+  let membersResult = formatMembers(data.members)
 
   return `
       <div class="divContainer" id="mainDiv">
       <div class="header">
-      <h6><a href="#" id="title">${data.title}</a></h6>
+      <h6><a href="${data.url}" id="title">${data.title}</a></h6>
       </div>
       <div class="prodsrc">
       <i class="playIcon"></i>
@@ -241,16 +289,21 @@ function getAnimes(data, index) {
             <button id="${index}" onclick="showMore(this)" class="readMoreBtn">
               <i class="moreIcon"></i>
             </button>
+            <button id="${index}" onclick="showLess(this)" class="readLessBtn" >
+              <i class="lessIcon"></i>
+            </button>
           </div>
           <div id="info" class=bodyDivProducer>
-            <p><strong>Studio:</strong> <a href="#" class="studioA">${data.studios[0].name}</a></p>
+            <p><strong>Studio:</strong> <a href="#" class="studioA">${studio}</a></p>
             <p><strong>Source:</strong> ${data.source}</p>
+            <p><strong>Theme:</strong> ${theme}</p>
+            <p><strong>Demographic:</strong> ${demographics}</p>
           </div>
         </div>
       </div>
       <div class="footer">
         <p class="footerP score">${data.score}</p>
-        <p class="footerP member">${(data.members / 1.0e+6).toFixed(1)}M</p>
+        <p class="footerP member">${membersResult}</p>
         <button class="footerPBtn">Add To List</button>
       </div>
     </div>`
