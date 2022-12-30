@@ -26,6 +26,7 @@ const leftArrow = document.createElement('a')
 // PREV BUTTON
 leftArrow.href = '#';
 leftArrow.innerText = "<";
+leftArrow.classList = "left-arrow";
 leftArrow.addEventListener ('click',() => {
   prevButton();
   console.log('Current page =',page)
@@ -66,6 +67,7 @@ pageButton.forEach((a) => {
 const rightArrow = document.createElement('a')
 rightArrow.href = '#';
 rightArrow.innerText = ">";
+rightArrow.classList = "right-arrow";
 rightArrow.addEventListener ('click',() => {
       nextButton();
       console.log('Current page =',page)
@@ -80,8 +82,11 @@ nextPageNumber();
 function nextButton(event){
   if(!Number.isInteger(page)){
       page = 2;
-      }else{
-  page = page + 1;}
+      } else if (page >=9) {
+        page = 9;
+      }
+      else{
+      page = page + 1;}
   MyPage(page);
 }
 
@@ -91,7 +96,7 @@ function prevPageNumber(event) {
 prevPageNumber();
 
 function prevButton(event){
-   if(!Number.isInteger(page) ){
+   if(!Number.isInteger(page)){
        page = 1;
    }else if(page <= 1 ){
    page = 1
