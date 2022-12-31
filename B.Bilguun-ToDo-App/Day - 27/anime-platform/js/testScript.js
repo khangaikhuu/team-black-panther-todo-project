@@ -1,7 +1,7 @@
 let animeData = [];
 let genreData = [];
-let currentPage = 1;
 let page = 1;
+let currentPage = page;
 const selectGenre = document.getElementById("select-genre");
 const container = document.querySelector("#anime-container");
 
@@ -14,7 +14,7 @@ function getDetial(data) {
 
     const myCreate = document.createElement("div");
     // myCreate.style = "width: 460px;";
-    myCreate.className = "col-4 container border border-2";
+    myCreate.className = "col container border border-2";
 
     const animeInfo = document.createElement("h6");
     animeInfo.innerHTML = `${data.type} , ${data.year} | ${data.status.slice(
@@ -91,7 +91,7 @@ function getDetial(data) {
     data.studios.map((element) => {
         studios.innerHTML = `<strong>Studio :</strong> <a href="${element.url}">${element.name}</a>`;
     });
-  
+
 
 
     const source = document.createElement("div");
@@ -167,7 +167,7 @@ async function callGenre() {
     })
 }
 callURL();
-// callGenre();
+callGenre();
 
 function filter() {
     let selectValue = selectGenre.value;
@@ -198,67 +198,49 @@ document.getElementById("reset").addEventListener("change", () => {
 // Pagination 
 
 // Buttons
-const emp = []
 const pagination = document.getElementById("pagination")
 
-// // Previus button
-// const addB = document.createElement("a");
-// pagination.appendChild(addB)
-// addB.className = "btn btn-primary";
-// addB.innerText = "<";
 
 // 1 - 10 numbers
 for (let i = 0; i <= 11; i++) {
     const addA = document.createElement("a");
     pagination.appendChild(addA);
-    addA.innerHTML = i;
-    addA.className = "btn btn-primary";
-    addA.href = "#";
-    if(i == 0){
-        addA.innerHTML = "<";
+    if (i == 0) {
+        addA.innerHTML = `<a href="#" id="prev" class="btn btn-primary" onclick='getPage(this)'>&lt;</a>`;
+    } else if (i == 11) {
+        addA.innerHTML = `<a href="#" id="next" class="btn btn-primary" onclick='getPage(this)'>&gt;</a>`;
+    } else {
+        addA.innerHTML = `<a href="#" class="btn btn-primary" onclick='getPage(this)'>${i}</a>`;
     }
-    if(i == 11){
-        addA.innerHTML = ">";
-    }
-    emp.push(i)
 }
 
+async function getPage(elem) {
+    if (elem.id == 'prev') {
+        page = Number(currentPage) - 1;
+    } else if (elem.id == 'next') {
+        page = Number(currentPage) + 1;
+    } else {
+        page = elem.text;
+    }
+    currentPage = page;
 
-// // Next button
-// const addC = document.createElement("a");
-// pagination.appendChild(addC)
-// addC.className = "btn btn-primary";
-// addC.innerText = ">";
+    if (page < 1) {
+        page = 1;
+        currentPage = 1;
+    }
+    if (page >= 10) {
+        page = 10;
+        currentPage = 10;
+    }
+    console.log('page = ', page);
 
 
-let d = document.querySelectorAll("a")
-console.log('d' ,d);
-console.log(emp);
+    const fetchedData = await fetch(`https://api.jikan.moe/v4/top/anime?page=${page}`);
+    const fetchedJSON = await fetchedData.json();
+    page2Data = fetchedJSON.data;
 
-// console.log(typeof(d[0].innerText));
-console.log('d 0 iin dotorh',(Number(d[1].innerText)+1));
-
-emp.map((numb) => {
-    
-    // console.log('d numbiin dotorh',d[numb].innerText);
-    
-
-    d[numb].addEventListener("click", () => {
-        page = numb;
-        console.log('numb', numb);
-        if(Number(d[numb].innerText) === "<" || numb > 1){
-            page = numb - 1;
-        }
-        async function callPage() {
-            const fetchedData = await fetch(`https://api.jikan.moe/v4/top/anime?page=${page}`);
-            
-            const fetchedJSON = await fetchedData.json();
-            page2Data = fetchedJSON.data;
-            container.innerHTML = "";
-            page2Data.map((element) => {
-                container.appendChild(getDetial(element));
-            });
-        }
-        callPage(this)
-    })
-})
+    container.innerHTML = "";
+    page2Data.map((element) => {
+        container.appendChild(getDetial(element));
+    });
+}
