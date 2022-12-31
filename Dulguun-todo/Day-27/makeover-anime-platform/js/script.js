@@ -28,6 +28,7 @@ leftArrow.innerText = "<";
 leftArrow.classList = "left-arrow";
 leftArrow.addEventListener ('click',() => {
   prevButton();
+  pageButton.forEach(btn => btn.classList.remove('active'));
   console.log('Current page =',page)
 })
 pagination.appendChild(leftArrow);
@@ -54,13 +55,13 @@ for (let i = 0; i <9 ; i++) {
 };
 
 // Active style for Pagination
-  let pageButton = document.querySelectorAll('.page-button');
-  pageButton.forEach((a) => {
-    a.addEventListener('click', function () {
-      pageButton.forEach(btn => btn.classList.remove('active'));
-      this.classList.add('active');
-    });
+let pageButton = document.querySelectorAll('.page-button');
+pageButton.forEach((a) => {
+  a.addEventListener('click', function () {
+    pageButton.forEach(btn => btn.classList.remove('active'));
+    this.classList.add('active');
   });
+});
 
 //NEXT BUTTON
 const rightArrow = document.createElement('a')
@@ -69,6 +70,7 @@ rightArrow.innerText = ">";
 rightArrow.classList = "right-arrow";
 rightArrow.addEventListener ('click',() => {
       nextButton();
+      pageButton.forEach(btn => btn.classList.remove('active'));
       console.log('Current page =',page)
     })
 pagination.appendChild(rightArrow);
@@ -290,8 +292,8 @@ fetch('https://api.jikan.moe/v4/top/anime')
     const container = document.querySelector('#anime-container');
     if (page = 1) {
       let firstButton = document.querySelector('.page-button');
-      firstButton.classList = 'active';
-    }
+      firstButton.classList.add('active');
+    } 
     container.innerHTML = '';
     animeData.map((element, index) => {
       container.innerHTML += getAnimes(element, index)
