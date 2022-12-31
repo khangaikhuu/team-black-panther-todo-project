@@ -198,7 +198,7 @@ async function showMore(event) {
   const readLessBtn = document.querySelector(".readLessBtn")
   if (readMoreBtn.style = "display: none") {
     elementSynop.innerHTML = filteredData[0].synopsis;
-  readLessBtn.style = "display: block"
+    readLessBtn.style = "display: block"
   }
 }
 
@@ -241,6 +241,23 @@ function getAnimes(data, index) {
     const result = `${demographics.name}`
     return result;
   })
+  console.log(demographics)
+  // const year = data.year.map((year) => {
+  //   const result = `${year.name}`
+  //   return result;
+  // })
+  console.log(data.year)
+
+  function yearNull(year) {
+    if (year == null) {
+      year = ""
+      return year
+    } else {
+      return ", " + year
+    }
+  }
+  let year = yearNull(data.year)
+  console.log(year)
 
   const durationStr = data.duration.substring(0, 3)
 
@@ -265,8 +282,8 @@ function getAnimes(data, index) {
       <div class="prodsrc">
       <i class="playIcon"></i>
         <div>
-          <span id="type">${data.type}, </span>
-          <span id="year">${data.year} |</span>
+          <span id="type">${data.type} </span>
+          <span id="year">${year} |</span>
           <span id="status">${data.status} |</span>
           <span id="eps">${data.episodes} episodes,</span>
           <span >${durationStr} min</span>
