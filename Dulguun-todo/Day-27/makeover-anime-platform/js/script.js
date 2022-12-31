@@ -45,7 +45,6 @@ for (let i = 0; i <9 ; i++) {
     const fetchedJSON = await fetchedData.json();
     animeData = fetchedJSON.data;
     MyPage(event.target.text);
-    nextPageNumber(event.target.text);
     const container = document.querySelector('#anime-container');
     container.innerHTML = '';
     animeData.map((element, index) => {
