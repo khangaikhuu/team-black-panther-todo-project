@@ -113,13 +113,13 @@ input::placeholder {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     border: 1px solid black;
-    background-color: rgb(255, 215, 82);
-    color: rgb(195, 138, 53);
+    background-color: rgb(82, 206, 255);
+    color: rgb(53, 77, 195);
     letter-spacing: 1px;
 }
 
 select {
-    background-color: rgb(255, 215, 82);
+    background-color: rgb(82, 206, 255);
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
     padding: 15px;
     border: 1px solid black;
@@ -127,22 +127,22 @@ select {
     border-top-left-radius: 5px;
     font-size: 18px;
     text-align: center;
-    color: rgb(195, 138, 53);
+    color: rgb(53, 77, 195);
 }
 
 #pages-list {
     display: flex;
     margin-bottom: 60px;
     padding: 10px;
-    background-color: rgb(255, 208, 37);
+    background-color: rgb(82, 206, 255);
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 
 #pages-list a {
-   color: rgb(195, 136, 25);
+   color: rgb(255, 255, 255);
    border: 1px solid black;
-   background-color: rgb(255, 212, 132);
+   background-color: rgb(25, 99, 237);
    padding: 2px 15px;
 }
 
