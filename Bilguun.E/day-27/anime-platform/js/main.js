@@ -176,7 +176,6 @@ async function filter() {
       return arr
     }
   })
-  console.log(filterResult)
   const container = document.getElementById("mainDiv");
   container.innerHTML = '';
   filterResult.map((element, index) => {
@@ -186,7 +185,7 @@ async function filter() {
 
 // ** Show more function **// 
 
-async function showMore(event) {
+function showMore(event) {
   const elementSynop = document.getElementById(`synopsis_${event.id}`);
   const showData = animeData;
   const filteredData = showData.filter((el, index) => {
@@ -194,11 +193,11 @@ async function showMore(event) {
       return el;
     }
   })
-  const readMoreBtn = document.querySelector(".readMoreBtn")
-  const readLessBtn = document.querySelector(".readLessBtn")
-  if (readMoreBtn.style = "display: none") {
+  const readMoreBtn = document.querySelector(`.readMoreBtn_${event.id}`)
+  const readLessBtn = document.querySelector(`.readLessBtn_${event.id}`)
+  if (readMoreBtn.style.display = "none") {
     elementSynop.innerHTML = filteredData[0].synopsis;
-    readLessBtn.style = "display: block"
+    readLessBtn.style.display = "block"
   }
 }
 
@@ -214,12 +213,11 @@ async function showLess(event) {
     }
   })
   elementSynop.innerHTML = filteredData[0].synopsis.slice(0, 300);
-  const readMoreBtn = document.querySelector(".readMoreBtn")
-  readMoreBtn.style = "display: block"
-  const readLessBtn = document.querySelector(".readLessBtn")
-  readLessBtn.style = "display: none"
+  const readMoreBtn = document.querySelector(`.readMoreBtn_${event.id}`)
+  readMoreBtn.style.display = "block"
+  const readLessBtn = document.querySelector(`.readLessBtn_${event.id}`)
+  readLessBtn.style.display = "none"
 }
-
 
 function getAnimes(data, index) {
   const genres = data.genres.map(genre => {
@@ -241,12 +239,6 @@ function getAnimes(data, index) {
     const result = `${demographics.name}`
     return result;
   })
-  console.log(demographics)
-  // const year = data.year.map((year) => {
-  //   const result = `${year.name}`
-  //   return result;
-  // })
-  console.log(data.year)
 
   function yearNull(year) {
     if (year == null) {
@@ -257,7 +249,6 @@ function getAnimes(data, index) {
     }
   }
   let year = yearNull(data.year)
-  console.log(year)
 
   const durationStr = data.duration.substring(0, 3)
 
@@ -282,7 +273,7 @@ function getAnimes(data, index) {
       <div class="prodsrc">
       <i class="playIcon"></i>
         <div>
-          <span id="type">${data.type} </span>
+          <span id="type">${data.type}</span>
           <span id="year">${year} |</span>
           <span id="status">${data.status} |</span>
           <span id="eps">${data.episodes} episodes,</span>
@@ -300,15 +291,15 @@ function getAnimes(data, index) {
           id="manga-image"
         />
         <div class="bodyDivRight">
-          <div id="text" class="bodyDivP">
-          <p id="synopsis_${index}">${data.synopsis.slice(0, 300)}</p>
-            <p id="secondBodyP"></p>
-            <button id="${index}" onclick="showMore(this)" class="readMoreBtn">
-              <i class="moreIcon"></i>
-            </button>
-            <button id="${index}" onclick="showLess(this)" class="readLessBtn" >
-              <i class="lessIcon"></i>
-            </button>
+        <div id="text" class="bodyDivP">
+        <p id="synopsis_${index}">${data.synopsis.slice(0, 300)}</p>
+          <p id="secondBodyP"></p>
+          <button id="${index}" onclick="showMore(this)" class="readMoreBtn_${index} readMoreBtn">
+            <i class="moreIcon"></i>
+          </button>
+          <button id="${index}" onclick="showLess(this)" class="readLessBtn_${index} readLessBtn">
+            <i class="lessIcon"></i>
+          </button>
           </div>
           <div id="info" class=bodyDivProducer>
             <p><strong>Studio:</strong> <a href="#" class="studioA">${studio}</a></p>
