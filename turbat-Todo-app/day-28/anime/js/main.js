@@ -1,68 +1,60 @@
 const animeGrid = document.querySelector("#anime-container");
 const animeSelector = document.querySelector("#anime-selector");
-const topDataURL = "https://api.jikan.moe/v4/top/anime"
-const genreDataURL = "https://api.jikan.moe/v4/genres/anime"
+const topDataURL = "https://api.jikan.moe/v4/top/anime";
+const genreDataURL = "https://api.jikan.moe/v4/genres/anime";
 let animeData = [];
+
+//anime data awj bgaa heseg
 async function fetchAnimes() {
-    const fetchedData = await fetch(topDataURL);
-    const fetchedJSON = await fetchedData.json();
-    animeData = fetchedJSON.data;
+  const fetchedData = await fetch(topDataURL);
+  const fetchedJSON = await fetchedData.json();
+  animeData = fetchedJSON.data;
 
+  animeData.map((anime) => {
+    animeGrid.innerHTML += createAnimeCard(anime);
+  });
 
-    animeData.map((anime) => {
-        animeGrid.innerHTML += createAnimeCard(anime)
+  // animeData.genre.map(genre => {
+  //     const genreElement = document.createElement("p")
+  //     console.log(genreElement)
+  //     genreElement.textContent = genre.name;
+  //     console.log(genreElement)
+  //     animeGenre.appendChild(genreElement)
 
-    })
+  // })
 
-    // animeData.genre.map(genre => {
-    //     const genreElement = document.createElement("p")
-    //     console.log(genreElement)
-    //     genreElement.textContent = genre.name;
-    //     console.log(genreElement)
-    //     animeGenre.appendChild(genreElement)
-
-    // })
-
-    // animeGrid.appendChild(animeGenre)
-    // console.log('anime grid' + animeGrid[0])
-    // 
-
+  // animeGrid.appendChild(animeGenre)
+  // console.log('anime grid' + animeGrid[0])
 }
 fetchAnimes();
-
+//GENRE
 //6-15 fetch genres async function
 async function fetchGenres() {
-    const fetchedData = await fetch(genreDataURL);
-    const fetchedJSON = await fetchedData.json();
-    genreData = fetchedJSON.data;
+  const fetchedData = await fetch(genreDataURL);
+  const fetchedJSON = await fetchedData.json();
+  genreData = fetchedJSON.data;
 
-    const animeGenre = document.createElement("select")
-    animeGenre.className = ("anime-genre");
-    animeSelector.appendChild(animeGenre)
-    genreData.map((genre) => {
-        const option = document.createElement("option")
-        option.textContent = genre.name
-        console.log(genre)
-        animeGenre.appendChild(option)
+  const animeGenre = document.createElement("select");
+  animeGenre.className = "anime-genre";
+  animeSelector.appendChild(animeGenre);
+  genreData.map((genre) => {
+    const option = document.createElement("option");
+    option.textContent = genre.name;
+    console.log(genre);
+    animeGenre.appendChild(option);
 
-        //select hiiheer teriig n sanaj/barij/ bas hewlej bgaa
-        const select = document.getElementById('anime-selector');
-        select.addEventListener('change', function handleChange(event) {
-            let selectValue = event.target.value;
-            console.log(event.target.value);
-            
-            
-        });
-        
-
-    })
+    //select hiiheer teriig n sanaj/barij/ bas hewlej bgaa
+    const select = document.getElementById("anime-selector");
+    select.addEventListener("change", function handleChange(event) {
+      let selectValue = event.target.value;
+      console.log(event.target.value);
+    });
+  });
 }
-fetchGenres()
+fetchGenres();
 
-//GENRES
+// GENRES
 // const genreContainer = document.createElement("div")
-
-
 
 // fetch('https://api.jikan.moe/v4/anime/5114')
 //   .then((res) => res.json())
@@ -71,21 +63,37 @@ fetchGenres()
 //     console.log('anime data', randomAnime);
 //     // anime title
 //     // const title = document.querySelector('#title');
-//     // title.textContent = randomAnime.title; 
+//     // title.textContent = randomAnime.title;
 //     // console.log(title)
 
 //     //anime studio
 //     const studio = document.getElementById("studio");
 
-
 //     //anime container luu nemeh
-
 
 //   })
 
+//SHOW MORE
+// function showMoreFunc(event) {
+//   const elementSynop = document.getElementById(`anime-text_${anime.mal.id}`);
+//   const elementSynopFull = document.getElementById(`second-p_${anime.mal.id}` );
+
+//   if (event.innerHTML == `<i class="fa-solid fa-sort-down"></i>`) {
+//     event.innerHTML = `<i class="fa-solid fa-caret-up"></i>`;
+//     elementSynop.style = "display: none";
+//     elementSynopFull.style = "display: block";
+//   } else if (event.innerHTML == `<i class="fa-solid fa-caret-up"></i>`) {
+//     event.innerHTML = `<i class="fa-solid fa-sort-down"></i>`;
+//     elementSynop.style = "display: block";
+//     elementSynopFull.style = "display: none";
+//   }
+// }
+
+
+
 function createAnimeCard(anime) {
-    console.log(anime);
-    const animeContainer = `
+  console.log(anime);
+  const animeContainer = `
   <div class="anime-card" id="card">
           <a href="#" id="title">${anime.title}</a>
           <div class="anime-status">
@@ -98,16 +106,23 @@ function createAnimeCard(anime) {
               </div>
               <i class="fa-solid fa-signal" style="font-size: 16px"></i>
           </div>
+
+
+        <div id="genres">
+              
+        </div>
+
+
           <div class="anime-body">
               <img
                   src="${anime.images.jpg.image_url}"
                   alt="full-alchemist"
               />
               <div class="anime-content">
-                  <div id="text">
-                      <p></p>
-                      <p id="second-p style="display:none;""></p>
-                      <button id="moreBtn">
+                  <div id="anime-text_${anime}">
+                      <p>${anime.synopsis.slice(0, 300)}</p>
+                      <p id="second-p" style="display:none;>${anime.synopsis}</p>
+                      <button id="moreBtn" id="${anime}" onclick="showMoreFunc(this)>
                           <i class="fa-solid fa-angle-down"></i>
                       </button>
                   </div>
@@ -126,11 +141,13 @@ function createAnimeCard(anime) {
               </div>
               <div id="views">
                   <i class="fa-solid fa-eye"></i>
-                  <span id="view-number">${anime.members}</span>
+                  <span id="view-number">${(anime.members / 1000000).toFixed(
+                    1
+                  )}M</span>
               </div>
               <button id="add-list">Add To List</button>
           </div>
-      </div>`
+      </div>`;
 
-    return animeContainer;
+  return animeContainer;
 }

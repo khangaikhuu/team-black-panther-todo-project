@@ -30,7 +30,6 @@ async function getPageData(event){
     const fetchedJSON = await fetchedData.json();
     pageData = fetchedJSON.data;
     pagination = fetchedJSON.pagination;
-
     const animes = document.getElementById("animes");
 
     createPagenation(page);
@@ -125,7 +124,6 @@ async function dropdown(){
         const option = document.createElement("option");
         option.value = element.mal_id;
         option.textContent = element.name;
-
         select.appendChild(option);
     })
 }
@@ -209,7 +207,7 @@ function showMoreFunc(event){
         elementSynopFull.style = "display: none";
     }
 }
-
+console.log(index)
 
 
 //GET ANIMES
