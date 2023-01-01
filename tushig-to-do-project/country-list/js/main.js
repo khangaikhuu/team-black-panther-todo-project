@@ -5,3 +5,4 @@ searchBtn.addEventListener("click" , () => {
     let countryName = countryInp.value;
     console.log(countryName)
 })
+
