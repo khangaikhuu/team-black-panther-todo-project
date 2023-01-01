@@ -170,6 +170,27 @@ function addToList(event){
     animeList.appendChild(list);
 }
 
+const listSelect = document.getElementById("my-animes");
+
+listSelect.addEventListener("change", function change(event){
+    let listValue = event.target.value;
+
+    const selectList = animeData.filter(anime => {
+        const titles = anime.title;
+
+        if(titles == listValue){
+            return anime
+        }
+    })
+
+    const selectedAnimes = document.getElementById("animes");
+    let result = "";
+    selectList.map((element, index) => {
+        result += getAnimes(element, index);
+    })
+    selectedAnimes.innerHTML = result;
+})
+
 
 
 //SHOW MORE
