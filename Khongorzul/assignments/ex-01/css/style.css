@@ -14,7 +14,6 @@ h1{
     margin: auto;
     display: flex;
     border: 5px double orange;
-    background-color: crimson;
     padding: 5px;
 }
 img{
@@ -23,13 +22,14 @@ img{
 }
 #user-card-body{
     width: 400px;
-    line-height: 30px; background: linear-gradient(to top, #40e0d0, #ff8c00, #ff0080);
+    line-height: 30px;
+    background: rgba(255, 0, 247, 0.3);
+    border-radius: 0 20px 20px 0;
 }
 h2{
     text-align: center;
     margin: 0;
     padding: 5px;
-    border-top-right-radius: 20px;
 }
 #user-name{
     text-align: center;
@@ -41,5 +41,4 @@ h2{
 }
 #bottom{
     padding: 10px;
-    border-bottom-right-radius: 20px;
 }

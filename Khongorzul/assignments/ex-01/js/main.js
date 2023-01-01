@@ -1,4 +1,5 @@
 //FETCH
+let userData = [];
 async function users(){
     const fetchedData = await fetch("https://randomuser.me/api");
     const fetchedJSON = await fetchedData.json();
