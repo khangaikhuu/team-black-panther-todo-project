@@ -172,3 +172,22 @@
     margin:0 auto;
     box-shadow: 5px 3px -10px;
 }
+#detail p {
+    line-height: 16px;
+    letter-spacing: 1px;
+}
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#jump {
+  display: flex;
+  justify-content: space-evenly;
+  flex: 1;
+  font-size: 30px;
+}
+#jump button {
+    border: none;
+    background-color: white;
+}
