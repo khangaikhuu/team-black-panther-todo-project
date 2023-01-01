@@ -31,6 +31,9 @@ async function fetchGenres() {
 }
 fetchGenres();
 
+const prevBtn = document.getElementById("prevBtn");
+
+
 const pageContainer = document.getElementById("pageContainer");
 
 for(i = 0; i < 9; i++){
