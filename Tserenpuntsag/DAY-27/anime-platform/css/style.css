@@ -27,6 +27,14 @@
     justify-content: space-around;
 }
 
+.buttonPN{
+    background-color: black;
+    width: 18.5px;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+}
+
 #animeCard{
    width: 30%;
    text-align: center;
