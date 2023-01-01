@@ -6,18 +6,15 @@ let genreData = [];
 let current = "";
 const empty = []
 const page = document.querySelector("#page")
-const prev = document.querySelector("#prev")
+
 
 
 // ----------------PREV, NEXT BUTTON-------------
 
-
-
     const anker1 = document.createElement("a")
     page.appendChild(anker1);
-    anker1.innerHTML = `<button class= "btn btn-secondary"> <i class='fas fa-arrow-left bg-secondary'>   </i></button>`;
-    // anker1.href = "#"
-    // empty.push(i)
+    anker1.innerHTML = `<button class= "btn btn-info"> <i class='fas fa-arrow-left bg-info'>   </i></button>`;
+    anker1.className = "remove-btn"
     anker1.addEventListener("click", async (even) => {
         current = Number(current) - 1;
         console.log('current',current);
@@ -29,7 +26,6 @@ const prev = document.querySelector("#prev")
         const pageData = fetchJSON.data;
         console.log(pageData)
         animeData = pageData;
-
         container.innerHTML = "";
         animeData.map((anime) => {
             container.innerHTML += getAnimes(anime)
@@ -38,16 +34,11 @@ const prev = document.querySelector("#prev")
 
 
     const anker4 = document.createElement("a")
-    prev.appendChild(anker4);
+    page.appendChild(anker4);
     anker4.innerHTML = `<button class= "btn btn-warning"> <i class='fas fa-arrow-right bg-warning'>   </i></button>`;
-    // anker4.href = "#"
-    // empty.push(i)
-    anker4.addEventListener("click", async (even) => {
+    anker4.addEventListener("click", async (event) => {
         current = Number(current) + 1;
         console.log('next',current);
-        // nee tomyo even dotorh target buyu ANKER tagiin text-iin utgiig hevlej ugj baigaa
-        // console.log(current)
-        // 
         const fetchUrl = await fetch(`https://api.jikan.moe/v4/top/anime?page=${current}`);
         const fetchJSON = await fetchUrl.json();
         const pageData = fetchJSON.data;
@@ -59,10 +50,6 @@ const prev = document.querySelector("#prev")
             container.innerHTML += getAnimes(anime)
         })
     })
-
-
-
-
 
 const selectGenre = document.querySelector("#full-genre");
 
@@ -105,10 +92,6 @@ callGenreURL()
 async function showMore(element) {
     console.log(element.id);
     const elementSynop = document.getElementById(`synopsis_${element.id}`);
-
-    // const resultJSON = await fetch('https://api.jikan.moe/v4/top/anime');
-    // const result = await animeData.json();
-    // const animeDATA = result.data;
     console.log(animeData)
     const filteredData = animeData.filter((el, index) => {
         if (index == element.id) {
@@ -176,19 +159,6 @@ function getAnimes(data, index) {
     </div>
 </div>`
 }
-// fetch('https://api.jikan.moe/v4/top/anime')
-//     .then((res) => res.json())
-//     .then((topAnime) => {
-//         console.log('topAnim', topAnime);
-//         const anime = topAnime.data;
-//         console.log('anime', anime);
-//         const container = document.querySelector('#anime-container');
-
-//         container.innerHTML = '';
-//         anime.map((element, index) => {
-//             container.innerHTML += getAnimes(element, index)
-//         })
-//     })
 
 // ----------------------SEARCH--------------------
 
@@ -211,20 +181,6 @@ async function search(event) {
         container.innerHTML += getAnimes(element);
     })
 }
-
-// function change() {
-//     let selectValue = selectGenre.value;
-//     const selectResult = animeData.filter((anime) => {
-//       let filteredSelect = anime.genres.filter((genre)=> {
-//         if (genre.name == selectValue) {
-//           return genre;
-//         }
-//       });
-//       if (filteredSelect.length > 0) {
-//         return filteredSelect;
-//       }
-//     })
-//   }
 
 // ------------------GENRE------------------
 
@@ -279,11 +235,3 @@ for (let i = 1; i <= 10; i++) {
         })
     })
 };
-
-
-
-// const anker2 = document.querySelector("a")
-
-// empty.map((eve) => {
-//     anker2.
-// }
