@@ -1,0 +1,44 @@
+body{
+    margin: 0;
+}
+h1{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: orangered;
+    padding: 15px;
+    text-align: center;
+}
+
+#user-card{
+    width: 700px;
+    border-radius: 20px;
+    margin: auto;
+    display: flex;
+    border: 5px double orange;
+    padding: 5px;
+}
+img{
+    width: 300px;
+    border-radius: 20px 0 0 20px;
+}
+#user-card-body{
+    width: 400px;
+    line-height: 30px;
+    background: rgba(255, 0, 247, 0.3);
+    border-radius: 0 20px 20px 0;
+}
+h2{
+    text-align: center;
+    margin: 0;
+    padding: 5px;
+}
+#user-name{
+    text-align: center;
+    margin: 0;
+    padding: 5px;
+}
+#top{
+    padding: 10px;
+}
+#bottom{
+    padding: 10px;
+}
