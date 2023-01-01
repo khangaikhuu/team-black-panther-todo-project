@@ -9,8 +9,10 @@
 #headerMain {
     display: flex;
     justify-content: space-around;
+    align-items: center;
     background-color: black;
     color: aliceblue;
+    height: 30px;
 }
 
 #pagination{

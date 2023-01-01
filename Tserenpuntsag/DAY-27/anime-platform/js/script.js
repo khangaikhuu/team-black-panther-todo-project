@@ -31,89 +31,88 @@ async function fetchGenres() {
 }
 fetchGenres();
 
-const pageContainer = document.getElementById("pageContainer");
+    const pageContainer = document.getElementById("pageContainer");
 
-for(i = 0; i < 9; i++){
-    const animePage = document.createElement("a");
-    animePage.innerHTML = i + 1;
-    pageContainer.appendChild(animePage);
-    animePage.addEventListener("click", async (event) =>{
-        console.log(event.target.text);
-        const fetchedURL = await fetch(`https://api.jikan.moe/v4/top/anime?page=${event.target.text}`)
-        const fetchJSON = await fetchedURL.json();
-        const pageData = fetchJSON.data;
-        fetchedJSONData = pageData;
+    for (i = 0; i < 9; i++) {
+        const animePage = document.createElement("a");
+        animePage.innerHTML = i + 1;
+        pageContainer.appendChild(animePage);
+        animePage.addEventListener("click", async (event) => {
+            const fetchedURL = await fetch(`https://api.jikan.moe/v4/top/anime?page=${event.target.text}`)
+            const fetchJSON = await fetchedURL.json();
+            const pageData = fetchJSON.data;
+            fetchedJSONData = pageData;
+            container.innerHTML = "";
+            fetchedJSONData.map((element, index) => {
+                container.innerHTML += animeData(element, index);
+            })
+        })
+
+    }
+
+    async function showMore(event) {
+
+        const index = event.id;
+
+        const elementSynop = document.getElementById(`synopsis_${index}`);
+
+        const foundElement = fetchedJSONData.filter((e, idx) => {
+            if (idx == index) {
+                return e;
+            }
+
+        })
+        elementSynop.innerHTML = foundElement[0].synopsis;
+    }
+
+    async function search(event) {
+        const searchField = document.getElementById('search-field');
+        const searchWord = searchField.value;
+
+        const searchResult = fetchedJSONData.filter((anime) => {
+            if (anime.title.toLowerCase().includes(searchWord.toLowerCase())) {
+                return anime
+            }
+        })
+        console.log(searchResult);
+        cont.innerHTML = "";
+        searchResult.map((element, index) => {
+            console.log(element);
+            cont.innerHTML += animeData(element, index);
+        })
+    }
+
+    genreSelector.addEventListener('change', async (event) => {
+        const option = document.getElementsByTagName("option");
+        console.log(event.target.value);
+
+        let optionResult = fetchedJSONData.filter(element => {
+            for (i = 0; i < element.genres.length; i++) {
+                if (event.target.value == element.genres[i].name) {
+                    return element;
+                }
+            }
+        })
+        console.log(optionResult);
+
+        if (event.target.value == `All`) {
+            optionResult = fetchedJSONData;
+        }
+
         container.innerHTML = "";
-        fetchedJSONData.map((element, index) => {
-            container.innerHTML += animeData(element,index);
+        optionResult.map((element, index) => {
+            container.innerHTML += animeData(element, index)
         })
     })
 
-}
+    function animeData(data, index) {
 
-async function showMore(event) {
+        let genres = data.genres.map(ele => {
+            const result = `<button class="buttonGenre">${ele.name}</button>`
+            return result
+        })
 
-    const index = event.id;
-
-    const elementSynop = document.getElementById(`synopsis_${index}`);
-
-    const foundElement = fetchedJSONData.filter((e, idx) => {
-        if (idx == index) {
-            return e;
-        }
-
-    })
-    elementSynop.innerHTML = foundElement[0].synopsis;
-}
-
-async function search(event) {
-    const searchField = document.getElementById('search-field');
-    const searchWord = searchField.value;
-
-    const searchResult = fetchedJSONData.filter((anime) => {
-        if (anime.title.toLowerCase().includes(searchWord.toLowerCase())) {
-            return anime
-        }
-    })
-    console.log(searchResult);
-    cont.innerHTML = "";
-    searchResult.map((element, index) => {
-        console.log(element);
-        cont.innerHTML += animeData(element, index);
-    })
-}
-
-genreSelector.addEventListener('change', async (event) => {
-    const option = document.getElementsByTagName("option");
-    console.log(event.target.value);
-
-    let optionResult = fetchedJSONData.filter(element => {
-        for (i = 0; i < element.genres.length; i++) {
-            if (event.target.value == element.genres[i].name) {
-                return element;
-            }
-        }
-    })
-    console.log(optionResult);
-
-    if (event.target.value == `All`) {
-        optionResult = fetchedJSONData;
-    }
-
-    container.innerHTML = "";
-    optionResult.map((element, index) => {
-        container.innerHTML += animeData(element, index)
-    })
-})
-
-function animeData(data, index) {
-
-    let genres = data.genres.map(ele => {
-        const result = `<button class="buttonGenre">${ele.name}</button>`
-        return result
-    })
-
-    return `
+        return `
     <div id="animeCard">
         <h4 id="title">${data.title}</h4>
         <div id="headerDIV">
@@ -152,4 +151,4 @@ function animeData(data, index) {
         </div>
 
     </div>`
-}
+    }
