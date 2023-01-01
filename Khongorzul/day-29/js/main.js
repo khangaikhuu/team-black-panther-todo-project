@@ -88,13 +88,11 @@ callURL();
 //SEARCH
 async function search(event){
     const searchField = document.getElementById("search-input").value;
-    //const searchWord = searchField;
 
     const animes = await fetch("https://api.jikan.moe/v4/top/anime");
     const animesJSON = await animes.json();
 
     const animesData = animesJSON.data;
-    // console.log(searchWord);
 
     const searchResult = animesData.filter(anime => 
         anime.title.toLowerCase().includes(searchField.toLowerCase())
@@ -164,11 +162,12 @@ select.addEventListener('change', function handleChange(event) {
 
 //MY ANIME LIST
 let animeList = document.getElementById("my-animes");
+
 function addToList(event){
     let list = document.createElement("option");
-    list = document.getElementById(`anime-title_${event.id}`);
-    console.log(event);
-    console.log(list);
+    const anime = document.getElementById(`title_${event.id}`).innerText;
+    list.innerHTML = anime;
+    animeList.appendChild(list);
 }
 
 
@@ -176,7 +175,7 @@ function addToList(event){
 //SHOW MORE
 function showMoreFunc(event){
     const elementSynop = document.getElementById(`anime-text_${event.id}`);
-    const elementSynopFull = document.getElementById(`anime-full-text_${event.id}`)
+    const elementSynopFull = document.getElementById(`anime-full-text_${event.id}`);
 
     if(event.innerHTML == `<i class="fa-solid fa-sort-down"></i>`){
         event.innerHTML = `<i class="fa-solid fa-caret-up"></i>`;
@@ -217,7 +216,7 @@ function getAnimes(data, index){
 
     return `
     <div class="anime" id="card">
-        <h3><a id="anime-title_${index}" class="anime-title" href="${data.url}">${data.title}</a></h3>
+        <h3 id="title_${index}"><a id="anime-title" class="anime-title" href="${data.url}">${data.title}</a></h3>
 
         <div class="anime-status">
             <i class="fa-brands fa-youtube"></i>
@@ -260,7 +259,7 @@ function getAnimes(data, index){
         <div id="bottom">
             <div><i class="fa-regular fa-star"></i> <span>${data.score}</span></div>
             <div><i class="fa-solid fa-user"></i> <span>${(data.members / 1.0e+6).toFixed(1)}M</span></div>
-            <div><button id="add_${index}" class="add" onclick="addToList(this)">Add to List</button></div>
+            <div><button id="${index}" class="add" onclick="addToList(this)">Add to List</button></div>
         </div>
     </div>`
 }
