@@ -124,9 +124,9 @@ h1 {
 
 #anime-container {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-	gap: 20px;
-	justify-content: center;
+	grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+	gap: 70px;
+	justify-items: center;
 }
 
 #search-container{
@@ -150,15 +150,31 @@ h1 {
 	color: white;
 	border: none;
 }
+.genre-container{
+	display: flex;
+	justify-content: center;
+}
 
 #genre-selector{
 	padding: 12px; 
 	background: #3535ff;
 	color: white;
-	border: none;
-	margin: 10px 43% ;
+	margin: 20px;
 }
 
+
+#page-selector{
+	text-align: center;
+}
+
+#page-selector a {
+	border: 3px solid #3a50d9;
+	border-radius: 10px;
+	background-color: white;
+	padding: 10px 13px;
+	margin: 30px 5px;
+	text-decoration: none;
+}
 
 
 

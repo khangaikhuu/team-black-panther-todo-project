@@ -1,13 +1,98 @@
+//PAGES
+let pageData = [];
+let pagination = {};
+let page = 1;
+let currenPage = page;
+
+//GET PAGE DATA
+async function getPageData(event){
+    if(event.id == "prev"){
+        page = Number(currenPage) - 1;
+    }
+    else if(event.id == "next"){
+        page = Number(currenPage) + 1;
+    }
+    else{
+        page = event.text
+    }
+    currenPage = page;
+    
+    if(page == undefined || page < 1){
+        page = 1;
+        currenPage = 1;
+    }
+    if(page >= 10){
+        page = 10;
+        currenPage = 10;
+    }
+
+    const fetchedData = await fetch(`https://api.jikan.moe/v4/top/anime?page=${page}`);
+    const fetchedJSON = await fetchedData.json();
+    pageData = fetchedJSON.data;
+    pagination = fetchedJSON.pagination;
+
+    const animes = document.getElementById("animes");
+
+    createPagenation(page);
+    animes.innerHTML = "";
+    pageData.map((element, index) => {
+        animes.innerHTML += getAnimes(element, index)
+    })
+}
+getPageData(page);
+
+//CREATE PAGENATION
+function createPagenation(page){
+    let paging = document.getElementById("pages");
+    paging.innerHTML = "";
+
+    let prev = `<a onclick="getPageData(this)" id="prev"><i class="fa-solid fa-arrow-up-1-9"></i></a>`;
+
+    paging.innerHTML = prev;
+
+    for(let i = 0; i < 10; i++){
+        let nthPage = "";
+        if(page == (i + 1)){
+            nthPage = `<a onclick="getPageData(this)" class="active">${i + 1}</a>`
+        }
+        else{
+            nthPage = `<a onclick="getPageData(this)">${i + 1}</a>`
+        }
+        paging.innerHTML += nthPage;
+    }
+
+    let next = `<a onclick="getPageData(this)" id="next"><i class="fa-solid fa-arrow-down-1-9"></i></a>`
+    paging.innerHTML += next;
+}
+
+
+
+//FETCH
+let genreData = [];
+let animeData = [];
+async function callURL(){
+    const fetchedData = await fetch("https://api.jikan.moe/v4/top/anime")
+    const fetchedJSON = await fetchedData.json()
+    animeData = fetchedJSON.data;
+
+    const animes = document.getElementById("animes");
+    animes.innerHTML = "";
+    animeData.map((element, index) => {
+        animes.innerHTML += getAnimes(element, index)
+    })
+}
+callURL();
+
+
+
 //SEARCH
 async function search(event){
     const searchField = document.getElementById("search-input").value;
-    //const searchWord = searchField;
 
     const animes = await fetch("https://api.jikan.moe/v4/top/anime");
     const animesJSON = await animes.json();
 
     const animesData = animesJSON.data;
-    // console.log(searchWord);
 
     const searchResult = animesData.filter(anime => 
         anime.title.toLowerCase().includes(searchField.toLowerCase())
@@ -19,7 +104,6 @@ async function search(event){
         result += getAnimes(element, index);
     })
     searchedAnimes.innerHTML = result;
-
 }
 //ADD KEYBOARD EVENT ON SEARCH BTN
 document.addEventListener("keypress", (event) => {
@@ -32,30 +116,87 @@ document.addEventListener("keypress", (event) => {
 
 
 //SELECT GENRE
-async function dropdown(event){
-    const animes = await fetch("https://api.jikan.moe/v4/top/anime");
-    const animesJSON = await animes.json();
-    const animesData = animesJSON.data;
+async function dropdown(){
+    const fetchedGenreData = await fetch("https://api.jikan.moe/v4/genres/anime");
+    const fetchedGenreJSON = await fetchedGenreData.json();
+    const genreData = fetchedGenreJSON.data;
 
-    const dropdownSearch = animesData.filter((element, index) =>
-        console.log(animesData[index].genres[index].name)
-        //element.genres[index].name.includes(event)
-    )
+    genreData.map(element => {
+        const option = document.createElement("option");
+        option.value = element.mal_id;
+        option.textContent = element.name;
 
-    const dropdownAnimes = document.getElementById("animes");
-    let result = "";
-    dropdownSearch.map((element, index) => {
-        result += getAnimes(element, index);
-        console.log(result);
+        select.appendChild(option);
     })
-    dropdownAnimes.innerHTML = result;
 }
+dropdown();
+
+
+const select = document.getElementById('genreSelect');
+
+select.addEventListener('change', function handleChange(event) {
+    let selectValue = event.target.value;
+
+    const genreSelect = animeData.filter(anime => {
+        const genres = anime.genres;
+
+        const result = genres.filter((genre) => {
+            if(genre.mal_id == selectValue){
+                return genre
+            }
+        })
+        if(result.length > 0){
+            return anime
+        }
+    })
+
+    const selectedAnimes = document.getElementById("animes");
+    let result = "";
+    genreSelect.map((element, index) => {
+        result += getAnimes(element, index);
+    })
+    selectedAnimes.innerHTML = result;
+});
+
+
+
+//MY ANIME LIST
+let animeList = document.getElementById("my-animes");
+
+function addToList(event){
+    let list = document.createElement("option");
+    const anime = document.getElementById(`title_${event.id}`).innerText;
+    list.innerHTML = anime;
+    animeList.appendChild(list);
+}
+
+const listSelect = document.getElementById("my-animes");
+
+listSelect.addEventListener("change", function change(event){
+    let listValue = event.target.value;
+
+    const selectList = animeData.filter(anime => {
+        const titles = anime.title;
+
+        if(titles == listValue){
+            return anime
+        }
+    })
+
+    const selectedAnimes = document.getElementById("animes");
+    let result = "";
+    selectList.map((element, index) => {
+        result += getAnimes(element, index);
+    })
+    selectedAnimes.innerHTML = result;
+})
+
 
 
 //SHOW MORE
 function showMoreFunc(event){
     const elementSynop = document.getElementById(`anime-text_${event.id}`);
-    const elementSynopFull = document.getElementById(`anime-full-text_${event.id}`)
+    const elementSynopFull = document.getElementById(`anime-full-text_${event.id}`);
 
     if(event.innerHTML == `<i class="fa-solid fa-sort-down"></i>`){
         event.innerHTML = `<i class="fa-solid fa-caret-up"></i>`;
@@ -69,11 +210,18 @@ function showMoreFunc(event){
     }
 }
 
+
+
 //GET ANIMES
 function getAnimes(data, index){
 
     const genres = data.genres.map(genre => {
         const result = `<a>${genre.name}</a>`;
+        return result;
+    })
+
+    const studio = data.studios.map(el => {
+        const result = `<a href="${el.url}">${el.name}</a>`;
         return result;
     })
 
@@ -89,7 +237,7 @@ function getAnimes(data, index){
 
     return `
     <div class="anime" id="card">
-        <h3><a id="anime-title" href="${data.url}">${data.title}</a></h3>
+        <h3 id="title_${index}"><a id="anime-title" class="anime-title" href="${data.url}">${data.title}</a></h3>
 
         <div class="anime-status">
             <i class="fa-brands fa-youtube"></i>
@@ -120,7 +268,7 @@ function getAnimes(data, index){
                 <button class="more-button" id="${index}" onclick="showMoreFunc(this)"><i class="fa-solid fa-sort-down"></i></button>
 
                 <div id="right-bottom">
-                    <p>Studios: <a href="${data.studios[0].url}" id="studio">${data.studios[0].name}</a></p>
+                    <p>Studios: ${studio}</p>
                     <p>Source: <a>${data.source}</a></p>
                     <p>Theme: <a>${theme}</a></p>
                     <p>Demographics: <a>${demo}</a></p>
@@ -132,20 +280,7 @@ function getAnimes(data, index){
         <div id="bottom">
             <div><i class="fa-regular fa-star"></i> <span>${data.score}</span></div>
             <div><i class="fa-solid fa-user"></i> <span>${(data.members / 1.0e+6).toFixed(1)}M</span></div>
-            <div><button id="add">Add to List</button></div>
+            <div><button id="${index}" class="add" onclick="addToList(this)">Add to List</button></div>
         </div>
     </div>`
 }
-
-//FETCH
-fetch("https://api.jikan.moe/v4/top/anime")
-    .then((result) => result.json())
-    .then((topAnime) => {
-        const anime = topAnime.data;
-        const animes = document.getElementById("animes");
-
-        anime.innerHTML = "";
-        anime.map((element, index) => {
-            animes.innerHTML += getAnimes(element, index)
-        })
-    })

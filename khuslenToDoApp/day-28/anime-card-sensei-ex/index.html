@@ -13,20 +13,25 @@
 </head>
 
 <body>
-  <h1>Anime card</h1>
-  <script src="js/main.js"></script>
-  <div class="d-flex justify-content-evenly">
-    <div id="genre" onchange="change()">
-      <select id="full-genre"></select>
-     
-    </div>
 
+
+
+  <h1>Anime card</h1>
+  <header>
+    <div id="page" class="pagination"></div>
+    <div class="d-flex justify-content-evenly">
+    <select id="full-genre"></select>
     <div id="search-container">
       <input placeholder="Please search" id="search-field" class="">
       <input type="button" value="Search" onclick="search(this)">
     </div>
-  </div>
+  </header>
+
+  
+
   <div id="anime-container"></div>
+
+  <script src="js/main.js"></script>
 </body>
 
 </html>

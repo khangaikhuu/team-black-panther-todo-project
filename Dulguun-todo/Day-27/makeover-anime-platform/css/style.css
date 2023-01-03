@@ -5,7 +5,7 @@
 
 body {
 	padding: 20px;
-	font-family: Avenir,lucida grande,tahoma,verdana,arial,sans-serif;
+	font-family: Avenir, lucida grande, tahoma, verdana, arial, sans-serif;
 	font-size: 11px;
 }
 
@@ -30,7 +30,8 @@ body {
 
 }
 
-#search-engine input {
+#search-engine input,
+#reset-genre-btn {
 	appearance: none;
 	border: none;
 	outline: none;
@@ -46,13 +47,13 @@ body {
 	font-size: 1rem;
 }
 
-
 #search-input::placeholder {
 	color: #f0f0f0;
+	padding-left: 10px;
 }
 
 #search-button {
-	color: #4f74c8;
+	color: #1c439b;
 	font-size: 1rem;
 	font-weight: 700;
 	cursor: pointer;
@@ -74,11 +75,12 @@ body {
 #title {
 	display: block;
 	text-align: center;
-	padding-block: 20px;
+	padding-block: 25px;
 	font-size: 14px;
 	text-decoration: none;
 	color: #1c439b;
 	font-weight: 700;
+	height: 70px;
 }
 
 #image {
@@ -147,7 +149,7 @@ body {
 
 .anime-content {
 	overflow: auto;
-	height: 243px;
+	height: 250px;
 }
 
 #text {
@@ -204,6 +206,57 @@ body {
 	opacity: 0.5;
 }
 
-.fa-icon {
-	font-size: 1.2rem;
+#pagination-anime {
+	display: flex;
+	justify-content: center;
+	margin: 10px auto 25px;
+	max-width: 500px;
+}
+
+#pagination-anime a {
+	background-color: #4f73c8bc;
+	transition: background-color .3s;
+	margin: auto;
+	padding: 10px;
+
+	/* text-align: center; */
+	border-radius: 5px;
+	color: white;
+	text-decoration: none;
+	font-size: 0.8rem;
+}
+
+#pagination-anime a.active {
+	background-color: #1c439b;
+}
+
+#pagination-anime a:hover:not(.active) {
+	background-color: #1c439b;
+	color: white;
+}
+
+#pagination-anime a:first-child {
+	background-color: white;
+	color: #4f74c8;
+	font-weight: 700;
+	font-size: 0.9rem;
+}
+
+#pagination-anime a:last-child {
+	background-color: white;
+	color: #4f74c8;
+	font-weight: 700;
+	font-size: 0.9rem;
+}
+
+#reset-genre-btn {
+	background-color: #1c439b;
+	color: white;
+	padding: 6px 20px;
+	border-radius: 5px;
+}
+
+#select-container {
+	display: flex;
+	gap: 10px;
 }

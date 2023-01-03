@@ -1,6 +1,9 @@
 console.log("hello world");
 
 let animeData = []
+let genreData = []
+
+const genreCon = document.querySelector("#genre-selector");
 async function callURL() {
     const fetchedData = await fetch('https://api.jikan.moe/v4/top/anime'); //data awahiin tuld await use
     const fetchedJSON = await fetchedData.json();
@@ -9,12 +12,29 @@ async function callURL() {
 
     container.innerHTML = "";
     animeData.map((element, index) => {
-        console.log(element);
+        // console.log(element);
         container.innerHTML += getAnimes(element, index)
     })
 
 }
+async function callGenre() {
+    const fetchData = await fetch('https://api.jikan.moe/v4/genres/anime');
+    const fetchJSON = await fetchData.json();
+    genreData = fetchJSON.data;
+    console.log(genreData);
+
+    genreCon.innerHTML = "";
+
+    genreData.map((element, index) => {
+        const option = document.createElement("option");
+        option.value = element.mal_id;
+        option.textContent = element.name;
+        genreCon.appendChild(option)
+    })
+}
+callGenre()
 callURL()
+
 
 
 const card = document.querySelector(".card");
@@ -43,22 +63,57 @@ function getAnimes(animes, index) {
     console.log(searchResult);
 
 }
-function showMore(event) {
-    console.log('event', event);
-    const synop = document.getElementById(`${event.id}`);
 
-
-    const filteredData = animeData.filter((el, index) => {
-        if (index == event.id) {
-            return el;
-        }
+const pageCon = document.querySelector("#jump");
+for(let i = 0; i < 10 ; i++){
+    const animePage = document.createElement("button");
+    pageCon.appendChild(animePage);
+    console.log(pageCon);
+    animePage.innerHTML = i + 1;
+    animePage.addEventListener("click", async(event) => {
+        console.log(event.target.textContent);
+        const fetchedURL = await fetch(`https://api.jikan.moe/v4/top/anime?page=${event.target.textContent}`);
+        const fetchedJSON = await fetchedURL.json();
+        const pageData = fetchedJSON.data;
+        console.log(pageData);
+        animeData = pageData;
+        animeData.map((anime) => {
+            getAnimes(anime);
+            const container = document.querySelector("#manga-container");
+            container.innerHTML = '';
+            animeData.map((element, index) => {
+                container.innerHTML += getAnimes(element, index)
+            })
+        })
         
-       
 
     })
 
-    console.log(filteredData);
+
+}
+
+async function showMore(event) {
+    console.log('event', event);
+    const synop = document.getElementById(`synopsis_${event.id}`);
+
+    console.log(animeData);
+    const filteredData = animeData.filter((el, index) => {
+        if (index == event.id) {
+
+            return el;
+        }
+    })
+
+    filteredData.map(element => {
+        console.log(element);
+        const detail = element.synopsis;
+        console.log(detail);
+        synop.innerHTML = detail;
+    })
     
+
+
+
 
 }
 
@@ -72,7 +127,7 @@ async function search(event) {
     )
     console.log(searchResult);
     const container = document.querySelector("#manga-container");
-    container.innerHTML = "" ;
+    container.innerHTML = "";
     searchResult.map((element, index) => {
         console.log(element);
         container.innerHTML += getAnimes(element, index)
@@ -81,18 +136,54 @@ async function search(event) {
 
 }
 
+genreCon.addEventListener("change", function handleChange(event) {
+    let searchValue = event.target.value;
+    const genreFilter = animeData.filter(anime => {
+        const genres = anime.genres;
+        const result = genres.filter((genre) => {
+            if (genre.mal_id == searchValue) {
+                return genre;
+            }
+        })
+        if (result.length > 0) {
+            return anime;
+        }
+    })
+
+    const container = document.querySelector("#anime-container");
+    container.innerHTML = "";
+    genreFilter.map((element, index) => {
+        container.innerHTML += getAnimes(element, index)
+        console.log(container);
+    })
+
+})
+
+
 function getAnimes(animes, index) {
 
 
     const genres = animes.genres.map(genre => {
-        console.log(genre);
+        // console.log(genre);
         const result = `<p>${genre.name}</p>`;
         return result;
     })
+
+   
+
     const score = animes.score;
     const members = animes.members;
     const studio = animes.studios.map(elem => {
-        const res = `<a href="#"> ${elem.name}</a>`
+        const res = ` <p class="studio"><strong>Studio:</strong><a href="#"> ${elem.name}</a></p> `
+        return res;
+    })
+    const themes = animes.themes.map(i => {
+        const r = `<a href="#"> ${i.name}</a> `
+        return r;
+    })
+
+    const dem = animes.demographics.map(e => {
+        const res = ` <p class="dem"><strong>Demographic:</strong><a href="#"> ${e.name}</a></p> `
         return res;
     })
 
@@ -112,20 +203,22 @@ function getAnimes(animes, index) {
          </div>
          <div class="img-container">
          <img src=${animes.images.jpg.image_url}>
-         <div class="anime-content">
+         <div class="p-con">
             <div id="detail">
-                <p id="synopsis_${index}">${animes.synopsis.slice(0, 369)}<p/>
-                <p id="second-p"></p>
-                <button id="synopsis_${index}" onclick="showMore(this);">
+                <p id="synopsis_${index}">${animes.synopsis.slice(0, 490)}<p/>
+                <p id="second" ></p> 
+                <button id="${index}"style="border:none; background-color: white;" onclick="showMore(this);">
                     <i class="fa-solid fa-angles-down"></i>
+                </button>
+                <button id="${index}" style="border:none; background-color: white; display: none;" onclick="showMore(this);">
                     <i class="fa-solid fa-angles-up"></i>
                 </button>
             </div>
             <div class="info">
-                <p class="studio"><strong>Studio:</strong>${studio}</p> 
-                <p class="source"><strong>Source:</strong></p> 
-                <p class="theme"><strong>Theme:</strong></p> 
-                <p class="dem"><strong>Demographic:</strong></p> 
+                ${studio}
+                <p class="source"><strong>Source:</strong> ${animes.source}</p> 
+                <p class="theme"><strong>Theme:</strong>${themes.join(' ')}</p>
+                ${dem}
             </div>
          </div>
          </div>
@@ -135,7 +228,7 @@ function getAnimes(animes, index) {
                 ${score}</div>
             <div class="members">
             <i class="fa-solid fa-person"></i>
-                ${members}</div>
+                ${(members / 1.0e+6).toFixed(1)} M</div>
             <div class="button">
                 <button>Add to List</button>
             </div>
