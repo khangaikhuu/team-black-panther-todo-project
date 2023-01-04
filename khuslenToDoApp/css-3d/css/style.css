@@ -58,7 +58,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    transform: rotateY(calc(90deg * var(--i))) translateZ(150px);
+    transform: rotateY(calc(90deg * var(--i))) translateZ(250px);
     cursor: pointer;
     color: rgb(255, 250, 250);
     font-size: 4em;
