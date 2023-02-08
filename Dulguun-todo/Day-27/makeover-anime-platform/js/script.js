@@ -11,7 +11,6 @@ async function MyPage(event) {
   const fetchedData = await fetch(`https://api.jikan.moe/v4/top/anime?page=${event}`);
   const fetchedDataJson = await fetchedData.json();
   animeData = fetchedDataJson.data
-
   const container = document.querySelector('#anime-container');
   container.innerHTML = "";
   animeData.map((element, index) => {
@@ -26,41 +25,51 @@ const leftArrow = document.createElement('a')
 // PREV BUTTON
 leftArrow.href = '#';
 leftArrow.innerText = "<";
+leftArrow.classList = "left-arrow";
 leftArrow.addEventListener ('click',() => {
   prevButton();
+  pageButton.forEach(btn => btn.classList.remove('active'));
   console.log('Current page =',page)
 })
 pagination.appendChild(leftArrow);
 
-let anchorTag = [];
+
 for (let i = 0; i <9 ; i++) {
   const anchorTag = document.createElement('a');
   paginationContainer.appendChild(anchorTag);
   anchorTag.innerHTML = i + 1;
+  anchorTag.classList = 'page-button';
   anchorTag.addEventListener('click', async (event) => {
     console.log('Current Page =',event.target.text);
     const fetchedData = await fetch(`https://api.jikan.moe/v4/top/anime?page=${page}`)
     const fetchedJSON = await fetchedData.json();
-    
-    anchorTag.className = "active";
-
     animeData = fetchedJSON.data;
     MyPage(event.target.text);
-    nextPageNumber(event.target.text);
     const container = document.querySelector('#anime-container');
     container.innerHTML = '';
     animeData.map((element, index) => {
     container.innerHTML += getAnimes(element, index);
   })
 })
-}
+};
+
+// Active style for Pagination
+let pageButton = document.querySelectorAll('.page-button');
+pageButton.forEach((a) => {
+  a.addEventListener('click', function () {
+    pageButton.forEach(btn => btn.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
 
 //NEXT BUTTON
 const rightArrow = document.createElement('a')
 rightArrow.href = '#';
 rightArrow.innerText = ">";
+rightArrow.classList = "right-arrow";
 rightArrow.addEventListener ('click',() => {
       nextButton();
+      pageButton.forEach(btn => btn.classList.remove('active'));
       console.log('Current page =',page)
     })
 pagination.appendChild(rightArrow);
@@ -73,8 +82,11 @@ nextPageNumber();
 function nextButton(event){
   if(!Number.isInteger(page)){
       page = 2;
-      }else{
-  page = page + 1;}
+      } else if (page >=9) {
+        rightArrow.setAttribute("disabled", true);
+      }
+      else{
+      page = page + 1;}
   MyPage(page);
 }
 
@@ -84,8 +96,9 @@ function prevPageNumber(event) {
 prevPageNumber();
 
 function prevButton(event){
-   if(!Number.isInteger(page) ){
+   if(!Number.isInteger(page)){
        page = 1;
+       leftArrow.setAttribute("disabled", true);
    }else if(page <= 1 ){
    page = 1
    } else {
@@ -276,7 +289,10 @@ fetch('https://api.jikan.moe/v4/top/anime')
   .then((topAnime) => {
     const animeData = topAnime.data;
     const container = document.querySelector('#anime-container');
-
+    if (page = 1) {
+      let firstButton = document.querySelector('.page-button');
+      firstButton.classList.add('active');
+    } 
     container.innerHTML = '';
     animeData.map((element, index) => {
       container.innerHTML += getAnimes(element, index)

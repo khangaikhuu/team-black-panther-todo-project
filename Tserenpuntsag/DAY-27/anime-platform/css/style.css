@@ -9,8 +9,10 @@
 #headerMain {
     display: flex;
     justify-content: space-around;
+    align-items: center;
     background-color: black;
     color: aliceblue;
+    height: 30px;
 }
 
 #pagination{
@@ -23,6 +25,14 @@
     width: 60%;
     display: flex;
     justify-content: space-around;
+}
+
+.buttonPN{
+    background-color: black;
+    width: 18.5px;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
 }
 
 #animeCard{

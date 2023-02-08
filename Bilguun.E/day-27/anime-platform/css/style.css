@@ -1,6 +1,7 @@
 * {
     box-sizing: border-box;
     margin: 0;
+    color: black;
 }
 
 body {
@@ -174,15 +175,21 @@ h1 {
     border: none;
     cursor: pointer;
 }
-
-.moreBtn {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 5px;
+.readLessBtn {
+    display: block;
+    margin: 0 auto;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: none;
 }
 
 .moreIcon::after {
     content: "\2193";
+}
+
+.lessIcon::after {
+    content: "\2191";
 }
 
 .bodyDivProducer {

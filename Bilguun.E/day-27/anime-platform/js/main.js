@@ -146,24 +146,22 @@ async function clearFunc() {
 
 // ** Filter function **// 
 
-// let genreAPI = []
+let genreAPI = []
 
-// async function getGenreAPI() {
-//   let temp = []
-//   const filterSelect = document.getElementById("filterSelect")
-//   const fetchedAPI = await fetch("https://api.jikan.moe/v4/genres/anime")
-//   const fetchedJSON = await fetchedAPI.json()
-//   console.log(fetchedJSON)
-//   temp = fetchedJSON.data[3]
-//   filterSelect.innerText = `1`
+async function getGenreAPI() {
+  const filterSelect = document.getElementById("filterSelect")
+  const fetchedAPI = await fetch("https://api.jikan.moe/v4/genres/anime")
+  const fetchedJSON = await fetchedAPI.json()
+  genreAPI = fetchedJSON.data
+  genreAPI.map((genre) => {
+    const option = document.createElement("option")
+    option.value = genre.name
+    option.textContent = genre.name
+    filterSelect.appendChild(option)
+  })
+}
 
-//   genreAPI = temp
-//   console.log(genreAPI)
-// }
-
-// getGenreAPI()
-// console.log(genreAPI)
-
+getGenreAPI()
 
 async function filter() {
   const filterSelect = document.getElementById("filterSelect")
@@ -178,7 +176,6 @@ async function filter() {
       return arr
     }
   })
-  console.log(filterResult)
   const container = document.getElementById("mainDiv");
   container.innerHTML = '';
   filterResult.map((element, index) => {
@@ -188,21 +185,39 @@ async function filter() {
 
 // ** Show more function **// 
 
-
-async function showMore(event) {
-  debugger
+function showMore(event) {
   const elementSynop = document.getElementById(`synopsis_${event.id}`);
-  // const resultJSON = await fetch('https://api.jikan.moe/v4/top/anime');
-  // const result = await resultJSON.json();
   const showData = animeData;
   const filteredData = showData.filter((el, index) => {
     if (index == event.id) {
       return el;
     }
   })
-  elementSynop.innerHTML = filteredData[0].synopsis;
+  const readMoreBtn = document.querySelector(`.readMoreBtn_${event.id}`)
+  const readLessBtn = document.querySelector(`.readLessBtn_${event.id}`)
+  if (readMoreBtn.style.display = "none") {
+    elementSynop.innerHTML = filteredData[0].synopsis;
+    readLessBtn.style.display = "block"
+  }
 }
 
+// ** Show less function **//
+
+async function showLess(event) {
+  const elementSynop = document.getElementById(`synopsis_${event.id}`);
+  const showData = animeData;
+  const filteredData = showData.filter((el, index) => {
+    if (index == event.id) {
+
+      return el;
+    }
+  })
+  elementSynop.innerHTML = filteredData[0].synopsis.slice(0, 300);
+  const readMoreBtn = document.querySelector(`.readMoreBtn_${event.id}`)
+  readMoreBtn.style.display = "block"
+  const readLessBtn = document.querySelector(`.readLessBtn_${event.id}`)
+  readLessBtn.style.display = "none"
+}
 
 function getAnimes(data, index) {
   const genres = data.genres.map(genre => {
@@ -210,18 +225,56 @@ function getAnimes(data, index) {
     return result;
   })
 
+  const studio = data.studios.map((studio) => {
+    const result = `${studio.name}`
+    return result;
+  })
+
+  const theme = data.themes.map((theme) => {
+    const result = ` ${theme.name}`
+    return result;
+  })
+
+  const demographics = data.demographics.map((demographics) => {
+    const result = `${demographics.name}`
+    return result;
+  })
+
+  function yearNull(year) {
+    if (year == null) {
+      year = ""
+      return year
+    } else {
+      return ", " + year
+    }
+  }
+  let year = yearNull(data.year)
+
   const durationStr = data.duration.substring(0, 3)
+
+  function formatMembers(int) {
+    if (int >= 1000000) {
+      let result = (int / 1000000).toFixed(2) + "M";
+      return result;
+    } else {
+      let str = int.toString();
+      let firstTwo = str.substring(0, 1);
+      let result = 0 + "." + firstTwo + "M";
+      return result;
+    }
+  }
+  let membersResult = formatMembers(data.members)
 
   return `
       <div class="divContainer" id="mainDiv">
       <div class="header">
-      <h6><a href="#" id="title">${data.title}</a></h6>
+      <h6><a href="${data.url}" id="title">${data.title}</a></h6>
       </div>
       <div class="prodsrc">
       <i class="playIcon"></i>
         <div>
-          <span id="type">${data.type}, </span>
-          <span id="year">${data.year} |</span>
+          <span id="type">${data.type}</span>
+          <span id="year">${year} |</span>
           <span id="status">${data.status} |</span>
           <span id="eps">${data.episodes} episodes,</span>
           <span >${durationStr} min</span>
@@ -238,22 +291,27 @@ function getAnimes(data, index) {
           id="manga-image"
         />
         <div class="bodyDivRight">
-          <div id="text" class="bodyDivP">
-          <p id="synopsis_${index}">${data.synopsis.slice(0, 300)}</p>
-            <p id="secondBodyP"></p>
-            <button id="${index}" onclick="showMore(this)" class="readMoreBtn">
-              <i class="moreIcon"></i>
-            </button>
+        <div id="text" class="bodyDivP">
+        <p id="synopsis_${index}">${data.synopsis.slice(0, 300)}</p>
+          <p id="secondBodyP"></p>
+          <button id="${index}" onclick="showMore(this)" class="readMoreBtn_${index} readMoreBtn">
+            <i class="moreIcon"></i>
+          </button>
+          <button id="${index}" onclick="showLess(this)" class="readLessBtn_${index} readLessBtn">
+            <i class="lessIcon"></i>
+          </button>
           </div>
           <div id="info" class=bodyDivProducer>
-            <p><strong>Studio:</strong> <a href="#" class="studioA">${data.studios[0].name}</a></p>
+            <p><strong>Studio:</strong> <a href="#" class="studioA">${studio}</a></p>
             <p><strong>Source:</strong> ${data.source}</p>
+            <p><strong>Theme:</strong> ${theme}</p>
+            <p><strong>Demographic:</strong> ${demographics}</p>
           </div>
         </div>
       </div>
       <div class="footer">
         <p class="footerP score">${data.score}</p>
-        <p class="footerP member">${(data.members / 1.0e+6).toFixed(1)}M</p>
+        <p class="footerP member">${membersResult}</p>
         <button class="footerPBtn">Add To List</button>
       </div>
     </div>`

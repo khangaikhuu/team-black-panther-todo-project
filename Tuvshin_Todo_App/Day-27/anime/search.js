@@ -119,46 +119,62 @@ fetch("https://api.jikan.moe/v4/top/anime")
     });
 
 
+// search heseg
 
 async function search(event) {
     const searchField = document.getElementById('search-feild');
     const searchWord = searchField.value.toLowerCase();
     const animes = await fetch("https://api.jikan.moe/v4/top/anime");
     const animesJSON = await animes.json();
-    const animeData = animesJSON.data;
+    const animesData = animesJSON.data;
     const searchResult = animesData.filter(anime => 
         anime.title.toLowerCase().includes(searchWord)
         );
         console.log(searchResult);        
-    const container = document.querySelector(".myCreate");
+    const container = document.querySelector("#manga_main");
         container.innerHTML = "";
         searchResult.map((element) => {
         container.appendChild(getDetail(element));
     });
     
 }
+// genre heseg
+// async function dropdown(){
+//     const fetchedGenreData = await fetch("https://api.jikan.moe/v4/top/anime");
+//     const fetchedGenreJSON = await fetchedGenreData.json();
+//     const genreData = fetchedGenreJSON.data;
+    
+//     genreData.map(element => {
+//         const option = document.createElement("option");
+//         option.value = element.mal_id;
+//         option.textContent = element.name;
 
-  
-    // async function search() {
-    //     const searchField = document.getElementById('search-field');
+//         select.appendChild(option); 
+//     })
+
     
-    //     const animes = await fetch('https://api.jikan.moe/v4/top/anime')
-    //     const animesJSON = await animes.json();
-    //     const animesData = animesJSON.data;
-    //     console.log(typeof searchField.value)
-    
-    //     const searchResult = animeData.filter(anime => {
-    //         return anime.title.toLowerCase().includes(searchField.value.toLowerCase())
-    //     })
-    //     console.log(searchResult);
-    
-    
-    //     const container = document.querySelector('#manga_main');
-    
-    //     container.innerHTML = '';
-    //     let result = "";
-    //     searchResult.map((element, index) => {
-    //         result += getAnimes(element, index)
-    //     })
-    //     container.innerHTML = result;
-    // }
+// }
+// dropdown();
+
+const select = document.getElementById("genreSelect");
+
+select.addEventListener('change' , function handleChange(event) {
+    let selectValue = event.target.value;
+
+    const genreSelect = anima.filter(anime => {
+        if(genre.mal_id == selectValue) {
+            return genre
+        }
+    })
+    if(result.lenght > 0) {
+        return anime
+    }
+})
+
+const selectedAnimes = document.getElementById("animes");
+let result = "";
+genreSelect.map((element, index) => {
+    result += getAnimes(element, index);
+})
+selectedAnimes.innerHTML = result;
+

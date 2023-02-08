@@ -33,19 +33,19 @@ fetchGenres();
 
 const pageContainer = document.getElementById("pageContainer");
 
-for(i = 0; i < 9; i++){
+for (i = 0; i < 9; i++) {
     const animePage = document.createElement("a");
+    animePage.style = "background-color: black; color: white; width: 18.5px; text-align: center; border-radius: 10px;"
     animePage.innerHTML = i + 1;
     pageContainer.appendChild(animePage);
-    animePage.addEventListener("click", async (event) =>{
-        console.log(event.target.text);
+    animePage.addEventListener("click", async (event) => {
         const fetchedURL = await fetch(`https://api.jikan.moe/v4/top/anime?page=${event.target.text}`)
         const fetchJSON = await fetchedURL.json();
         const pageData = fetchJSON.data;
         fetchedJSONData = pageData;
         container.innerHTML = "";
         fetchedJSONData.map((element, index) => {
-            container.innerHTML += animeData(element,index);
+            container.innerHTML += animeData(element, index);
         })
     })
 

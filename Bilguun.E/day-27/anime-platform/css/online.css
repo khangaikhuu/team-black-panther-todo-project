@@ -113,7 +113,7 @@
 }
 
 .pagination {
-    margin-top: 50px;
+    margin: 50px 0 30px 0;
 }
 
 .pagination a {
@@ -132,7 +132,7 @@
 
 .pagination a::after {
     content: "";
-    background-color: rgb(244, 42, 255);
+    background-color: #00f5d4;
     width: 100%;
     z-index: -1;
     position: absolute;

@@ -14,26 +14,23 @@
 
 <body>
 
-  
+
 
   <h1>Anime card</h1>
-  <div id="prev" ></div>
-  <div id="page" ></div>
-  <div class="d-flex justify-content-evenly">
-  <div id="next" ></div>
-
-    <select id="full-genre">
- 
-    </select>
-
-
+  <header>
+    <div id="page" class="pagination"></div>
+    <div class="d-flex justify-content-evenly">
+    <select id="full-genre"></select>
     <div id="search-container">
       <input placeholder="Please search" id="search-field" class="">
       <input type="button" value="Search" onclick="search(this)">
     </div>
-  </div>
-  <div id="anime-container"></div>
+  </header>
+
   
+
+  <div id="anime-container"></div>
+
   <script src="js/main.js"></script>
 </body>
 

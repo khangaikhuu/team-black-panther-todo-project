@@ -109,8 +109,8 @@ async function showMore(event) {
         const detail = element.synopsis;
         console.log(detail);
         synop.innerHTML = detail;
-
     })
+    
 
 
 
@@ -137,11 +137,8 @@ async function search(event) {
 }
 
 genreCon.addEventListener("change", function handleChange(event) {
-    // console.log(event.target.value);
     let searchValue = event.target.value;
-    // console.log(searchValue);
     const genreFilter = animeData.filter(anime => {
-
         const genres = anime.genres;
         const result = genres.filter((genre) => {
             if (genre.mal_id == searchValue) {
@@ -172,11 +169,7 @@ function getAnimes(animes, index) {
         return result;
     })
 
-    // const year = animes.year.map(element => {
-    //     const result = element.year;
-    //     return result;console.log(year);
-
-    // })
+   
 
     const score = animes.score;
     const members = animes.members;
@@ -212,8 +205,8 @@ function getAnimes(animes, index) {
          <img src=${animes.images.jpg.image_url}>
          <div class="p-con">
             <div id="detail">
-                <p id="synopsis_${index}">${animes.synopsis.slice(0, 369)}<p/>
-                <p id="second-p"></p>
+                <p id="synopsis_${index}">${animes.synopsis.slice(0, 490)}<p/>
+                <p id="second" ></p> 
                 <button id="${index}"style="border:none; background-color: white;" onclick="showMore(this);">
                     <i class="fa-solid fa-angles-down"></i>
                 </button>
