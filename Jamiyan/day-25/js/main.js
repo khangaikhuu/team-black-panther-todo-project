@@ -16,18 +16,18 @@ function printMeToDom(str, dom) {
   dom.innerHTML = str;
 }
 
-setTimeout(() => {
-  printMeToDom("Зураг авах", p1);
-  setTimeout(() => {
-    printMeToDom("Амжилттай бол зургийг өөрчлөх", p2);
-    setTimeout(() => {
-      printMeToDom("Амжилттай бол амжилттай хадгалах", p3);
-      setTimeout(() => {
-        printMeToDom(`Амжилттай бол "Амжилттай хадгалагдлаа гэж хэвлэх"`, p4);
-      }, r4);
-    }, r3);
-  }, r2);
-}, r1);
+// setTimeout(() => {
+//   printMeToDom("Зураг авах", p1);
+//   setTimeout(() => {
+//     printMeToDom("Амжилттай бол зургийг өөрчлөх", p2);
+//     setTimeout(() => {
+//       printMeToDom("Амжилттай бол амжилттай хадгалах", p3);
+//       setTimeout(() => {
+//         printMeToDom(`Амжилттай бол "Амжилттай хадгалагдлаа гэж хэвлэх"`, p4);
+//       }, r4);
+//     }, r3);
+//   }, r2);
+// }, r1);
 
 // function first(){
 // const p1Promise = new Promise((resolve, reject) => {
